@@ -1,9 +1,4 @@
-using UnityEngine;
-
-namespace Hashira.Core.StatSystem
+public interface IStatable
 {
-    public interface IStatable
-    {
-        public StatDictionary StatDictionary { get; }
-    }
+    public StatDictionary StatDictionary { get; }
 }

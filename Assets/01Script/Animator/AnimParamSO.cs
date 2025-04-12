@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace YH.Animators
+namespace DKProject.Animators
 {
     [CreateAssetMenu(fileName = "AnimParamSO", menuName = "SO/Anim/ParamSO")]
     public class AnimParamSO : ScriptableObject

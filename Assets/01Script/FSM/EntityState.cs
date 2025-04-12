@@ -1,7 +1,7 @@
-using YH.Animators;
-using YH.Entities;
+using DKProject.Animators;
+using DKProject.Entities;
 
-namespace YH.FSM
+namespace DKProject.FSM
 {
     public abstract class EntityState
     {

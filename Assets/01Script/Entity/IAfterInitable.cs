@@ -1,4 +1,4 @@
-namespace YH.Entities
+namespace DKProject.Entities
 {
     public interface IAfterInitable
     {

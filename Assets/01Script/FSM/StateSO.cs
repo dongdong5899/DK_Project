@@ -1,7 +1,7 @@
-using YH.Animators;
+using DKProject.Animators;
 using UnityEngine;
 
-namespace YH.FSM
+namespace DKProject.FSM
 {
     [CreateAssetMenu(fileName = "StateSO", menuName = "SO/FSM/StateSO")]
     public class StateSO : ScriptableObject

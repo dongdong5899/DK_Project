@@ -1,9 +1,9 @@
 using System;
-using YH.Animators;
-using YH.Players;
+using DKProject.Animators;
+using DKProject.Players;
 using UnityEngine;
 
-namespace YH.Entities
+namespace DKProject.Entities
 {
     public class EntityRenderer : MonoBehaviour, IEntityComponent
     {

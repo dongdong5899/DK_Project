@@ -6,14 +6,11 @@ namespace DKProject.Entities.Players
 {
     public class Player : Entity
     {
-        protected override void Awake()
-        {
-            InputReader.JumpEvent += HandleJumpEvent;
-        }
+        [field: SerializeField] public Transform TargetTrm { get; private set; }
 
-        private void HandleJumpEvent()
+        public bool IsTargetInRange(float range)
         {
-            Debug.Log("Jump");
+            return Vector2.Distance(TargetTrm.transform.position, transform.position) < range;
         }
     }
 }

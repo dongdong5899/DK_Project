@@ -52,7 +52,7 @@ namespace DKProject.Entities.Components
             if (CanManualMove)
                 _rbCompo.linearVelocity = _movement * _moveSpeed * SpeedMultiplier;
 
-            _renderer.FlipController(_movement.x);
+            //_renderer.FlipController(_movement.x);
         }
 
 

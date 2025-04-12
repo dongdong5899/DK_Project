@@ -16,23 +16,25 @@ namespace DKProject.FSM
     public abstract class StateBase
     {
         protected Entity _entity;
+        protected EntityState _entityState;
         
         protected AnimParamSO _animParam;
         protected EAnimationEventType _isTriggerCall;
 
-        protected EntityRenderer _renderer;
+        protected EntityRenderer _entityRenderer;
 
         public StateBase(Entity entity, AnimParamSO animParam)
         {
             _entity = entity;
             _animParam = animParam;
-            _renderer = _entity.GetCompo<EntityRenderer>();
+            _entityRenderer = entity.GetCompo<EntityRenderer>();
+            _entityState = entity.GetCompo<EntityState>();
         }
 
         public virtual void Enter()
         {
-            _renderer.SetParam(_animParam, true);
-            _renderer.OnAnimationEvent += HandleAnimationEvent;
+            _entityRenderer.SetParam(_animParam, true);
+            _entityRenderer.OnAnimationEvent += HandleAnimationEvent;
             _isTriggerCall = 0;
         }
 
@@ -45,7 +47,7 @@ namespace DKProject.FSM
 
         public virtual void Exit()
         {
-            _renderer.SetParam(_animParam, false);
+            _entityRenderer.SetParam(_animParam, false);
         }
     }
 }

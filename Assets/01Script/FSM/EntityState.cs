@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DKProject.Entities.Components
 {
-    public class EntityState : MonoBehaviour, IEntityComponent
+    public class EntityState : MonoBehaviour, IEntityComponent, IAfterInitable
     {
         public string CurrentState { get; private set; }
 
@@ -14,24 +14,33 @@ namespace DKProject.Entities.Components
 
         private Dictionary<string, StateBase> _stateDictionary;
 
+        private Entity _entity;
+
         public void Initialize(Entity entity)
         {
-            CurrentState = _startState.StateName;
+            _entity = entity;
+        }
 
+        public void AfterInit()
+        {
+            _stateDictionary = new Dictionary<string, StateBase>();
             foreach (StateSO stateSO in _startStateList.states)
             {
+                string className = $"DKProject.FSM.{_entity.GetType().Name}{stateSO.StateName}State";
                 try
                 {
-                    Type type = Type.GetType($"{entity.GetType().FullName}{stateSO.StateName}State");
-                    StateBase stateBase = Activator.CreateInstance(type) as StateBase;
+                    Type type = Type.GetType(className);
+                    StateBase stateBase = Activator.CreateInstance(type, _entity, stateSO.animParamSO) as StateBase;
 
                     _stateDictionary.Add(stateSO.StateName, stateBase);
                 }
-                catch
+                catch (Exception ex)
                 {
-                    Debug.LogWarning($"{stateSO.name}");
+                    Debug.LogWarning($"{className}\nError : {ex.ToString()}");
                 }
             }
+            CurrentState = _startState.StateName;
+
             _stateDictionary[CurrentState].Enter();
         }
 

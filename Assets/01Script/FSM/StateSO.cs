@@ -7,6 +7,6 @@ namespace DKProject.FSM
     public class StateSO : ScriptableObject
     {
         public string StateName;
-        public AnimParamSO animParam;
+        public AnimParamSO animParamSO;
     }
 }

@@ -6,12 +6,12 @@ using UnityEngine;
 
 namespace DKProject.FSM
 {
-    public class PlayerIdleState : StateBase
+    public class PlayerMoveState : StateBase
     {
         private Player _player;
         private EntityMover _entityMover;
 
-        public PlayerIdleState(Entity entity, AnimParamSO animParam) : base(entity, animParam)
+        public PlayerMoveState(Entity entity, AnimParamSO animParam) : base(entity, animParam)
         {
             _player = entity as Player;
             _entityMover = entity.GetCompo<EntityMover>();
@@ -20,23 +20,21 @@ namespace DKProject.FSM
         public override void Enter()
         {
             base.Enter();
-            _entityMover.StopImmediately();
         }
 
         public override void Update()
         {
             base.Update();
 
-            if (_player.IsTargetInRange(1.5f))
-            {
-                Vector2 dir = _player.TargetTrm.position - _player.transform.position;
-                _entityRenderer.FlipController(Mathf.Sign(dir.x));
-            }
-            else if (_player.IsTargetInRange(15f))
-            {
+            Vector2 dir = (_player.TargetTrm.position - _player.transform.position).normalized;
+            _entityMover.SetMovement(dir);
 
-                _entityState.ChangeState(StateName.Move);
+            if (_player.IsTargetInRange(15f) == false || _player.IsTargetInRange(1.5f))
+            {
+                _entityState.ChangeState(StateName.Idle);
             }
+
+            _entityRenderer.FlipController(Mathf.Sign(dir.x));
         }
 
         public override void Exit()

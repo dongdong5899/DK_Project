@@ -9,6 +9,8 @@ namespace DKProject.Entities.Components
     {
         public float FacingDirection { get; private set; } = 1;
 
+        [field: SerializeField] public bool IsFlip { get; private set; } = false;
+
         private Entity _entity;
         private Animator _animator;
         public void Initialize(Entity entity)
@@ -34,7 +36,7 @@ namespace DKProject.Entities.Components
 
         public void FlipController(float xMove)
         {
-            if (Mathf.Abs(FacingDirection + xMove) < 0.5f)
+            if (Mathf.Abs(FacingDirection + xMove) < 0.5f ^ IsFlip)
                 Flip();
         }
 

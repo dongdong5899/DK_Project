@@ -4,26 +4,17 @@ using UnityEngine;
 
 namespace DKProject.FSM
 {
-    public enum FSMState
+    public static class StateName
     {
-        Idle, Move, Attack, Dash
+        public readonly static string Idle = "Idle";
+        public readonly static string Move = "Move";
+        public readonly static string Attack = "Attack";
+        public readonly static string Die = "Die";
     }
-    
+
     [CreateAssetMenu(fileName = "EntityStateListSO", menuName = "SO/FSM/EntityStateList")]
     public class EntityStateListSO : ScriptableObject
     {
         public List<StateSO> states;
-        private Dictionary<FSMState, StateSO> _stateDictionary;
-
-        public StateSO this[FSMState stateName] => _stateDictionary.GetValueOrDefault(stateName);
-        
-        private void OnEnable()
-        {
-            _stateDictionary = new Dictionary<FSMState, StateSO>();
-            foreach (var state in states)
-            {
-                _stateDictionary.Add(state.stateName, state);
-            }
-        }
     }
 }

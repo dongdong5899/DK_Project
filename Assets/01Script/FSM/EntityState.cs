@@ -1,40 +1,56 @@
-using DKProject.Animators;
-using DKProject.Entities;
+using DKProject.FSM;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 
-namespace DKProject.FSM
+namespace DKProject.Entities.Components
 {
-    public abstract class EntityState
+    public class EntityState : MonoBehaviour, IEntityComponent
     {
-        protected Entity _entity;
-        
-        protected AnimParamSO _animParam;
-        protected bool _isTriggerCall;
+        public string CurrentState { get; private set; }
 
-        protected EntityRenderer _renderer;
+        [SerializeField] private EntityStateListSO _startStateList;
+        [SerializeField] private StateSO _startState;
 
-        public EntityState(Entity entity, AnimParamSO animParam)
+        private Dictionary<string, StateBase> _stateDictionary;
+
+        public void Initialize(Entity entity)
         {
-            _entity = entity;
-            _animParam = animParam;
-            _renderer = _entity.GetCompo<EntityRenderer>();
+            CurrentState = _startState.StateName;
+
+            foreach (StateSO stateSO in _startStateList.states)
+            {
+                try
+                {
+                    Type type = Type.GetType($"{entity.GetType().FullName}{stateSO.StateName}State");
+                    StateBase stateBase = Activator.CreateInstance(type) as StateBase;
+
+                    _stateDictionary.Add(stateSO.StateName, stateBase);
+                }
+                catch
+                {
+                    Debug.LogWarning($"{stateSO.name}");
+                }
+            }
+            _stateDictionary[CurrentState].Enter();
         }
 
-        public virtual void Enter()
+        public void ChangeState(StateSO stateSO)
         {
-            _renderer.SetParam(_animParam, true);
-            _isTriggerCall = false;
+            _stateDictionary[CurrentState].Exit();
+            CurrentState = stateSO.StateName;
+            _stateDictionary[CurrentState].Enter();
+        }
+        public void ChangeState(string stateName)
+        {
+            _stateDictionary[CurrentState].Exit();
+            CurrentState = stateName;
+            _stateDictionary[CurrentState].Enter();
         }
 
-        public virtual void Update() { }
-
-        public virtual void Exit()
+        public void Update()
         {
-            _renderer.SetParam(_animParam, false);
-        }
-
-        public virtual void AnimationEndTrigger()
-        {
-            _isTriggerCall = true;
+            _stateDictionary[CurrentState].Update();
         }
     }
 }

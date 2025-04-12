@@ -1,27 +1,25 @@
-using System;
-using DKProject.Animators;
 using UnityEngine;
 
-namespace DKProject.Entities
+namespace DKProject.Entities.Components
 {
     public class EntityMover : MonoBehaviour, IEntityComponent
     {
         [SerializeField] private float _moveSpeed = 5f;
 
         private Vector2 _movement;
-        [Header("AnimParams")] 
-        
+        [Header("AnimParams")]
+
         public Vector2 Velocity => _rbCompo.linearVelocity;
         public bool CanManualMove { get; set; } = true; //키보드로 움직임 가능
         public float SpeedMultiplier { get; set; } = 1f;
-        
+
         private Rigidbody2D _rbCompo;
         private Entity _entity;
         private EntityRenderer _renderer;
 
-        
+
         private Collider2D _collider;
-        
+
         public void Initialize(Entity entity)
         {
             _entity = entity;
@@ -43,7 +41,7 @@ namespace DKProject.Entities
         }
 
         public void SetMovement(Vector2 movement) => _movement = movement;
-        
+
         private void FixedUpdate()
         {
             MoveCharacter();
@@ -51,9 +49,9 @@ namespace DKProject.Entities
 
         private void MoveCharacter()
         {
-            if(CanManualMove)
+            if (CanManualMove)
                 _rbCompo.linearVelocity = _movement * _moveSpeed * SpeedMultiplier;
-            
+
             _renderer.FlipController(_movement.x);
         }
 

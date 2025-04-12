@@ -1,14 +1,14 @@
-using System;
 using DKProject.Animators;
-using DKProject.Players;
+using DKProject.FSM;
+using System;
 using UnityEngine;
 
-namespace DKProject.Entities
+namespace DKProject.Entities.Components
 {
     public class EntityRenderer : MonoBehaviour, IEntityComponent
     {
         public float FacingDirection { get; private set; } = 1;
-        
+
         private Entity _entity;
         private Animator _animator;
         public void Initialize(Entity entity)
@@ -16,6 +16,8 @@ namespace DKProject.Entities
             _entity = entity;
             _animator = GetComponent<Animator>();
         }
+
+        public event Action<EAnimationEventType> OnAnimationEvent;
 
         public void SetParam(AnimParamSO param, bool value) => _animator.SetBool(param.hashValue, value);
         public void SetParam(AnimParamSO param, float value) => _animator.SetFloat(param.hashValue, value);
@@ -35,9 +37,12 @@ namespace DKProject.Entities
             if (Mathf.Abs(FacingDirection + xMove) < 0.5f)
                 Flip();
         }
-        
+
         #endregion
 
-        
+        private void AnimationEvent(EAnimationEventType eAnimationEventType)
+        {
+            OnAnimationEvent?.Invoke(eAnimationEventType);
+        }
     }
 }

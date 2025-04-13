@@ -1,9 +1,9 @@
-using DKProject.Players.Skill;
+using DKProject.SkillSystem.Skill;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace DKProject.Players.Skill
+namespace DKProject.SkillSystem.Skill
 {
     [CreateAssetMenu(fileName = "SkillList", menuName = "SO/Skill/SkillList")]
     public class SkillList : ScriptableObject

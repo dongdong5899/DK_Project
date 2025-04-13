@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using DKProject.Entities;
 
-namespace DKProject.Players.Skill
+namespace DKProject.SkillSystem.Skill
 {
     [CreateAssetMenu(fileName = "SkillSO", menuName = "SO/Skill/SkillSO")]
     public class SkillSO : ScriptableObject
@@ -29,12 +29,10 @@ namespace DKProject.Players.Skill
         public byte currentskillCount;
         public byte currentRange;
         public float currentAreaRadius;
+        public int currentSkillDamage; 
 
         [Header("SkillLevel")]
-        public int baseSkillLevel;
         public int currentSkillLevel;
-        public int evolutionSkillLevel;
-        public SkillSO evolutionSkill;
 
         [Header("Effect")]
         public List<Effect> effects;

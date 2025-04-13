@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace DKProject.Players.Skill
+namespace DKProject.SkillSystem.Skill
 {
     public enum SkillType
     {

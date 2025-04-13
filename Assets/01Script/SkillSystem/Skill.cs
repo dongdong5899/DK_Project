@@ -2,7 +2,7 @@ using UnityEngine;
 using DKProject.Entities;
 using System;
 
-namespace DKProject.Players.Skill
+namespace DKProject.SkillSystem.Skill
 {
     public abstract class Skill
     {
@@ -84,10 +84,6 @@ namespace DKProject.Players.Skill
         public virtual void LevelUpSkill()
         {
             SkillSO.currentSkillLevel++;
-            if (_skillLevel == SkillSO.evolutionSkillLevel)
-            {
-                OnSkillEvolution?.Invoke(this);
-            }
         }
     }
 }

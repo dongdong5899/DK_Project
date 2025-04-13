@@ -5,23 +5,23 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace DKProject.Players.Skill
+namespace DKProject.SkillSystem.Skill
 {
     public class PlayerSkillSystem : MonoBehaviour,IEntityComponent,IAfterInitable
     {
-        private Player _player;
+        //private Player _player;
 
         private List<Skill> _enabledSkillList = new List<Skill>(3);
         [SerializeField] private bool _autoMode;
         public void Initialize(Entity entity)
         {
-            _player = entity as Player;
+            //_player = entity as Player;
         }
 
         public void AfterInit()
         {
             _enabledSkillList = new List<Skill> { null, null, null };
-            _player.PlayerInput.SkillUse += HandleUseSkill;
+            //_player.PlayerInput.SkillUse += HandleUseSkill;
         }
 
         private void HandleUseSkill(byte skillNum)
@@ -69,7 +69,6 @@ namespace DKProject.Players.Skill
             if (_enabledSkillList[idx] == null)
             {
                 _enabledSkillList[idx] = skill;
-                skill.OnSkillEvolution += HandleSkillEvolution;
                 skill.OnEquipSkill();
             }
         }
@@ -81,18 +80,9 @@ namespace DKProject.Players.Skill
             if (_enabledSkillList[idx] != null)
             {
                 _enabledSkillList[idx].OnUnEquipSkill();
-                skill.OnSkillEvolution -= HandleSkillEvolution;
                 skill.OnUnEquipSkill();
                 _enabledSkillList[idx] = null;
             }
-        }
-
-        private void HandleSkillEvolution(Skill skill)
-        {
-            int idx = _enabledSkillList.BinarySearch(skill);
-            UnEquipSkill(skill, idx);
-            Skill evolutionSkill = skill.SkillSO.evolutionSkill.skill;
-            EquipSkill(evolutionSkill, idx);
         }
     }
 }

@@ -10,11 +10,12 @@ namespace DKProject.Players.Skill
     public class SkillSO : ScriptableObject
     {
         [Header("Skiil")]
+        public string skillID;
         public string skillName;
         public Sprite icon;
+        public SkillRank skillRank;
         [TextArea]
-        public string itemDescription;
-        public bool useCooldown;
+        public string skillDescription;
 
         [Header("SkillType")]
         public SkillType skillType;
@@ -32,18 +33,20 @@ namespace DKProject.Players.Skill
         [Header("SkillLevel")]
         public int baseSkillLevel;
         public int currentSkillLevel;
+        public int evolutionSkillLevel;
+        public SkillSO evolutionSkill;
 
         [Header("Effect")]
         public List<Effect> effects;
 
+        public Skill skill;
 
-        private Skill _skill;
         private void OnEnable()
         {
             try
             {
                 Type t = Type.GetType($"{skillName}Skill");
-                _skill = Activator.CreateInstance(t) as Skill;
+                skill = Activator.CreateInstance(t) as Skill;
             }
             catch (Exception e)
             {
@@ -54,8 +57,8 @@ namespace DKProject.Players.Skill
 
         public Skill GetSkill(Entity owner)
         {
-            Skill skill = _skill.Clone();
-            skill.Init(this, owner);
+            Skill curSkill = skill.Clone();
+            curSkill.Init(owner, this);
             return skill;
         }
     }

@@ -41,5 +41,10 @@ namespace DKProject.Players.Skill
     {
 
     }
+
+    public enum SkillRank
+    {
+        Common,Rare,Unique
+    }
 }
 

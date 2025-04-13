@@ -7,7 +7,7 @@ namespace DKProject.Players
     [CreateAssetMenu(fileName = "PlayerInputSO", menuName = "SO/PlayerInputSO")]
     public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     {
-        public event Action JumpEvent;
+        public event Action<byte> SkillUse;
         public event Action DashEvent;
         public event Action AttackEvent;
         

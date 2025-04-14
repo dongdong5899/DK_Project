@@ -1,7 +1,6 @@
 using UnityEngine;
-using YH.Entities;
 
-namespace Entities.Player
+namespace DKProject.Entities.Player
 {
     public class Player : Entity
     {

@@ -26,7 +26,7 @@ namespace DKProject.Entities.Components
             _stateDictionary = new Dictionary<string, StateBase>();
             foreach (StateSO stateSO in _startStateList.states)
             {
-                string className = $"DKProject.FSM.{_entity.GetType().Name}{stateSO.StateName}State";
+                string className = $"DKProject.FSM.{stateSO.StateTarget}{stateSO.StateName}State";
                 try
                 {
                     Type type = Type.GetType(className);

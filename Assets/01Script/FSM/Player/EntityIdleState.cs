@@ -1,19 +1,16 @@
 using DKProject.Animators;
 using DKProject.Entities;
 using DKProject.Entities.Components;
-using DKProject.Entities.Players;
 using UnityEngine;
 
 namespace DKProject.FSM
 {
-    public class PlayerIdleState : StateBase
+    public class EntityIdleState : StateBase
     {
-        private Player _player;
         private EntityMover _entityMover;
 
-        public PlayerIdleState(Entity entity, AnimParamSO animParam) : base(entity, animParam)
+        public EntityIdleState(Entity entity, AnimParamSO animParam) : base(entity, animParam)
         {
-            _player = entity as Player;
             _entityMover = entity.GetCompo<EntityMover>();
         }
 
@@ -27,15 +24,17 @@ namespace DKProject.FSM
         {
             base.Update();
 
-            if (_player.IsTargetInRange(1.5f))
+            if (_entity.IsTargetInRange(15f, out Collider2D collider))
             {
-                Vector2 dir = _player.TargetTrm.position - _player.transform.position;
-                _entityRenderer.FlipController(Mathf.Sign(dir.x));
-            }
-            else if (_player.IsTargetInRange(15f))
-            {
-
-                _entityState.ChangeState(StateName.Move);
+                Vector2 dir = collider.transform.position - _entity.transform.position;
+                if (dir.magnitude < 1.5f)
+                {
+                    _entityRenderer.FlipController(Mathf.Sign(dir.x));
+                }
+                else
+                {
+                    _entityState.ChangeState(StateName.Chase);
+                }
             }
         }
 

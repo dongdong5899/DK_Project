@@ -13,6 +13,7 @@ namespace DKProject.FSM
         Trigger = 4,
     }
 
+    [Serializable]
     public abstract class StateBase
     {
         protected Entity _entity;
@@ -47,7 +48,7 @@ namespace DKProject.FSM
 
         public virtual void Exit()
         {
-            _entityRenderer.SetParam(_animParam, false);
+            _entityRenderer?.SetParam(_animParam, false);
         }
     }
 }

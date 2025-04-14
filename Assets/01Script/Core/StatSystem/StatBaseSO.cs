@@ -1,37 +1,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BaseStat", menuName = "SO/Stat/BaseStat")]
-public class StatBaseSO : ScriptableObject
+namespace DKProject.StatSystem
 {
-    private Dictionary<string, StatElement> _statDictionary;
-    [SerializeField] private List<StatElement> _statElements = new List<StatElement>();
-
-    private void OnValidate()
+    [CreateAssetMenu(fileName = "BaseStat", menuName = "SO/Stat/BaseStat")]
+    public class StatBaseSO : ScriptableObject
     {
-        SetUpDictionary();
-    }
+        private Dictionary<string, StatElement> _statDictionary;
+        [SerializeField] private List<StatElement> _statElements = new List<StatElement>();
 
-    private void SetUpDictionary()
-    {
-        _statDictionary = new Dictionary<string, StatElement>();
-        foreach (StatElement statElement in _statElements)
+        private void OnValidate()
         {
-            if (statElement.elementSO == null) continue;
+            SetUpDictionary();
+        }
 
-            statElement.Initialize();
-            statElement.Name = statElement.elementSO.statName;
-            _statDictionary.Add(statElement.elementSO.statName, statElement);
+        private void SetUpDictionary()
+        {
+            _statDictionary = new Dictionary<string, StatElement>();
+            foreach (StatElement statElement in _statElements)
+            {
+                if (statElement.elementSO == null) continue;
+
+                statElement.Initialize();
+                statElement.Name = statElement.elementSO.statName;
+                _statDictionary.Add(statElement.elementSO.statName, statElement);
+            }
+        }
+
+        public List<StatElement> GetStatElements() => _statElements;
+
+        public StatElement GetStatElement(string statName)
+        {
+            if (_statDictionary.ContainsKey(statName))
+                return _statDictionary[statName];
+            else
+                return null;
         }
     }
 
-    public List<StatElement> GetStatElements() => _statElements;
-
-    public StatElement GetStatElement(string statName)
-    {
-        if (_statDictionary.ContainsKey(statName))
-            return _statDictionary[statName];
-        else
-            return null;
-    }
 }

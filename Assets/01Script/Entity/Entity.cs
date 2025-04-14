@@ -7,6 +7,27 @@ namespace DKProject.Entities
 {
     public class Entity : MonoBehaviour
     {
+        [field: SerializeField] public LayerMask WhatIsTarget { get; private set; }
+
+        public bool IsTargetInRange(float range, out Collider2D collider)
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range, WhatIsTarget);
+            collider = null;
+            float minDistance = float.MaxValue;
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                float targetDistance = Vector2.Distance(colliders[i].transform.position, transform.position);
+                if (targetDistance < minDistance)
+                {
+                    collider = colliders[i];
+                    minDistance = targetDistance;
+                }
+            }
+            return colliders.Length > 0;
+        }
+
+
+
         protected Dictionary<Type, IEntityComponent> _components;
 
         protected virtual void Awake()

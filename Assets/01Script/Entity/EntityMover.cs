@@ -4,14 +4,11 @@ namespace DKProject.Entities.Components
 {
     public class EntityMover : MonoBehaviour, IEntityComponent
     {
-        [SerializeField] private float _moveSpeed = 5f;
-
         private Vector2 _movement;
         [Header("AnimParams")]
 
         public Vector2 Velocity => _rbCompo.linearVelocity;
         public bool CanManualMove { get; set; } = true; //키보드로 움직임 가능
-        public float SpeedMultiplier { get; set; } = 1f;
 
         private Rigidbody2D _rbCompo;
         private Entity _entity;
@@ -50,7 +47,7 @@ namespace DKProject.Entities.Components
         private void MoveCharacter()
         {
             if (CanManualMove)
-                _rbCompo.linearVelocity = _movement * _moveSpeed * SpeedMultiplier;
+                _rbCompo.linearVelocity = _movement;
 
             //_renderer.FlipController(_movement.x);
         }

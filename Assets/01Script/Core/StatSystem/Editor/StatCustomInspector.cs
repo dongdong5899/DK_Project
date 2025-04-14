@@ -1,15 +1,17 @@
+using DKProject.Entities.Components;
 using UnityEditor;
 using UnityEngine;
 
 namespace DKProject.StatSystem
 {
+    [CustomEditor(typeof(EntityStat)), CanEditMultipleObjects]
     public class StatCustomInspector : Editor
     {
         private SerializedProperty statProp;
 
         private void OnEnable()
         {
-            statProp = serializedObject.FindProperty("_baseStat");
+            statProp = serializedObject.FindProperty("_baseStatSO");
         }
 
         public override void OnInspectorGUI()

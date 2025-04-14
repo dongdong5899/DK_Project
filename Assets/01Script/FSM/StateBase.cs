@@ -28,7 +28,7 @@ namespace DKProject.FSM
         {
             _entity = entity;
             _animParam = animParam;
-            _entityRenderer = entity.GetCompo<EntityRenderer>();
+            _entityRenderer = entity.GetCompo<EntityRenderer>(true);
             _entityState = entity.GetCompo<EntityState>();
         }
 
@@ -48,7 +48,8 @@ namespace DKProject.FSM
 
         public virtual void Exit()
         {
-            _entityRenderer?.SetParam(_animParam, false);
+            _entityRenderer.OnAnimationEvent -= HandleAnimationEvent;
+            _entityRenderer.SetParam(_animParam, false);
         }
     }
 }

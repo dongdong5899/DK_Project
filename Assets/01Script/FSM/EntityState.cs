@@ -7,10 +7,12 @@ namespace DKProject.Entities.Components
 {
     public class EntityState : MonoBehaviour, IEntityComponent, IAfterInitable
     {
-        public string CurrentState { get; private set; }
+        public StateBase CurrentState { get; private set; }
 
         [SerializeField] private EntityStateListSO _startStateList;
         [SerializeField] private StateSO _startState;
+
+        public Action<string> OnStateChangedEvent;
 
         private Dictionary<string, StateBase> _stateDictionary;
 
@@ -39,27 +41,25 @@ namespace DKProject.Entities.Components
                     Debug.LogWarning($"{className}\nError : {ex.ToString()}");
                 }
             }
-            CurrentState = _startState.StateName;
 
-            _stateDictionary[CurrentState].Enter();
+            ChangeState(_startState.StateName);
         }
 
         public void ChangeState(StateSO stateSO)
         {
-            _stateDictionary[CurrentState].Exit();
-            CurrentState = stateSO.StateName;
-            _stateDictionary[CurrentState].Enter();
+            ChangeState(stateSO.StateName);
         }
         public void ChangeState(string stateName)
         {
-            _stateDictionary[CurrentState].Exit();
-            CurrentState = stateName;
-            _stateDictionary[CurrentState].Enter();
+            CurrentState?.Exit();
+            CurrentState = _stateDictionary[stateName];
+            CurrentState?.Enter();
+            OnStateChangedEvent?.Invoke(stateName);
         }
 
         public void Update()
         {
-            _stateDictionary[CurrentState].Update();
+            CurrentState?.Update();
         }
     }
 }

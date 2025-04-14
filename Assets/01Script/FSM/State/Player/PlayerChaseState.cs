@@ -2,23 +2,30 @@ using DKProject.Animators;
 using DKProject.Entities;
 using DKProject.Entities.Components;
 using DKProject.Entities.Players;
+using DKProject.StatSystem;
 using UnityEngine;
 
 namespace DKProject.FSM
 {
-    public class EntityChaseState : StateBase
+    public class PlayerChaseState : StateBase
     {
+        private Player _player;
         private EntityMover _entityMover;
-        private float _speed = 5f;
+        private PlayerRenderer _playerRenderer;
+        private StatElement _speedStat;
 
-        public EntityChaseState(Entity entity, AnimParamSO animParam) : base(entity, animParam)
+        public PlayerChaseState(Entity entity, AnimParamSO animParam) : base(entity, animParam)
         {
+            _player = entity as Player;
             _entityMover = entity.GetCompo<EntityMover>();
+            _playerRenderer = _entityRenderer as PlayerRenderer;
+            _speedStat = entity.GetCompo<EntityStat>().StatDictionary[StatName.MoveSpeed];
         }
 
         public override void Enter()
         {
             base.Enter();
+            _playerRenderer.SetFace(EPlayerFaceType.Default);
         }
 
         public override void Update()
@@ -31,11 +38,18 @@ namespace DKProject.FSM
                 Vector2 dir = collider.transform.position - _entity.transform.position;
                 if (dir.magnitude < 1.5f)
                 {
-                    _entityState.ChangeState(StateName.Idle);
+                    if (_player.IsCanAttack())
+                    {
+                        _entityState.ChangeState(StateName.Attack);
+                    }
+                    else
+                    {
+                        _entityState.ChangeState(StateName.Idle);
+                    }
                 }
                 else
                 {
-                    _entityMover.SetMovement(dir.normalized * _speed);
+                    _entityMover.SetMovement(dir.normalized * _speedStat.Value);
                     _entityRenderer.FlipController(Mathf.Sign(dir.x));
                 }
             }
@@ -44,11 +58,6 @@ namespace DKProject.FSM
                 _entityState.ChangeState(StateName.Idle);
             }
 
-        }
-
-        public override void Exit()
-        {
-            base.Exit();
         }
     }
 }

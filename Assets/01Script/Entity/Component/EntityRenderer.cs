@@ -13,10 +13,15 @@ namespace DKProject.Entities.Components
 
         private Entity _entity;
         private Animator _animator;
-        public void Initialize(Entity entity)
+        public virtual void Initialize(Entity entity)
         {
             _entity = entity;
             _animator = GetComponent<Animator>();
+        }
+
+        public void SetAnimationSpeed(float value)
+        {
+            _animator.speed = value;
         }
 
         public event Action<EAnimationEventType> OnAnimationEvent;

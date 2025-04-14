@@ -28,7 +28,7 @@ namespace DKProject.FSM
         {
             _entity = entity;
             _animParam = animParam;
-            _entityRenderer = entity.GetCompo<EntityRenderer>();
+            _entityRenderer = entity.GetCompo<EntityRenderer>(true);
             _entityState = entity.GetCompo<EntityState>();
         }
 

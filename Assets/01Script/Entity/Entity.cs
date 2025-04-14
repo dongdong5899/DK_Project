@@ -40,7 +40,7 @@ namespace DKProject.Entities
             AfterInitComponents();
         }
 
-        private void InitComponents()
+        protected virtual void InitComponents()
         {
             _components.Values.ToList().ForEach(component => component.Initialize(this));
         }
@@ -52,6 +52,17 @@ namespace DKProject.Entities
                 if (component is IAfterInitable afterInitable)
                 {
                     afterInitable.AfterInit();
+                }
+            });
+        }
+
+        protected virtual void DisposeComponents()
+        {
+            _components.Values.ToList().ForEach(component =>
+            {
+                if (component is IDisposeable disposeable)
+                {
+                    disposeable.Dispose();
                 }
             });
         }
@@ -71,6 +82,11 @@ namespace DKProject.Entities
                 return (T)_components[findType];
             
             return default;
+        }
+
+        private void OnDestroy()
+        {
+            DisposeComponents();
         }
     }
 }

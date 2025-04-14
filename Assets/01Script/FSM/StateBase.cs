@@ -48,7 +48,8 @@ namespace DKProject.FSM
 
         public virtual void Exit()
         {
-            _entityRenderer?.SetParam(_animParam, false);
+            _entityRenderer.OnAnimationEvent -= HandleAnimationEvent;
+            _entityRenderer.SetParam(_animParam, false);
         }
     }
 }

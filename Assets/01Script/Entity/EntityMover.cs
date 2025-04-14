@@ -51,7 +51,5 @@ namespace DKProject.Entities.Components
 
             //_renderer.FlipController(_movement.x);
         }
-
-
     }
 }

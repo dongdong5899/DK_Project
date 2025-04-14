@@ -24,6 +24,7 @@ namespace DKProject.FSM
         {
             base.Enter();
             _entityMover.StopImmediately();
+            Debug.Log("IdleStart" + Time.time);
         }
 
         public override void Update()
@@ -54,6 +55,12 @@ namespace DKProject.FSM
             {
                 _playerRenderer.SetFace(EPlayerFaceType.Surprise);
             }
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            Debug.Log("IdleEnd" + Time.time);
         }
     }
 }

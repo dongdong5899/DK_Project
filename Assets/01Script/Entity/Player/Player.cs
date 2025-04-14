@@ -21,7 +21,7 @@ namespace DKProject.Entities.Players
             => _lastAttackTime = Time.time;
         public void Attack()
         {
-            Debug.Log("Attack");
+            //Debug.Log("Attack");
         }
 
         protected override void AfterInitComponents()

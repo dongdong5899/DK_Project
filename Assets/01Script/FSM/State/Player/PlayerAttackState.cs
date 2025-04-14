@@ -18,6 +18,8 @@ namespace DKProject.FSM
         private PlayerRenderer _playerRenderer;
         private StatElement _statElement;
 
+        private Enemy _targetEnemy;
+
         public PlayerAttackState(Entity entity, AnimParamSO animParam) : base(entity, animParam)
         {
             _player = entity as Player;
@@ -36,17 +38,23 @@ namespace DKProject.FSM
             float attackSpeed = _statElement.Value * 37f / 60f;
             _playerRenderer.SetParam(_AttackSpeedHash, Mathf.Clamp(attackSpeed, 1f, 10000000f));
             _player.CheckAttackTime();
+
+            if (_entity.IsTargetInRange(1.5f, out Collider2D collider))
+            {
+                _targetEnemy = collider.GetComponent<Enemy>();
+            }
         }
 
         public override void Update()
         {
             base.Update();
 
-            if (_isTriggerCall.HasFlag(EAnimationEventType.Trigger))
+            if (HasTriggerCall(EAnimationEventType.Trigger))
             {
-                _player.Attack();
+                RemoveTriggerCall(EAnimationEventType.Trigger);
+                _player.Attack(_targetEnemy);
             }
-            if (_isTriggerCall.HasFlag(EAnimationEventType.End))
+            if (HasTriggerCall(EAnimationEventType.End))
             {
                 _entityState.ChangeState(StateName.Idle);
             }

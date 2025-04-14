@@ -20,7 +20,7 @@ namespace DKProject.FSM
         protected EntityState _entityState;
         
         protected AnimParamSO _animParam;
-        protected EAnimationEventType _isTriggerCall;
+        private EAnimationEventType _isTriggerCall;
 
         protected EntityRenderer _entityRenderer;
 
@@ -41,8 +41,11 @@ namespace DKProject.FSM
 
         protected virtual void HandleAnimationEvent(EAnimationEventType type)
         {
-            _isTriggerCall |= type;
+            AddTriggerCall(type);
         }
+        public void AddTriggerCall(EAnimationEventType type) => _isTriggerCall |= type;
+        public bool HasTriggerCall(EAnimationEventType type) => _isTriggerCall.HasFlag(type);
+        public void RemoveTriggerCall(EAnimationEventType type) => _isTriggerCall &= ~type;
 
         public virtual void Update() { }
 

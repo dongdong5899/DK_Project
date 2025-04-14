@@ -1,8 +1,10 @@
 using DKProject.Cores;
 using DKProject.Entities.Components;
+using DKProject.Entities.Enemies;
 using DKProject.FSM;
 using DKProject.StatSystem;
 using System;
+using System.Numerics;
 using UnityEngine;
 
 namespace DKProject.Entities.Players
@@ -14,14 +16,22 @@ namespace DKProject.Entities.Players
         private EntityStat _entityStat;
         private StatElement _attackSpeedStat;
         private float _lastAttackTime;
+        [SerializeField] private string _attakcDamage = "10";
+        private BigInteger _attakcDamageBigInteger;
 
         public bool IsCanAttack()
             => _lastAttackTime + 1f / _attackSpeedStat.Value < Time.time;
         public void CheckAttackTime()
             => _lastAttackTime = Time.time;
-        public void Attack()
+        public void Attack(Enemy enemy)
         {
-            //Debug.Log("Attack");
+            enemy.GetCompo<EntityHealth>().ApplyDamage(_attakcDamageBigInteger);
+        }
+
+        protected override void Awake()
+        {
+            _attakcDamageBigInteger = BigInteger.Parse(_attakcDamage);
+            base.Awake();
         }
 
         protected override void AfterInitComponents()

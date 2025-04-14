@@ -50,7 +50,7 @@ MonoBehaviour:
     _baseValue: 10
   - Name: 
     elementSO: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
-    _baseValue: 3
+    _baseValue: 1
   - Name: 
     elementSO: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
     _baseValue: 1000
@@ -76,6 +76,51 @@ MonoBehaviour:
     elementSO: {fileID: 11400000, guid: 175f233e4bdf3e44cb5d9f9ce100e22e, type: 2}
     _baseValue: 0
   _baseStatSO: {fileID: 11400000, guid: 42c82e3b89af67e42bc511b89d9a8387, type: 2}
+--- !u!1 &3444709718061808173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6610148802146631650}
+  - component: {fileID: 2302677661330307427}
+  m_Layer: 7
+  m_Name: Health
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6610148802146631650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3444709718061808173}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.21, y: -0.04, z: 0.052645467}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4841951519155070083}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2302677661330307427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3444709718061808173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7448d5a3744bdc743baa67d1b6b0434c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
 --- !u!1 &4519251629241937126
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,6 +157,7 @@ Transform:
   - {fileID: 4564555641166610453}
   - {fileID: 5317782808443322762}
   - {fileID: 3681772323815549465}
+  - {fileID: 6610148802146631650}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4361750419048231566
@@ -129,6 +175,7 @@ MonoBehaviour:
   <WhatIsTarget>k__BackingField:
     serializedVersion: 2
     m_Bits: 128
+  _attakcDamage: 10
 --- !u!114 &6173391752966516637
 MonoBehaviour:
   m_ObjectHideFlags: 0

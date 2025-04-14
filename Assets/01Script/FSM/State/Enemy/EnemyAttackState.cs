@@ -40,11 +40,11 @@ namespace DKProject.FSM
         {
             base.Update();
 
-            if (_isTriggerCall.HasFlag(EAnimationEventType.Trigger))
+            if (HasTriggerCall(EAnimationEventType.Trigger))
             {
                 _enemy.Attack();
             }
-            if (_isTriggerCall.HasFlag(EAnimationEventType.End))
+            if (HasTriggerCall(EAnimationEventType.End))
             {
                 _entityState.ChangeState(StateName.Idle);
             }

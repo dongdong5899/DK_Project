@@ -36,6 +36,7 @@ Transform:
   - {fileID: 1494303756404065012}
   - {fileID: 4580808653474263960}
   - {fileID: 6595074277798082693}
+  - {fileID: 2995627048802805020}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &780598771209426344
@@ -53,7 +54,7 @@ MonoBehaviour:
   <WhatIsTarget>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
-  _attackDelay: 0.5
+  _attakcDamage: 10
 --- !u!114 &3852238607118051745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +241,51 @@ MonoBehaviour:
     elementSO: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
     _baseValue: 1000
   _baseStatSO: {fileID: 11400000, guid: 42c82e3b89af67e42bc511b89d9a8387, type: 2}
+--- !u!1 &7469119819353186826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2995627048802805020}
+  - component: {fileID: 3543035522266505236}
+  m_Layer: 7
+  m_Name: Health
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2995627048802805020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7469119819353186826}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2017362318829023018}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3543035522266505236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7469119819353186826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7448d5a3744bdc743baa67d1b6b0434c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
 --- !u!1001 &7996603198023850185
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,61 +1,66 @@
+using DKProject.Entities.Components;
 using UnityEditor;
 using UnityEngine;
 
-public class StatCustomInspector : Editor
+namespace DKProject.StatSystem
 {
-    private SerializedProperty statProp;
-
-    private void OnEnable()
+    [CustomEditor(typeof(EntityStat)), CanEditMultipleObjects]
+    public class StatCustomInspector : Editor
     {
-        statProp = serializedObject.FindProperty("_baseStat");
-    }
+        private SerializedProperty statProp;
 
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-        serializedObject.Update();
-
-        if (statProp.objectReferenceValue != null)
+        private void OnEnable()
         {
-            EditorGUI.indentLevel++;
-            SerializedObject so = new SerializedObject(statProp.objectReferenceValue);
-            so.Update();
+            statProp = serializedObject.FindProperty("_baseStatSO");
+        }
 
-            SerializedProperty prop = so.GetIterator();
-            prop.NextVisible(true);
-            while (prop.NextVisible(false))
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            serializedObject.Update();
+
+            if (statProp.objectReferenceValue != null)
             {
-                EditorGUILayout.PropertyField(prop, true);
+                EditorGUI.indentLevel++;
+                SerializedObject so = new SerializedObject(statProp.objectReferenceValue);
+                so.Update();
+
+                SerializedProperty prop = so.GetIterator();
+                prop.NextVisible(true);
+                while (prop.NextVisible(false))
+                {
+                    EditorGUILayout.PropertyField(prop, true);
+                }
+
+                so.ApplyModifiedProperties();
+                EditorGUI.indentLevel--;
             }
 
-            so.ApplyModifiedProperties();
-            EditorGUI.indentLevel--;
+            if (GUILayout.Button("Create new BaseStatSO"))
+            {
+                ShowSaveFileDialog();
+            }
+
+            serializedObject.ApplyModifiedProperties();
         }
 
-        if (GUILayout.Button("Create new BaseStatSO"))
+        private void ShowSaveFileDialog()
         {
-            ShowSaveFileDialog();
+            StatBaseSO newSO = ScriptableObject.CreateInstance<StatBaseSO>();
+
+            string path = EditorUtility.SaveFilePanelInProject(
+                "Create StatSO",
+                "NewStatSO",
+                "asset",
+                "Please enter a file name to create the StatSO to."
+            );
+
+            if (string.IsNullOrEmpty(path)) return;
+
+            AssetDatabase.CreateAsset(newSO, path);
+            AssetDatabase.SaveAssets();
+
+            statProp.objectReferenceValue = newSO;
         }
-
-        serializedObject.ApplyModifiedProperties();
-    }
-
-    private void ShowSaveFileDialog()
-    {
-        StatBaseSO newSO = ScriptableObject.CreateInstance<StatBaseSO>();
-
-        string path = EditorUtility.SaveFilePanelInProject(
-            "Create StatSO",
-            "NewStatSO",
-            "asset",
-            "Please enter a file name to create the StatSO to."
-        );
-
-        if (string.IsNullOrEmpty(path)) return;
-
-        AssetDatabase.CreateAsset(newSO, path);
-        AssetDatabase.SaveAssets();
-
-        statProp.objectReferenceValue = newSO;
     }
 }

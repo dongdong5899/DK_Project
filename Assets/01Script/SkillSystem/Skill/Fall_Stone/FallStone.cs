@@ -7,9 +7,9 @@ namespace DKProject.SkillSystem.Skill
 {
     public class FallStone : MonoBehaviour, IPoolable
     {
-        public GameObject GameObject { get => gameObject; set { } }
-        public Enum PoolEnum { get => _poolingType; set { } }
-        [SerializeField] private ProjectileType _poolingType;
+        public GameObject GameObject => gameObject;
+        public Enum PoolEnum => _poolingType;
+        [SerializeField] private ProjectilePoolingType _poolingType;
 
         private Vector2 _targetPosition;
         private float _speed;
@@ -24,12 +24,18 @@ namespace DKProject.SkillSystem.Skill
             }
         }
 
-        public void Init() { }
-
         public void Setting(Vector2 target, float speed)
         {
             _targetPosition = target;
             _speed = speed;
+        }
+
+        public void OnPop()
+        {
+        }
+
+        public void OnPush()
+        {
         }
     }
 }

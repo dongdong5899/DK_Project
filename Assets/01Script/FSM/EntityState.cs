@@ -7,10 +7,12 @@ namespace DKProject.Entities.Components
 {
     public class EntityState : MonoBehaviour, IEntityComponent, IAfterInitable
     {
-        public string CurrentState { get; private set; }
+        public StateBase CurrentState { get; private set; }
 
         [SerializeField] private EntityStateListSO _startStateList;
         [SerializeField] private StateSO _startState;
+
+        public Action<string> OnStateChangedEvent;
 
         private Dictionary<string, StateBase> _stateDictionary;
 
@@ -23,43 +25,49 @@ namespace DKProject.Entities.Components
 
         public void AfterInit()
         {
-            _stateDictionary = new Dictionary<string, StateBase>();
-            foreach (StateSO stateSO in _startStateList.states)
+            if (_stateDictionary == null)
             {
-                string className = $"DKProject.FSM.{_entity.GetType().Name}{stateSO.StateName}State";
-                try
+                _stateDictionary = new Dictionary<string, StateBase>();
+                foreach (StateSO stateSO in _startStateList.states)
                 {
-                    Type type = Type.GetType(className);
-                    StateBase stateBase = Activator.CreateInstance(type, _entity, stateSO.animParamSO) as StateBase;
+                    string className = $"DKProject.FSM.{stateSO.StateTarget}{stateSO.StateName}State";
+                    try
+                    {
+                        Type type = Type.GetType(className);
+                        StateBase stateBase = Activator.CreateInstance(type, _entity, stateSO.animParamSO) as StateBase;
 
-                    _stateDictionary.Add(stateSO.StateName, stateBase);
-                }
-                catch (Exception ex)
-                {
-                    Debug.LogWarning($"{className}\nError : {ex.ToString()}");
+                        _stateDictionary.Add(stateSO.StateName, stateBase);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.LogWarning($"{className}\nError : {ex.ToString()}");
+                    }
                 }
             }
-            CurrentState = _startState.StateName;
 
-            _stateDictionary[CurrentState].Enter();
+            ChangeState(_startState.StateName);
+        }
+
+        public void Dispose()
+        {
+            CurrentState?.Enter();
         }
 
         public void ChangeState(StateSO stateSO)
         {
-            _stateDictionary[CurrentState].Exit();
-            CurrentState = stateSO.StateName;
-            _stateDictionary[CurrentState].Enter();
+            ChangeState(stateSO.StateName);
         }
         public void ChangeState(string stateName)
         {
-            _stateDictionary[CurrentState].Exit();
-            CurrentState = stateName;
-            _stateDictionary[CurrentState].Enter();
+            CurrentState?.Exit();
+            CurrentState = _stateDictionary[stateName];
+            CurrentState?.Enter();
+            OnStateChangedEvent?.Invoke(stateName);
         }
 
         public void Update()
         {
-            _stateDictionary[CurrentState].Update();
+            CurrentState?.Update();
         }
     }
 }

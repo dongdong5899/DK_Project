@@ -20,7 +20,6 @@ namespace DKProject.Cores.Pool
             for(int i = 0; i < count; i++)
             {
                 T obj = GameObject.Instantiate(_prefab.GameObject, _parent).transform.GetComponent<T>();
-                obj.PoolEnum = _type.Enum;
                 obj.GameObject.name = _type.ToString();
                 obj.GameObject.SetActive(false);
                 _pool.Push(obj);
@@ -34,7 +33,6 @@ namespace DKProject.Cores.Pool
             if(_pool.Count <= 0)
             {
                 obj = GameObject.Instantiate(_prefab.GameObject, _parent).transform.GetComponent<T>(); ;
-                obj.PoolEnum = _type.Enum;
                 //obj.PoolKey = _type; //TODO
                 obj.GameObject.name = _type.ToString();
             }
@@ -52,5 +50,4 @@ namespace DKProject.Cores.Pool
             _pool.Push(obj);
         }
     }
-
 }

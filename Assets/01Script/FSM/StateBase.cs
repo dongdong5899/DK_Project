@@ -13,13 +13,14 @@ namespace DKProject.FSM
         Trigger = 4,
     }
 
+    [Serializable]
     public abstract class StateBase
     {
         protected Entity _entity;
         protected EntityState _entityState;
         
         protected AnimParamSO _animParam;
-        protected EAnimationEventType _isTriggerCall;
+        private EAnimationEventType _isTriggerCall;
 
         protected EntityRenderer _entityRenderer;
 
@@ -27,7 +28,7 @@ namespace DKProject.FSM
         {
             _entity = entity;
             _animParam = animParam;
-            _entityRenderer = entity.GetCompo<EntityRenderer>();
+            _entityRenderer = entity.GetCompo<EntityRenderer>(true);
             _entityState = entity.GetCompo<EntityState>();
         }
 
@@ -40,13 +41,17 @@ namespace DKProject.FSM
 
         protected virtual void HandleAnimationEvent(EAnimationEventType type)
         {
-            _isTriggerCall |= type;
+            AddTriggerCall(type);
         }
+        public void AddTriggerCall(EAnimationEventType type) => _isTriggerCall |= type;
+        public bool HasTriggerCall(EAnimationEventType type) => _isTriggerCall.HasFlag(type);
+        public void RemoveTriggerCall(EAnimationEventType type) => _isTriggerCall &= ~type;
 
         public virtual void Update() { }
 
         public virtual void Exit()
         {
+            _entityRenderer.OnAnimationEvent -= HandleAnimationEvent;
             _entityRenderer.SetParam(_animParam, false);
         }
     }

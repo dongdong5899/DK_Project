@@ -20,9 +20,12 @@ namespace DKProject.Cores
                         GameObject singletonObj = new GameObject($"{singleton.ToString()}", singleton);
                         _Instance = singletonObj as T;
                     }
+                    _Instance.CreateInstance();
                 }
                 return _Instance;
             }
         }
+
+        protected virtual void CreateInstance() { }
     }
 }

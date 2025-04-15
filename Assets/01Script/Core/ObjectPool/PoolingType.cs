@@ -1,16 +1,16 @@
 namespace DKProject.Cores.Pool
 {
-    public enum ObjectType
+    public enum ObjectPoolingType
     {
 
     }
-    public enum ProjectileType 
+    public enum ProjectilePoolingType 
     {
         Fall_Stone
     }
     public enum EnemyPoolingType 
     {
-        
+        DefaultEnemy
     }
     public enum UIPoolingType
     {

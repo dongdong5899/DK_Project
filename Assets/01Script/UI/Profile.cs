@@ -17,18 +17,18 @@ namespace DKProject.UI
 
         private void OnEnable()
         {
-            ResourceManager.Instance.onChangeValue += UpdateValue;
+            ResourceManager.onChangeValue += UpdateValue;
         }
 
         private void OnDisable()
         {
-            ResourceManager.Instance.onChangeValue -= UpdateValue;
+            ResourceManager.onChangeValue -= UpdateValue;
         }
 
         public void UpdateValue()
         {
-            _nameText.SetText($"{ResourceManager.Instance.GetLevel()}. 饭坷快具");
-            ResourceManager.Instance.GetResource(ResourceType.Exp);
+            _nameText.SetText($"{ResourceManager.GetLevel()}. 饭坷快具");
+            ResourceManager.GetResource(ResourceType.EXP);
         }
     }
 }

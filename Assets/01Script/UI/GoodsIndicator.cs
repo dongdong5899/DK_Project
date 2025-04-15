@@ -3,6 +3,7 @@ using System.Numerics;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -21,17 +22,24 @@ namespace DKProject.UI
 
         private void OnEnable()
         {
-            ResourceManager.Instance.onChangeValue += UpdateValue;
+            UpdateValue();
+            ResourceManager.onChangeValue += UpdateValue;
         }
 
         private void OnDisable()
         {
-            ResourceManager.Instance.onChangeValue -= UpdateValue;
+            ResourceManager.onChangeValue -= UpdateValue;
+        }
+
+        private void Update()
+        {
+            if (Keyboard.current.oKey.wasPressedThisFrame)
+                ResourceManager.AddResource(ResourceType.Gold, 3456);
         }
 
         public void UpdateValue()
         {
-            _value = ResourceManager.Instance.GetResource(_resourceType);
+            _value = ResourceManager.GetResource(_resourceType);
             _text.SetText(_value.ParseNumber());
         }
     }

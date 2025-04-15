@@ -1,4 +1,5 @@
 using DKProject.Core;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,7 +11,7 @@ namespace DKProject.UI
         public UnityEvent<Vector2> onChangeScale;
 
         public Vector2 ratio;
-        private Vector2 screenSize = new Vector2(Screen.width, Screen.height);
+        private Vector2 screenSize => new Vector2(Screen.width, Screen.height);
         private RectTransform RectTrm => transform as RectTransform;
 
 
@@ -26,19 +27,22 @@ namespace DKProject.UI
 
         private void SetSize()
         {
+            Vector2 size = RectTrm.sizeDelta;
+
             if ((direction & ESizeDirectionFlag.Width) != 0)
             {
-                float width = screenSize.x / (ratio.x / 100f);
-                RectTrm.sizeDelta = new Vector2(width, RectTrm.sizeDelta.y);
+                float width = screenSize.x * (ratio.x * 0.01f);
+                size.x = width;
             }
 
             if ((direction & ESizeDirectionFlag.Heigth) != 0)
             {
-                float height = screenSize.y * (ratio.y / 100f);
-                RectTrm.sizeDelta = new Vector2(RectTrm.sizeDelta.x, height);
+                float height = screenSize.y * (ratio.y * 0.01f);
+                size.y = height;
             }
 
-            onChangeScale?.Invoke(RectTrm.sizeDelta);
+            RectTrm.sizeDelta = size;
+            onChangeScale?.Invoke(size);
         }
     }
 }

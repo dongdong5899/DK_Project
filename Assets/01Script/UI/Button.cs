@@ -4,24 +4,26 @@ using UnityEngine.EventSystems;
 
 namespace DKProject.UI
 {
-    public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
         public UnityEvent OnClick;
-        public UnityEvent<bool> OnHover;
+        public UnityEvent OnStartClick;
+        public UnityEvent OnEndClick;
+
 
         public void OnPointerClick(PointerEventData eventData)
         {
             OnClick?.Invoke();
         }
 
-        public void OnPointerEnter(PointerEventData eventData)
+        public void OnPointerDown(PointerEventData eventData)
         {
-            OnHover?.Invoke(true);
+            OnStartClick?.Invoke();
         }
 
-        public void OnPointerExit(PointerEventData eventData)
+        public void OnPointerUp(PointerEventData eventData)
         {
-            OnHover?.Invoke(false);
+            OnEndClick?.Invoke();
         }
     }
 }

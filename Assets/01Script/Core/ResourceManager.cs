@@ -8,42 +8,34 @@ using UnityEngine.InputSystem;
 
 namespace DKProject.Core
 {
-    public class ResourceManager : MonoSingleton<ResourceManager>
+    public static class ResourceManager
     {
-        public ResourceSave save;
-        public event Action onChangeValue;
+        public static ResourceSave save;
+        public static event Action onChangeValue;
 
-        private string fileName = "Resource";
+        private static string fileName = "Resource";
 
-        public BigInteger _nextRequireExp => save.level * 10;
+        // 다음 경험치 계산을 그냥 프로퍼티에 박아버려도 될 듯
+        public static BigInteger _nextRequireExp => save.level * 10;
 
-        public void Start()
+        static ResourceManager()
         {
-            save = new ResourceSave();
-            save.ResetData();
-            //Load();
+            Load();
         }
 
-        private void Update()
+        public static void Start()
         {
-            if (Keyboard.current.pKey.wasPressedThisFrame)
-                Save();
-
-            if (Keyboard.current.oKey.wasPressedThisFrame)
-                AddResource(ResourceType.Exp, 1000);
-
-            if (Keyboard.current.iKey.wasPressedThisFrame)
-                Debug.Log(save.exp);
+            //save = new ResourceSave();
+            //save.ResetData();
         }
-
 
         #region ResourceRemover
 
-        public bool TryRemoveResource(ResourceType resourceType, BigInteger value)
+        public static bool TryRemoveResource(ResourceType resourceType, BigInteger value)
         {
             switch (resourceType)
             {
-                case ResourceType.Exp:
+                case ResourceType.EXP:
                     {
                         if (save.exp < value) return false;
 
@@ -70,7 +62,7 @@ namespace DKProject.Core
             return true;
         }
 
-        public bool TryRemoveSkillPoint(uint skillPoint)
+        public static bool TryRemoveSkillPoint(uint skillPoint)
         {
             if (save.skillPoint < skillPoint) return false;
 
@@ -82,12 +74,12 @@ namespace DKProject.Core
 
         #region ResourceAdder
 
-        public void AddResource(ResourceType resource, BigInteger value)
+        public static void AddResource(ResourceType resource, BigInteger value)
         {
             switch (resource)
             {
-                case ResourceType.Exp:
-                    save.exp += value;
+                case ResourceType.EXP:
+                    AddExp(value);
                     break;
                 case ResourceType.Gold:
                     save.gold += value;
@@ -101,7 +93,17 @@ namespace DKProject.Core
             Save();
         }
 
-        public void AddSkillPoint(uint value)
+        public  static void AddExp(BigInteger value)
+        {
+            save.exp += value;
+
+            if (save.exp >= _nextRequireExp)
+            {
+                save.level++;
+            }
+        }
+
+        public static void AddSkillPoint(uint value)
         {
             save.skillPoint -= value;
             Save();
@@ -111,11 +113,11 @@ namespace DKProject.Core
 
         #region ResourceGetter
 
-        public BigInteger GetResource(ResourceType resourceType)
+        public static BigInteger GetResource(ResourceType resourceType)
         {
             switch (resourceType)
             {
-                case ResourceType.Exp:
+                case ResourceType.EXP:
                     return save.exp;
                 case ResourceType.Gold:
                     return save.gold;
@@ -126,20 +128,20 @@ namespace DKProject.Core
             return 0;
         }
 
-        public uint GetSkillPoint()
+        public static uint GetSkillPoint()
             => save.skillPoint;
 
-        public uint GetLevel()
+        public static uint GetLevel()
             => save.level;
 
         #endregion
 
-        public void Save()
+        public static void Save()
         {
             save.SaveJson<ResourceSave>(fileName);
         }
 
-        public void Load()
+        public static void Load()
         {
             save = new ResourceSave();
             if (save.LoadJson<ResourceSave>(fileName) == false)
@@ -154,7 +156,7 @@ namespace DKProject.Core
 
     public enum ResourceType
     {
-        Exp,
+        EXP,
         Gold,
         Diamond,
     }

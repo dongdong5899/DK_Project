@@ -7,7 +7,7 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace DKProject.Entities.Components
 {
-    public class EntityHealth : MonoBehaviour, IEntityComponent
+    public class EntityHealth : MonoBehaviour, IEntityComponent, IAfterInitable
     {
         [SerializeField] private DamageText _damageText;
         [SerializeField] private string _health = "100";
@@ -24,9 +24,19 @@ namespace DKProject.Entities.Components
         public void Initialize(Entity entity)
         {
             MaxHealthBigInteger = BigInteger.Parse(_health);
-            CurrentHealthBigInteger = MaxHealthBigInteger;
             _entity = entity;
+        }
+
+        public void AfterInit()
+        {
+            CurrentHealthBigInteger = MaxHealthBigInteger;
+            OnHealthChangedEvent?.Invoke(MaxHealthBigInteger, MaxHealthBigInteger);
             IsDead = false;
+        }
+
+        public void Dispose()
+        {
+            IsDead = true;
         }
 
         public void ApplyDamage(BigInteger bigInteger)

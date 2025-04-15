@@ -25,24 +25,32 @@ namespace DKProject.Entities.Components
 
         public void AfterInit()
         {
-            _stateDictionary = new Dictionary<string, StateBase>();
-            foreach (StateSO stateSO in _startStateList.states)
+            if (_stateDictionary == null)
             {
-                string className = $"DKProject.FSM.{stateSO.StateTarget}{stateSO.StateName}State";
-                try
+                _stateDictionary = new Dictionary<string, StateBase>();
+                foreach (StateSO stateSO in _startStateList.states)
                 {
-                    Type type = Type.GetType(className);
-                    StateBase stateBase = Activator.CreateInstance(type, _entity, stateSO.animParamSO) as StateBase;
+                    string className = $"DKProject.FSM.{stateSO.StateTarget}{stateSO.StateName}State";
+                    try
+                    {
+                        Type type = Type.GetType(className);
+                        StateBase stateBase = Activator.CreateInstance(type, _entity, stateSO.animParamSO) as StateBase;
 
-                    _stateDictionary.Add(stateSO.StateName, stateBase);
-                }
-                catch (Exception ex)
-                {
-                    Debug.LogWarning($"{className}\nError : {ex.ToString()}");
+                        _stateDictionary.Add(stateSO.StateName, stateBase);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.LogWarning($"{className}\nError : {ex.ToString()}");
+                    }
                 }
             }
 
             ChangeState(_startState.StateName);
+        }
+
+        public void Dispose()
+        {
+            CurrentState?.Enter();
         }
 
         public void ChangeState(StateSO stateSO)

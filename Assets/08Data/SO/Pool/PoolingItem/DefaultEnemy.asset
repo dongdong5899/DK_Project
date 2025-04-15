@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 882de61ff0b09d041b4ed853dfe749a2, type: 3}
-  m_Name: PoolList
+  m_Script: {fileID: 11500000, guid: a0f8d62c17624ed478956946d0d2dedb, type: 3}
+  m_Name: DefaultEnemy
   m_EditorClassIdentifier: 
-  _list:
-  - {fileID: 11400000, guid: 99e485a0e7828b2429e11f1c9326f7d5, type: 2}
-  - {fileID: 11400000, guid: 0a7b87feb4b1eea4db1b4c2968afbc74, type: 2}
+  poolCount: 10
+  prefab: {fileID: 780598771209426344, guid: aef99e21f991dd249938fd5d7c888c06, type: 3}

@@ -1,13 +1,11 @@
 using DKProject.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace DKProject.SkillSystem.Skill
 {
-    public class PlayerSkillSystem : MonoBehaviour,IEntityComponent,IAfterInitable
+    public class PlayerSkillSystem : MonoBehaviour, IEntityComponent, IAfterInitable
     {
         //private Player _player;
 
@@ -22,6 +20,11 @@ namespace DKProject.SkillSystem.Skill
         {
             _enabledSkillList = new List<Skill> { null, null, null };
             //_player.PlayerInput.SkillUse += HandleUseSkill;
+        }
+
+        public void Dispose()
+        {
+
         }
 
         private void HandleUseSkill(byte skillNum)
@@ -73,9 +76,9 @@ namespace DKProject.SkillSystem.Skill
             }
         }
 
-        
 
-        public void UnEquipSkill(Skill skill,int idx)
+
+        public void UnEquipSkill(Skill skill, int idx)
         {
             if (_enabledSkillList[idx] != null)
             {

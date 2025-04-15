@@ -35,12 +35,16 @@ namespace DKProject.Entities
 
         protected virtual void Awake()
         {
+            FindComponents();
+            InitComponents();
+            AfterInitComponents();
+        }
+
+        protected virtual void FindComponents()
+        {
             _components = new Dictionary<Type, IEntityComponent>();
             GetComponentsInChildren<IEntityComponent>(true).ToList()
                 .ForEach(component => _components.Add(component.GetType(), component));
-
-            InitComponents();
-            AfterInitComponents();
         }
 
         protected virtual void InitComponents()
@@ -63,7 +67,7 @@ namespace DKProject.Entities
         {
             _components.Values.ToList().ForEach(component =>
             {
-                if (component is IDisposeable disposeable)
+                if (component is IAfterInitable disposeable)
                 {
                     disposeable.Dispose();
                 }
@@ -87,7 +91,7 @@ namespace DKProject.Entities
             return default;
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             DisposeComponents();
         }

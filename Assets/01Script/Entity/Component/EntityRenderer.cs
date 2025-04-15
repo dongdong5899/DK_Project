@@ -17,7 +17,6 @@ namespace DKProject.Entities.Components
         {
             _entity = entity;
             _animator = GetComponent<Animator>();
-
         }
 
         public event Action<EAnimationEventType> OnAnimationEvent;
@@ -43,7 +42,7 @@ namespace DKProject.Entities.Components
         public void Flip()
         {
             FacingDirection *= -1;
-            _entity.transform.Rotate(0, 180f, 0);
+            transform.Rotate(0, 180f, 0);
         }
 
         public void FlipController(float xMove)

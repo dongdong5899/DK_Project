@@ -1,5 +1,4 @@
 using DKProject.Entities.Components;
-using System;
 using System.Numerics;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
@@ -34,18 +33,20 @@ namespace DKProject.Entities
 
         private void HandleHealthChangedEvent(BigInteger prev, BigInteger current)
         {
-            BigInteger asd;
-            if (current == 0)
+            BigInteger value = 10000 * current / _targetHealth.MaxHealthBigInteger;
+            float amount = (float)value / 10000;
+            if (current < prev)
             {
-                asd = int.MaxValue;
+                _targetHealthBar = amount;
+                _lastChangeTime = Time.time;
             }
             else
             {
-                asd = 1000 * _targetHealth.MaxHealthBigInteger / current;
+                _targetHealthBar = amount;
+                _targetChangerBar = amount;
+                _healthBar.localScale = new Vector3(_targetHealthBar, 1, 1);
+                _changerBar.localScale = new Vector3(_targetChangerBar, 1, 1);
             }
-            float value = (float)asd / 1000;
-            _targetHealthBar = 1f / value;
-            _lastChangeTime = Time.time;
         }
 
         private void OnDestroy()

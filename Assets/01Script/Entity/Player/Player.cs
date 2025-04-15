@@ -25,7 +25,7 @@ namespace DKProject.Entities.Players
             => _lastAttackTime = Time.time;
         public void Attack(Enemy enemy)
         {
-            enemy.GetCompo<EntityHealth>().ApplyDamage(_attakcDamageBigInteger);
+            enemy.GetCompo<EntityHealth>().ApplyDamage(_attakcDamageBigInteger++);
         }
 
         protected override void Awake()

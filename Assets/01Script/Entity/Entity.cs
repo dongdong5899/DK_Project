@@ -26,7 +26,10 @@ namespace DKProject.Entities
             return colliders.Length > 0;
         }
 
+        public virtual void OnDie()
+        {
 
+        }
 
         protected Dictionary<Type, IEntityComponent> _components;
 

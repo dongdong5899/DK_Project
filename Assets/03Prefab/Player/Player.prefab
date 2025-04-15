@@ -50,7 +50,7 @@ MonoBehaviour:
     _baseValue: 10
   - Name: 
     elementSO: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
-    _baseValue: 1
+    _baseValue: 10
   - Name: 
     elementSO: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
     _baseValue: 1000
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7448d5a3744bdc743baa67d1b6b0434c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageText: {fileID: 0}
   _health: 100
 --- !u!1 &4519251629241937126
 GameObject:
@@ -175,7 +176,7 @@ MonoBehaviour:
   <WhatIsTarget>k__BackingField:
     serializedVersion: 2
     m_Bits: 128
-  _attakcDamage: 10
+  _attakcDamage: 2341429
 --- !u!114 &6173391752966516637
 MonoBehaviour:
   m_ObjectHideFlags: 0

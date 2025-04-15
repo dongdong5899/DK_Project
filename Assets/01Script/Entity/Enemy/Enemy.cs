@@ -28,6 +28,12 @@ namespace DKProject.Entities.Enemies
 
         }
 
+        public override void OnDie()
+        {
+            base.OnDie();
+            Destroy(gameObject);
+        }
+
         protected override void AfterInitComponents()
         {
             base.AfterInitComponents();

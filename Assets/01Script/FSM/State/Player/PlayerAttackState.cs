@@ -49,6 +49,12 @@ namespace DKProject.FSM
         {
             base.Update();
 
+            if (_targetEnemy != null)
+            {
+                Vector3 dir = _targetEnemy.transform.position - _player.transform.position;
+                _entityRenderer.FlipController(Mathf.Sign(dir.x));
+            }
+
             if (HasTriggerCall(EAnimationEventType.Trigger))
             {
                 RemoveTriggerCall(EAnimationEventType.Trigger);

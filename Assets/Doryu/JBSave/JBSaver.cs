@@ -61,10 +61,10 @@ namespace Doryu.JBSave
             //Save path
             string path = Path.Combine(_LocalPath, saveFileName + ".bin");
             //Class to json
+            saveClass.OnSaveData(saveFileName);
             string jsonData = JsonUtility.ToJson(saveClass, true);
             //Json to byte and encryption
             byte[] bytes = _ByteConverter.GetBytes(jsonData).AES_Encrypt(_Key);
-            saveClass.OnSaveData(saveFileName);
 
             File.WriteAllBytes(path, bytes);
         }

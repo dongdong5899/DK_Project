@@ -4,10 +4,11 @@ using DKProject.Entities;
 using DKProject.SkillSystem.Skill;
 using UnityEditor.EditorTools;
 using UnityEngine;
+using DKProject.Cores.Pool;
 
 namespace DKProject.SkillSystem.Skill
 {
-    public class Fall_StoneSkill : Skill
+    public class FallStoneSkill : Skill
     {
         private Player _player;
         private EntityRenderer _renderer;
@@ -20,23 +21,23 @@ namespace DKProject.SkillSystem.Skill
             base.Init(owner, skillSO);
             _whatIsTarget = LayerMask.GetMask("Enemy");
             //_player = PlayerManager.Instance.Player;
-            //_renderer = _player.GetCompo<EntityRenderer>(true);
+            _renderer = _player.GetCompo<EntityRenderer>(true);
         }
 
         public override void UseSkill()
         {
             Collider2D target = Physics2D.OverlapCircle(_owner.transform.position, _detectingDistance, _whatIsTarget);
 
-            Fall_Stone fallStone;//PoolManager.Instance.Pop(ObjectPooling.PoolingType.AreaAttack) as AreaAttack;
+            FallStone fallStone = PoolManager.Instance.Pop(ProjectilePoolingType.Fall_Stone) as FallStone;
 
-            //fallStone.Setting(target.transform.position, _attckSpeed);
+            fallStone.Setting(target.transform.position, _attckSpeed);
         }
-            
 
+        
 
         public override Skill Clone()
         {
-            Skill skill = new Fall_StoneSkill();
+            Skill skill = new FallStoneSkill();
             return skill;
         }
     }

@@ -33,7 +33,7 @@ namespace DKProject.Resources
 
             if (Vector3.Distance(_player.transform.position, transform.position) < _getRange)
             {
-                //ResourceManager.
+                ResourceManager.AddResource(_resourceType, _value);
                 this.Push();
             }
         }
@@ -46,7 +46,7 @@ namespace DKProject.Resources
 
             switch (resourceType)
             {
-                case ResourceType.Exp:
+                case ResourceType.EXP:
                     _visual.color = Color.red;
                     break;
                 case ResourceType.Gold:

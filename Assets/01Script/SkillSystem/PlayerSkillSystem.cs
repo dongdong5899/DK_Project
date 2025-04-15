@@ -1,4 +1,5 @@
 using DKProject.Entities;
+using DKProject.Entities.Players;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,24 +10,18 @@ namespace DKProject.SkillSystem.Skill
 {
     public class PlayerSkillSystem : MonoBehaviour,IEntityComponent,IAfterInitable
     {
-        //private Player _player;
+        private Player _player;
 
         private List<Skill> _enabledSkillList = new List<Skill>(3);
         [SerializeField] private bool _autoMode;
         public void Initialize(Entity entity)
         {
-            //_player = entity as Player;
+            _player = entity as Player;
         }
 
         public void AfterInit()
         {
             _enabledSkillList = new List<Skill> { null, null, null };
-            //_player.PlayerInput.SkillUse += HandleUseSkill;
-        }
-
-        private void HandleUseSkill(byte skillNum)
-        {
-            _enabledSkillList[skillNum].SetUseSkill(true);
         }
 
         private void Update()

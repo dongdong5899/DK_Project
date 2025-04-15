@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DKProject.SkillSystem.Skill
 {
-    public class Fall_Stone : MonoBehaviour, IPoolable
+    public class FallStone : MonoBehaviour, IPoolable
     {
         public GameObject GameObject { get => gameObject; set { } }
         public Enum PoolEnum { get => _poolingType; set { } }

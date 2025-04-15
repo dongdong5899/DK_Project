@@ -14,8 +14,10 @@ namespace DKProject.SkillSystem.Skill
         protected float _currentCoolTime;
         [SerializeField] protected LayerMask _whatIsEnemy;
         protected bool _isUseSkill = false;
-        protected int _skillLevel;
+        protected int _skillLevel = 1;
+        protected bool _unlockSkill = false;
         public event Action<Skill> OnSkillEvolution;
+
         public virtual void Init(Entity owner,SkillSO SO)
         {
             _owner = owner;
@@ -84,6 +86,11 @@ namespace DKProject.SkillSystem.Skill
         public virtual void LevelUpSkill()
         {
             SkillSO.currentSkillLevel++;
+        }
+
+        public virtual void UnlockSkill()
+        {
+            _unlockSkill = true;
         }
     }
 }

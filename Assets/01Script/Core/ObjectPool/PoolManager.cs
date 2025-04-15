@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Doryu.CustomAttributes;
 
 namespace DKProject.Cores.Pool
 {
@@ -9,7 +10,8 @@ namespace DKProject.Cores.Pool
         private Dictionary<PoolingKey, Pool<IPoolable>> _poolDictionary
         = new Dictionary<PoolingKey, Pool<IPoolable>>();
 
-        public PoolList poolListSO;
+        [VisibleInspectorSO]
+        public PoolListSO poolListSO;
 
         private void Awake()
         {

@@ -28,7 +28,7 @@ public class VisibleInspectorSOPropertyDrawer : PropertyDrawer
 
             float soRefSize = EditorGUI.GetPropertyHeight(property, null, false);
             position.y += soRefSize + EditorGUIUtility.standardVerticalSpacing / 2 + 7;
-            position.height -= soRefSize + EditorGUIUtility.standardVerticalSpacing / 2 + 4;
+            position.height -= soRefSize + EditorGUIUtility.standardVerticalSpacing / 2 + 9;
 
             Rect backgroundOutRect = new Rect(position.x, position.y - 5, position.width, position.height);
             EditorGUI.DrawRect(backgroundOutRect, new Color(0.15f, 0.15f, 0.15f));
@@ -45,7 +45,7 @@ public class VisibleInspectorSOPropertyDrawer : PropertyDrawer
             {
                 position.height = EditorGUI.GetPropertyHeight(soProperty, null, true);
                 EditorGUI.PropertyField(position, soProperty, true);
-                position.y += position.height;
+                position.y += position.height + 2;
             }
 
             so.ApplyModifiedProperties();
@@ -69,10 +69,13 @@ public class VisibleInspectorSOPropertyDrawer : PropertyDrawer
 
             SerializedProperty soProperty = so.GetIterator();
             soProperty.NextVisible(true);
-            while (soProperty.NextVisible(false))
+            do
             {
                 height += EditorGUI.GetPropertyHeight(soProperty, null, true) + EditorGUIUtility.standardVerticalSpacing;
             }
+            while (soProperty.NextVisible(false));
+
+
             height -= EditorGUIUtility.standardVerticalSpacing;
         }
 

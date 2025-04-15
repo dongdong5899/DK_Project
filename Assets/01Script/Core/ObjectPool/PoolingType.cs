@@ -2,7 +2,7 @@ namespace DKProject.Cores.Pool
 {
     public enum ObjectPoolingType
     {
-
+        Resource
     }
     public enum ProjectilePoolingType 
     {

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae21361f20c0294ab9068e5dbde29c2, type: 3}
   m_Name: EnemyPatrolState
   m_EditorClassIdentifier: 
-  StateTarget: Patrol
-  StateName: Idle
-  animParamSO: {fileID: 11400000, guid: 9ccf06c1453d5ea45a17cb09d065c2c6, type: 2}
+  StateTarget: Enemy
+  StateName: Patrol
+  animParamSO: {fileID: 11400000, guid: 4341d5524d36da941a4401b9b23a7398, type: 2}

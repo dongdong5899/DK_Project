@@ -3,7 +3,6 @@ using DKProject.Entities;
 using DKProject.Entities.Components;
 using DKProject.Entities.Players;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace DKProject.FSM
 {
@@ -30,10 +29,10 @@ namespace DKProject.FSM
         {
             base.Update();
 
-            if (_entity.IsTargetInRange(15f, out Collider2D collider))
+            if (_entity.IsTargetInRange(_entity.TargetDetectRange, out Collider2D collider))
             {
                 Vector2 dir = collider.transform.position - _entity.transform.position;
-                if (dir.magnitude < 1.5f)
+                if (dir.magnitude < _entity.AttackRange)
                 {
                     if (_player.IsCanAttack())
                     {

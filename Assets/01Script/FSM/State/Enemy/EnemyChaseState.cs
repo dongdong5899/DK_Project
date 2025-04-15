@@ -25,10 +25,10 @@ namespace DKProject.FSM
             base.Update();
 
 
-            if (_entity.IsTargetInRange(15f, out Collider2D collider))
+            if (_entity.IsTargetInRange(_entity.TargetDetectRange, out Collider2D collider))
             {
                 Vector2 dir = collider.transform.position - _entity.transform.position;
-                if (dir.magnitude < 1.5f)
+                if (dir.magnitude < _entity.AttackRange)
                 {
                     if (_enemy.IsCanAttack())
                     {

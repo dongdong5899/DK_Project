@@ -20,6 +20,8 @@ namespace DKProject.Entities.Enemies
         public Enum PoolEnum => _poolingType;
         [SerializeField] private EnemyPoolingType _poolingType;
 
+        public Action<Enemy> OnDieEvent;
+
         public void OnPop()
         {
             AfterInitComponents();
@@ -55,6 +57,7 @@ namespace DKProject.Entities.Enemies
         public override void OnDie()
         {
             base.OnDie();
+            OnDieEvent?.Invoke(this);
             this.Push();
         }
 

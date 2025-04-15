@@ -50,7 +50,7 @@ MonoBehaviour:
     _baseValue: 10
   - Name: 
     elementSO: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
-    _baseValue: 10
+    _baseValue: 5
   - Name: 
     elementSO: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
     _baseValue: 1000
@@ -176,7 +176,10 @@ MonoBehaviour:
   <WhatIsTarget>k__BackingField:
     serializedVersion: 2
     m_Bits: 128
-  _attakcDamage: 2341429
+  <TargetDetectRange>k__BackingField: 50
+  <AttackRange>k__BackingField: 1.5
+  _showRange: 1
+  _attakcDamage: 13414291
 --- !u!114 &6173391752966516637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +251,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

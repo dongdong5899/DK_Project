@@ -8,6 +8,9 @@ namespace DKProject.Entities
     public class Entity : MonoBehaviour
     {
         [field: SerializeField] public LayerMask WhatIsTarget { get; private set; }
+        [field: SerializeField] public float TargetDetectRange { get; private set; }
+        [field: SerializeField] public float AttackRange { get; private set; }
+        [SerializeField] private bool _showRange;
 
         public bool IsTargetInRange(float range, out Collider2D collider)
         {
@@ -94,6 +97,17 @@ namespace DKProject.Entities
         protected virtual void OnDestroy()
         {
             DisposeComponents();
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (_showRange)
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawWireSphere(transform.position, TargetDetectRange);
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(transform.position, AttackRange);
+            }
         }
     }
 }

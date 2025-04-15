@@ -8,12 +8,14 @@ using System;
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Vector2 = UnityEngine.Vector2;
 
 namespace DKProject.Entities.Players
 {
     public class Player : Entity
     {
         private EntityState _entityState;
+        private EntityMover _entityMover;
         private PlayerRenderer _entityRenderer;
         private EntityStat _entityStat;
         private StatElement _attackSpeedStat;
@@ -41,6 +43,7 @@ namespace DKProject.Entities.Players
         {
             base.AfterInitComponents();
             _entityState = GetCompo<EntityState>();
+            _entityMover = GetCompo<EntityMover>();
             _entityRenderer = GetCompo<PlayerRenderer>();
             _entityStat = GetCompo<EntityStat>();
             _attackSpeedStat = _entityStat.StatDictionary[StatName.AttackSpeed];

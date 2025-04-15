@@ -1,5 +1,7 @@
 using Doryu.JBSave;
+using System.Collections;
 using System.IO;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -29,11 +31,31 @@ namespace DKProject.Core
                 Debug.Log(save.exp);
         }
 
-        public void AddExp(ulong value)
+
+        public void AddExp(BigInteger value)
         {
             save.exp += value;
             Save();
         }
+
+
+        public BigInteger GetResource(ResourceType resourceType)
+        {
+            switch(resourceType)
+            {
+                case ResourceType.Exp:
+                    return save.exp;
+                case ResourceType.Gold:
+                    return save.gold;
+                case ResourceType.Diamond:
+                    return save.diamond;
+            }
+
+            return 0;
+        }
+
+        public uint GetSkillPoint()
+            => save.skillPoint;
 
 
         public void Save()
@@ -49,5 +71,12 @@ namespace DKProject.Core
                 save.ResetData();
             }
         }
+    }
+
+    public enum ResourceType
+    {
+        Exp,
+        Gold,
+        Diamond,
     }
 }

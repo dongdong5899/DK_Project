@@ -47,9 +47,7 @@ namespace DKProject.Core
             if (save.LoadJson<ResourceSave>(fileName) == false)
             {
                 save.ResetData();
-                Debug.Log("¹Ö¹Ö¹Ö");
             }
-            Debug.Log(save);
         }
     }
 }

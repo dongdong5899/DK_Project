@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f8d62c17624ed478956946d0d2dedb, type: 3}
-  m_Name: Fall_Stone
+  m_Script: {fileID: 11500000, guid: 3c0f37d07e665954185fb6e850d2d617, type: 3}
+  m_Name: SkillList
   m_EditorClassIdentifier: 
-  poolCount: 10
-  prefab: {fileID: 5573862031617498616, guid: 059285874525745408194828e7c376bb, type: 3}
+  _skillList:
+  - {fileID: 11400000, guid: de095220a059ebd4788f979b01fdf17c, type: 2}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4266075778317764535}
   - component: {fileID: 5573862031617498616}
   m_Layer: 0
-  m_Name: Fall_Stone
+  m_Name: FallStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

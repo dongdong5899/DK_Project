@@ -29,10 +29,7 @@ namespace DKProject.SkillSystem.Skill
         public byte currentskillCount;
         public byte currentRange;
         public float currentAreaRadius;
-        public int currentSkillDamage; 
-
-        [Header("SkillLevel")]
-        public int currentSkillLevel;
+        public float currentAttackcoefficient;
 
         [Header("Effect")]
         public List<Effect> effects;
@@ -43,12 +40,12 @@ namespace DKProject.SkillSystem.Skill
         {
             try
             {
-                Type t = Type.GetType($"{skillName}Skill");
+                Type t = Type.GetType($"{skillID}Skill");
                 skill = Activator.CreateInstance(t) as Skill;
             }
             catch (Exception e)
-            {
-                Debug.LogError($"Skill name of {skillName} is not exsist");
+            { 
+                Debug.LogError($"Skill name of {skillID} is not exsist");
                 Debug.LogException(e);
             }
         }

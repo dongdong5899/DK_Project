@@ -16,6 +16,7 @@ namespace DKProject.SkillSystem.Skill
         protected bool _isUseSkill = false;
         protected int _skillLevel = 1;
         protected bool _unlockSkill = false;
+        protected float _currentDamage;
         public event Action<Skill> OnSkillEvolution;
 
         public virtual void Init(Entity owner,SkillSO SO)
@@ -25,6 +26,7 @@ namespace DKProject.SkillSystem.Skill
 
             _skillCoolTime = SkillSO.currentCoolDown;
             _isPassiveSkill = SkillSO.skillType == SkillType.Passive;
+            _currentDamage = SkillSO.currentAttackcoefficient / 100 + _skillLevel*(100-1);
         }
 
 
@@ -44,7 +46,6 @@ namespace DKProject.SkillSystem.Skill
 
         public virtual bool CoolTimeCheck()
         {
-            //if(_prevSkillTime + _skillCoolTime / _attackSpeed.Value < Time.time)
             if(_prevSkillTime + _skillCoolTime < Time.time)
             {
                 _prevSkillTime = Time.time;
@@ -85,7 +86,8 @@ namespace DKProject.SkillSystem.Skill
 
         public virtual void LevelUpSkill()
         {
-            SkillSO.currentSkillLevel++;
+            _skillLevel++;
+            _currentDamage = SkillSO.currentAttackcoefficient / 100 + _skillLevel * (100 - 1);
         }
 
         public virtual void UnlockSkill()

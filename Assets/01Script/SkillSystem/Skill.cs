@@ -1,6 +1,11 @@
 using UnityEngine;
 using DKProject.Entities;
 using System;
+using System.Numerics;
+using Vector2 = UnityEngine.Vector2;
+using Random = UnityEngine.Random;
+using DKProject.Entities.Components;
+using DKProject.StatSystem;
 
 namespace DKProject.SkillSystem.Skill
 {
@@ -16,8 +21,9 @@ namespace DKProject.SkillSystem.Skill
         protected bool _isUseSkill = false;
         protected int _skillLevel = 1;
         protected bool _unlockSkill = false;
-        protected float _currentDamage;
+        protected BigInteger _currentDamage;
         public event Action<Skill> OnSkillEvolution;
+        protected EntityStat _statCompo;
 
         public virtual void Init(Entity owner,SkillSO SO)
         {
@@ -26,7 +32,8 @@ namespace DKProject.SkillSystem.Skill
 
             _skillCoolTime = SkillSO.currentCoolDown;
             _isPassiveSkill = SkillSO.skillType == SkillType.Passive;
-            _currentDamage = SkillSO.currentAttackcoefficient / 100 + _skillLevel*(100-1);
+            _currentDamage = new BigInteger(SkillSO.currentAttackcoefficient / 100 + _skillLevel*(100-1));
+            _statCompo = owner.GetCompo<EntityStat>();
         }
 
 
@@ -87,12 +94,23 @@ namespace DKProject.SkillSystem.Skill
         public virtual void LevelUpSkill()
         {
             _skillLevel++;
-            _currentDamage = SkillSO.currentAttackcoefficient / 100 + _skillLevel * (100 - 1);
+            _currentDamage = new BigInteger(SkillSO.currentAttackcoefficient / 100 + _skillLevel * (100 - 1));
         }
 
         public virtual void UnlockSkill()
         {
             _unlockSkill = true;
+        }
+
+        public virtual BigInteger ApplyDamage()
+        {
+            float random = Random.Range(0f, 100f);
+
+            if (random < _statCompo.StatDictionary["CriticalChance"].Value)
+            {
+                return _currentDamage * new BigInteger((_statCompo.StatDictionary["CriticalDamage"].Value) / 100);
+            }
+            return _currentDamage;
         }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 using DKProject.Cores.Pool;
 using DKProject.Combat;
 using DKProject.Cores;
+using System.Numerics;
 
 namespace DKProject.SkillSystem.Skill
 {
@@ -29,11 +30,8 @@ namespace DKProject.SkillSystem.Skill
 
             FallStone fallStone = PoolManager.Instance.Pop(ProjectilePoolingType.Fall_Stone) as FallStone;
 
-            fallStone.Setting(target.transform.position, _whatIsEnemy,SkillSO);
+            fallStone.Setting(target.transform.position,SkillSO.currentProjectileSpeed, _whatIsEnemy, ApplyDamage());
         }
-
-
-
 
 
         public override Skill Clone()

@@ -1,5 +1,6 @@
 using DKProject.Entities;
 using DKProject.Entities.Players;
+using Doryu.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace DKProject.SkillSystem.Skill
     {
         private Player _player;
 
-        private List<Skill> _enabledSkillList = new List<Skill>(3);
+        [SerializeField] private List<Skill> _enabledSkillList = new List<Skill>(3);
         [SerializeField] private bool _autoMode;
         public void Initialize(Entity entity)
         {

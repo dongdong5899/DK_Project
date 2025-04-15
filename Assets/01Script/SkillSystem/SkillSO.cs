@@ -30,6 +30,7 @@ namespace DKProject.SkillSystem.Skill
         public byte currentRange;
         public float currentAreaRadius;
         public float currentAttackcoefficient;
+        public float currentProjectileSpeed;
 
         [Header("Effect")]
         public List<Effect> effects;
@@ -40,7 +41,7 @@ namespace DKProject.SkillSystem.Skill
         {
             try
             {
-                Type t = Type.GetType($"{skillID}Skill");
+                Type t = Type.GetType($"DKProject.SkillSystem.Skill.{skillID}Skill");
                 skill = Activator.CreateInstance(t) as Skill;
             }
             catch (Exception e)

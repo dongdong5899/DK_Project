@@ -2,10 +2,12 @@ using DKProject.Cores;
 using DKProject.Entities.Components;
 using DKProject.Entities.Enemies;
 using DKProject.FSM;
+using DKProject.SkillSystem.Skill;
 using DKProject.StatSystem;
 using System;
 using System.Numerics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace DKProject.Entities.Players
 {
@@ -18,6 +20,7 @@ namespace DKProject.Entities.Players
         private float _lastAttackTime;
         [SerializeField] private string _attakcDamage = "10";
         private BigInteger _attakcDamageBigInteger;
+        [SerializeField] private SkillSO _testSkill;
 
         public bool IsCanAttack()
             => _lastAttackTime + 1f / _attackSpeedStat.Value < Time.time;
@@ -47,5 +50,13 @@ namespace DKProject.Entities.Players
         {
             base.DisposeComponents();
         }
+
+        //private void Update()
+        //{
+        //    if (Keyboard.current.tKey.isPressed)
+        //    {
+        //        GetCompo<PlayerSkillSystem>().EquipSkill(_testSkill.GetSkill(this),0);
+        //    }
+        //}
     }
 }

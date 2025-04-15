@@ -28,7 +28,7 @@ namespace DKProject.SkillSystem.Skill
         {
             Collider2D target = Physics2D.OverlapCircle(_owner.transform.position, _detectingDistance, _whatIsTarget);
 
-            FallStone fallStone = PoolManager.Instance.Pop(ProjectileType.Fall_Stone) as FallStone;
+            FallStone fallStone = PoolManager.Instance.Pop(ProjectilePoolingType.Fall_Stone) as FallStone;
 
             fallStone.Setting(target.transform.position, _attckSpeed);
         }

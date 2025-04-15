@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 namespace DKProject.SkillSystem.Skill
 {
-    public class PlayerSkillSystem : MonoBehaviour,IEntityComponent,IAfterInitable
+    public class PlayerSkillSystem : MonoBehaviour, IEntityComponent, IAfterInitable
     {
         private Player _player;
 
@@ -22,6 +22,11 @@ namespace DKProject.SkillSystem.Skill
         public void AfterInit()
         {
             _enabledSkillList = new List<Skill> { null, null, null };
+        }
+
+        public void Dispose()
+        {
+
         }
 
         private void Update()
@@ -79,6 +84,8 @@ namespace DKProject.SkillSystem.Skill
                 _enabledSkillList[idx] = null;
             }
         }
+
+       
     }
 }
 

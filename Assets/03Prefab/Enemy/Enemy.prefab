@@ -60,6 +60,11 @@ MonoBehaviour:
   _showRange: 1
   _attakcDamage: 10
   _poolingType: 0
+  _dropResourcesData:
+  - first: 1
+    second:
+      first: 3
+      second: 123
 --- !u!114 &3852238607118051745
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,6 +22,8 @@ namespace DKProject.Core
             StringBuilder sb = new StringBuilder();
             Stack<BigInteger> number = new();
 
+            if(value == 0) return "0";
+
             while (value > 0)
             {
                 number.Push(value % 10000);
@@ -32,7 +34,15 @@ namespace DKProject.Core
             {
                 if (number.TryPeek(out BigInteger current))
                 {
-                    sb.Append(current);
+                    if (i == 0)
+                    {
+                        sb.Append(current);
+                    }
+                    else
+                    {
+                        sb.Append(current.ToString("D4"));
+                    }
+
                     sb.Append(unit[number.Count - 1]);
                     number.Pop();
                 }

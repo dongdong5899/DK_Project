@@ -1,8 +1,10 @@
 using DKProject.Core;
+using System.Numerics;
 using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace DKProject.UI
 {
@@ -13,34 +15,24 @@ namespace DKProject.UI
         [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private LayoutGroup _bgLayout;
         [SerializeField] private RectTransform _iconRect;
+        [SerializeField] private ResourceType _resourceType;
 
-        private ulong _value = 0;
+        private BigInteger _value = 0;
 
-        private void Awake()
+        private void OnEnable()
         {
-            SetValue(9347483721123);
+            ResourceManager.Instance.onChangeValue += UpdateValue;
         }
 
-        public void AddValue(ulong value)
-            => SetValue(_value + value);
-
-        public void SetValue(ulong value)
+        private void OnDisable()
         {
-            _value = value;
-            _text.SetText(value.ParseNumber());
+            ResourceManager.Instance.onChangeValue -= UpdateValue;
         }
 
-        public void ChangeScale(Vector2 scale)
+        public void UpdateValue()
         {
-            int pedding = _bgLayout.padding.right;
-
-            int height = Mathf.RoundToInt(scale.y);
-            float size = height - pedding * 2;
-
-            _bgLayout.padding.left = (height + (pedding * 2));
-            _iconRect.sizeDelta = new Vector2(size, size);
-            _text.rectTransform.sizeDelta = new Vector2(_text.rectTransform.sizeDelta.x, size);
-            _iconRect.anchoredPosition = new Vector2((height / 2) + pedding, 0);
+            _value = ResourceManager.Instance.GetResource(_resourceType);
+            _text.SetText(_value.ParseNumber());
         }
     }
 }

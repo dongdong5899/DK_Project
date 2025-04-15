@@ -1,5 +1,7 @@
+using DKProject.Core;
 using System.Collections;
 using TMPro;
+using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,27 +9,26 @@ namespace DKProject.UI
 {
     public class Profile : MonoBehaviour
     {
-        [SerializeField] private Image _icon;
-        [SerializeField] private Image _expFill;
         [SerializeField] private TextMeshProUGUI _nameText;
         [SerializeField] private TextMeshProUGUI _combatValue;
 
-        [Space]
-        [SerializeField] private RectTransform _BGRect;
-        [SerializeField] private UnityEngine.UI.LayoutGroup _BGLayoutGroup;
+        [SerializeField] private Slider _expSlider;
+        [SerializeField] private Slider _hpSlider;
 
-        public void SetBGPosition(Vector2 size)
+        private void OnEnable()
         {
-            int width = (int)size.y / 2;
-            _BGRect.offsetMin = new Vector2(width, 0);
-            _BGLayoutGroup.padding.left = width + 10;
-            StartCoroutine(DelayForceRebuild());
+            ResourceManager.Instance.onChangeValue += UpdateValue;
         }
 
-        private IEnumerator DelayForceRebuild()
+        private void OnDisable()
         {
-            yield return null;
-            LayoutRebuilder.ForceRebuildLayoutImmediate(_BGRect);
+            ResourceManager.Instance.onChangeValue -= UpdateValue;
+        }
+
+        public void UpdateValue()
+        {
+            _nameText.SetText($"{ResourceManager.Instance.GetLevel()}. 레오우야");
+            ResourceManager.Instance.GetResource(ResourceType.Exp);
         }
     }
 }

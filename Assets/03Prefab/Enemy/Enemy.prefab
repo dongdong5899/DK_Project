@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageText: {fileID: 6281675067072149956, guid: 8b161dfcd78de95489a8f73c87b643cd, type: 3}
-  _health: 23414212
+  _health: 23414212312451233
 --- !u!1001 &5498256706748816488
 PrefabInstance:
   m_ObjectHideFlags: 0

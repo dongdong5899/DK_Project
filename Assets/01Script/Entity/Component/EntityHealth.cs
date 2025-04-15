@@ -1,3 +1,4 @@
+using DKProject.Core;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -67,7 +68,7 @@ namespace DKProject.Entities.Components
                 if (_damageTextList.Count == 5) _damageTextList.Clear();
             }
             spawnPos += Vector3.right * Random.Range(-0.2f, 0.2f);
-            damageText.Init(spawnPos, bigInteger.ToString(), Color.yellow);
+            damageText.Init(spawnPos, bigInteger.ParseNumber(), Color.yellow);
 
             if (CurrentHealthBigInteger < 0)
             {

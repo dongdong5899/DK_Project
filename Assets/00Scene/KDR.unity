@@ -1061,6 +1061,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4361750419048231566, guid: b929c5d3060cd194da8e315527a5301f, type: 3}
+      propertyPath: _attakcDamage
+      value: 1341429112343632
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406501454610665129, guid: b929c5d3060cd194da8e315527a5301f, type: 3}
+      propertyPath: _overrideStatElementList.Array.data[1]._baseValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4519251629241937126, guid: b929c5d3060cd194da8e315527a5301f, type: 3}
       propertyPath: m_Name
       value: Player

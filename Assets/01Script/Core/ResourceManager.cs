@@ -1,10 +1,6 @@
-using DKProject.Cores;
 using Doryu.JBSave;
-using Mono.Cecil;
 using System;
 using System.Numerics;
-using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace DKProject.Core
 {
@@ -93,7 +89,7 @@ namespace DKProject.Core
             Save();
         }
 
-        public  static void AddExp(BigInteger value)
+        public static void AddExp(BigInteger value)
         {
             save.exp += value;
 

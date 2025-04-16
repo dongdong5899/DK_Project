@@ -1,10 +1,8 @@
 using DKProject.Entities;
 using DKProject.Entities.Players;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace DKProject.SkillSystem.Skill
 {
@@ -12,7 +10,7 @@ namespace DKProject.SkillSystem.Skill
     {
         private Player _player;
 
-        private List<Skill> _enabledSkillList = new List<Skill>(3);
+        [SerializeField] private List<Skill> _enabledSkillList = new List<Skill>(3);
         [SerializeField] private bool _autoMode;
         public void Initialize(Entity entity)
         {
@@ -32,6 +30,11 @@ namespace DKProject.SkillSystem.Skill
         private void Update()
         {
             _enabledSkillList.ForEach(skill => skill?.Update());
+
+            if (_autoMode == true)
+            {
+                _enabledSkillList.ForEach(skill => skill?.SetUseSkill(true));
+            }
         }
 
         public void SetSlot(List<Skill> skills)

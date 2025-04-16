@@ -89,7 +89,7 @@ namespace DKProject.Core
             Save();
         }
 
-        public  static void AddExp(BigInteger value)
+        public static void AddExp(BigInteger value)
         {
             save.exp += value;
 

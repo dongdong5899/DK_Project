@@ -18,7 +18,7 @@ namespace DKProject.Cores
                         //없으면 만들기
                         Type singleton = typeof(T);
                         GameObject singletonObj = new GameObject($"{singleton.ToString()}", singleton);
-                        _Instance = singletonObj as T;
+                        _Instance = singletonObj.GetComponent<T>();
                     }
                     _Instance.CreateInstance();
                 }

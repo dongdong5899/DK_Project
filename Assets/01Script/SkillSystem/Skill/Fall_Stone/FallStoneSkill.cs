@@ -1,8 +1,6 @@
 using DKProject.Entities.Components;
 using DKProject.Entities.Players;
 using DKProject.Entities;
-using DKProject.SkillSystem.Skill;
-using UnityEditor.EditorTools;
 using UnityEngine;
 using DKProject.Cores.Pool;
 
@@ -10,30 +8,27 @@ namespace DKProject.SkillSystem.Skill
 {
     public class FallStoneSkill : Skill
     {
-        private Player _player;
-        private EntityRenderer _renderer;
-        private float _detectingDistance = 20;
-        private LayerMask _whatIsTarget;
-        private float _attckSpeed = 10f;
+        
 
         public override void Init(Entity owner, SkillSO skillSO)
         {
             base.Init(owner, skillSO);
-            _whatIsTarget = LayerMask.GetMask("Enemy");
-            //_player = PlayerManager.Instance.Player;
-            _renderer = _player.GetCompo<EntityRenderer>(true);
         }
 
         public override void UseSkill()
         {
-            Collider2D target = Physics2D.OverlapCircle(_owner.transform.position, _detectingDistance, _whatIsTarget);
+            Debug.Log("UseSkill");
+            Collider2D target = Physics2D.OverlapCircle(_owner.transform.position, SkillSO.currentRange, _whatIsTarget);
 
             FallStone fallStone = PoolManager.Instance.Pop(ProjectilePoolingType.Fall_Stone) as FallStone;
 
-            fallStone.Setting(target.transform.position, _attckSpeed);
+            float randX = Random.Range(_owner.transform.position.x - 5, _owner.transform.position.x + 5);
+
+            fallStone.transform.position = new Vector2(randX, _owner.transform.position.y+10);
+
+            fallStone.Setting(target.transform.position,SkillSO.currentProjectileSpeed, _whatIsTarget, ApplyDamage());
         }
 
-        
 
         public override Skill Clone()
         {

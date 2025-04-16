@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f8d62c17624ed478956946d0d2dedb, type: 3}
   m_Name: DefaultEnemy
   m_EditorClassIdentifier: 
-  poolCount: 10
+  poolCount: 30
   prefab: {fileID: 780598771209426344, guid: aef99e21f991dd249938fd5d7c888c06, type: 3}

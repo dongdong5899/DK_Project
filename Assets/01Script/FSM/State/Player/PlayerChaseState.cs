@@ -1,4 +1,5 @@
 using DKProject.Animators;
+using DKProject.Cores;
 using DKProject.Entities;
 using DKProject.Entities.Components;
 using DKProject.Entities.Players;
@@ -32,32 +33,39 @@ namespace DKProject.FSM
         {
             base.Update();
 
-
-            if (_entity.IsTargetInRange(_entity.TargetDetectRange, out Collider2D collider))
+            if (PlayerManager.Instance.IsAutoMode)
             {
-                Vector2 dir = collider.transform.position - _entity.transform.position;
-                if (dir.magnitude < _entity.AttackRange)
+                Vector2 playerMoveInput = PlayerManager.Instance.PlayerMoveInput;
+                _entityMover.SetMovement(playerMoveInput.normalized * _speedStat.Value);
+                _entityRenderer.FlipController(Mathf.Sign(playerMoveInput.x));
+            }
+            else
+            {
+                if (_entity.IsTargetInRange(_entity.TargetDetectRange, out Collider2D collider))
                 {
-                    if (_player.IsCanAttack())
+                    Vector2 dir = collider.transform.position - _entity.transform.position;
+                    if (dir.magnitude < _entity.AttackRange)
                     {
-                        _entityState.ChangeState(StateName.Attack);
+                        if (_player.IsCanAttack())
+                        {
+                            _entityState.ChangeState(StateName.Attack);
+                        }
+                        else
+                        {
+                            _entityState.ChangeState(StateName.Idle);
+                        }
                     }
                     else
                     {
-                        _entityState.ChangeState(StateName.Idle);
+                        _entityMover.SetMovement(dir.normalized * _speedStat.Value);
+                        _entityRenderer.FlipController(Mathf.Sign(dir.x));
                     }
                 }
                 else
                 {
-                    _entityMover.SetMovement(dir.normalized * _speedStat.Value);
-                    _entityRenderer.FlipController(Mathf.Sign(dir.x));
+                    _entityState.ChangeState(StateName.Idle);
                 }
             }
-            else
-            {
-                _entityState.ChangeState(StateName.Idle);
-            }
-
         }
     }
 }

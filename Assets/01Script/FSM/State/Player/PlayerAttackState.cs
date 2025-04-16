@@ -1,4 +1,5 @@
 using DKProject.Animators;
+using DKProject.Cores;
 using DKProject.Entities;
 using DKProject.Entities.Components;
 using DKProject.Entities.Enemies;
@@ -49,7 +50,7 @@ namespace DKProject.FSM
         {
             base.Update();
 
-            if (_targetEnemy != null)
+            if (_targetEnemy.gameObject.activeSelf)
             {
                 Vector3 dir = _targetEnemy.transform.position - _player.transform.position;
                 _entityRenderer.FlipController(Mathf.Sign(dir.x));

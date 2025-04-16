@@ -110,8 +110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1140.5}
-  m_SizeDelta: {x: 0, y: 2281}
+  m_AnchoredPosition: {x: 0, y: 924.5001}
+  m_SizeDelta: {x: 0, y: 1848.9998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6003401799623344172
 MonoBehaviour:
@@ -2086,7 +2086,21 @@ MonoBehaviour:
         m_CallState: 2
   OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2627831419676157154}
+        m_TargetAssemblyTypeName: DKProject.UI.ShopUI, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _enableAlpha: 1
+  _disableAlpha: 0.5
 --- !u!225 &9014161901162260631
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2509,6 +2523,8 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls: []
+  _enableAlpha: 1
+  _disableAlpha: 0.5
 --- !u!225 &1373995019307763884
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2973,6 +2989,7 @@ GameObject:
   - component: {fileID: 3318452252095664296}
   - component: {fileID: 4108346264185978867}
   - component: {fileID: 5278724845939560791}
+  - component: {fileID: 3054613271845541292}
   m_Layer: 5
   m_Name: ButtonParent
   m_TagString: Untagged
@@ -3066,6 +3083,25 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &3054613271845541292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3864679722958038827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92ec3753b83b5148b349eac3ed800ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttons:
+  - trigger: {fileID: 1169051830554070388}
+    panel: {fileID: 0}
+  - trigger: {fileID: 5793990756268883570}
+    panel: {fileID: 0}
+  - trigger: {fileID: 3871465440640557580}
+    panel: {fileID: 2627831419676157154}
 --- !u!1 &3873285067417125401
 GameObject:
   m_ObjectHideFlags: 0
@@ -3209,29 +3245,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4254278737467596519}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8df3848a934a31143906e5fb8db1edae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnStartClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2334829086842755706}
-        m_TargetAssemblyTypeName: DKProject.UI.FadeEvent, Assembly-CSharp
-        m_MethodName: FadeOut
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnClick:
     m_PersistentCalls:
       m_Calls: []
+  _enableAlpha: 1
+  _disableAlpha: 0.5
 --- !u!225 &3729120558843326797
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3957,6 +3983,126 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &5788204706901826384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1853904399058689179}
+  - component: {fileID: 5754614028724897352}
+  - component: {fileID: 284185214498094483}
+  - component: {fileID: 4941616227916937691}
+  m_Layer: 5
+  m_Name: OutPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1853904399058689179
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5788204706901826384}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7862632567179555626}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 1450}
+  m_SizeDelta: {x: 0, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5754614028724897352
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5788204706901826384}
+  m_CullTransparentMesh: 1
+--- !u!114 &284185214498094483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5788204706901826384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4941616227916937691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5788204706901826384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df3848a934a31143906e5fb8db1edae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStartClick:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2627831419676157154}
+        m_TargetAssemblyTypeName: DKProject.UI.ShopUI, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3054613271845541292}
+        m_TargetAssemblyTypeName: DKProject.UI.BottomButtonPanel, Assembly-CSharp
+        m_MethodName: SelectButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _enableAlpha: 0
+  _disableAlpha: 0
 --- !u!1 &5790167613130242165
 GameObject:
   m_ObjectHideFlags: 0
@@ -6046,7 +6192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9147066333453013845, guid: ba852119c2f8e4045ab142687083c4e1, type: 3}
       propertyPath: m_Name
-      value: ShopUI
+      value: GachaUI
       objectReference: {fileID: 0}
     - target: {fileID: 9147066333453013845, guid: ba852119c2f8e4045ab142687083c4e1, type: 3}
       propertyPath: m_IsActive
@@ -6054,11 +6200,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4973060590383661740, guid: ba852119c2f8e4045ab142687083c4e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1853904399058689179}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9147066333453013845, guid: ba852119c2f8e4045ab142687083c4e1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2590009872473759732}
+    - targetCorrespondingSourceObject: {fileID: 9147066333453013845, guid: ba852119c2f8e4045ab142687083c4e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2627831419676157154}
     - targetCorrespondingSourceObject: {fileID: 5138632385087707093, guid: ba852119c2f8e4045ab142687083c4e1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4969533062470565970}
@@ -6118,6 +6270,19 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &2627831419676157154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6264114241013375699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871e33dbcc9ea6041b1165ed5c7afdd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outButton: {fileID: 5788204706901826384}
 --- !u!224 &7862632567179555626 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4973060590383661740, guid: ba852119c2f8e4045ab142687083c4e1, type: 3}

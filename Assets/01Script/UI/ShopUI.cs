@@ -2,10 +2,12 @@ using UnityEngine;
 
 namespace DKProject.UI
 {
-    public class ShopUI : MonoBehaviour, IWindowPanel
+    public class ShopUI : TogglePanel
     {
+        public override string Key => "Shop";
         private CanvasGroup _canvasGruop;
         [SerializeField] private GameObject _outButton;
+
 
         private void Awake()
         {
@@ -13,7 +15,7 @@ namespace DKProject.UI
             Close();
         }
 
-        public void Close()
+        public override void Close()
         {
             _canvasGruop.alpha = 0;
             _canvasGruop.blocksRaycasts = false;
@@ -21,7 +23,7 @@ namespace DKProject.UI
             _outButton.SetActive(false);
         }
 
-        public void Open()
+        public override void Open()
         {
             _canvasGruop.alpha = 1;
             _canvasGruop.blocksRaycasts = true;

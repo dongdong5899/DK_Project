@@ -1,5 +1,5 @@
 using DKProject.Animators;
-using DKProject.Cores;
+using DKProject.Core;
 using DKProject.Entities;
 using DKProject.Entities.Components;
 using DKProject.Entities.Enemies;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DKProject.Cores.Pool
+namespace DKProject.Core.Pool
 {
     [CreateAssetMenu(menuName = "SO/Pool/PoolItem")]
     public class PoolingItemSO : ScriptableObject

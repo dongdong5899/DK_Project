@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace DKProject.Cores
+namespace DKProject.Core
 {
     public class InputReader : Controls.IPlayerActions
     {

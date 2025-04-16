@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DKProject.Cores
+namespace DKProject.Core
 {
     public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>, new()
     {

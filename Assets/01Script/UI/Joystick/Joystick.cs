@@ -1,4 +1,4 @@
-using DKProject.Cores;
+using DKProject.Core;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;

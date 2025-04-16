@@ -1,6 +1,6 @@
 using DKProject.Core;
-using DKProject.Cores;
-using DKProject.Cores.Pool;
+using DKProject.Core;
+using DKProject.Core.Pool;
 using DKProject.Entities.Players;
 using System;
 using UnityEngine;

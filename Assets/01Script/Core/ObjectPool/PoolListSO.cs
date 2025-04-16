@@ -2,7 +2,7 @@ using Doryu.CustomAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DKProject.Cores.Pool
+namespace DKProject.Core.Pool
 {
     [CreateAssetMenu(menuName = "SO/Pool/PoolList")]
     public class PoolListSO : ScriptableObject

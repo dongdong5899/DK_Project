@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DKProject.Cores.Pool
+namespace DKProject.Core.Pool
 {
     public class Pool<T> where T : IPoolable
     {

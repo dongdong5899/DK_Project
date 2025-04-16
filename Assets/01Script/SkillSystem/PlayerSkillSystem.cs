@@ -1,11 +1,8 @@
 using DKProject.Entities;
 using DKProject.Entities.Players;
-using Doryu.CustomAttributes;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace DKProject.SkillSystem.Skill
 {
@@ -33,6 +30,11 @@ namespace DKProject.SkillSystem.Skill
         private void Update()
         {
             _enabledSkillList.ForEach(skill => skill?.Update());
+
+            if (_autoMode == true)
+            {
+                _enabledSkillList.ForEach(skill => skill?.SetUseSkill(true));
+            }
         }
 
         public void SetSlot(List<Skill> skills)

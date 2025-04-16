@@ -1,11 +1,9 @@
 using UnityEngine;
 using DKProject.Entities;
-using System;
 using System.Numerics;
+using DKProject.Entities.Components;
 using Vector2 = UnityEngine.Vector2;
 using Random = UnityEngine.Random;
-using DKProject.Entities.Components;
-using DKProject.StatSystem;
 
 namespace DKProject.SkillSystem.Skill
 {
@@ -17,19 +15,19 @@ namespace DKProject.SkillSystem.Skill
         protected float _skillCoolTime;
         protected bool _isPassiveSkill;
         protected float _currentCoolTime;
-        [SerializeField] protected LayerMask _whatIsEnemy;
-        protected bool _isUseSkill = false;
+        protected bool _isUseSkill = true;
         protected int _skillLevel = 1;
         protected bool _unlockSkill = false;
         protected BigInteger _currentDamage;
-        public event Action<Skill> OnSkillEvolution;
         protected EntityStat _statCompo;
+        protected LayerMask _whatIsTarget;
 
         public virtual void Init(Entity owner,SkillSO SO)
         {
             _owner = owner;
-            this.SkillSO = SO;
-
+            Debug.Log(_owner);
+            SkillSO = SO;
+            _whatIsTarget = LayerMask.GetMask("Enemy");
             _skillCoolTime = SkillSO.currentCoolDown;
             _isPassiveSkill = SkillSO.skillType == SkillType.Passive;
             _currentDamage = new BigInteger(SkillSO.currentAttackcoefficient / 100 + _skillLevel*(100-1));
@@ -39,7 +37,8 @@ namespace DKProject.SkillSystem.Skill
 
         public virtual void Update()
         {
-            if (_isPassiveSkill == true && CoolTimeCheck() && RangeCheck())
+            Debug.Log(_owner);
+            if (_isPassiveSkill == true)
             {
                 UseSkill();
             }
@@ -64,7 +63,7 @@ namespace DKProject.SkillSystem.Skill
 
         public virtual bool RangeCheck()
         {
-            return Physics2D.CircleCast(_owner.transform.position, SkillSO.currentRange, Vector2.zero, 0, _whatIsEnemy);
+            return Physics2D.CircleCast(_owner.transform.position, SkillSO.currentRange, Vector2.zero, 0, _whatIsTarget);
         }
 
         public float GetCurrentCoolTime()
@@ -94,7 +93,8 @@ namespace DKProject.SkillSystem.Skill
         public virtual void LevelUpSkill()
         {
             _skillLevel++;
-            _currentDamage = new BigInteger(SkillSO.currentAttackcoefficient / 100 + _skillLevel * (100 - 1));
+            _currentDamage = 
+                new BigInteger((SkillSO.currentAttackcoefficient / 100 + _skillLevel * (100 - 1)));
         }
 
         public virtual void UnlockSkill()

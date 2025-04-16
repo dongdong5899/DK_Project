@@ -1,10 +1,8 @@
-using DKProject.Cores;
 using DKProject.Entities.Components;
 using DKProject.Entities.Enemies;
-using DKProject.FSM;
 using DKProject.SkillSystem.Skill;
 using DKProject.StatSystem;
-using System;
+using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -51,12 +49,16 @@ namespace DKProject.Entities.Players
             base.DisposeComponents();
         }
 
-        //private void Update()
-        //{
-        //    if (Keyboard.current.tKey.isPressed)
-        //    {
-        //        GetCompo<PlayerSkillSystem>().EquipSkill(_testSkill.GetSkill(this),0);
-        //    }
-        //}
+        private void Update()
+        {
+            if (Keyboard.current.tKey.isPressed)
+            {
+                GetCompo<PlayerSkillSystem>().EquipSkill(_testSkill.GetSkill(this), 0);
+                List<Skill> skillList = new List<Skill>();
+                _testSkill.GetSkill(this).Init(this,_testSkill);
+                skillList.Add(_testSkill.GetSkill(this));
+                GetCompo<PlayerSkillSystem>().SetSlot(skillList);
+            }
+        }
     }
 }

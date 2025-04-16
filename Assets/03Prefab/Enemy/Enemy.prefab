@@ -58,7 +58,6 @@ MonoBehaviour:
   <TargetDetectRange>k__BackingField: 6
   <AttackRange>k__BackingField: 1.5
   _showRange: 1
-  _attakcDamage: 10
   _poolingType: 0
   _dropResourcesData:
   - first: 1
@@ -243,13 +242,10 @@ MonoBehaviour:
   _overrideStatElementList:
   - Name: 
     elementSO: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    _baseValue: 10
-  - Name: 
-    elementSO: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
-    _baseValue: 1
+    _valueString: 300
   - Name: 
     elementSO: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
-    _baseValue: 1000
+    _valueString: 10000
   _baseStatSO: {fileID: 11400000, guid: 42c82e3b89af67e42bc511b89d9a8387, type: 2}
 --- !u!1 &7469119819353186826
 GameObject:
@@ -296,7 +292,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageText: {fileID: 6281675067072149956, guid: 8b161dfcd78de95489a8f73c87b643cd, type: 3}
-  _health: 3341429112343632
 --- !u!1001 &5498256706748816488
 PrefabInstance:
   m_ObjectHideFlags: 0

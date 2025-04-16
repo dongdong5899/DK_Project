@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46a87a73c7dbd349b5355342101ef57, type: 3}
   m_Name: MaxHpStat
   m_EditorClassIdentifier: 
-  statName: MaxHp
+  statName: MaxHealth
   displayName: "\uCCB4\uB825"
+  isBigInteger: 1
   minMaxValue: {x: 0, y: 1000}
   statIcon: {fileID: 0}

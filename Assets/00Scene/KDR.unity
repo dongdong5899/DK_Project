@@ -260,8 +260,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109265605}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -624.7698, y: -1358.9844, z: 3.8067336}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -518,7 +518,7 @@ Transform:
   m_GameObject: {fileID: 656391193}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 627.14594, y: 1358.276, z: -3.874889}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2332,6 +2332,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4406501454610665129, guid: b929c5d3060cd194da8e315527a5301f, type: 3}
+      propertyPath: _overrideStatElementList.Array.data[0]._valueString
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 4519251629241937126, guid: b929c5d3060cd194da8e315527a5301f, type: 3}
       propertyPath: m_Name
       value: Player

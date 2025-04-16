@@ -3,10 +3,8 @@ using DKProject.Entities.Enemies;
 using DKProject.SkillSystem.Skill;
 using DKProject.StatSystem;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Vector2 = UnityEngine.Vector2;
 
 namespace DKProject.Entities.Players
 {
@@ -17,9 +15,8 @@ namespace DKProject.Entities.Players
         private PlayerRenderer _entityRenderer;
         private EntityStat _entityStat;
         private StatElement _attackSpeedStat;
+        private StatElement _attackDamageStat;
         private float _lastAttackTime;
-        [SerializeField] private string _attakcDamage = "10";
-        private BigInteger _attakcDamageBigInteger;
         [SerializeField] private SkillSO _testSkill;
 
         public bool IsCanAttack()
@@ -28,12 +25,11 @@ namespace DKProject.Entities.Players
             => _lastAttackTime = Time.time;
         public void Attack(Enemy enemy)
         {
-            enemy.GetCompo<EntityHealth>().ApplyDamage(_attakcDamageBigInteger++);
+            enemy.GetCompo<EntityHealth>().ApplyDamage(_attackDamageStat.BigIntValue);
         }
 
         protected override void Awake()
         {
-            _attakcDamageBigInteger = BigInteger.Parse(_attakcDamage);
             base.Awake();
         }
 
@@ -45,6 +41,7 @@ namespace DKProject.Entities.Players
             _entityRenderer = GetCompo<PlayerRenderer>();
             _entityStat = GetCompo<EntityStat>();
             _attackSpeedStat = _entityStat.StatDictionary[StatName.AttackSpeed];
+            _attackDamageStat = _entityStat.StatDictionary[StatName.AttackDamage];
         }
 
         protected override void DisposeComponents()

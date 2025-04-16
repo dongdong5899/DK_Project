@@ -18,8 +18,6 @@ namespace DKProject.Entities.Enemies
         private EntityStat _entityStat;
         private StatElement _attackSpeedStat;
         private float _lastAttackTime;
-        [SerializeField] private string _attakcDamage = "10";
-        private BigInteger _attakcDamageBigInteger;
 
         #region Pooling
         public GameObject GameObject => gameObject;
@@ -43,7 +41,6 @@ namespace DKProject.Entities.Enemies
 
         protected override void Awake()
         {
-            _attakcDamageBigInteger = BigInteger.Parse(_attakcDamage);
             FindComponents();
             InitComponents();
         }

@@ -1,4 +1,5 @@
 using DKProject.Core;
+using DKProject.StatSystem;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -11,10 +12,10 @@ namespace DKProject.Entities.Components
     public class EntityHealth : MonoBehaviour, IEntityComponent, IAfterInitable
     {
         [SerializeField] private DamageText _damageText;
-        [SerializeField] private string _health = "100";
-        public BigInteger MaxHealthBigInteger { get; private set; }
+        public BigInteger MaxHealthBigInteger => _maxHealthStat.BigIntValue;
         public BigInteger CurrentHealthBigInteger { get; private set; }
         public bool IsDead { get; private set; }
+        private StatElement _maxHealthStat;
 
         public event Action<BigInteger, BigInteger> OnHealthChangedEvent;
 
@@ -24,14 +25,14 @@ namespace DKProject.Entities.Components
 
         public void Initialize(Entity entity)
         {
-            MaxHealthBigInteger = BigInteger.Parse(_health);
             _entity = entity;
         }
 
         public void AfterInit()
         {
-            CurrentHealthBigInteger = MaxHealthBigInteger;
-            OnHealthChangedEvent?.Invoke(MaxHealthBigInteger, MaxHealthBigInteger);
+            _maxHealthStat = _entity.GetCompo<EntityStat>().StatDictionary[StatName.MaxHealth];
+            CurrentHealthBigInteger = _maxHealthStat.BigIntValue;
+            OnHealthChangedEvent?.Invoke(_maxHealthStat.BigIntValue, _maxHealthStat.BigIntValue);
             IsDead = false;
         }
 

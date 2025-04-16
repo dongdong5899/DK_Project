@@ -1,6 +1,6 @@
 public static class StatName
 {
-    public readonly static string AttackDamage = "MoveSpeed";
+    public readonly static string AttackDamage = "AttackDamage";
     public readonly static string AttackSpeed = "AttackSpeed";
     public readonly static string MaxHealth = "MaxHealth";
     public readonly static string Defense = "Defense";

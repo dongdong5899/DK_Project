@@ -1,3 +1,4 @@
+using Doryu.CustomAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 

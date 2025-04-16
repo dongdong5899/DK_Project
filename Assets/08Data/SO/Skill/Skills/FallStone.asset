@@ -26,7 +26,8 @@ MonoBehaviour:
   castTime: 2
   currentCoolDown: 5
   currentskillCount: 1
-  currentRange: 1
+  currentRange: 5
   currentAreaRadius: 1
   currentAttackcoefficient: 0
+  currentProjectileSpeed: 0
   effects: []

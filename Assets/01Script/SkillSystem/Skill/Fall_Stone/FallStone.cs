@@ -25,6 +25,11 @@ namespace DKProject.SkillSystem.Skill
         private float _speed;
         private BigInteger _damage;
 
+        private void Awake()
+        {
+            _caster = GetComponent<Caster2D>();                                                                                                                                    
+        }
+
         private void Update()
         {
             Vector2 dir = (_targetPosition - (Vector2)transform.position).normalized;
@@ -43,6 +48,7 @@ namespace DKProject.SkillSystem.Skill
                     if (hit.transform.TryGetComponent(out Entity entity))
                     {
                         entity.GetCompo<EntityHealth>().ApplyDamage(_damage);
+                        PoolManager.Instance.Push(this);
                     }
                 }
             }

@@ -47,34 +47,34 @@ MonoBehaviour:
   _overrideStatElementList:
   - Name: 
     elementSO: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    _baseValue: 10
+    _valueString: 1000
   - Name: 
     elementSO: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
-    _baseValue: 5
+    _valueString: 5
   - Name: 
     elementSO: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
-    _baseValue: 1000
+    _valueString: 10000
   - Name: 
     elementSO: {fileID: 11400000, guid: 75f170965605d9942a16fa66176a9094, type: 2}
-    _baseValue: 0
+    _valueString: 1000
   - Name: 
     elementSO: {fileID: 11400000, guid: 950da55ddc0d9af40af0d53f6ffb0ed9, type: 2}
-    _baseValue: 0
+    _valueString: 100
   - Name: 
     elementSO: {fileID: 11400000, guid: 1d4871ee7bf4d7047a270671fb66f9c3, type: 2}
-    _baseValue: 0
+    _valueString: 100
   - Name: 
     elementSO: {fileID: 11400000, guid: f01a78735c3c5bf41b7de178e51abc0b, type: 2}
-    _baseValue: 0
+    _valueString: 100
   - Name: 
     elementSO: {fileID: 11400000, guid: d392dc36dac611742bf1baa5a991bd7e, type: 2}
-    _baseValue: 0
+    _valueString: 100
   - Name: 
     elementSO: {fileID: 11400000, guid: 43d3db4db7c04854d9add36077dffc20, type: 2}
-    _baseValue: 0
+    _valueString: 0
   - Name: 
     elementSO: {fileID: 11400000, guid: 175f233e4bdf3e44cb5d9f9ce100e22e, type: 2}
-    _baseValue: 0
+    _valueString: 100
   _baseStatSO: {fileID: 11400000, guid: 42c82e3b89af67e42bc511b89d9a8387, type: 2}
 --- !u!1 &3444709718061808173
 GameObject:
@@ -121,7 +121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageText: {fileID: 0}
-  _health: 100
 --- !u!1 &4519251629241937126
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +178,6 @@ MonoBehaviour:
   <TargetDetectRange>k__BackingField: 50
   <AttackRange>k__BackingField: 1.5
   _showRange: 1
-  _attakcDamage: 1341429112343632
   _testSkill: {fileID: 0}
 --- !u!114 &6173391752966516637
 MonoBehaviour:

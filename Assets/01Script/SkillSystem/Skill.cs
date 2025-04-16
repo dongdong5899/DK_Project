@@ -38,7 +38,7 @@ namespace DKProject.SkillSystem.Skill
         public virtual void Update()
         {
             Debug.Log(_owner);
-            if (_isPassiveSkill == true)
+            if (_isPassiveSkill == true && CoolTimeCheck() && RangeCheck())
             {
                 UseSkill();
             }

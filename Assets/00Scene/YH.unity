@@ -370,6 +370,10 @@ PrefabInstance:
       propertyPath: _testSkill
       value: 
       objectReference: {fileID: 11400000, guid: de095220a059ebd4788f979b01fdf17c, type: 2}
+    - target: {fileID: 4361750419048231566, guid: b929c5d3060cd194da8e315527a5301f, type: 3}
+      propertyPath: _attakcDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4519251629241937126, guid: b929c5d3060cd194da8e315527a5301f, type: 3}
       propertyPath: m_Name
       value: Player

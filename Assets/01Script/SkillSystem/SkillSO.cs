@@ -24,10 +24,11 @@ namespace DKProject.SkillSystem.Skill
         public DamageType damageType;
 
         [Header("SkillStat")]
-        public float castTime;
-        public byte currentCoolDown;
+        public float currentChargingTime;
+        public float currentLifeTime;
+        public float currentCoolDown;
         public byte currentskillCount;
-        public byte currentRange;
+        public float currentRange;
         public float currentAreaRadius;
         public float currentAttackcoefficient;
         public float currentProjectileSpeed;

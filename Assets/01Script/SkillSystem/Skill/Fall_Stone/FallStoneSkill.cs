@@ -22,6 +22,10 @@ namespace DKProject.SkillSystem.Skill
 
             FallStone fallStone = PoolManager.Instance.Pop(ProjectilePoolingType.Fall_Stone) as FallStone;
 
+            float randX = Random.Range(_owner.transform.position.x - 5, _owner.transform.position.x + 5);
+
+            fallStone.transform.position = new Vector2(randX, _owner.transform.position.y+10);
+
             fallStone.Setting(target.transform.position,SkillSO.currentProjectileSpeed, _whatIsTarget, ApplyDamage());
         }
 

@@ -24,21 +24,23 @@ namespace DKProject.SkillSystem.Skill
         private LayerMask _whatIsTarget;
         private float _speed;
         private BigInteger _damage;
+        private Rigidbody2D _rb;
 
         private void Awake()
         {
-            _caster = GetComponent<Caster2D>();                                                                                                                                    
+            _caster = GetComponent<Caster2D>();
+            _rb = GetComponent<Rigidbody2D>();
         }
 
         private void Update()
         {
             Vector2 dir = (_targetPosition - (Vector2)transform.position).normalized;
-            transform.position += (Vector3)dir * _speed * Time.deltaTime;
+            _rb.linearVelocity = dir * _speed;
 
-            if (Vector2.Distance(_targetPosition, (Vector2)transform.position) <= 0.3f)
-            {
-                PoolManager.Instance.Push(this);
-            }
+            //if (Vector2.Distance(_targetPosition, (Vector2)transform.position) <= 0.3f)
+            //{
+            //    PoolManager.Instance.Push(this);
+            //}
 
 
             if (_caster.CheckCollision(out _hits, _whatIsTarget))

@@ -23,11 +23,12 @@ MonoBehaviour:
   targetType: 1
   castType: 0
   damageType: 0
-  castTime: 2
+  currentChargingTime: 0
+  currentLifeTime: 1
   currentCoolDown: 5
   currentskillCount: 1
   currentRange: 5
   currentAreaRadius: 1
-  currentAttackcoefficient: 0
-  currentProjectileSpeed: 0
+  currentAttackcoefficient: 960
+  currentProjectileSpeed: 20
   effects: []

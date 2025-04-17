@@ -1,9 +1,10 @@
 using DG.Tweening;
+using DKProject.UI.Events;
 using UnityEngine;
 
 namespace DKProject.UI
 {
-    public class FadeEvent : MonoBehaviour
+    public class FadeEvent : ToggleEvent
     {
         public CanvasGroup canvasGroup;
         [SerializeField] private float _easingDuration;
@@ -14,18 +15,10 @@ namespace DKProject.UI
 
         public void FadeIn()
         {
-            if (_fadeTween != null && _fadeTween.active) 
-                _fadeTween.Kill();
-
-            _fadeTween = canvasGroup.DOFade(_fadeInValue, _easingDuration);
         }
 
         public void FadeOut()
         {
-            if (_fadeTween != null && _fadeTween.active)
-                _fadeTween.Kill();
-
-            _fadeTween = canvasGroup.DOFade(_fadeOutValue, _easingDuration);
         }
 
         public void Fade(bool isFadeIn)
@@ -35,6 +28,22 @@ namespace DKProject.UI
             Debug.Log(isFadeIn);
             if (isFadeIn) FadeIn();
             else FadeOut();
+        }
+
+        public override void Enable()
+        {
+            if (_fadeTween != null && _fadeTween.active)
+                _fadeTween.Kill();
+
+            _fadeTween = canvasGroup.DOFade(_fadeInValue, _easingDuration);
+        }
+
+        public override void Disable()
+        {
+            if (_fadeTween != null && _fadeTween.active)
+                _fadeTween.Kill();
+
+            _fadeTween = canvasGroup.DOFade(_fadeOutValue, _easingDuration);
         }
     }
 }

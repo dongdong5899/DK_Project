@@ -135,8 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8638015383794728839}
-  - component: {fileID: 8503995365092679125}
-  - component: {fileID: 1141581402352168390}
+  - component: {fileID: 1650210259968659483}
   m_Layer: 5
   m_Name: ToggleEvent
   m_TagString: Untagged
@@ -163,7 +162,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8503995365092679125
+--- !u!114 &1650210259968659483
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,59 +171,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 389591091645881053}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a0614a8d9ffcfb439b7e76dad2e1d0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 862815c5b68ef8f4f8b10af2c8194e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onEnabled:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1141581402352168390}
-        m_TargetAssemblyTypeName: DKProject.UI.FadeEvent, Assembly-CSharp
-        m_MethodName: FadeIn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onDisabled:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1141581402352168390}
-        m_TargetAssemblyTypeName: DKProject.UI.FadeEvent, Assembly-CSharp
-        m_MethodName: FadeOut
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onToggleTriggered:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1141581402352168390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 389591091645881053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce1a98cdf99a58a4ba88973be2d9ca5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 1373995019307763884}
-  _easingDuration: 0.15
-  _fadeInValue: 1
-  _fadeOutValue: 0.5
-  _useOpposite: 0
+  UIEventSO: []
+  ToggleEvents: []
+  PlayEvents: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &612098021888488381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,38 +1899,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df3848a934a31143906e5fb8db1edae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnStartClick:
+  onEnabled:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DKProject.UI.FadeEvent, Assembly-CSharp
-        m_MethodName: FadeOut
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnClick:
+      m_Calls: []
+  onDisabled:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2627831419676157154}
-        m_TargetAssemblyTypeName: DKProject.UI.ShopUI, Assembly-CSharp
-        m_MethodName: Open
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _enableAlpha: 1
-  _disableAlpha: 0.5
+      m_Calls: []
+  onToggleTriggered:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!225 &9014161901162260631
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2362,26 +2294,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df3848a934a31143906e5fb8db1edae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnStartClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DKProject.UI.FadeEvent, Assembly-CSharp
-        m_MethodName: FadeOut
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnClick:
+  onEnabled:
     m_PersistentCalls:
       m_Calls: []
-  _enableAlpha: 1
-  _disableAlpha: 0.5
+  onDisabled:
+    m_PersistentCalls:
+      m_Calls: []
+  onToggleTriggered:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!225 &1373995019307763884
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2937,13 +2858,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttons:
   - trigger: {fileID: 1169051830554070388}
-    eventToggle: {fileID: 4589939439403172338}
     panel: {fileID: 0}
   - trigger: {fileID: 5793990756268883570}
-    eventToggle: {fileID: 3346868348515084432}
     panel: {fileID: 0}
   - trigger: {fileID: 3871465440640557580}
-    eventToggle: {fileID: 8503995365092679125}
     panel: {fileID: 2627831419676157154}
 --- !u!1 &3873285067417125401
 GameObject:
@@ -3052,6 +2970,7 @@ GameObject:
   - component: {fileID: 8213934652097199905}
   - component: {fileID: 1169051830554070388}
   - component: {fileID: 3729120558843326797}
+  - component: {fileID: 559108002525588598}
   m_Layer: 5
   m_Name: EnforceButton
   m_TagString: Untagged
@@ -3093,14 +3012,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df3848a934a31143906e5fb8db1edae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnStartClick:
+  onEnabled:
     m_PersistentCalls:
       m_Calls: []
-  OnClick:
+  onDisabled:
     m_PersistentCalls:
       m_Calls: []
-  _enableAlpha: 1
-  _disableAlpha: 0.5
+  onToggleTriggered:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!225 &3729120558843326797
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3113,6 +3033,25 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &559108002525588598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254278737467596519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 862815c5b68ef8f4f8b10af2c8194e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIEventSO:
+  - {fileID: 11400000, guid: fedab01ad4c495149aec4ff6fbaf0f6e, type: 2}
+  ToggleEvents: []
+  PlayEvents: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &4400174455820197037
 GameObject:
   m_ObjectHideFlags: 0
@@ -3290,8 +3229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4501427048895569157}
-  - component: {fileID: 4589939439403172338}
-  - component: {fileID: 9145290883588872759}
+  - component: {fileID: 6227137037961035437}
   m_Layer: 5
   m_Name: ToggleEvent
   m_TagString: Untagged
@@ -3318,7 +3256,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4589939439403172338
+--- !u!114 &6227137037961035437
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3327,59 +3265,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4473428928185350660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a0614a8d9ffcfb439b7e76dad2e1d0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 862815c5b68ef8f4f8b10af2c8194e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onEnabled:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9145290883588872759}
-        m_TargetAssemblyTypeName: DKProject.UI.FadeEvent, Assembly-CSharp
-        m_MethodName: FadeIn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onDisabled:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9145290883588872759}
-        m_TargetAssemblyTypeName: DKProject.UI.FadeEvent, Assembly-CSharp
-        m_MethodName: FadeOut
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onToggleTriggered:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &9145290883588872759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4473428928185350660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce1a98cdf99a58a4ba88973be2d9ca5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 3729120558843326797}
-  _easingDuration: 0.15
-  _fadeInValue: 1
-  _fadeOutValue: 0.5
-  _useOpposite: 0
+  UIEventSO: []
+  ToggleEvents: []
+  PlayEvents: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &4482108556340014794
 GameObject:
   m_ObjectHideFlags: 0
@@ -4051,38 +3945,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df3848a934a31143906e5fb8db1edae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnStartClick:
+  onEnabled:
     m_PersistentCalls:
       m_Calls: []
-  OnClick:
+  onDisabled:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2627831419676157154}
-        m_TargetAssemblyTypeName: DKProject.UI.ShopUI, Assembly-CSharp
-        m_MethodName: Close
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3054613271845541292}
-        m_TargetAssemblyTypeName: DKProject.UI.BottomButtonPanel, Assembly-CSharp
-        m_MethodName: SelectButton
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _enableAlpha: 0
-  _disableAlpha: 0
+      m_Calls: []
+  onToggleTriggered:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5790167613130242165
 GameObject:
   m_ObjectHideFlags: 0
@@ -4489,6 +4360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66d711307250f84793bd47a240c75fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _outButton: {fileID: 0}
   _dropDownBox: {fileID: 1215023177558426859}
   _easingDuration: 0.1
 --- !u!1 &5951752981873701313
@@ -5567,8 +5439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2720634075740892074}
-  - component: {fileID: 3346868348515084432}
-  - component: {fileID: 7441697740169382227}
+  - component: {fileID: 9071820136954149992}
   m_Layer: 5
   m_Name: ToggleEvent
   m_TagString: Untagged
@@ -5595,7 +5466,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3346868348515084432
+--- !u!114 &9071820136954149992
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5604,59 +5475,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8726555221314882685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a0614a8d9ffcfb439b7e76dad2e1d0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 862815c5b68ef8f4f8b10af2c8194e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onEnabled:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7441697740169382227}
-        m_TargetAssemblyTypeName: DKProject.UI.FadeEvent, Assembly-CSharp
-        m_MethodName: FadeIn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onDisabled:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7441697740169382227}
-        m_TargetAssemblyTypeName: DKProject.UI.FadeEvent, Assembly-CSharp
-        m_MethodName: FadeOut
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onToggleTriggered:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &7441697740169382227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8726555221314882685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce1a98cdf99a58a4ba88973be2d9ca5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 9014161901162260631}
-  _easingDuration: 0.15
-  _fadeInValue: 1
-  _fadeOutValue: 0.5
-  _useOpposite: 0
+  UIEventSO: []
+  ToggleEvents: []
+  PlayEvents: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &8742833432176181699
 GameObject:
   m_ObjectHideFlags: 0

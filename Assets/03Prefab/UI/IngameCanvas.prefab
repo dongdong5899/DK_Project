@@ -110,8 +110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -71}
-  m_SizeDelta: {x: 0, y: -142}
+  m_AnchoredPosition: {x: 0, y: 1163.5}
+  m_SizeDelta: {x: 0, y: 2327}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6003401799623344172
 MonoBehaviour:
@@ -1943,6 +1943,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df3848a934a31143906e5fb8db1edae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onEnabled:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisabled:
+    m_PersistentCalls:
+      m_Calls: []
+  onToggleTriggered:
+    m_PersistentCalls:
+      m_Calls: []
   OnStartClick:
     m_PersistentCalls:
       m_Calls:
@@ -2362,6 +2371,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df3848a934a31143906e5fb8db1edae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onEnabled:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisabled:
+    m_PersistentCalls:
+      m_Calls: []
+  onToggleTriggered:
+    m_PersistentCalls:
+      m_Calls: []
   OnStartClick:
     m_PersistentCalls:
       m_Calls:
@@ -2938,7 +2956,7 @@ MonoBehaviour:
   _buttons:
   - trigger: {fileID: 1169051830554070388}
     eventToggle: {fileID: 4589939439403172338}
-    panel: {fileID: 0}
+    panel: {fileID: 4765609104900791824}
   - trigger: {fileID: 5793990756268883570}
     eventToggle: {fileID: 3346868348515084432}
     panel: {fileID: 0}
@@ -3093,6 +3111,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df3848a934a31143906e5fb8db1edae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onEnabled:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisabled:
+    m_PersistentCalls:
+      m_Calls: []
+  onToggleTriggered:
+    m_PersistentCalls:
+      m_Calls: []
   OnStartClick:
     m_PersistentCalls:
       m_Calls: []
@@ -4051,6 +4078,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df3848a934a31143906e5fb8db1edae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onEnabled:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisabled:
+    m_PersistentCalls:
+      m_Calls: []
+  onToggleTriggered:
+    m_PersistentCalls:
+      m_Calls: []
   OnStartClick:
     m_PersistentCalls:
       m_Calls: []
@@ -7053,6 +7089,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b758dca30f059fd4383e63889d3a7749, type: 3}
+--- !u!114 &4765609104900791824 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 736071003887894695, guid: b758dca30f059fd4383e63889d3a7749, type: 3}
+  m_PrefabInstance: {fileID: 5194291489572560567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a146a6a8b9c6d46a08d81926b0462b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8121195574484379235 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4080715146208688340, guid: b758dca30f059fd4383e63889d3a7749, type: 3}

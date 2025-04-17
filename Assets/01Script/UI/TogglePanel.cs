@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace DKProject.UI
 {
-    public abstract class TogglePanel : UIBase, IToggleUI
+    public abstract class TogglePanel : ManagedUI, IToggleUI
     {
         [SerializeField] private GameObject _outButton;
 

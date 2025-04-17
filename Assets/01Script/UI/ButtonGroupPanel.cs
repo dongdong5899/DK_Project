@@ -15,24 +15,13 @@ namespace DKProject.UI
             for (int i = 0; i < _buttons.Count; i++)
             {
                 int index = i;
-<<<<<<< Updated upstream
-                _buttons[i].trigger.OnClick.AddListener(() =>
-                {
-                    SelectButton(index);
-                    _buttons[index].panel.Open();
-                });
-=======
                 _buttons[i].trigger.OnClick += () => SelectButton(index);
->>>>>>> Stashed changes
             }
         }
 
         public void SelectButton(int index)
         {
-<<<<<<< Updated upstream
-=======
             if (_selectedIndex == index) return;
->>>>>>> Stashed changes
             _selectedIndex = index;
 
             if (index == -1)
@@ -55,10 +44,6 @@ namespace DKProject.UI
     public struct PanelStruct
     {
         public Button trigger;
-<<<<<<< Updated upstream
-        public Toggle eventToggle;
-=======
->>>>>>> Stashed changes
         public TogglePanel panel;
     }
 }

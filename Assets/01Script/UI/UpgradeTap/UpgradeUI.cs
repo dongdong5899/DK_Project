@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DKProject.UI
 {
-    public class UpgradeUI : UIBase, IToggleUI
+    public class UpgradeUI : TogglePanel, IToggleUI
     {
         public override string Key => nameof(UpgradeUI);
 
@@ -12,19 +12,22 @@ namespace DKProject.UI
 
         private Sequence _moveSeq;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _defaultYPos = RectTransform.anchoredPosition.y;
         }
 
-        public void Open()
+        public override void Open()
         {
+            base.Open();
             if (_moveSeq != null && _moveSeq.IsActive()) _moveSeq.Kill();
             _moveSeq.Append(RectTransform.DOAnchorPosY(0, 0.2f));
         }
 
-        public void Close()
+        public override void Close()
         {
+            base.Close();
             if (_moveSeq != null && _moveSeq.IsActive()) _moveSeq.Kill();
             _moveSeq.Append(RectTransform.DOAnchorPosY(_defaultYPos, 0.2f));
         }

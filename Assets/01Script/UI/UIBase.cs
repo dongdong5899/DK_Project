@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace DKProject.UI
 {
-    public abstract class UIBase : MonoBehaviour
+    public abstract class TogglePanelUIBase : MonoBehaviour
     {
         public abstract string Key { get; }
 

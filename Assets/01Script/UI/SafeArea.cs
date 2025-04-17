@@ -6,13 +6,7 @@ public class SafeArea : MonoBehaviour
     private RectTransform rectTransform => transform as RectTransform;
 
 
-
-    private void OnValidate()
-    {
-        ApplySafeAreaTop();
-    }
-
-    private void OnEnable()
+    private void Start()
     {
         ApplySafeAreaTop();
     }

@@ -37,23 +37,23 @@ namespace DKProject.SkillSystem.Skill
             Vector2 dir = (_targetPosition - (Vector2)transform.position).normalized;
             _rb.linearVelocity = dir * _speed;
 
-            //if (Vector2.Distance(_targetPosition, (Vector2)transform.position) <= 0.3f)
-            //{
-            //    PoolManager.Instance.Push(this);
-            //}
-
-
-            if (_caster.CheckCollision(out _hits, _whatIsTarget))
+            if (Vector2.Distance(_targetPosition, (Vector2)transform.position) <= 0.2f)
             {
-                foreach (var hit in _hits)
+                if (_caster.CheckCollision(out _hits, _whatIsTarget))
                 {
-                    if (hit.transform.TryGetComponent(out Entity entity))
+                    foreach (var hit in _hits)
                     {
-                        entity.GetCompo<EntityHealth>().ApplyDamage(_damage);
-                        PoolManager.Instance.Push(this);
+                        if (hit.transform.TryGetComponent(out Entity entity))
+                        {
+                            entity.GetCompo<EntityHealth>().ApplyDamage(_damage);
+                        }
                     }
                 }
+                PoolManager.Instance.Push(this);
             }
+
+
+            
         }
 
         public void Setting(Vector2 target, float speed, LayerMask whatIsEnemy, BigInteger damage)

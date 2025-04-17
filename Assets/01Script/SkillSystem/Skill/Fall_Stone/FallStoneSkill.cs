@@ -18,7 +18,7 @@ namespace DKProject.SkillSystem.Skill
         public override void UseSkill()
         {
             Debug.Log("UseSkill");
-            Collider2D target = Physics2D.OverlapCircle(_owner.transform.position, SkillSO.currentRange, _whatIsTarget);
+            Collider2D[] targets = Physics2D.OverlapCircleAll(_owner.transform.position, SkillSO.currentRange, _whatIsTarget);
 
             FallStone fallStone = PoolManager.Instance.Pop(ProjectilePoolingType.Fall_Stone) as FallStone;
 
@@ -26,7 +26,7 @@ namespace DKProject.SkillSystem.Skill
 
             fallStone.transform.position = new Vector2(randX, _owner.transform.position.y+10);
 
-            fallStone.Setting(target.transform.position,SkillSO.currentProjectileSpeed, _whatIsTarget, ApplyDamage());
+            fallStone.Setting(targets[0].transform.position,SkillSO.currentProjectileSpeed, _whatIsTarget, DamageCalculation());
         }
 
 

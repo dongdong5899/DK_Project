@@ -26,10 +26,10 @@ MonoBehaviour:
   damageType: 1
   currentChargingTime: 0.1
   currentLifeTime: 0.2
-  currentCoolDown: 0
-  currentskillCount: 0
+  currentCoolDown: 0.2
+  currentskillCount: 1
   currentRange: 0
-  currentAreaRadius: 0
-  currentAttackcoefficient: 0
+  currentAreaRadius: 5
+  currentAttackcoefficient: 20
   currentProjectileSpeed: 0
   effects: []

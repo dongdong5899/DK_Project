@@ -3,6 +3,7 @@ using DKProject.Entities.Enemies;
 using DKProject.SkillSystem.Skill;
 using DKProject.StatSystem;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,6 +24,8 @@ namespace DKProject.Entities.Players
             => _lastAttackTime + 1f / _attackSpeedStat.Value < Time.time;
         public void CheckAttackTime()
             => _lastAttackTime = Time.time;
+
+        public BigInteger GetAttackDamage() => _attackDamageStat.BigIntValue;
         public void Attack(Enemy enemy)
         {
             enemy.GetCompo<EntityHealth>().ApplyDamage(_attackDamageStat.BigIntValue);
@@ -58,6 +61,11 @@ namespace DKProject.Entities.Players
                 _testSkill.GetSkill(this).Init(this,_testSkill);
                 skillList.Add(_testSkill.GetSkill(this));
                 GetCompo<PlayerSkillSystem>().SetSlot(skillList);
+            }
+
+            if(Keyboard.current.qKey.isPressed)
+            {
+                GetCompo<PlayerSkillSystem>().UseSkill(0);
             }
         }
     }

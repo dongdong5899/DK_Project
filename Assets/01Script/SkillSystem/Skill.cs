@@ -4,6 +4,7 @@ using System.Numerics;
 using DKProject.Entities.Components;
 using Vector2 = UnityEngine.Vector2;
 using Random = UnityEngine.Random;
+using DKProject.Entities.Players;
 
 namespace DKProject.SkillSystem.Skill
 {
@@ -21,6 +22,7 @@ namespace DKProject.SkillSystem.Skill
         protected BigInteger _currentDamage;
         protected EntityStat _statCompo;
         protected LayerMask _whatIsTarget;
+        protected Player _player;
 
         public virtual void Init(Entity owner,SkillSO SO)
         {
@@ -30,20 +32,19 @@ namespace DKProject.SkillSystem.Skill
             _whatIsTarget = LayerMask.GetMask("Enemy");
             _skillCoolTime = SkillSO.currentCoolDown;
             _isPassiveSkill = SkillSO.skillType == SkillType.Passive;
-            _currentDamage = new BigInteger(SkillSO.currentAttackcoefficient / 100 + _skillLevel*(100-1));
             _statCompo = owner.GetCompo<EntityStat>();
+            _player = owner as Player;
         }
 
 
         public virtual void Update()
         {
-            Debug.Log(_owner);
-            if (_isPassiveSkill == true && CoolTimeCheck() && RangeCheck())
+            if (_isPassiveSkill == true && CoolTimeCheck())
             {
                 UseSkill();
             }
 
-            if(_isPassiveSkill == false && _isUseSkill == true && CoolTimeCheck() && RangeCheck())
+            if(_isPassiveSkill == false && _isUseSkill == true && RangeCheck())
             {
                 UseSkill();
                 _isUseSkill = false;
@@ -93,8 +94,6 @@ namespace DKProject.SkillSystem.Skill
         public virtual void LevelUpSkill()
         {
             _skillLevel++;
-            _currentDamage = 
-                new BigInteger((SkillSO.currentAttackcoefficient / 100 + _skillLevel * (100 - 1)));
         }
 
         public virtual void UnlockSkill()
@@ -102,13 +101,14 @@ namespace DKProject.SkillSystem.Skill
             _unlockSkill = true;
         }
 
-        public virtual BigInteger ApplyDamage()
+        public virtual BigInteger DamageCalculation()
         {
+            _currentDamage = new BigInteger(SkillSO.currentAttackcoefficient /100 + (_skillLevel - 1)) +_player.GetAttackDamage();
             float random = Random.Range(0f, 100f);
 
             if (random < _statCompo.StatDictionary["CriticalChance"].Value)
             {
-                return _currentDamage * new BigInteger((_statCompo.StatDictionary["CriticalDamage"].Value) / 100);
+                return _currentDamage * new BigInteger(_statCompo.StatDictionary["CriticalDamage"].Value / 100);
             }
             return _currentDamage;
         }

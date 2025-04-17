@@ -5,7 +5,7 @@ namespace DKProject.UI
 {
     public abstract class Slot : MonoBehaviour
     {
-        [SerializeField] private Image _icon;
+        [SerializeField] protected Image _icon;
 
         public void SetIcon(Sprite sprite)
         {
@@ -24,6 +24,7 @@ namespace DKProject.UI
         public  void RemoveIcon()
         {
             _icon.gameObject.SetActive(false);
+            _icon.sprite = null;
         }
     }
 }

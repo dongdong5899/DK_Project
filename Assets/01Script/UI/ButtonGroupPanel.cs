@@ -24,6 +24,10 @@ namespace DKProject.UI
 
         public void SelectButton(int index)
         {
+            if (_selectedIndex == index)
+            {
+
+            }
             _selectedIndex = index;
 
             if (index == -1)

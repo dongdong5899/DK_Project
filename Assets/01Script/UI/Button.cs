@@ -7,15 +7,13 @@ namespace DKProject.UI
 {
     public class Button : EventPlayer, IPointerDownHandler, IPointerUpHandler
     {
-        public UnityEvent OnStartClick;
-        public UnityEvent OnClick;
-
-        private CanvasGroup _canvasGroup;
-        [SerializeField] private float _enableAlpha, _disableAlpha;
+        public event Action OnStartClick;
+        public event Action OnClick;
+        private UIEventController eventController;
 
         private void Awake()
         {
-            _canvasGroup = GetComponent<CanvasGroup>();
+            eventController = GetComponentInChildren<UIEventController>();
         }
 
         public void OnPointerDown(PointerEventData eventData)

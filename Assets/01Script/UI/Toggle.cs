@@ -16,8 +16,18 @@ namespace DKProject.UI
             _isEnabled = !_isEnabled;
             onToggleTriggered?.Invoke(_isEnabled);
 
-            if (_isEnabled) onEnabled?.Invoke();
-            else onDisabled?.Invoke();
+            if (_isEnabled) Enable();
+            else Disable();
+        }
+
+        public void Enable()
+        {
+            onEnabled?.Invoke();
+        }
+
+        public void Disable()
+        {
+            onDisabled?.Invoke();
         }
 
         public void OnPointerClick(PointerEventData eventData)

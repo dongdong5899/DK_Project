@@ -18,10 +18,10 @@ namespace DKProject.UI
             UIEventSO?.ForEach(eventSO =>
             {
                 bool hasToggleEvent = ToggleEvents.Any(uiEvent => uiEvent.GetType() == eventSO.type);
-                if (!hasToggleEvent) eventSO.GetUIEvent<ToggleEvent>();
+                if (!hasToggleEvent) ToggleEvents.Add(eventSO.GetUIEvent<ToggleEvent>());
 
                 bool hasPlayEvent = PlayEvents.Any(uiEvent => uiEvent.GetType() == eventSO.type);
-                if (!hasPlayEvent) eventSO.GetUIEvent<PlayEvent>();
+                if (!hasPlayEvent) PlayEvents.Add(eventSO.GetUIEvent<PlayEvent>());
             });
         }
 

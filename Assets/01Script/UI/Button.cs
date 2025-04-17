@@ -27,16 +27,5 @@ namespace DKProject.UI
         {
             OnClick?.Invoke();
         }
-
-
-        public void Enable()
-        {
-            _canvasGroup.alpha = _enableAlpha;
-        }
-
-        public void Disable()
-        {
-            _canvasGroup.alpha = _disableAlpha;
-        }
     }
 }

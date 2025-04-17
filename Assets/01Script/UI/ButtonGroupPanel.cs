@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DKProject.UI
 {
-    public class BottomButtonPanel : MonoBehaviour
+    public class ButtonGroupPanel : MonoBehaviour
     {
         [SerializeField] private List<PanelStruct> _buttons;
         private int _selectedIndex = -1;
@@ -31,7 +31,7 @@ namespace DKProject.UI
             {
                 for (int i = 0; i < _buttons.Count; i++)
                 {
-                    _buttons[i].trigger.Enable();
+                    _buttons[i].eventToggle?.Enable();
                     _buttons[i].panel?.Close();
                 }
 
@@ -42,12 +42,12 @@ namespace DKProject.UI
             {
                 if (i == index)
                 {
-                    _buttons[i].trigger.Enable();
+                    _buttons[i].eventToggle?.Enable();
                     _buttons[i].panel?.Open();
                 }
                 else
                 {
-                    _buttons[i].trigger.Disable();
+                    _buttons[i].eventToggle?.Disable();
                     _buttons[i].panel?.Close();
                 }
             }
@@ -58,6 +58,7 @@ namespace DKProject.UI
     public struct PanelStruct
     {
         public Button trigger;
+        public Toggle eventToggle;
         public TogglePanel panel;
     }
 }

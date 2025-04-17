@@ -1,15 +1,17 @@
+using DG.Tweening;
+using DKProject.UI;
 using UnityEngine;
 
 namespace DKProject.UI
 {
-    public class ShopUI : TogglePanel
+    public class EnforceUI : TogglePanel, IToggleUI
     {
-        public override string Key => nameof(ShopUI);
+        public override string Key => nameof(EnforceUI);
 
         protected override void Awake()
         {
             base.Awake();
-            Close();
+            base.Close();
         }
 
         public override void Open()

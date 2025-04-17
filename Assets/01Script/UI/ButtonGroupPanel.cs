@@ -18,7 +18,6 @@ namespace DKProject.UI
                 _buttons[i].trigger.OnClick.AddListener(() =>
                 {
                     SelectButton(index);
-                    _buttons[index].panel.Open();
                 });
             }
         }

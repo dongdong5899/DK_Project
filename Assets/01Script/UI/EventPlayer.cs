@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace DKProject.UI
 {
-    public class Toggle : MonoBehaviour, IPointerClickHandler
+    public class EventPlayer : MonoBehaviour, IPointerClickHandler
     {
         protected bool _isEnabled; 
         public UnityEvent onEnabled; 

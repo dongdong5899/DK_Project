@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace DKProject.UI
 {
-    public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class Button : EventPlayer, IPointerDownHandler, IPointerUpHandler
     {
         public UnityEvent OnStartClick;
         public UnityEvent OnClick;

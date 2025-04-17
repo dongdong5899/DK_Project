@@ -61,7 +61,7 @@ namespace DKProject.UI
     public struct PanelStruct
     {
         public Button trigger;
-        public Toggle eventToggle;
+        public EventPlayer eventToggle;
         public TogglePanel panel;
     }
 }

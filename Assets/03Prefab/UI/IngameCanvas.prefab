@@ -3047,11 +3047,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIEventSO:
   - {fileID: 11400000, guid: fedab01ad4c495149aec4ff6fbaf0f6e, type: 2}
-  ToggleEvents: []
-  PlayEvents: []
+  ToggleEvents:
+  - rid: -2
+  PlayEvents:
+  - rid: -2
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &4400174455820197037
 GameObject:
   m_ObjectHideFlags: 0

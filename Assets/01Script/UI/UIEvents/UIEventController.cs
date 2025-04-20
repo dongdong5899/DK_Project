@@ -1,4 +1,3 @@
-using DG.Tweening;
 using DKProject.UI.Events;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +9,45 @@ namespace DKProject.UI
     {
         public List<UIEventSO> UIEventSO;
 
-        [SerializeReference] private List<ToggleEvent> ToggleEvents;
-        [SerializeReference] private List<PlayEvent> PlayEvents;
+        [SerializeReference] private List<ToggleEvent> ToggleEvents = new();
+        [SerializeReference] private List<PlayEvent> PlayEvents = new();
 
         private void OnValidate()
         {
             UIEventSO?.ForEach(eventSO =>
             {
+                if (eventSO == null) return;
+
                 bool hasToggleEvent = ToggleEvents.Any(uiEvent => uiEvent.GetType() == eventSO.type);
-                if (!hasToggleEvent) ToggleEvents.Add(eventSO.GetUIEvent<ToggleEvent>());
+                if (!hasToggleEvent)
+                {
+                    if (eventSO.GetUIEvent<ToggleEvent>(out ToggleEvent toggleEvent))
+                        ToggleEvents.Add(toggleEvent);
+                }
 
                 bool hasPlayEvent = PlayEvents.Any(uiEvent => uiEvent.GetType() == eventSO.type);
-                if (!hasPlayEvent) PlayEvents.Add(eventSO.GetUIEvent<PlayEvent>());
+                if (!hasPlayEvent) 
+                {
+                    if (eventSO.GetUIEvent<PlayEvent>(out PlayEvent playEvent))
+                        PlayEvents.Add(playEvent);
+                }
             });
+
+            for(int i = 0; i < ToggleEvents.Count; i++)
+            {
+                UIEventSO uiEventSO = UIEventSO.Find(so => so.type == ToggleEvents[i].GetType());
+
+                if(uiEventSO == null)
+                    ToggleEvents.RemoveAt(i--);
+            }
+
+            for (int i = 0; i < PlayEvents.Count; i++)
+            {
+                UIEventSO uiEventSO = UIEventSO.Find(so => so.type == PlayEvents[i].GetType());
+
+                if (uiEventSO == null)
+                    PlayEvents.RemoveAt(i--);
+            }
         }
 
 

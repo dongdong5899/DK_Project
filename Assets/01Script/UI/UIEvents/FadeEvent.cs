@@ -2,7 +2,7 @@ using DG.Tweening;
 using DKProject.UI.Events;
 using UnityEngine;
 
-namespace DKProject.UI
+namespace DKProject.UI.Events
 {
     public class FadeEvent : ToggleEvent
     {

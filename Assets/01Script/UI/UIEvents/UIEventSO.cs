@@ -1,4 +1,5 @@
 using System;
+using System.Data.Common;
 using UnityEngine;
 
 namespace DKProject.UI.Events
@@ -22,16 +23,26 @@ namespace DKProject.UI.Events
             }
         }
 
-        public T GetUIEvent<T>() where T : UIEvent
+        public bool GetUIEvent<T>(out T uiEvent) where T : UIEvent
         {
             try
             {
-                return Activator.CreateInstance(type) as T;
+                var eventInstance = Activator.CreateInstance(type);
+
+                if (eventInstance is T)
+                {
+                    uiEvent = eventInstance as T;
+                    return true;
+                }
+
+                uiEvent = null;
+                return false;
             }
             catch
             {
                 Debug.LogWarning($"Class named {className} is not exsist");
-                return null;
+                uiEvent = null;
+                return false;
             }
         }
     }

@@ -7,8 +7,8 @@ namespace DKProject.Core
 {
     public class UIManager : MonoSingleton<UIManager>
     {
-        private Dictionary<string, UIBase> _windowPanelDictionary;
-        private Dictionary<string, IToggleUI> _togglePanelDictionary;
+        private Dictionary<string, UIBase> _windowPanelDictionary = new();
+        private Dictionary<string, IToggleUI> _togglePanelDictionary = new();
         private List<UIBase> _windowPanelList;
 
         private void Awake()

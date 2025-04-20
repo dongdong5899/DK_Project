@@ -5,10 +5,13 @@ using UnityEngine;
 
 namespace DKProject.UI
 {
-    public class ButtonGroupPanel : MonoBehaviour
+    public class ButtonGroupPanel : UIBase
     {
+        public override string Key => "BottomButtonGroup";
+
         [SerializeField] private List<PanelStruct> _buttons;
         private int _selectedIndex = -1;
+
 
         private void Awake()
         {
@@ -27,15 +30,26 @@ namespace DKProject.UI
             if (index == -1)
             {
                 for (int i = 0; i < _buttons.Count; i++)
+                {
                     _buttons[i].panel?.Close();
+                    _buttons[i].trigger.EventContoller.DisableEvent();
+                }
 
                 return;
             }
 
             for (int i = 0; i < _buttons.Count; i++)
             {
-                if (i == index) _buttons[i].panel?.Open();
-                else _buttons[i].panel?.Close();
+                if (i == index)
+                {
+                    _buttons[i].panel?.Open();
+                    _buttons[i].trigger.EventContoller.DisableEvent();
+                }
+                else
+                {
+                    _buttons[i].panel?.Close();
+                    _buttons[i].trigger.EventContoller.EnableEvent();
+                }
             }
         }
     }

@@ -1,3 +1,4 @@
+using DKProject.Core;
 using UnityEngine;
 
 namespace DKProject.UI
@@ -6,12 +7,13 @@ namespace DKProject.UI
     {
         public override string Key => "Shop";
         private CanvasGroup _canvasGruop;
-        [SerializeField] private GameObject _outButton;
+        [SerializeField] private Button _outButton;
 
 
         private void Awake()
         {
             _canvasGruop = GetComponent<CanvasGroup>();
+            _outButton.OnClick += () => UIManager.Instance.GetUI<ButtonGroupPanel>("BottomButtonGroup").SelectButton(-1);
             Close();
         }
 
@@ -20,7 +22,7 @@ namespace DKProject.UI
             _canvasGruop.alpha = 0;
             _canvasGruop.blocksRaycasts = false;
             _canvasGruop.interactable = false;
-            _outButton.SetActive(false);
+            _outButton.gameObject.SetActive(false);
         }
 
         public override void Open()
@@ -28,7 +30,7 @@ namespace DKProject.UI
             _canvasGruop.alpha = 1;
             _canvasGruop.blocksRaycasts = true;
             _canvasGruop.interactable = true;
-            _outButton.SetActive(true);
+            _outButton.gameObject.SetActive(true);
         }
     }
 }

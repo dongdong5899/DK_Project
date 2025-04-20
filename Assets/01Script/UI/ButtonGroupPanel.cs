@@ -15,44 +15,27 @@ namespace DKProject.UI
             for (int i = 0; i < _buttons.Count; i++)
             {
                 int index = i;
-                _buttons[i].trigger.OnClick.AddListener(() =>
-                {
-                    SelectButton(index);
-                });
+                _buttons[i].trigger.OnClick += () => SelectButton(index);
             }
         }
 
         public void SelectButton(int index)
         {
-            if (_selectedIndex == index)
-            {
-
-            }
+            if (_selectedIndex == index) return;
             _selectedIndex = index;
 
             if (index == -1)
             {
                 for (int i = 0; i < _buttons.Count; i++)
-                {
-                    _buttons[i].eventToggle?.Enable();
                     _buttons[i].panel?.Close();
-                }
 
                 return;
             }
 
             for (int i = 0; i < _buttons.Count; i++)
             {
-                if (i == index)
-                {
-                    _buttons[i].eventToggle?.Enable();
-                    _buttons[i].panel?.Open();
-                }
-                else
-                {
-                    _buttons[i].eventToggle?.Disable();
-                    _buttons[i].panel?.Close();
-                }
+                if (i == index) _buttons[i].panel?.Open();
+                else _buttons[i].panel?.Close();
             }
         }
     }
@@ -61,7 +44,6 @@ namespace DKProject.UI
     public struct PanelStruct
     {
         public Button trigger;
-        public EventPlayer eventToggle;
         public TogglePanel panel;
     }
 }

@@ -1,5 +1,7 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SafeArea : MonoBehaviour
 {
@@ -25,5 +27,15 @@ public class SafeArea : MonoBehaviour
 
         //// 상단 마진만큼 패딩을 줌
         rectTransform.offsetMax = new Vector2(rectTransform.offsetMax.x, -topMargin);
+        StartCoroutine(DelayRebuild());
+        //LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+    }
+
+    private IEnumerator DelayRebuild()
+    {
+        yield return new WaitForSeconds(0.1f);
+        yield return null;
+        yield return null;
+        LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
     }
 }

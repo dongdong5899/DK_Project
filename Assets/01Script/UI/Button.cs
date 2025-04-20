@@ -9,21 +9,25 @@ namespace DKProject.UI
     {
         public event Action OnStartClick;
         public event Action OnClick;
-        private UIEventController eventController;
+        private UIEventController _eventController;
+
+        public UIEventController EventContoller => _eventController;
 
         private void Awake()
         {
-            eventController = GetComponentInChildren<UIEventController>();
+            _eventController = GetComponentInChildren<UIEventController>();
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
             OnStartClick?.Invoke();
+            _eventController.EnableEvent();
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             OnClick?.Invoke();
+            _eventController.DisableEvent();
         }
     }
 }

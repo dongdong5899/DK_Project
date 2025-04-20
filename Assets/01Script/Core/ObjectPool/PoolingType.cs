@@ -6,7 +6,7 @@ namespace DKProject.Cores.Pool
     }
     public enum ProjectilePoolingType 
     {
-        Fall_Stone
+        Fall_Stone,Throw_Bomb
     }
     public enum EnemyPoolingType 
     {
@@ -18,6 +18,6 @@ namespace DKProject.Cores.Pool
     }
     public enum EffectPoolingType 
     {
-
+        Throw_BombEffect
     }
 }

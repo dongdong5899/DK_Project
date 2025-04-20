@@ -39,8 +39,7 @@ namespace DKProject.SkillSystem.Skill
 
         public override Skill Clone()
         {
-            Skill skill = new FallStoneSkill();
-            return skill;
+            return new FallStoneSkill();
         }
     }
 

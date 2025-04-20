@@ -20,11 +20,9 @@ namespace DKProject.SkillSystem.Skill
         [Header("SkillType")]
         public SkillType skillType;
         public TargetType targetType;
-        public CastType castType;
         public DamageType damageType;
 
         [Header("SkillStat")]
-        public float currentChargingTime;
         public float currentLifeTime;
         public float currentCoolDown;
         public byte currentskillCount;

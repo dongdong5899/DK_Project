@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 9024368559923073557}
   - component: {fileID: 4266075778317764535}
-  - component: {fileID: 5573862031617498616}
+  - component: {fileID: 9062644276256968993}
   - component: {fileID: 8966437187026389678}
   - component: {fileID: 6069384714178838578}
   m_Layer: 0
-  m_Name: FallStone
+  m_Name: ThrowBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.65309536, b: 0.41320753, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.038582325, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5573862031617498616
+--- !u!114 &9062644276256968993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,10 +99,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2846151227019782714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cecc4c1004f511498151f6b81ccfbfa, type: 3}
+  m_Script: {fileID: 11500000, guid: 5badb47eab4e2bb418624ca82f534760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolingType: 0
+  _poolingType: 1
 --- !u!50 &8966437187026389678
 Rigidbody2D:
   serializedVersion: 5
@@ -118,7 +118,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -143,4 +143,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0}
-  radius: 1
+  radius: 3

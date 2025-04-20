@@ -1,4 +1,3 @@
-using DKProject.Cores;
 using DKProject.Cores.Pool;
 using DKProject.Entities.Components;
 using DKProject.Entities;
@@ -7,12 +6,10 @@ using UnityEngine;
 using DKProject.Combat;
 using System.Numerics;
 using Vector2 = UnityEngine.Vector2;
-using Vector3 = UnityEngine.Vector3;
-
 
 namespace DKProject.SkillSystem.Skill
 {
-    public class FallStone : MonoBehaviour, IPoolable
+    public class FallStone : LifeTime, IPoolable
     {
         private Caster2D _caster;
         private RaycastHit2D[] _hits;
@@ -56,12 +53,13 @@ namespace DKProject.SkillSystem.Skill
             
         }
 
-        public void Setting(Vector2 target, float speed, LayerMask whatIsEnemy, BigInteger damage)
+        public void Setting(Vector2 target, float speed, LayerMask whatIsEnemy, BigInteger damage,float lifeTime)
         {
             _targetPosition = target;
             _speed = speed;
             _whatIsTarget = whatIsEnemy;
             _damage = damage;
+            Init(lifeTime, this);
         }
 
         public void OnPop()

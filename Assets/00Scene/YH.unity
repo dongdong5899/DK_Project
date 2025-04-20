@@ -1724,11 +1724,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1457414341461498819, guid: 91b233283e389ce4da3fc4c4c443588a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -89
       objectReference: {fileID: 0}
     - target: {fileID: 1457414341461498819, guid: 91b233283e389ce4da3fc4c4c443588a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -44.5
       objectReference: {fileID: 0}
     - target: {fileID: 1710261483461922451, guid: 91b233283e389ce4da3fc4c4c443588a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2339,7 +2339,7 @@ PrefabInstance:
     - target: {fileID: 4361750419048231566, guid: b929c5d3060cd194da8e315527a5301f, type: 3}
       propertyPath: _testSkill
       value: 
-      objectReference: {fileID: 11400000, guid: 567ab005209d24844a58457b339ef778, type: 2}
+      objectReference: {fileID: 11400000, guid: 11993ff9a863eb745a029a5eecdff71f, type: 2}
     - target: {fileID: 4406501454610665129, guid: b929c5d3060cd194da8e315527a5301f, type: 3}
       propertyPath: _overrideStatElementList.Array.data[0]._valueString
       value: 11

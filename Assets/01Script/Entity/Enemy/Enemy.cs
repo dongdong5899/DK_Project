@@ -1,5 +1,5 @@
 using DKProject.Core;
-using DKProject.Cores.Pool;
+using DKProject.Core.Pool;
 using DKProject.Entities.Components;
 using DKProject.Resources;
 using DKProject.StatSystem;

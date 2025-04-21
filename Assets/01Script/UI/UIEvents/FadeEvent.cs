@@ -1,41 +1,50 @@
-using DG.Tweening;
-using UnityEngine;
+//using DG.Tweening;
+//using DKProject.UI.Events;
+//using UnityEngine;
 
-namespace DKProject.UI
-{
-    public class FadeEvent : MonoBehaviour
-    {
-        public CanvasGroup canvasGroup;
-        [SerializeField] private float _easingDuration;
-        [SerializeField] private float _fadeInValue, _fadeOutValue;
-        [SerializeField] private bool _useOpposite;
+//namespace DKProject.UI.Events
+//{
+//    public class FadeEvent : ToggleEvent
+//    {
+//        public CanvasGroup canvasGroup;
+//        [SerializeField] private float _easingDuration;
+//        [SerializeField] private float _fadeInValue, _fadeOutValue;
+//        [SerializeField] private bool _useOpposite;
 
-        private Tween _fadeTween;
+//        private Tween _fadeTween;
 
-        public void FadeIn()
-        {
-            if (_fadeTween != null && _fadeTween.active) 
-                _fadeTween.Kill();
+//        public void FadeIn()
+//        {
+//        }
 
-            _fadeTween = canvasGroup.DOFade(_fadeInValue, _easingDuration);
-        }
+//        public void FadeOut()
+//        {
+//        }
 
-        public void FadeOut()
-        {
-            if (_fadeTween != null && _fadeTween.active)
-                _fadeTween.Kill();
+//        public void Fade(bool isFadeIn)
+//        {
+//            if (_useOpposite) isFadeIn = !isFadeIn;
 
-            _fadeTween = canvasGroup.DOFade(_fadeOutValue, _easingDuration);
-        }
+//            Debug.Log(isFadeIn);
+//            if (isFadeIn) FadeIn();
+//            else FadeOut();
+//        }
 
-        public void Fade(bool isFadeIn)
-        {
-            if (_useOpposite) isFadeIn = !isFadeIn;
+//        public override void Enable()
+//        {
+//            if (_fadeTween != null && _fadeTween.active)
+//                _fadeTween.Kill();
 
-            Debug.Log(isFadeIn);
-            if (isFadeIn) FadeIn();
-            else FadeOut();
-        }
-    }
-}
+//            _fadeTween = canvasGroup.DOFade(_fadeInValue, _easingDuration);
+//        }
+
+//        public override void Disable()
+//        {
+//            if (_fadeTween != null && _fadeTween.active)
+//                _fadeTween.Kill();
+
+//            _fadeTween = canvasGroup.DOFade(_fadeOutValue, _easingDuration);
+//        }
+//    }
+//}
 

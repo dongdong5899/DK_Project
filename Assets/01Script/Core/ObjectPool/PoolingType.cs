@@ -1,4 +1,4 @@
-namespace DKProject.Cores.Pool
+namespace DKProject.Core.Pool
 {
     public enum ObjectPoolingType
     {

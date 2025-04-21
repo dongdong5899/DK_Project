@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DKProject.Cores.Pool
+namespace DKProject.Core.Pool
 {
     public interface IPoolable
     {

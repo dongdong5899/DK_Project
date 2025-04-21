@@ -1,18 +1,15 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class SafeArea : MonoBehaviour
 {
     private RectTransform rectTransform => transform as RectTransform;
 
 
-
-    private void OnValidate()
-    {
-        ApplySafeAreaTop();
-    }
-
-    private void OnEnable()
+    private void Start()
     {
         ApplySafeAreaTop();
     }
@@ -31,5 +28,6 @@ public class SafeArea : MonoBehaviour
 
         //// 상단 마진만큼 패딩을 줌
         rectTransform.offsetMax = new Vector2(rectTransform.offsetMax.x, -topMargin);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
     }
 }

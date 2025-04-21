@@ -4,7 +4,7 @@ using UnityEngine;
 using Doryu.CustomAttributes;
 using UnityEngine.UIElements;
 
-namespace DKProject.Cores.Pool
+namespace DKProject.Core.Pool
 {
     public class PoolManager : MonoSingleton<PoolManager>
     {

@@ -2,7 +2,7 @@ using DKProject.Entities.Components;
 using DKProject.Entities.Players;
 using DKProject.Entities;
 using UnityEngine;
-using DKProject.Cores.Pool;
+using DKProject.Core.Pool;
 
 namespace DKProject.SkillSystem.Skills
 {

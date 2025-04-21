@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace DKProject.UI
 {
-    public class Toggle : MonoBehaviour, IPointerClickHandler
+    public class EventPlayer : MonoBehaviour, IPointerClickHandler
     {
         protected bool _isEnabled; 
         public UnityEvent onEnabled; 
@@ -16,8 +16,18 @@ namespace DKProject.UI
             _isEnabled = !_isEnabled;
             onToggleTriggered?.Invoke(_isEnabled);
 
-            if (_isEnabled) onEnabled?.Invoke();
-            else onDisabled?.Invoke();
+            if (_isEnabled) Enable();
+            else Disable();
+        }
+
+        public void Enable()
+        {
+            onEnabled?.Invoke();
+        }
+
+        public void Disable()
+        {
+            onDisabled?.Invoke();
         }
 
         public void OnPointerClick(PointerEventData eventData)

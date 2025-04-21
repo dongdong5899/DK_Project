@@ -1,6 +1,6 @@
 using System;
 
-namespace DKProject.Cores.Pool
+namespace DKProject.Core.Pool
 {
     public class PoolingKey : IEquatable<PoolingKey>
     {

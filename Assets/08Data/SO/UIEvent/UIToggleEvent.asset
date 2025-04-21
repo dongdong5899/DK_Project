@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02b39fa21c9d3d64998783fd97da7f3f, type: 3}
-  m_Name: 1-1StageSO
+  m_Script: {fileID: 11500000, guid: 31bee3e2980c7d24cb132cae1dc83c53, type: 3}
+  m_Name: UIToggleEvent
   m_EditorClassIdentifier: 
-  stageName: MING
-  stageBGSprite: {fileID: 9131157121582701348, guid: 1a712933a712f0143aaf098faf9fed48, type: 3}
-  recommendCombat: 1234
-  stagePrefab: {fileID: 0}
+  eventClassName: UIToggleEvent
+  _classNameIs: UIToggleEvent

@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 630e132c904639f41b523eb374dc2082, type: 3}
-  m_Name: Chapter1SO
+  m_Name: Chapter2SO
   m_EditorClassIdentifier: 
-  chapterName: "1\uCC55\uD130\\nTHE MING"
+  chapterName: "2\uCC55\uD130\\nTHE MINGING"
   chapterBGSprite: {fileID: 9131157121582701348, guid: 1a712933a712f0143aaf098faf9fed48, type: 3}
   stageList:
+  - {fileID: 11400000, guid: 1eeb9d918d6bdb94f9ed4b6f2a193202, type: 2}
   - {fileID: 11400000, guid: 5cd07d940e0c00142b6f26c5e5a8c8fa, type: 2}
   - {fileID: 11400000, guid: 1eeb9d918d6bdb94f9ed4b6f2a193202, type: 2}

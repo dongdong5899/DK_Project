@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DKProject.UI
 {
-    public class ButtonGroupPanel : UIBase
+    public class ButtonGroupPanel : ManagedUI
     {
         public override string Key => "BottomButtonGroup";
 

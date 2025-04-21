@@ -60,14 +60,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.0990566, g: 0.0990566, b: 0.0990566, a: 1}
+  m_Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 9131157121582701348, guid: 1a712933a712f0143aaf098faf9fed48, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -89,6 +89,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8780e3d931531aa4fb6e88b15c7756f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onEnabled:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisabled:
+    m_PersistentCalls:
+      m_Calls: []
+  onToggleTriggered:
+    m_PersistentCalls:
+      m_Calls: []
   chapterText: {fileID: 8322474885066746244}
   chapterBG: {fileID: 5136351783989724975}
 --- !u!1 &5756796240766142146

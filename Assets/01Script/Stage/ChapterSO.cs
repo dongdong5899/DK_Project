@@ -7,6 +7,7 @@ namespace DKProject.Stage
     public class ChapterSO : ScriptableObject
     {
         public string chapterName;
+        public Sprite chapterBGSprite;
         public List<StageSO> stageList;
     }
 }

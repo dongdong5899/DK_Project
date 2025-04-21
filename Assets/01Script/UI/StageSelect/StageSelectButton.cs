@@ -11,13 +11,13 @@ namespace DKProject.UI
     {
         [SerializeField] private TextMeshProUGUI _stageNameText;
         [SerializeField] private TextMeshProUGUI _combatText;
-        [SerializeField] private Image _bgImage;                //TODO: ChangeBG
+        [SerializeField] private Image _bgImage;
 
         public void Init(StageSO stage)
         {
             _stageNameText.SetText(stage.stageName);
             _combatText.SetText($"추천 전투력: {stage.recommendCombat}");
-            //BG를 바꾸면 바꿔
+            _bgImage.sprite = stage.stageBGSprite;
         }
     }
 }

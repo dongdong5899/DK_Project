@@ -15,6 +15,7 @@ namespace DKProject.UI
         public void Init(ChapterSO chapter)
         {
             chapterText.SetText(chapter.chapterName);
+            chapterBG.sprite = chapter.chapterBGSprite;
         }
     }
 }

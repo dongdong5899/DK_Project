@@ -7,6 +7,7 @@ namespace DKProject.Stage
     public class StageSO : ScriptableObject
     {
         public string stageName;
+        public Sprite stageBGSprite;
         public ulong recommendCombat;
         public GameObject stagePrefab;
     }

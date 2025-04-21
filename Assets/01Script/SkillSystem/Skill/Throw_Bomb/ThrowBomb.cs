@@ -8,7 +8,7 @@ using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 
-namespace DKProject.SkillSystem.Skill
+namespace DKProject.SkillSystem.Skills
 {
     public class ThrowBomb : LifeTime, IPoolable
     {
@@ -37,6 +37,9 @@ namespace DKProject.SkillSystem.Skill
 
         private void Update()
         {
+            Vector2 dir = (_targetPosition - (Vector2)transform.position).normalized;
+            _rb.linearVelocity = dir * _speed;
+
             if (Vector2.Distance(_targetPosition, (Vector2)transform.position) <= 0.2f)
             {
                 if (_caster.CheckCollision(out _hits, _whatIsTarget))
@@ -45,7 +48,6 @@ namespace DKProject.SkillSystem.Skill
                     {
                         if (hit.transform.TryGetComponent(out Entity entity))
                         {
-                            Debug.Log(hit);
                             entity.GetCompo<EntityHealth>().ApplyDamage(_damage);
                             //PoolManager.Instance.Pop(EffectPoolingType.Throw_BombEffect);
                         }
@@ -64,34 +66,15 @@ namespace DKProject.SkillSystem.Skill
         {
         }
 
-        public void Setting(Vector2 firePos, Vector2 targetPos, LayerMask whatIsTarget, BigInteger damage,float fireAngle,float lifeTime)
+        public void Setting(Vector2 targetPos, LayerMask whatIsTarget, BigInteger damage,float lifeTime,float projectileSpeed)
         {
             _targetPosition = targetPos;
             _whatIsTarget = whatIsTarget;
             _damage = damage;
+            _speed = projectileSpeed;
+            
 
             Init(lifeTime, this);
-
-
-            float angle = fireAngle * Mathf.Deg2Rad;
-
-
-            float distance = Vector2.Distance(firePos, targetPos);
-            float yOffset = firePos.y - targetPos.y;
-
-            float initVelocity = (1 / Mathf.Cos(angle))
-                * Mathf.Sqrt((0.5f * _gravity * Mathf.Pow(distance, 2)) / (distance * Mathf.Tan(angle) + yOffset));
-
-            float yVelocity = initVelocity * Mathf.Sin(angle);
-            float xVelocity = initVelocity * Mathf.Cos(angle);
-            Vector2 velocity = new Vector2(xVelocity, yVelocity);
-
-            Vector2 direction = (targetPos - firePos).normalized;
-            float angleBetween = Vector2.SignedAngle(Vector2.right, direction);
-            Vector2 finalVelocity = Quaternion.Euler(0, 0, angleBetween) * velocity;
-
-            _rb.AddForce(finalVelocity * _rb.mass, ForceMode2D.Impulse);
-            _rb.AddTorque(5f, ForceMode2D.Impulse);
         }
     }
 }

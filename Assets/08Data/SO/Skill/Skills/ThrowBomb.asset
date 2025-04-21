@@ -27,6 +27,8 @@ MonoBehaviour:
   currentskillCount: 3
   currentRange: 5
   currentAreaRadius: 2
-  currentAttackcoefficient: 0
-  currentProjectileSpeed: 0
+  playerBaseSkillPercent: 20
+  playerUpgradeSkillPercent: 0.3
+  currentProjectileSpeed: 10
+  dotAttackMinus: 0
   effects: []

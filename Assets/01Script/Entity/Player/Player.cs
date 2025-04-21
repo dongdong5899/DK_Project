@@ -1,6 +1,6 @@
 using DKProject.Entities.Components;
 using DKProject.Entities.Enemies;
-using DKProject.SkillSystem.Skill;
+using DKProject.SkillSystem;
 using DKProject.StatSystem;
 using System.Collections.Generic;
 using System.Numerics;

@@ -6,7 +6,7 @@ using Vector2 = UnityEngine.Vector2;
 using Random = UnityEngine.Random;
 using DKProject.Entities.Players;
 
-namespace DKProject.SkillSystem.Skill
+namespace DKProject.SkillSystem
 {
     public abstract class Skill
     {
@@ -14,7 +14,7 @@ namespace DKProject.SkillSystem.Skill
         protected Entity _owner;
         protected float _prevSkillTime;
         protected float _skillCoolTime;
-        protected bool _isPassiveSkill;
+        protected bool _isPassiveSkill,_isDOTSkill;
         protected float _currentCoolTime;
         protected bool _isUseSkill = true;
         protected int _skillLevel = 1;
@@ -32,6 +32,7 @@ namespace DKProject.SkillSystem.Skill
             _whatIsTarget = LayerMask.GetMask("Enemy");
             _skillCoolTime = SkillSO.currentCoolDown;
             _isPassiveSkill = SkillSO.skillType == SkillType.Passive;
+            _isDOTSkill = SkillSO.damageType == DamageType.DOT;
             _statCompo = owner.GetCompo<EntityStat>();
             _player = owner as Player;
         }
@@ -103,7 +104,13 @@ namespace DKProject.SkillSystem.Skill
 
         public virtual BigInteger DamageCalculation()
         {
-            _currentDamage = new BigInteger(SkillSO.currentAttackcoefficient /100 + (_skillLevel - 1)) +_player.GetAttackDamage();
+            double playerAttackDamage = (double)_player.GetAttackDamage();
+            if (_isDOTSkill)
+            {
+                playerAttackDamage *= (SkillSO.dotAttackMinus / 100);
+            }
+            _currentDamage = new BigInteger((SkillSO.playerBaseSkillPercent + (_skillLevel * SkillSO.playerUpgradeSkillPercent))/100 + playerAttackDamage);
+            Debug.Log((SkillSO.playerBaseSkillPercent + (_skillLevel * SkillSO.playerUpgradeSkillPercent)) / 100);
             float random = Random.Range(0f, 100f);
 
             if (random < _statCompo.StatDictionary["CriticalChance"].Value)
@@ -111,6 +118,23 @@ namespace DKProject.SkillSystem.Skill
                 return _currentDamage * new BigInteger(_statCompo.StatDictionary["CriticalDamage"].Value / 100);
             }
             return _currentDamage;
+        }
+
+        public virtual void ApplyEffect()
+        {
+            foreach(EffectSO effect in SkillSO.effects)
+            {
+                bool isOwner = effect.targetType == BuffTargetType.Owner;
+                if(isOwner)
+                {
+
+                }
+                else
+                {
+
+                }
+
+            }
         }
     }
 }

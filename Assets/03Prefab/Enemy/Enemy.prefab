@@ -246,6 +246,9 @@ MonoBehaviour:
   - Name: 
     elementSO: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
     _valueString: 100
+  - Name: 
+    elementSO: {fileID: 11400000, guid: cc98676f72b558542962303effb99e25, type: 2}
+    _valueString: 3
   _baseStatSO: {fileID: 11400000, guid: 42c82e3b89af67e42bc511b89d9a8387, type: 2}
 --- !u!1 &7469119819353186826
 GameObject:

@@ -1,7 +1,4 @@
-using UnityEngine;
-
-
-namespace DKProject.SkillSystem.Skill
+namespace DKProject.SkillSystem
 {
     public enum SkillType
     {
@@ -39,7 +36,7 @@ namespace DKProject.SkillSystem.Skill
 
     public enum EffectType
     {
-
+        BuffHongsam
     }
 
     public enum SkillRank

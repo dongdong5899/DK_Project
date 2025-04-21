@@ -7,7 +7,7 @@ using DKProject.Combat;
 using System.Numerics;
 using Vector2 = UnityEngine.Vector2;
 
-namespace DKProject.SkillSystem.Skill
+namespace DKProject.SkillSystem.Skills
 {
     public class FallStone : LifeTime, IPoolable
     {

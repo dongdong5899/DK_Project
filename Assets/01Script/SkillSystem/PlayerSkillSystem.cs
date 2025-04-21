@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace DKProject.SkillSystem.Skill
+namespace DKProject.SkillSystem
 {
     public class PlayerSkillSystem : MonoBehaviour, IEntityComponent, IAfterInitable
     {

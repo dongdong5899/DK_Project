@@ -4,7 +4,7 @@ using DKProject.Entities;
 using UnityEngine;
 using DKProject.Cores.Pool;
 
-namespace DKProject.SkillSystem.Skill
+namespace DKProject.SkillSystem.Skills
 {
     public class FallStoneSkill : Skill
     {

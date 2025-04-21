@@ -2,7 +2,7 @@ using DKProject.Entities;
 using DKProject.Entities.Components;
 using UnityEngine;
 
-namespace DKProject.SkillSystem.Skill
+namespace DKProject.SkillSystem.Skills
 {
     public class AreaElectricSkill : Skill
     {

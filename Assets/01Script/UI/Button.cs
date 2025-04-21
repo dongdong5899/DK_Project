@@ -1,31 +1,48 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace DKProject.UI
 {
-    public class Button : EventPlayer, IPointerDownHandler, IPointerUpHandler
+    public class Button : MonoUI, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
-        public event Action OnStartClick;
-        public event Action OnClick;
-        private UIEventController _eventController;
+        [SerializeField] private List<UIEventData> _downEventList;
+        [SerializeField] private List<UIEventData> _upEventList;
 
-        public UIEventController EventContoller => _eventController;
+        public Action OnClickEvent;
+        public Action<bool> OnPressEvent;
 
         private void Awake()
         {
-            _eventController = GetComponentInChildren<UIEventController>();
+            foreach (var eventData in _downEventList)
+                eventData.Init(this);
+            foreach (var eventData in _upEventList)
+                eventData.Init(this);
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            OnStartClick?.Invoke();
+            foreach (UIEventData uiEventData in _downEventList)
+            {
+                uiEventData.uiEvent.EventPlay();
+            }
+            OnPressEvent?.Invoke(true);
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            OnClick?.Invoke();
+            foreach (UIEventData uiEventData in _upEventList)
+            {
+                uiEventData.uiEvent.EventPlay();
+            }
+            OnPressEvent?.Invoke(false);
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            OnClickEvent?.Invoke();
         }
     }
 }

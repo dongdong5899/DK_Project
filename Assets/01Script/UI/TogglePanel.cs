@@ -1,3 +1,4 @@
+using DG.Tweening;
 using DKProject.Core;
 using UnityEngine;
 
@@ -8,26 +9,34 @@ namespace DKProject.UI
         protected CanvasGroup _canvasGruop;
         [SerializeField] protected Button _outButton;
 
+        private RectTransform _parentRectTrm;
 
         protected virtual void Awake()
         {
             _canvasGruop = GetComponent<CanvasGroup>();
+            _parentRectTrm = transform.parent as RectTransform;
         }
 
         public virtual void Open()
         {
-            _canvasGruop.alpha = 1;
-            _canvasGruop.blocksRaycasts = true;
-            _canvasGruop.interactable = true;
-            _outButton.gameObject.SetActive(true);
+            ActiveElement(true);
+            _parentRectTrm.DOKill();
+            _parentRectTrm.DOAnchorPosY(0, 0.2f).SetEase(Ease.OutExpo);
         }
 
         public virtual void Close()
         {
-            _canvasGruop.alpha = 0;
-            _canvasGruop.blocksRaycasts = false;
-            _canvasGruop.interactable = false;
-            _outButton.gameObject.SetActive(false);
+            _parentRectTrm.DOKill();
+            _parentRectTrm.DOAnchorPosY(-2000, 0.2f).SetEase(Ease.OutExpo)
+                .OnComplete(() => ActiveElement(false));
+        }
+
+        private void ActiveElement(bool active)
+        {
+            _canvasGruop.alpha = active ? 1 : 0;
+            _canvasGruop.blocksRaycasts = active;
+            _canvasGruop.interactable = active;
+            _outButton.gameObject.SetActive(active);
         }
     }
 }

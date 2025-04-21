@@ -1,27 +1,19 @@
 using DG.Tweening;
+using DKProject.Core;
 using DKProject.UI;
 using UnityEngine;
 
 namespace DKProject.UI
 {
-    public class EnforceUI : TogglePanel, IToggleUI
+    public class EnforceUI : TogglePanel
     {
         public override string Key => nameof(EnforceUI);
 
         protected override void Awake()
         {
             base.Awake();
-            base.Close();
-        }
-
-        public override void Open()
-        {
-            base.Open();
-        }
-
-        public override void Close()
-        {
-            base.Close();
+            _outButton.OnClickEvent += () => UIManager.Instance.GetUI<ButtonGroupPanel>(nameof(ButtonGroupPanel)).SelectButton();
+            Close();
         }
     }
 }

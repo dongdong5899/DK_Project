@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DKProject.UI
 {
-    public class UserConveientDropDown : TogglePanel
+    public class UserConveientDropDown : ManagedUI, IToggleUI
     {
         [SerializeField] private RectTransform _dropDownBox;
         [SerializeField] private float _easingDuration = 0.2f;
@@ -12,7 +12,7 @@ namespace DKProject.UI
 
         public override string Key => "UserConveientDropDown";
 
-        public override void Open()
+        public void Open()
         {
             if (_toggleTween != null && _toggleTween.active) 
                 _toggleTween.Kill();
@@ -20,7 +20,7 @@ namespace DKProject.UI
             _toggleTween = _dropDownBox.DOAnchorPosY(0, _easingDuration);
         }
 
-        public override void Close()
+        public void Close()
         {
             if (_toggleTween != null && _toggleTween.active)
                 _toggleTween.Kill();

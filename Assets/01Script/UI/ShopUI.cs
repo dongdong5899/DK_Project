@@ -9,7 +9,7 @@ namespace DKProject.UI
         protected override void Awake()
         {
             base.Awake();
-            _outButton.OnClickEvent += () => UIManager.Instance.GetUI<ButtonGroupPanel>(nameof(ButtonGroupPanel)).SelectButton(-1);
+            _outButton.OnClickEvent += () => UIManager.Instance.GetUI<ButtonGroupPanel>(nameof(ButtonGroupPanel)).SelectButton();
             Close();
         }
     }

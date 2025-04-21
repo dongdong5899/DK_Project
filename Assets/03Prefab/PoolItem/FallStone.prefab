@@ -143,4 +143,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0}
-  radius: 1.5
+  radius: 1

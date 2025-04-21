@@ -22,14 +22,14 @@ MonoBehaviour:
     \uC785\uD78C\uB2E4."
   skillType: 1
   targetType: 0
-  castType: 1
   damageType: 1
-  currentChargingTime: 0.1
   currentLifeTime: 0.2
-  currentCoolDown: 0
-  currentskillCount: 0
+  currentCoolDown: 0.2
+  currentskillCount: 1
   currentRange: 0
-  currentAreaRadius: 0
-  currentAttackcoefficient: 0
+  currentAreaRadius: 5
+  playerBaseSkillPercent: 15
+  playerUpgradeSkillPercent: 0.4
   currentProjectileSpeed: 0
+  dotAttackMinus: 0
   effects: []

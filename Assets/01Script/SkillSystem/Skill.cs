@@ -4,8 +4,9 @@ using System.Numerics;
 using DKProject.Entities.Components;
 using Vector2 = UnityEngine.Vector2;
 using Random = UnityEngine.Random;
+using DKProject.Entities.Players;
 
-namespace DKProject.SkillSystem.Skill
+namespace DKProject.SkillSystem
 {
     public abstract class Skill
     {
@@ -13,7 +14,7 @@ namespace DKProject.SkillSystem.Skill
         protected Entity _owner;
         protected float _prevSkillTime;
         protected float _skillCoolTime;
-        protected bool _isPassiveSkill;
+        protected bool _isPassiveSkill,_isDOTSkill;
         protected float _currentCoolTime;
         protected bool _isUseSkill = true;
         protected int _skillLevel = 1;
@@ -21,6 +22,7 @@ namespace DKProject.SkillSystem.Skill
         protected BigInteger _currentDamage;
         protected EntityStat _statCompo;
         protected LayerMask _whatIsTarget;
+        protected Player _player;
 
         public virtual void Init(Entity owner,SkillSO SO)
         {
@@ -30,20 +32,20 @@ namespace DKProject.SkillSystem.Skill
             _whatIsTarget = LayerMask.GetMask("Enemy");
             _skillCoolTime = SkillSO.currentCoolDown;
             _isPassiveSkill = SkillSO.skillType == SkillType.Passive;
-            _currentDamage = new BigInteger(SkillSO.currentAttackcoefficient / 100 + _skillLevel*(100-1));
+            _isDOTSkill = SkillSO.damageType == DamageType.DOT;
             _statCompo = owner.GetCompo<EntityStat>();
+            _player = owner as Player;
         }
 
 
         public virtual void Update()
         {
-            Debug.Log(_owner);
-            if (_isPassiveSkill == true && CoolTimeCheck() && RangeCheck())
+            if (_isPassiveSkill == true && CoolTimeCheck())
             {
                 UseSkill();
             }
 
-            if(_isPassiveSkill == false && _isUseSkill == true && CoolTimeCheck() && RangeCheck())
+            if(_isPassiveSkill == false && _isUseSkill == true && RangeCheck())
             {
                 UseSkill();
                 _isUseSkill = false;
@@ -93,8 +95,6 @@ namespace DKProject.SkillSystem.Skill
         public virtual void LevelUpSkill()
         {
             _skillLevel++;
-            _currentDamage = 
-                new BigInteger((SkillSO.currentAttackcoefficient / 100 + _skillLevel * (100 - 1)));
         }
 
         public virtual void UnlockSkill()
@@ -102,15 +102,39 @@ namespace DKProject.SkillSystem.Skill
             _unlockSkill = true;
         }
 
-        public virtual BigInteger ApplyDamage()
+        public virtual BigInteger DamageCalculation()
         {
+            double playerAttackDamage = (double)_player.GetAttackDamage();
+            if (_isDOTSkill)
+            {
+                playerAttackDamage *= (SkillSO.dotAttackMinus / 100);
+            }
+            _currentDamage = new BigInteger((SkillSO.playerBaseSkillPercent + (_skillLevel * SkillSO.playerUpgradeSkillPercent))/100 + playerAttackDamage);
+            Debug.Log((SkillSO.playerBaseSkillPercent + (_skillLevel * SkillSO.playerUpgradeSkillPercent)) / 100);
             float random = Random.Range(0f, 100f);
 
             if (random < _statCompo.StatDictionary["CriticalChance"].Value)
             {
-                return _currentDamage * new BigInteger((_statCompo.StatDictionary["CriticalDamage"].Value) / 100);
+                return _currentDamage * new BigInteger(_statCompo.StatDictionary["CriticalDamage"].Value / 100);
             }
             return _currentDamage;
+        }
+
+        public virtual void ApplyEffect()
+        {
+            foreach(EffectSO effect in SkillSO.effects)
+            {
+                bool isOwner = effect.targetType == BuffTargetType.Owner;
+                if(isOwner)
+                {
+
+                }
+                else
+                {
+
+                }
+
+            }
         }
     }
 }

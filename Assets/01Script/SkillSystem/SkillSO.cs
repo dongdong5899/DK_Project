@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using DKProject.Entities;
 
-namespace DKProject.SkillSystem.Skill
+namespace DKProject.SkillSystem
 {
     [CreateAssetMenu(fileName = "SkillSO", menuName = "SO/Skill/SkillSO")]
     public class SkillSO : ScriptableObject
@@ -20,21 +20,21 @@ namespace DKProject.SkillSystem.Skill
         [Header("SkillType")]
         public SkillType skillType;
         public TargetType targetType;
-        public CastType castType;
         public DamageType damageType;
 
         [Header("SkillStat")]
-        public float currentChargingTime;
         public float currentLifeTime;
         public float currentCoolDown;
         public byte currentskillCount;
         public float currentRange;
         public float currentAreaRadius;
-        public float currentAttackcoefficient;
+        public float playerBaseSkillPercent;
+        public float playerUpgradeSkillPercent;
         public float currentProjectileSpeed;
+        public float dotAttackMinus;
 
         [Header("Effect")]
-        public List<Effect> effects;
+        public List<EffectSO> effects;
 
         public Skill skill;
 
@@ -42,7 +42,7 @@ namespace DKProject.SkillSystem.Skill
         {
             try
             {
-                Type t = Type.GetType($"DKProject.SkillSystem.Skill.{skillID}Skill");
+                Type t = Type.GetType($"DKProject.SkillSystem.Skills.{skillID}Skill");
                 skill = Activator.CreateInstance(t) as Skill;
             }
             catch (Exception e)
@@ -58,16 +58,6 @@ namespace DKProject.SkillSystem.Skill
             curSkill.Init(owner, this);
             return skill;
         }
-    }
-
-
-    [Serializable]
-    public struct Effect
-    {
-        public BuffType buffType;
-        public BuffTargetType targetType;
-        public EffectType effectType;
-        public float effectTime;
     }
 }
 

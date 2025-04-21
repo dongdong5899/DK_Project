@@ -13,22 +13,6 @@ namespace DKProject.UI.Events
 
         private Tween _fadeTween;
 
-        public void FadeIn()
-        {
-        }
-
-        public void FadeOut()
-        {
-        }
-
-        public void Fade(bool isFadeIn)
-        {
-            if (_useOpposite) isFadeIn = !isFadeIn;
-
-            Debug.Log(isFadeIn);
-            if (isFadeIn) FadeIn();
-            else FadeOut();
-        }
 
         public override void Enable()
         {

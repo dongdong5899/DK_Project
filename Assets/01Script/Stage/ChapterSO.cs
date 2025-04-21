@@ -3,9 +3,10 @@ using UnityEngine;
 
 namespace DKProject.Stage
 {
-    [CreateAssetMenu(menuName = "SO/ChapterSO")]
+    [CreateAssetMenu(menuName = "SO/Stage/ChapterSO")]
     public class ChapterSO : ScriptableObject
     {
+        public string chapterName;
         public List<StageSO> stageList;
     }
 }

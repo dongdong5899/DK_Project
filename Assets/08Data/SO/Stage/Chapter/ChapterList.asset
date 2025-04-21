@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02b39fa21c9d3d64998783fd97da7f3f, type: 3}
-  m_Name: 1-1StageSO
+  m_Script: {fileID: 11500000, guid: 2f308422708111249aab2a99e00017ba, type: 3}
+  m_Name: ChapterList
   m_EditorClassIdentifier: 
-  stageName: MING
-  recommendCombat: 1234
-  stagePrefab: {fileID: 0}
+  chapterList:
+  - {fileID: 11400000, guid: 13b6ebe9c85060141a184f5693a336a9, type: 2}
+  - {fileID: 11400000, guid: 978842e4cfb4f6d4db059c91b84955e8, type: 2}

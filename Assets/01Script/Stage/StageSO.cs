@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DKProject.Stage
 {
-    [CreateAssetMenu(menuName = "SO/StageSO")]
+    [CreateAssetMenu(menuName = "SO/Stage/StageSO")]
     public class StageSO : ScriptableObject
     {
         public string stageName;

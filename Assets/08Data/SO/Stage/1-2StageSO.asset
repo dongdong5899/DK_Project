@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02b39fa21c9d3d64998783fd97da7f3f, type: 3}
-  m_Name: 1-1StageSO
+  m_Name: 1-2StageSO
   m_EditorClassIdentifier: 
-  stageName: MING
-  recommendCombat: 1234
+  stageName: MINGMING
+  recommendCombat: 5678
   stagePrefab: {fileID: 0}

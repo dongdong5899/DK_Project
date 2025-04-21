@@ -21,13 +21,11 @@ namespace DKProject.UI
         public void OnPointerDown(PointerEventData eventData)
         {
             OnStartClick?.Invoke();
-            _eventController.EnableEvent();
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             OnClick?.Invoke();
-            _eventController.DisableEvent();
         }
     }
 }

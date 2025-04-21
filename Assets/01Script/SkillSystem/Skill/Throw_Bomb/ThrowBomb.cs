@@ -1,11 +1,10 @@
 using DKProject.Combat;
-using DKProject.Cores.Pool;
+using DKProject.Core.Pool;
 using DKProject.Entities.Components;
 using DKProject.Entities;
 using System;
 using System.Numerics;
 using UnityEngine;
-using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 
 namespace DKProject.SkillSystem.Skills

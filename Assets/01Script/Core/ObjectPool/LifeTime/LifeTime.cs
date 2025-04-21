@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace DKProject.Cores.Pool
+namespace DKProject.Core.Pool
 {
     public class LifeTime : MonoBehaviour
     {

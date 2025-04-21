@@ -1,4 +1,4 @@
-using DKProject.Cores.Pool;
+using DKProject.Core.Pool;
 using DKProject.Entities.Components;
 using DKProject.Entities;
 using System;

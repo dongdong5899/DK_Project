@@ -7,7 +7,7 @@ namespace DKProject.UI
 {
     public class ButtonGroupPanel : ManagedUI
     {
-        public override string Key => "BottomButtonGroup";
+        public override string Key => nameof(ButtonGroupPanel);
 
         [SerializeField] private List<PanelStruct> _buttons;
         private int _selectedIndex = -1;
@@ -18,13 +18,18 @@ namespace DKProject.UI
             for (int i = 0; i < _buttons.Count; i++)
             {
                 int index = i;
-                _buttons[i].trigger.OnClick += () => SelectButton(index);
+                _buttons[i].trigger.OnClickEvent += () => SelectButton(index);
             }
         }
 
         public void SelectButton(int index)
         {
-            if (_selectedIndex == index) return;
+            if (_selectedIndex == index)
+            {
+                _buttons[index].panel?.Close();
+                _selectedIndex = -1;
+                return;
+            }
             _selectedIndex = index;
 
             if (index == -1)
@@ -32,7 +37,7 @@ namespace DKProject.UI
                 for (int i = 0; i < _buttons.Count; i++)
                 {
                     _buttons[i].panel?.Close();
-                    _buttons[i].trigger.EventContoller.DisableEvent();
+                    //_buttons[i].trigger.EventContoller.DisableEvent();
                 }
 
                 return;
@@ -43,12 +48,12 @@ namespace DKProject.UI
                 if (i == index)
                 {
                     _buttons[i].panel?.Open();
-                    _buttons[i].trigger.EventContoller.DisableEvent();
+                    //_buttons[i].trigger.EventContoller.DisableEvent();
                 }
                 else
                 {
                     _buttons[i].panel?.Close();
-                    _buttons[i].trigger.EventContoller.EnableEvent();
+                    //_buttons[i].trigger.EventContoller.EnableEvent();
                 }
             }
         }

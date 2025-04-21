@@ -1,48 +1,51 @@
+using Doryu.CustomAttributes;
 using System;
 using System.Data.Common;
 using UnityEngine;
 
 namespace DKProject.UI.Events
 {
-    [CreateAssetMenu(menuName = "SO/UI/UIEvent")]
+    [CreateAssetMenu(fileName = "UIEventSO", menuName = "SO/UI/UIEvent")]
     public class UIEventSO : ScriptableObject
     {
-        [Tooltip("class name without namespace")]
-        public string className;
-        public Type type;
+        public string eventClassName;
+        [SerializeField, Uncorrectable] private string _classNameIs;
+        private Type _type;
 
         private void OnValidate()
         {
+            TypeFind();
+            if (_type != null)
+                _classNameIs = eventClassName;
+            else
+                _classNameIs = "";
+        }
+
+        private void TypeFind()
+        {
+            if (_type != null && _type.Name == eventClassName) return;
+
+            string className = $"{GetType().Namespace}.{eventClassName}";
             try
             {
-                type = Type.GetType($"DKProject.UI.Events.{className}");
+                _type = Type.GetType(className);
             }
             catch
             {
-                Debug.LogWarning($"Class named {className} is not exsist");
+                Debug.LogWarning($"{className} is not found.");
             }
         }
 
-        public bool GetUIEvent<T>(out T uiEvent) where T : UIEvent
+        public UIEvent CreateInstance()
         {
-            try
+            if (_type != null)
             {
-                var eventInstance = Activator.CreateInstance(type);
-
-                if (eventInstance is T)
-                {
-                    uiEvent = eventInstance as T;
-                    return true;
-                }
-
-                uiEvent = null;
-                return false;
+                UIEvent uiEvent = Activator.CreateInstance(_type) as UIEvent;
+                return uiEvent;
             }
-            catch
+            else
             {
-                Debug.LogWarning($"Class named {className} is not exsist");
-                uiEvent = null;
-                return false;
+                return null;
             }
         }
     }

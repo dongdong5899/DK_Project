@@ -20,7 +20,7 @@ namespace DKProject.UI
             chapter.stageList.ForEach(stage =>
             {
                 StageSelectButton button = Instantiate(stageButtonPf, transform);
-                button.OnClick += () => OnSelectStage(stage);
+                button.OnClickEvent += () => OnSelectStage(stage);
                 button.Init(stage);
 
                 buttonList.Add(button);

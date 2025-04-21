@@ -19,7 +19,7 @@ namespace DKProject.UI
             _chapterList.chapterList.ForEach(chapter =>
             {
                 ChapterSelectButton button = Instantiate(_chapterSelectButtonPf, transform);
-                button.OnClick += () => SelectChapter(chapter);
+                button.OnClickEvent += () => SelectChapter(chapter);
                 button.Init(chapter);
             });
 

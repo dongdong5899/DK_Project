@@ -6,41 +6,38 @@ using UnityEngine.InputSystem;
 
 namespace DKProject.UI
 {
-    public class StageSelectPanel : ManagedUI, IToggleUI
+    public class StageSelectPanel : TogglePanel
     {
         [SerializeField] private ChapterListSO _chapterList;
-        [SerializeField] private Button _outButton;
         private ChapterIndicator _chapterIndicator;
         private StageIndicator _stageIndicator;
 
         public override string Key => "StageSelectPanel";
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _chapterIndicator = GetComponentInChildren<ChapterIndicator>();
             _stageIndicator = GetComponentInChildren<StageIndicator>();
 
             _chapterIndicator.onSelectChapter += _stageIndicator.OnSelectChapter;
             _chapterIndicator.Init(_chapterList);
-            _outButton.OnClick += Close;
+            _outButton.OnClickEvent += Close;
+            Close();
         }
 
-        public void OnToggle(bool isOpen)
+        public override void Close()
         {
-            if (isOpen) Open();
-            else Close();
+            base.Close();
+            //gameObject.SetActive(false);
+            //_outButton.gameObject.SetActive(false);
         }
 
-        public void Close()
+        public override void Open()
         {
-            gameObject.SetActive(false);
-            _outButton.gameObject.SetActive(false);
-        }
-
-        public void Open()
-        {
-            gameObject.SetActive(true);
-            _outButton.gameObject.SetActive(true);
+            base.Open();
+            ///gameObject.SetActive(true);
+            //_outButton.gameObject.SetActive(true);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace DKProject.UI
         {
             foreach (UIEventData uiEventData in _downEventList)
             {
-                uiEventData.uiEvent.EventPlay();
+                uiEventData.UIEvent.EventPlay();
             }
             OnPressEvent?.Invoke(true);
         }
@@ -35,7 +35,7 @@ namespace DKProject.UI
         {
             foreach (UIEventData uiEventData in _upEventList)
             {
-                uiEventData.uiEvent.EventPlay();
+                uiEventData.UIEvent.EventPlay();
             }
             OnPressEvent?.Invoke(false);
         }

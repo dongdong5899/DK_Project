@@ -20,7 +20,6 @@ namespace DKProject.Core
                 if (uiBase is IToggleUI toggleUI)
                 {
                     _togglePanelDictionary.Add(uiBase.Key, toggleUI);
-                    Debug.Log(uiBase.Key);
                 }
             }
         }

@@ -7,7 +7,7 @@ namespace DKProject.Core
     public static class ResourceManager
     {
         public static ResourceSave save;
-        public static event Action onChangeValue;
+        public static event Action OnChangeValue;
 
         private static string fileName = "Resource";
 
@@ -85,7 +85,7 @@ namespace DKProject.Core
                     break;
             }
 
-            onChangeValue?.Invoke();
+            OnChangeValue?.Invoke();
             Save();
         }
 
@@ -145,7 +145,7 @@ namespace DKProject.Core
                 save.ResetData();
             }
 
-            onChangeValue?.Invoke();
+            OnChangeValue?.Invoke();
         }
 
     }

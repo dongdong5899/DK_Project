@@ -1,13 +1,11 @@
-using DG.Tweening;
 using DKProject.Core;
-using DKProject.UI;
 using UnityEngine;
 
 namespace DKProject.UI
 {
-    public class EnforceUI : BottomUI
+    public class GachaUI : BottomUI
     {
-        public override string Key => nameof(EnforceUI);
+        public override string Key => nameof(GachaUI);
 
         protected override void Awake()
         {

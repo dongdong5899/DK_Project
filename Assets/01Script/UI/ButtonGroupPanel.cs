@@ -9,37 +9,45 @@ namespace DKProject.UI
     {
         public override string Key => nameof(ButtonGroupPanel);
 
-        [SerializeField] private List<PanelStruct> _buttons;
+        [SerializeField] private List<TogglePanelInfo> _buttons;
         private TogglePanel _selectedPanel = null;
 
 
         private void Awake()
         {
-            foreach (PanelStruct panelData in _buttons)
+            foreach (TogglePanelInfo panelData in _buttons)
             {
-                panelData.trigger.OnClickEvent += () => SelectButton(panelData);
+                panelData.button.OnClickEvent += () => SelectButton(panelData.panel);
             }
         }
 
-        public void SelectButton(PanelStruct panelData = default)
+        public void SelectButton(TogglePanel panel = null)
         {
-            if (_selectedPanel == panelData.panel)
+            if (_selectedPanel == panel || panel == null)
             {
                 _selectedPanel?.Close();
                 _selectedPanel = null;
                 return;
             }
 
-            _selectedPanel?.Close();
-            _selectedPanel = panelData.panel;
-            _selectedPanel?.Open();
+            if (_selectedPanel != null)
+            {
+                _selectedPanel.ActiveElement(false);
+                _selectedPanel = panel;
+                _selectedPanel.ActiveElement(true);
+            }
+            else
+            {
+                _selectedPanel = panel;
+                _selectedPanel.Open();
+            }
         }
     }
 
     [Serializable]
-    public struct PanelStruct
+    public struct TogglePanelInfo
     {
-        public Button trigger;
+        public Button button;
         public TogglePanel panel;
     }
 }

@@ -47,7 +47,7 @@ MonoBehaviour:
   _overrideStatElementList:
   - Name: 
     elementSO: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    _valueString: 11
+    _valueString: 1000
   - Name: 
     elementSO: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
     _valueString: 1
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4841951519155070083}
   - component: {fileID: 4361750419048231566}
-  - component: {fileID: 7536608974214075078}
+  - component: {fileID: 7498843794242194657}
   - component: {fileID: 2519464375058475730}
   - component: {fileID: 3233494672528762244}
   m_Layer: 6
@@ -225,7 +225,7 @@ MonoBehaviour:
   <AttackRange>k__BackingField: 1.5
   _showRange: 1
   _testSkillSO: {fileID: 0}
---- !u!114 &7536608974214075078
+--- !u!114 &7498843794242194657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4519251629241937126}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d48251ea8748c84bac435d7aad4e3f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 223176934c2f7954c949cfa9268384e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _startStateList: {fileID: 11400000, guid: 55398bf84ae5d6b4b9ee6506290a2ee8, type: 2}

@@ -14,6 +14,7 @@ namespace DKProject.StatSystem
 
     public enum EModifyLayer
     {
+        StatUp,
         Default,
         Last,
     }
@@ -126,6 +127,7 @@ namespace DKProject.StatSystem
         {
             _modifiers ??= new Dictionary<EModifyLayer, Dictionary<string, StatModifier>>()
             {
+                { EModifyLayer.StatUp, new Dictionary<string, StatModifier>() },
                 { EModifyLayer.Default, new Dictionary<string, StatModifier>() },
                 { EModifyLayer.Last, new Dictionary<string, StatModifier>() },
             };

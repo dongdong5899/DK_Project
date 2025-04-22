@@ -56,7 +56,7 @@ namespace DKProject.SkillSystem
         {
             Skill curSkill = skill.Clone();
             curSkill.Init(owner, this);
-            return skill;
+            return curSkill;
         }
     }
 }

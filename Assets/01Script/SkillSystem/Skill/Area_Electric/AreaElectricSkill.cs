@@ -6,15 +6,9 @@ namespace DKProject.SkillSystem.Skills
 {
     public class AreaElectricSkill : Skill
     {
-        public override void Init(Entity owner, SkillSO SO)
-        {
-            base.Init(owner, SO);
-
-        }
-
         public override void UseSkill()
         {
-            RaycastHit2D[] targets = Physics2D.CircleCastAll(_owner.transform.position, SkillSO.currentAreaRadius,Vector2.zero,0,_whatIsTarget);
+            RaycastHit2D[] targets = Physics2D.CircleCastAll(_owner.transform.position, SkillSO.currentRange,Vector2.zero,0,_whatIsTarget);
 
             RaycastHit2D closeTarget = targets[0];
             float minDist = closeTarget.distance;
@@ -30,9 +24,8 @@ namespace DKProject.SkillSystem.Skills
                     }
                 }
 
-                Entity entity = closeTarget.transform.GetComponent<Entity>();
-
-                entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation());
+                if(closeTarget.transform.TryGetComponent(out Entity entity))
+                    entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation());
             }
 
         }

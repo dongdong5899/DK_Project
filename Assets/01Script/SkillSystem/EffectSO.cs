@@ -1,3 +1,6 @@
+using DKProject.StatSystem;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -12,7 +15,19 @@ namespace DKProject.SkillSystem
         public BuffType buffType;
         public BuffTargetType targetType;
         public EffectType effectType;
+        public bool isEffectTime;
         public float effectTime;
+
+        public List<Effects> effects;
+    }
+
+    [Serializable]
+    public struct Effects
+    {
+        public StatElementSO stat;
+        public EModifyMode modifyMode;
+        public EModifyLayer modifyLayer;
+        public float value;
     }
 }
 

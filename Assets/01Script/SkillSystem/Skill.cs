@@ -5,6 +5,8 @@ using DKProject.Entities.Components;
 using Vector2 = UnityEngine.Vector2;
 using Random = UnityEngine.Random;
 using DKProject.Entities.Players;
+using DKProject.StatSystem;
+using DG.Tweening;
 
 namespace DKProject.SkillSystem
 {
@@ -109,31 +111,65 @@ namespace DKProject.SkillSystem
             {
                 playerAttackDamage *= (SkillSO.dotAttackMinus / 100);
             }
-            _currentDamage = new BigInteger((SkillSO.playerBaseSkillPercent + (_skillLevel * SkillSO.playerUpgradeSkillPercent))/100 + playerAttackDamage);
-            Debug.Log((SkillSO.playerBaseSkillPercent + (_skillLevel * SkillSO.playerUpgradeSkillPercent)) / 100);
+            _currentDamage = (BigInteger)(((SkillSO.playerBaseSkillPercent + (_skillLevel * SkillSO.playerUpgradeSkillPercent))/100) * playerAttackDamage);
+            Debug.Log(playerAttackDamage);
             float random = Random.Range(0f, 100f);
 
             if (random < _statCompo.StatDictionary["CriticalChance"].Value)
             {
-                return _currentDamage * new BigInteger(_statCompo.StatDictionary["CriticalDamage"].Value / 100);
+                return _currentDamage * (BigInteger)(_statCompo.StatDictionary["CriticalDamage"].Value / 100);
             }
             return _currentDamage;
         }
 
-        public virtual void ApplyEffect()
+        public void AddEffect(Entity target)
         {
-            foreach(EffectSO effect in SkillSO.effects)
+            var statComponent = target.GetCompo<EntityStat>();
+
+
+            foreach (var effectSO in SkillSO.effects)
             {
-                bool isOwner = effect.targetType == BuffTargetType.Owner;
-                if(isOwner)
+                string effectTypeKey = effectSO.effectType.ToString();
+                foreach (var effect in effectSO.effects)
                 {
-
+                    if (effect.stat.isBigInteger)
+                        statComponent.StatDictionary[effect.stat].AddModify(
+                        effectTypeKey,
+                        (BigInteger)effect.value,
+                        effect.modifyMode,
+                        effect.modifyLayer );
+                    else
+                        statComponent.StatDictionary[effect.stat].AddModify(
+                        effectTypeKey,
+                        effect.value,
+                        effect.modifyMode,
+                        effect.modifyLayer
+                        );
+                    
+                    Debug.Log(statComponent.StatDictionary[effect.stat].BigIntValue);
                 }
-                else
+                if (effectSO.isEffectTime)
                 {
-
+                    DOVirtual.DelayedCall(effectSO.effectTime, ()=> RemoveEffect(target));
                 }
+            }
+        }
 
+        public void RemoveEffect(Entity target)
+        {
+            var statComponent = target.GetCompo<EntityStat>();
+
+            foreach (var effectSO in SkillSO.effects)
+            {
+                string effectTypeKey = effectSO.effectType.ToString();
+
+                foreach (var effect in effectSO.effects)
+                {
+                    statComponent.StatDictionary[effect.stat].RemoveModify(
+                        effectTypeKey,
+                        effect.modifyLayer
+                    );
+                }
             }
         }
     }

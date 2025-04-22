@@ -10,7 +10,7 @@ namespace DKProject.SkillSystem
     {
         private Player _player;
 
-        [SerializeField] private List<Skill> _enabledSkillList = new List<Skill>(3);
+        [SerializeField] private List<Skill> _enabledSkillList = new List<Skill>(6);
         [SerializeField] private bool _autoMode;
         public void Initialize(Entity entity)
         {
@@ -80,25 +80,24 @@ namespace DKProject.SkillSystem
             if (_enabledSkillList[idx] == null)
             {
                 _enabledSkillList[idx] = skill;
-                skill.OnEquipSkill();
+                _enabledSkillList[idx].OnEquipSkill();
             }
         }
 
         
 
-        public void UnEquipSkill(Skill skill,int idx)
+        public void UnEquipSkill(int idx)
         {
             if (_enabledSkillList[idx] != null)
             {
                 _enabledSkillList[idx].OnUnEquipSkill();
-                skill.OnUnEquipSkill();
                 _enabledSkillList[idx] = null;
             }
         }
 
         public void UseSkill(int idx)
         {
-            if (_enabledSkillList[idx].SkillSO.skillType == SkillType.Passive)
+            if (_enabledSkillList[idx].SkillSO.skillType == SkillType.Passive) 
                 return;
             _enabledSkillList[idx].SetUseSkill(true);
         }

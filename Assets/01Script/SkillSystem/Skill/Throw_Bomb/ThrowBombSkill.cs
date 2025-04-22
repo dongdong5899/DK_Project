@@ -1,18 +1,11 @@
 using DG.Tweening;
 using DKProject.Core.Pool;
-using DKProject.Entities;
 using UnityEngine;
 
 namespace DKProject.SkillSystem.Skills
 {
     public class ThrowBombSkill : Skill
     {
-
-        public override void Init(Entity owner, SkillSO SO)
-        {
-            base.Init(owner, SO);
-        }
-
 
         public override void UseSkill()
         {

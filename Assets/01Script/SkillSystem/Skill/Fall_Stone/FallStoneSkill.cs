@@ -1,6 +1,3 @@
-using DKProject.Entities.Components;
-using DKProject.Entities.Players;
-using DKProject.Entities;
 using UnityEngine;
 using DKProject.Core.Pool;
 
@@ -8,13 +5,6 @@ namespace DKProject.SkillSystem.Skills
 {
     public class FallStoneSkill : Skill
     {
-        
-
-        public override void Init(Entity owner, SkillSO skillSO)
-        {
-            base.Init(owner, skillSO);
-        }
-
         public override void UseSkill()
         {
             Collider2D[] targets = Physics2D.OverlapCircleAll(_owner.transform.position, SkillSO.currentRange, _whatIsTarget);

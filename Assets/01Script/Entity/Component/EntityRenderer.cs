@@ -23,7 +23,7 @@ namespace DKProject.Entities.Components
 
         public void PlayAnimation(string name)
         {
-            _animator.Play(name);
+            _animator?.Play(name);
         }
 
 

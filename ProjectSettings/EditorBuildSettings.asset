@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/00Scene/KDR.unity
     guid: 0cda3622e20b4644db4785ecf51e1f35
   m_configObjects:
-    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: e0b30eba408ff5249b297281447e2375, type: 2}
-    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 5eee2b55cd8cc6a4e9210113bfea2d5c, type: 2}
-    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: ac34dcd2a071cef44abf1c21c7b12605, type: 2}
-    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 5ba9c2dc83498a44bab411d3aec61392, type: 2}
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: e88d3f4e04e61904ebc4cc2823efb335, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 832e2d4a338653646871bebc3c90bda9, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: a7eead1f902f6214c86ae89c1751bde3, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 2bf4c4a2e8458d141b0447dd59205b01, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

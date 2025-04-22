@@ -8,24 +8,28 @@ namespace DKProject
     [Serializable]
     public class UIEventData : ISerializationCallbackReceiver
     {
-        public UIEventSO uiEventSO;
-        [SerializeReference] public UIEvent uiEvent;
+        public UIEventSO eventSO;
+        [SerializeReference] public UIEvent UIEvent;
 
         public void Init(MonoUI monoUI)
         {
-            uiEvent?.EventInit(monoUI);
+            UIEvent?.EventInit(monoUI);
         }
 
         public void OnAfterDeserialize()
         {
-            if (uiEventSO == null)
-                uiEvent = null;
-            else if (uiEvent == null || uiEvent.GetType().Name != uiEventSO.eventClassName)
-                uiEvent = uiEventSO.CreateInstance();
         }
 
         public void OnBeforeSerialize()
         {
+            if (eventSO == null)
+                UIEvent = null;
+            else if (UIEvent == null || UIEvent.GetType().Name != eventSO.eventClassName)
+            {
+                //Debug.Log($"{eventSO.eventClassName}"); 
+                Debug.Log($"{eventSO.eventClassName} | {UIEvent == null}");
+                UIEvent = eventSO.CreateInstance();
+            }
         }
     }
 }

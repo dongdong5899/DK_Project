@@ -1,33 +1,30 @@
+using DG.Tweening;
 using DKProject.Core;
 using UnityEngine;
 
 namespace DKProject.UI
 {
+    [RequireComponent(typeof(CanvasGroup))]
     public abstract class TogglePanel : ManagedUI, IToggleUI
     {
         protected CanvasGroup _canvasGruop;
         [SerializeField] protected Button _outButton;
-
 
         protected virtual void Awake()
         {
             _canvasGruop = GetComponent<CanvasGroup>();
         }
 
-        public virtual void Open()
-        {
-            _canvasGruop.alpha = 1;
-            _canvasGruop.blocksRaycasts = true;
-            _canvasGruop.interactable = true;
-            _outButton.gameObject.SetActive(true);
-        }
+        public virtual void Open() { }
 
-        public virtual void Close()
+        public virtual void Close() { }
+
+        public virtual void ActiveElement(bool active)
         {
-            _canvasGruop.alpha = 0;
-            _canvasGruop.blocksRaycasts = false;
-            _canvasGruop.interactable = false;
-            _outButton.gameObject.SetActive(false);
+            _canvasGruop.alpha = active ? 1 : 0;
+            _canvasGruop.blocksRaycasts = active;
+            _canvasGruop.interactable = active;
+            _outButton?.gameObject.SetActive(active);
         }
     }
 }

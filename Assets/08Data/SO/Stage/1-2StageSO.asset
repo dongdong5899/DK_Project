@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b39fa21c9d3d64998783fd97da7f3f, type: 3}
+  m_Name: 1-2StageSO
+  m_EditorClassIdentifier: 
+  stageName: MINGMING
+  stageBGSprite: {fileID: 9131157121582701348, guid: 1a712933a712f0143aaf098faf9fed48, type: 3}
+  recommendCombat: 5678
+  stagePrefab: {fileID: 0}

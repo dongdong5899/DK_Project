@@ -13,7 +13,7 @@ namespace DKProject
         private TogglePanel _selectedPanel;
         private Image _image;
 
-        private void Awake()
+        private void Start()
         {
             bool isFirst = true;
             foreach (var panelInfo in _togglePanelInfo)

@@ -22,18 +22,12 @@ namespace DKProject.UI
         private void OnEnable()
         {
             UpdateValue();
-            ResourceManager.onChangeValue += UpdateValue;
+            ResourceManager.OnChangeValue += UpdateValue;
         }
 
         private void OnDisable()
         {
-            ResourceManager.onChangeValue -= UpdateValue;
-        }
-
-        private void Update()
-        {
-            if (Keyboard.current.oKey.wasPressedThisFrame)
-                ResourceManager.AddResource(ResourceType.Gold, 3456);
+            ResourceManager.OnChangeValue -= UpdateValue;
         }
 
         public void UpdateValue()

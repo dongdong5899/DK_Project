@@ -19,7 +19,7 @@ MonoBehaviour:
   - Name: AttackSpeed
     elementSO: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
     _valueString: 1
-  - Name: MaxHp
+  - Name: MaxHealth
     elementSO: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
     _valueString: 10000
   - Name: MoveSpeed

@@ -1,4 +1,4 @@
-using DKProject.Chapter;
+using DKProject.Stage;
 using UnityEngine;
 
 namespace DKProject.UI
@@ -23,18 +23,14 @@ namespace DKProject.UI
             Close();
         }
 
-        public override void Close()
-        {
-            base.Close();
-            //gameObject.SetActive(false);
-            //_outButton.gameObject.SetActive(false);
-        }
-
         public override void Open()
         {
-            base.Open();
-            ///gameObject.SetActive(true);
-            //_outButton.gameObject.SetActive(true);
+            ActiveElement(true);
+        }
+
+        public override void Close()
+        {
+            ActiveElement(false);
         }
     }
 }

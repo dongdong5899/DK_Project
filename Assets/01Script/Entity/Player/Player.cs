@@ -1,8 +1,9 @@
 using DKProject.Entities.Components;
 using DKProject.Entities.Enemies;
-using DKProject.SkillSystem.Skill;
+using DKProject.SkillSystem;
 using DKProject.StatSystem;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,15 +15,17 @@ namespace DKProject.Entities.Players
         private EntityMover _entityMover;
         private PlayerRenderer _entityRenderer;
         private EntityStat _entityStat;
+        private PlayerSkillSystem _playerSkillSystem;
         private StatElement _attackSpeedStat;
         private StatElement _attackDamageStat;
         private float _lastAttackTime;
-        [SerializeField] private SkillSO _testSkill;
-
+        [SerializeField] private SkillSO _testSkillSO;
         public bool IsCanAttack()
             => _lastAttackTime + 1f / _attackSpeedStat.Value < Time.time;
         public void CheckAttackTime()
             => _lastAttackTime = Time.time;
+
+        public BigInteger GetAttackDamage() => _attackDamageStat.BigIntValue;
         public void Attack(Enemy enemy)
         {
             enemy.GetCompo<EntityHealth>().ApplyDamage(_attackDamageStat.BigIntValue);
@@ -40,6 +43,7 @@ namespace DKProject.Entities.Players
             _entityMover = GetCompo<EntityMover>();
             _entityRenderer = GetCompo<PlayerRenderer>();
             _entityStat = GetCompo<EntityStat>();
+            _playerSkillSystem = GetCompo<PlayerSkillSystem>();
             _attackSpeedStat = _entityStat.StatDictionary[StatName.AttackSpeed];
             _attackDamageStat = _entityStat.StatDictionary[StatName.AttackDamage];
         }
@@ -51,13 +55,19 @@ namespace DKProject.Entities.Players
 
         private void Update()
         {
-            if (Keyboard.current.tKey.isPressed)
+            if (Keyboard.current.tKey.wasPressedThisFrame)
             {
-                GetCompo<PlayerSkillSystem>().EquipSkill(_testSkill.GetSkill(this), 0);
-                List<Skill> skillList = new List<Skill>();
-                _testSkill.GetSkill(this).Init(this,_testSkill);
-                skillList.Add(_testSkill.GetSkill(this));
-                GetCompo<PlayerSkillSystem>().SetSlot(skillList);
+                _playerSkillSystem.EquipSkill(_testSkillSO.GetSkill(this), 0);
+            }
+
+            if(Keyboard.current.qKey.wasPressedThisFrame)
+            {
+                _playerSkillSystem.UseSkill(0);
+            }
+
+            if (Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                _playerSkillSystem.UnEquipSkill(0);
             }
         }
     }

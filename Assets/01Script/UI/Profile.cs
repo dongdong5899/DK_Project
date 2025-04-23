@@ -17,12 +17,12 @@ namespace DKProject.UI
 
         private void OnEnable()
         {
-            ResourceManager.onChangeValue += UpdateValue;
+            ResourceManager.OnChangeValue += UpdateValue;
         }
 
         private void OnDisable()
         {
-            ResourceManager.onChangeValue -= UpdateValue;
+            ResourceManager.OnChangeValue -= UpdateValue;
         }
 
         public void UpdateValue()

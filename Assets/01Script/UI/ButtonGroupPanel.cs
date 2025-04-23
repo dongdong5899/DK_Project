@@ -9,60 +9,45 @@ namespace DKProject.UI
     {
         public override string Key => nameof(ButtonGroupPanel);
 
-        [SerializeField] private List<PanelStruct> _buttons;
-        private int _selectedIndex = -1;
+        [SerializeField] private List<TogglePanelInfo> _buttons;
+        private TogglePanel _selectedPanel = null;
 
 
         private void Awake()
         {
-            for (int i = 0; i < _buttons.Count; i++)
+            foreach (TogglePanelInfo panelData in _buttons)
             {
-                int index = i;
-                _buttons[i].trigger.OnClickEvent += () => SelectButton(index);
+                panelData.button.OnClickEvent += () => SelectButton(panelData.panel);
             }
         }
 
-        public void SelectButton(int index)
+        public void SelectButton(TogglePanel panel = null)
         {
-            if (_selectedIndex == index)
+            if (_selectedPanel == panel || panel == null)
             {
-                _buttons[index].panel?.Close();
-                _selectedIndex = -1;
-                return;
-            }
-            _selectedIndex = index;
-
-            if (index == -1)
-            {
-                for (int i = 0; i < _buttons.Count; i++)
-                {
-                    _buttons[i].panel?.Close();
-                    //_buttons[i].trigger.EventContoller.DisableEvent();
-                }
-
+                _selectedPanel?.Close();
+                _selectedPanel = null;
                 return;
             }
 
-            for (int i = 0; i < _buttons.Count; i++)
+            if (_selectedPanel != null)
             {
-                if (i == index)
-                {
-                    _buttons[i].panel?.Open();
-                    //_buttons[i].trigger.EventContoller.DisableEvent();
-                }
-                else
-                {
-                    _buttons[i].panel?.Close();
-                    //_buttons[i].trigger.EventContoller.EnableEvent();
-                }
+                _selectedPanel.ActiveElement(false);
+                _selectedPanel = panel;
+                _selectedPanel.ActiveElement(true);
+            }
+            else
+            {
+                _selectedPanel = panel;
+                _selectedPanel.Open();
             }
         }
     }
 
     [Serializable]
-    public struct PanelStruct
+    public struct TogglePanelInfo
     {
-        public Button trigger;
+        public Button button;
         public TogglePanel panel;
     }
 }

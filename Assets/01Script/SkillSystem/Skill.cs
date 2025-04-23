@@ -4,8 +4,12 @@ using System.Numerics;
 using DKProject.Entities.Components;
 using Vector2 = UnityEngine.Vector2;
 using Random = UnityEngine.Random;
+using DKProject.Entities.Players;
+using DKProject.StatSystem;
+using DG.Tweening;
+using DKProject.Core;
 
-namespace DKProject.SkillSystem.Skill
+namespace DKProject.SkillSystem
 {
     public abstract class Skill
     {
@@ -13,37 +17,37 @@ namespace DKProject.SkillSystem.Skill
         protected Entity _owner;
         protected float _prevSkillTime;
         protected float _skillCoolTime;
-        protected bool _isPassiveSkill;
+        protected bool _isPassiveSkill,_isDOTSkill;
         protected float _currentCoolTime;
         protected bool _isUseSkill = true;
-        protected int _skillLevel = 1;
-        protected bool _unlockSkill = false;
+        protected SkillData _skillData;
         protected BigInteger _currentDamage;
         protected EntityStat _statCompo;
         protected LayerMask _whatIsTarget;
+        protected Player _player;
 
         public virtual void Init(Entity owner,SkillSO SO)
         {
             _owner = owner;
-            Debug.Log(_owner);
             SkillSO = SO;
             _whatIsTarget = LayerMask.GetMask("Enemy");
             _skillCoolTime = SkillSO.currentCoolDown;
             _isPassiveSkill = SkillSO.skillType == SkillType.Passive;
-            _currentDamage = new BigInteger(SkillSO.currentAttackcoefficient / 100 + _skillLevel*(100-1));
+            _isDOTSkill = SkillSO.damageType == DamageType.DOT;
             _statCompo = owner.GetCompo<EntityStat>();
+            _player = owner as Player;
+            _skillData = new SkillData();
         }
 
 
         public virtual void Update()
         {
-            Debug.Log(_owner);
-            if (_isPassiveSkill == true && CoolTimeCheck() && RangeCheck())
+            if (_isPassiveSkill == true && CoolTimeCheck())
             {
                 UseSkill();
             }
 
-            if(_isPassiveSkill == false && _isUseSkill == true && CoolTimeCheck() && RangeCheck())
+            if(_isPassiveSkill == false && _isUseSkill == true && RangeCheck())
             {
                 UseSkill();
                 _isUseSkill = false;
@@ -92,25 +96,81 @@ namespace DKProject.SkillSystem.Skill
 
         public virtual void LevelUpSkill()
         {
-            _skillLevel++;
-            _currentDamage = 
-                new BigInteger((SkillSO.currentAttackcoefficient / 100 + _skillLevel * (100 - 1)));
+            _skillData.skillLevel++;
         }
 
         public virtual void UnlockSkill()
         {
-            _unlockSkill = true;
+            _skillData.isUnlock = true;
         }
 
-        public virtual BigInteger ApplyDamage()
+        public virtual BigInteger DamageCalculation()
         {
+            double playerAttackDamage = (double)_player.GetAttackDamage();
+            if (_isDOTSkill)
+            {
+                playerAttackDamage *= (SkillSO.dotAttackMinus / 100);
+            }
+            _currentDamage = (BigInteger)(((SkillSO.playerBaseSkillPercent + (_skillData.skillLevel * SkillSO.playerUpgradeSkillPercent))/100) * playerAttackDamage);
+            Debug.Log(playerAttackDamage);
             float random = Random.Range(0f, 100f);
 
             if (random < _statCompo.StatDictionary["CriticalChance"].Value)
             {
-                return _currentDamage * new BigInteger((_statCompo.StatDictionary["CriticalDamage"].Value) / 100);
+                return _currentDamage * (BigInteger)(_statCompo.StatDictionary["CriticalDamage"].Value / 100);
             }
             return _currentDamage;
+        }
+
+        public void AddEffect(Entity target)
+        {
+            var statComponent = target.GetCompo<EntityStat>();
+
+
+            foreach (var effectSO in SkillSO.effects)
+            {
+                string effectTypeKey = effectSO.effectType.ToString();
+                foreach (var effect in effectSO.effects)
+                {
+                    if (effect.stat.isBigInteger)
+                        statComponent.StatDictionary[effect.stat].AddModify(
+                        effectTypeKey,
+                        (BigInteger)effect.value,
+                        effect.modifyMode,
+                        effect.modifyLayer );
+                    else
+                        statComponent.StatDictionary[effect.stat].AddModify(
+                        effectTypeKey,
+                        effect.value,
+                        effect.modifyMode,
+                        effect.modifyLayer
+                        );
+                    
+                    Debug.Log(statComponent.StatDictionary[effect.stat].BigIntValue);
+                }
+                if (effectSO.isEffectTime)
+                {
+                    DOVirtual.DelayedCall(effectSO.effectTime, ()=> RemoveEffect(target));
+                }
+            }
+        }
+
+        public void RemoveEffect(Entity target)
+        {
+            var statComponent = target.GetCompo<EntityStat>();
+
+            foreach (var effectSO in SkillSO.effects)
+            {
+                string effectTypeKey = effectSO.effectType.ToString();
+
+                foreach (var effect in effectSO.effects)
+                {
+                    statComponent.StatDictionary[effect.stat].RemoveModify(
+                        effectTypeKey,
+                        effect.modifyLayer
+                    );
+                }
+            }
         }
     }
 }

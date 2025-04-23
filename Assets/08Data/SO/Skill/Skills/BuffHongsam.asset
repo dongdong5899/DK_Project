@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
+  m_Name: BuffHongsam
+  m_EditorClassIdentifier: 
+  skillID: BuffHongsam
+  skillName: "\uC5B4\uCA54 \uC218 \uC5C6\uC774 \uBA39\uC740 \uD64D\uC0BC"
+  icon: {fileID: 0}
+  skillRank: 2
+  skillDescription: "\uB108\uBB34 \uBC30\uACE0\uD30C\uC11C \uADF8\uD1A0\uB85D \uC2EB\uC5B4\uD558\uB358
+    \uD64D\uC0BC\uD329\uC744 \uBA39\uC744 \uC218 \uBC16\uC5D0 \uC5C6\uC5C8\uB2E4.
+    \uC77C\uBC18 \uACF5\uACA9 \uB370\uBBF8\uC9C0\uAC00 20% \uC99D\uAC00\uD558\uACE0,
+    \uACF5\uACA9\uC18D\uB3C4\uAC00 10% \uC99D\uAC00\uD55C\uB2E4."
+  skillType: 1
+  targetType: 0
+  damageType: 0
+  currentLifeTime: 0
+  currentCoolDown: 0
+  currentskillCount: 0
+  currentRange: 0
+  currentAreaRadius: 0
+  playerBaseSkillPercent: 0
+  playerUpgradeSkillPercent: 0
+  currentProjectileSpeed: 0
+  dotAttackMinus: 0
+  effects:
+  - {fileID: 11400000, guid: f1d503cdcfb992f46a4bf73d9c098a89, type: 2}

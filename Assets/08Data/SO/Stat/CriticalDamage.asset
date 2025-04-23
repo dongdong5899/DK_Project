@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statName: CriticalDamage
   displayName: "\uCE58\uBA85\uD0C0 \uB370\uBBF8\uC9C0"
-  minMaxValue: {x: 0, y: 100}
+  isBigInteger: 0
+  minMaxValue: {x: 0, y: 1000}
   statIcon: {fileID: 0}

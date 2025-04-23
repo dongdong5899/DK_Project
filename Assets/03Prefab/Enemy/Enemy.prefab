@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2017362318829023018}
   - component: {fileID: 780598771209426344}
-  - component: {fileID: 6198929947038003281}
+  - component: {fileID: 3094302770547925859}
   - component: {fileID: 4923751157899073184}
   - component: {fileID: 5919251717082795991}
+  - component: {fileID: 7231846117388175641}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -64,7 +65,7 @@ MonoBehaviour:
     second:
       first: 3
       second: 123
---- !u!114 &6198929947038003281
+--- !u!114 &3094302770547925859
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,6 +152,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!210 &7231846117388175641
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2177254372487313656}
+  m_Enabled: 1
+  m_SortingLayerID: 1497647123
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &2655085265702889594
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +258,10 @@ MonoBehaviour:
     _valueString: 300
   - Name: 
     elementSO: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
-    _valueString: 10000
+    _valueString: 100
+  - Name: 
+    elementSO: {fileID: 11400000, guid: cc98676f72b558542962303effb99e25, type: 2}
+    _valueString: 3
   _baseStatSO: {fileID: 11400000, guid: 42c82e3b89af67e42bc511b89d9a8387, type: 2}
 --- !u!1 &7469119819353186826
 GameObject:

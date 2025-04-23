@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace DKProject.SkillSystem.Skill
+namespace DKProject.SkillSystem
 {
     public class PlayerSkillSystem : MonoBehaviour, IEntityComponent, IAfterInitable
     {
         private Player _player;
 
-        [SerializeField] private List<Skill> _enabledSkillList = new List<Skill>(3);
+        [SerializeField] private List<Skill> _enabledSkillList = new List<Skill>(6);
         [SerializeField] private bool _autoMode;
         public void Initialize(Entity entity)
         {
@@ -33,7 +33,15 @@ namespace DKProject.SkillSystem.Skill
 
             if (_autoMode == true)
             {
-                _enabledSkillList.ForEach(skill => skill?.SetUseSkill(true));
+                foreach(var skill in _enabledSkillList)
+                {
+                    if (skill == null)
+                        return;
+                    if (skill.CoolTimeCheck())
+                    {
+                        skill?.SetUseSkill(true);
+                    }
+                }
             }
         }
 
@@ -72,20 +80,26 @@ namespace DKProject.SkillSystem.Skill
             if (_enabledSkillList[idx] == null)
             {
                 _enabledSkillList[idx] = skill;
-                skill.OnEquipSkill();
+                _enabledSkillList[idx].OnEquipSkill();
             }
         }
 
         
 
-        public void UnEquipSkill(Skill skill,int idx)
+        public void UnEquipSkill(int idx)
         {
             if (_enabledSkillList[idx] != null)
             {
                 _enabledSkillList[idx].OnUnEquipSkill();
-                skill.OnUnEquipSkill();
                 _enabledSkillList[idx] = null;
             }
+        }
+
+        public void UseSkill(int idx)
+        {
+            if (_enabledSkillList[idx].SkillSO.skillType == SkillType.Passive) 
+                return;
+            _enabledSkillList[idx].SetUseSkill(true);
         }
 
        

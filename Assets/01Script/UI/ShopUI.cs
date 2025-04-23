@@ -2,15 +2,15 @@ using DKProject.Core;
 
 namespace DKProject.UI
 {
-    public class ShopUI : TogglePanel
+    public class ShopUI : BottomUI
     {
         public override string Key => nameof(ShopUI);
 
         protected override void Awake()
         {
             base.Awake();
-            _outButton.OnClickEvent += () => UIManager.Instance.GetUI<ButtonGroupPanel>(nameof(ButtonGroupPanel)).SelectButton(-1);
-            Close();
+            _outButton.OnClickEvent += () => UIManager.Instance.GetUI<ButtonGroupPanel>(nameof(ButtonGroupPanel)).SelectButton();
+            ActiveElement(false);
         }
     }
 }

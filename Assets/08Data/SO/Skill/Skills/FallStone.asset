@@ -21,14 +21,14 @@ MonoBehaviour:
     \uB9DE\uC73C\uBA74 \uC544\uD504\uB2E4.\n"
   skillType: 0
   targetType: 1
-  castType: 0
   damageType: 0
-  currentChargingTime: 0
   currentLifeTime: 1
   currentCoolDown: 5
   currentskillCount: 1
   currentRange: 5
   currentAreaRadius: 1
-  currentAttackcoefficient: 960
+  playerBaseSkillPercent: 110
+  playerUpgradeSkillPercent: 0.25
   currentProjectileSpeed: 20
+  dotAttackMinus: 0
   effects: []

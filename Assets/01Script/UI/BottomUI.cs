@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DKProject.UI
 {
-    public abstract class BottomUI : TogglePanel
+    public abstract class BottomUI : OutAreaToggleUI
     {
         private RectTransform _parentRectTrm;
 

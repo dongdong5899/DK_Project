@@ -8,7 +8,6 @@ namespace DKProject.UI
     public abstract class TogglePanel : ManagedUI, IToggleUI
     {
         protected CanvasGroup _canvasGruop;
-        [SerializeField] protected Button _outButton;
 
         protected virtual void Awake()
         {
@@ -24,7 +23,6 @@ namespace DKProject.UI
             _canvasGruop.alpha = active ? 1 : 0;
             _canvasGruop.blocksRaycasts = active;
             _canvasGruop.interactable = active;
-            _outButton?.gameObject.SetActive(active);
         }
     }
 }

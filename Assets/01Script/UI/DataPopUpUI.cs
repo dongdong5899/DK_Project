@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DKProject.UI
 {
-    public class DataPopUpUI : TogglePanel
+    public class DataPopUpUI : OutAreaToggleUI
     {
         public override string Key => nameof(DataPopUpUI);
 

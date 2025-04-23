@@ -7,11 +7,16 @@ namespace DKProject
 {
     public class InvenSkill : InvenSlot
     {
-        [SerializeField] private SkillSO _skillSO;
+        private SkillSO _skillSO;
 
         protected override void Awake()
         {
             base.Awake();
+        }
+
+        public void SetSkillSO(SkillSO skillSO)
+        {
+            _skillSO = skillSO;
             _icon.sprite = _skillSO.icon;
         }
 

@@ -10,7 +10,7 @@ namespace DKProject
     {
         public override string Key => nameof(SkillUpgradePanel);
 
-        [SerializeField] private SkillList _skillList;
+        [SerializeField] private SkillListSO _skillList;
         private InvenSkill[] _invenSkills;
 
         protected override void Awake()

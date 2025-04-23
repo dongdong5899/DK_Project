@@ -16,10 +16,10 @@ namespace DKProject.Core
             _windowPanelList = FindObjectsByType<ManagedUI>(FindObjectsSortMode.None).ToList();
             foreach (ManagedUI uiBase in _windowPanelList)
             {
-                _windowPanelDictionary.Add(uiBase.Key, uiBase);
+                _windowPanelDictionary.TryAdd(uiBase.Key, uiBase);
                 if (uiBase is IToggleUI toggleUI)
                 {
-                    _togglePanelDictionary.Add(uiBase.Key, toggleUI);
+                    _togglePanelDictionary.TryAdd(uiBase.Key, toggleUI);
                 }
             }
         }

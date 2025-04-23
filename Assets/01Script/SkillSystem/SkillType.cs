@@ -14,14 +14,14 @@ namespace DKProject.SkillSystem
 
     public enum CastType
     {
-        InstantCast,
+        NonCasting,
         Casting
     }
 
     public enum DamageType
     {
-        DD,
-        DOT
+        Defult,
+        Dot
     }
 
     public enum BuffType

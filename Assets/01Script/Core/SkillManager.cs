@@ -11,7 +11,7 @@ namespace DKProject.Core
         public SkillSave save;
         public Dictionary<SkillSO, SkillData> skillDictionary;
         public event Action OnChangeValue;
-        [SerializeField] private SkillList _skillList;
+        [SerializeField] private SkillListSO _skillList;
         private string fileName = "Skill";
         public SkillManager()
         {
@@ -20,7 +20,7 @@ namespace DKProject.Core
             SkillDictionarySet();
         }
 
-        public void Init(SkillList list)
+        public void Init(SkillListSO list)
         {
             foreach(SkillSO skillSO in list.GetList())
             {

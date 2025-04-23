@@ -6,7 +6,7 @@ using UnityEngine;
 namespace DKProject.SkillSystem
 {
     [CreateAssetMenu(fileName = "SkillList", menuName = "SO/Skill/SkillList")]
-    public class SkillList : ScriptableObject
+    public class SkillListSO : ScriptableObject
     {
         [VisibleInspectorSO]
         [SerializeField] private List<SkillSO> _skillList;

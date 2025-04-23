@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: FallStone
   skillName: "\uC6B0\uC5F0\uD788 \uB5A8\uC5B4\uC9C4 \uB3CC\uB369\uC5B4\uB9AC"
-  icon: {fileID: 0}
+  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
   skillRank: 0
   skillDescription: "\uC815\uB9D0 \"\uC6B0\uC5F0\uD788\" \uC801\uC774 \uB9CE\uC740
     \uACF3\uC73C\uB85C \uAC70\uB300\uD55C \uB3CC \uB369\uC5B4\uB9AC\uAC00 \uB5A8\uC5B4\uC9C4\uB2E4.
@@ -22,13 +22,13 @@ MonoBehaviour:
   skillType: 0
   targetType: 1
   damageType: 0
-  currentLifeTime: 1
-  currentCoolDown: 5
-  currentskillCount: 1
-  currentRange: 5
-  currentAreaRadius: 1
-  playerBaseSkillPercent: 110
-  playerUpgradeSkillPercent: 0.25
-  currentProjectileSpeed: 20
-  dotAttackMinus: 0
+  lifeTime: 0
+  coolDown: 0
+  skillCount: 0
+  skillRange: 0
+  skillAreaRadius: 0
+  baseSkillPercent: 0
+  upgradeSkillPercent: 0
+  skillprojectileSpeed: 0
+  skillDotAttackMinus: 0
   effects: []

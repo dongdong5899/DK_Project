@@ -11,11 +11,11 @@ namespace DKProject.SkillSystem.Skills
         {
             Sequence sequence = DOTween.Sequence();
 
-            for (byte i = 0; i < SkillSO.currentskillCount; i++)
+            for (byte i = 0; i < SkillSO.skillCount; i++)
             {
                 sequence.AppendCallback(() =>
                 {
-                    Collider2D[] targets = Physics2D.OverlapCircleAll(_owner.transform.position, SkillSO.currentRange, _whatIsTarget);
+                    Collider2D[] targets = Physics2D.OverlapCircleAll(_owner.transform.position, SkillSO.skillRange, _whatIsTarget);
 
                     if (targets.Length == 0) return;
 
@@ -27,8 +27,8 @@ namespace DKProject.SkillSystem.Skills
                         targets[0].transform.position,
                         _whatIsTarget,
                         DamageCalculation(),
-                        SkillSO.currentLifeTime,
-                        SkillSO.currentProjectileSpeed
+                        SkillSO.lifeTime,
+                        SkillSO.skillprojectileSpeed
                     );
                 });
 

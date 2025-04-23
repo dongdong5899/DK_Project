@@ -23,15 +23,15 @@ namespace DKProject.SkillSystem
         public DamageType damageType;
 
         [Header("SkillStat")]
-        public float currentLifeTime;
-        public float currentCoolDown;
-        public byte currentskillCount;
-        public float currentRange;
-        public float currentAreaRadius;
-        public float playerBaseSkillPercent;
-        public float playerUpgradeSkillPercent;
-        public float currentProjectileSpeed;
-        public float dotAttackMinus;
+        public float lifeTime;
+        public float coolDown;
+        public byte skillCount;
+        public float skillRange;
+        public float skillAreaRadius;
+        public float baseSkillPercent;
+        public float upgradeSkillPercent;
+        public float skillprojectileSpeed;
+        public float skillDotAttackMinus;
 
         [Header("Effect")]
         public List<EffectSO> effects;

@@ -8,7 +8,7 @@ namespace DKProject.SkillSystem.Skills
     {
         public override void UseSkill()
         {
-            RaycastHit2D[] targets = Physics2D.CircleCastAll(_owner.transform.position, SkillSO.currentRange,Vector2.zero,0,_whatIsTarget);
+            RaycastHit2D[] targets = Physics2D.CircleCastAll(_owner.transform.position, SkillSO.skillRange,Vector2.zero,0,_whatIsTarget);
 
             RaycastHit2D closeTarget = targets[0];
             float minDist = closeTarget.distance;

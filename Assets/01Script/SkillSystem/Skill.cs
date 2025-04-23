@@ -31,9 +31,9 @@ namespace DKProject.SkillSystem
             _owner = owner;
             SkillSO = SO;
             _whatIsTarget = LayerMask.GetMask("Enemy");
-            _skillCoolTime = SkillSO.currentCoolDown;
+            _skillCoolTime = SkillSO.coolDown;
             _isPassiveSkill = SkillSO.skillType == SkillType.Passive;
-            _isDOTSkill = SkillSO.damageType == DamageType.DOT;
+            _isDOTSkill = SkillSO.damageType == DamageType.Dot;
             _statCompo = owner.GetCompo<EntityStat>();
             _player = owner as Player;
             _skillData = new SkillData();
@@ -67,7 +67,7 @@ namespace DKProject.SkillSystem
 
         public virtual bool RangeCheck()
         {
-            return Physics2D.CircleCast(_owner.transform.position, SkillSO.currentRange, Vector2.zero, 0, _whatIsTarget);
+            return Physics2D.CircleCast(_owner.transform.position, SkillSO.skillRange, Vector2.zero, 0, _whatIsTarget);
         }
 
         public float GetCurrentCoolTime()
@@ -109,9 +109,9 @@ namespace DKProject.SkillSystem
             double playerAttackDamage = (double)_player.GetAttackDamage();
             if (_isDOTSkill)
             {
-                playerAttackDamage *= (SkillSO.dotAttackMinus / 100);
+                playerAttackDamage *= (SkillSO.skillDotAttackMinus / 100);
             }
-            _currentDamage = (BigInteger)(((SkillSO.playerBaseSkillPercent + (_skillData.skillLevel * SkillSO.playerUpgradeSkillPercent))/100) * playerAttackDamage);
+            _currentDamage = (BigInteger)(((SkillSO.baseSkillPercent + (_skillData.skillLevel * SkillSO.upgradeSkillPercent))/100) * playerAttackDamage);
             Debug.Log(playerAttackDamage);
             float random = Random.Range(0f, 100f);
 

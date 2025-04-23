@@ -1342,10 +1342,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 471966898611775134, guid: 91b233283e389ce4da3fc4c4c443588a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 512552652636965241, guid: 91b233283e389ce4da3fc4c4c443588a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1542,6 +1538,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1593565702104259699, guid: 91b233283e389ce4da3fc4c4c443588a, type: 3}
+      propertyPath: _skillList
+      value: 
+      objectReference: {fileID: 11400000, guid: 158db4903053e0f43998ad6de98bda8c, type: 2}
     - target: {fileID: 1643921577063098172, guid: 91b233283e389ce4da3fc4c4c443588a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2045,10 +2045,6 @@ PrefabInstance:
     - target: {fileID: 3915549779303930104, guid: 91b233283e389ce4da3fc4c4c443588a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3963296149707905222, guid: 91b233283e389ce4da3fc4c4c443588a, type: 3}
-      propertyPath: m_Color.a
-      value: 0.19607843
       objectReference: {fileID: 0}
     - target: {fileID: 4123854990809420229, guid: 91b233283e389ce4da3fc4c4c443588a, type: 3}
       propertyPath: m_AnchorMax.y

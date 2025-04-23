@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DKProject.UI
 {
-    public class StageSelectPanel : TogglePanel
+    public class StageSelectPanel : OutAreaToggleUI
     {
         [SerializeField] private ChapterListSO _chapterList;
         private ChapterIndicator _chapterIndicator;

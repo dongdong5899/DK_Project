@@ -54,6 +54,7 @@ namespace DKProject.Core
                     }
             }
 
+            OnChangeValue?.Invoke();
             Save();
             return true;
         }

@@ -14,15 +14,18 @@ namespace DKProject
         [SerializeField] private StatElementSO _statSO;
         [SerializeField] private TextMeshProUGUI _name, _level, _value, _price;
         [SerializeField] private Button _button;
-        [SerializeField] private int _defaultPrice, _PriceIncreaseValue;
-        [SerializeField] private int _defaultUpgrade, _upgradeIncreaseValue;
+        [SerializeField] private float _defaultPrice, _priceIncreaseValue;
+        [SerializeField] private float _defaultUpgrade, _upgradeIncreaseValue;
+        [SerializeField] private string _mexLevel;
+        private BigInteger _mexLevelValue;
 
         private StatDictionary _playerStatDictionary;
 
-        private int _levelValue;
+        private BigInteger _levelValue;
 
         private void Start()
         {
+            _mexLevelValue = string.IsNullOrEmpty(_mexLevel) ? -1 : BigInteger.Parse(_mexLevel);
             _levelValue = 1;
             _name.text = _statSO.displayName;
             _playerStatDictionary = PlayerManager.Instance.Player.GetCompo<EntityStat>().StatDictionary;
@@ -31,13 +34,17 @@ namespace DKProject
             _button.OnClickEvent += HandleClickEvent;
         }
 
-        private int GetPrice()
+        private BigInteger GetPrice()
         {
-            return Mathf.CeilToInt(_defaultPrice + (_levelValue - 1) * _PriceIncreaseValue);
+            return ((ulong)(10000 * _defaultPrice) + (_levelValue - 1) * (ulong)(10000 * _priceIncreaseValue)) / 10000;
         }
-        private int GetUpgradeValue()
+        private float GetUpgradeFloatValue()
         {
-            return Mathf.CeilToInt(_defaultUpgrade + (_levelValue - 1) * _upgradeIncreaseValue);
+            return _defaultUpgrade + ((ulong)_levelValue - 1) * _upgradeIncreaseValue;
+        }
+        private BigInteger GetUpgradeBigIntegerValue()
+        {
+            return ((ulong)(10000 * _defaultUpgrade) + (_levelValue - 1) * (ulong)(10000 * _upgradeIncreaseValue)) / 10000;
         }
 
         private void UpdateData()
@@ -46,17 +53,22 @@ namespace DKProject
             _price.text = $"{GetPrice()}";
             _value.text = _statSO.isBigInteger ?
                 _playerStatDictionary[_statSO].BigIntValue.ParseNumber() :
-                ((ulong)_playerStatDictionary[_statSO].IntValue).ParseNumber();
+                _playerStatDictionary[_statSO].Value.ToString();
         }
 
         private void HandleClickEvent()
         {
-            _levelValue++;
-            if (_statSO.isBigInteger)
-                _playerStatDictionary[_statSO].AddModify($"{_statSO.statName}.Upgrade", (BigInteger)GetUpgradeValue(), EModifyMode.Add, EModifyLayer.StatUp, false);
-            else
-                _playerStatDictionary[_statSO].AddModify($"{_statSO.statName}.Upgrade", (float)GetUpgradeValue(), EModifyMode.Add, EModifyLayer.StatUp, false);
-            UpdateData();
+            if (_mexLevelValue != -1 && _levelValue >= _mexLevelValue) return;
+
+            if (ResourceManager.TryRemoveResource(ResourceType.Gold, GetPrice()))
+            {
+                _levelValue++;
+                if (_statSO.isBigInteger)
+                    _playerStatDictionary[_statSO].AddModify($"{_statSO.statName}.Upgrade", GetUpgradeBigIntegerValue(), EModifyMode.Add, EModifyLayer.StatUp);
+                else
+                    _playerStatDictionary[_statSO].AddModify($"{_statSO.statName}.Upgrade", GetUpgradeFloatValue(), EModifyMode.Add, EModifyLayer.StatUp);
+                UpdateData();
+            }
         }
     }
 }

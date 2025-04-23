@@ -477,7 +477,9 @@ MonoBehaviour:
   _price: {fileID: 4764659168100673513}
   _button: {fileID: 4907086061661629682}
   _defaultPrice: 10
-  _increaseValue: 10
+  _PriceIncreaseValue: 10
+  _defaultUpgrade: 10
+  _upgradeIncreaseValue: 10
 --- !u!114 &4058431271083779479
 MonoBehaviour:
   m_ObjectHideFlags: 0

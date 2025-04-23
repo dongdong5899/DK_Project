@@ -1,5 +1,6 @@
 using DG.Tweening;
 using DKProject.Core;
+using System;
 using UnityEngine;
 
 namespace DKProject.UI
@@ -7,6 +8,9 @@ namespace DKProject.UI
     [RequireComponent(typeof(CanvasGroup))]
     public abstract class TogglePanel : ManagedUI, IToggleUI
     {
+        public Action onCompleteOpen;
+        public Action onCompleteClose;
+
         protected CanvasGroup _canvasGruop;
         [SerializeField] protected Button _outButton;
 

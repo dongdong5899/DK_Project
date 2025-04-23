@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statName: Defense
   displayName: "\uBC29\uC5B4\uB825"
-  minMaxValue: {x: 0, y: 50}
+  isBigInteger: 0
+  minMaxValue: {x: 0, y: 10000}
   statIcon: {fileID: 0}

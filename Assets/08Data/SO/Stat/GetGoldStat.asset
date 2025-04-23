@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statName: GetGold
   displayName: "\uD68D\uB4DD \uACE8\uB4DC\uB7C9"
-  minMaxValue: {x: 0, y: 100}
+  isBigInteger: 0
+  minMaxValue: {x: 0, y: 1000}
   statIcon: {fileID: 0}

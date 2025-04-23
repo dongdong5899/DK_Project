@@ -2,6 +2,7 @@ using DKProject.Core;
 using DKProject.Entities.Components;
 using DKProject.StatSystem;
 using DKProject.UI;
+using NUnit.Framework;
 using System;
 using System.Numerics;
 using TMPro;
@@ -49,8 +50,8 @@ namespace DKProject
 
         private void UpdateData()
         {
-            _level.text = $"{_levelValue} -> {_levelValue + 1}";
-            _price.text = $"{GetPrice()}";
+            _level.text = $"{_levelValue}LV -> <color=yellow>{_levelValue + 1}</color>LV";
+            _price.text = $"{GetPrice()}G";
             _value.text = _statSO.isBigInteger ?
                 _playerStatDictionary[_statSO].BigIntValue.ParseNumber() :
                 _playerStatDictionary[_statSO].Value.ToString();

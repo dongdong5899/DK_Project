@@ -1,4 +1,4 @@
-using DKProject.Stage;
+using DKProject.Chapter;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,28 +8,32 @@ namespace DKProject.UI
     public class StageIndicator : MonoBehaviour
     {
         public StageSelectButton stageButtonPf;
-        private List<StageSelectButton> buttonList;
 
-        public void OnSelectChapter(ChapterSO chapter)
+        private List<StageSelectButton> _buttonList;
+
+        public void OnSelectChapter(ChapterSO chapter, int chapterIndex)
         {
-            if (buttonList != null)
-                buttonList.ForEach(button => Destroy(button.gameObject));
+            if (_buttonList != null)
+                _buttonList.ForEach(button => Destroy(button.gameObject));
 
-            buttonList = new List<StageSelectButton>();
+            _buttonList = new List<StageSelectButton>();
 
-            chapter.stageList.ForEach(stage =>
+            for(int i = 0; i < chapter.stageList.Count; i++)
             {
+                StageSO stage = chapter.stageList[i];
+                int stageIndex = i;
+
                 StageSelectButton button = Instantiate(stageButtonPf, transform);
-                button.OnClickEvent += () => OnSelectStage(stage);
+                button.OnClickEvent += () => OnSelectStage(chapterIndex, stageIndex);
                 button.Init(stage);
 
-                buttonList.Add(button);
-            });
+                _buttonList.Add(button);
+            }
         }
 
-        public void OnSelectStage(StageSO stage)
+        public void OnSelectStage(int chapterIndex, int stageIndex)
         {
-
+            ChapterManager.Instance.LoadStage(chapterIndex, stageIndex);
         }
     }
 }

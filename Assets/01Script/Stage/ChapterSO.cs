@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DKProject.Stage
+namespace DKProject.Chapter
 {
     [CreateAssetMenu(menuName = "SO/Stage/ChapterSO")]
     public class ChapterSO : ScriptableObject

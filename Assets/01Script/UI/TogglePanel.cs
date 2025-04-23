@@ -1,10 +1,14 @@
 using DKProject.Core;
+using System;
 using UnityEngine;
 
 namespace DKProject.UI
 {
     public abstract class TogglePanel : ManagedUI, IToggleUI
     {
+        public Action onCompleteOpen;
+        public Action onCompleteClose;
+
         protected CanvasGroup _canvasGruop;
         [SerializeField] protected Button _outButton;
 
@@ -20,6 +24,7 @@ namespace DKProject.UI
             _canvasGruop.blocksRaycasts = true;
             _canvasGruop.interactable = true;
             _outButton.gameObject.SetActive(true);
+            onCompleteOpen?.Invoke();
         }
 
         public virtual void Close()
@@ -28,6 +33,7 @@ namespace DKProject.UI
             _canvasGruop.blocksRaycasts = false;
             _canvasGruop.interactable = false;
             _outButton.gameObject.SetActive(false);
+            onCompleteClose?.Invoke();
         }
     }
 }

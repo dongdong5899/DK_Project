@@ -15,4 +15,10 @@ MonoBehaviour:
   stageName: MINGMING
   stageBGSprite: {fileID: 9131157121582701348, guid: 1a712933a712f0143aaf098faf9fed48, type: 3}
   recommendCombat: 5678
-  stagePrefab: {fileID: 0}
+  stageRef:
+    m_AssetGUID: bf1596c1bfa151941a86d1e881c44d62
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  appearingEnemy: 

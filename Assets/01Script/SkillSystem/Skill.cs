@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 using DKProject.Entities.Players;
 using DKProject.StatSystem;
 using DG.Tweening;
+using DKProject.Core;
 
 namespace DKProject.SkillSystem
 {
@@ -19,8 +20,7 @@ namespace DKProject.SkillSystem
         protected bool _isPassiveSkill,_isDOTSkill;
         protected float _currentCoolTime;
         protected bool _isUseSkill = true;
-        protected int _skillLevel = 1;
-        protected bool _unlockSkill = false;
+        protected SkillData _skillData;
         protected BigInteger _currentDamage;
         protected EntityStat _statCompo;
         protected LayerMask _whatIsTarget;
@@ -29,7 +29,6 @@ namespace DKProject.SkillSystem
         public virtual void Init(Entity owner,SkillSO SO)
         {
             _owner = owner;
-            Debug.Log(_owner);
             SkillSO = SO;
             _whatIsTarget = LayerMask.GetMask("Enemy");
             _skillCoolTime = SkillSO.currentCoolDown;
@@ -37,6 +36,7 @@ namespace DKProject.SkillSystem
             _isDOTSkill = SkillSO.damageType == DamageType.DOT;
             _statCompo = owner.GetCompo<EntityStat>();
             _player = owner as Player;
+            _skillData = new SkillData();
         }
 
 
@@ -96,12 +96,12 @@ namespace DKProject.SkillSystem
 
         public virtual void LevelUpSkill()
         {
-            _skillLevel++;
+            _skillData.skillLevel++;
         }
 
         public virtual void UnlockSkill()
         {
-            _unlockSkill = true;
+            _skillData.isUnlock = true;
         }
 
         public virtual BigInteger DamageCalculation()
@@ -111,7 +111,7 @@ namespace DKProject.SkillSystem
             {
                 playerAttackDamage *= (SkillSO.dotAttackMinus / 100);
             }
-            _currentDamage = (BigInteger)(((SkillSO.playerBaseSkillPercent + (_skillLevel * SkillSO.playerUpgradeSkillPercent))/100) * playerAttackDamage);
+            _currentDamage = (BigInteger)(((SkillSO.playerBaseSkillPercent + (_skillData.skillLevel * SkillSO.playerUpgradeSkillPercent))/100) * playerAttackDamage);
             Debug.Log(playerAttackDamage);
             float random = Random.Range(0f, 100f);
 

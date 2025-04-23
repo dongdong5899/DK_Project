@@ -1,11 +1,9 @@
-using DKProject.Core.Pool;
-using DKProject.SkillSystem.Skills;
 using Doryu.CustomAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace DKProject.SkillSystem.Skills
+namespace DKProject.SkillSystem
 {
     [CreateAssetMenu(fileName = "SkillList", menuName = "SO/Skill/SkillList")]
     public class SkillList : ScriptableObject

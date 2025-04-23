@@ -20,7 +20,6 @@ namespace DKProject.Entities.Players
         private StatElement _attackDamageStat;
         private float _lastAttackTime;
         [SerializeField] private SkillSO _testSkillSO;
-
         public bool IsCanAttack()
             => _lastAttackTime + 1f / _attackSpeedStat.Value < Time.time;
         public void CheckAttackTime()

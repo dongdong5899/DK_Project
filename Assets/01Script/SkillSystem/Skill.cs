@@ -20,7 +20,6 @@ namespace DKProject.SkillSystem
         protected bool _isPassiveSkill,_isDOTSkill;
         protected float _currentCoolTime;
         protected bool _isUseSkill = true;
-        protected SkillData _skillData;
         protected BigInteger _currentDamage;
         protected EntityStat _statCompo;
         protected LayerMask _whatIsTarget;
@@ -36,7 +35,6 @@ namespace DKProject.SkillSystem
             _isDOTSkill = SkillSO.damageType == DamageType.Dot;
             _statCompo = owner.GetCompo<EntityStat>();
             _player = owner as Player;
-            _skillData = new SkillData();
         }
 
 
@@ -94,16 +92,6 @@ namespace DKProject.SkillSystem
         }
         public abstract Skill Clone();
 
-        public virtual void LevelUpSkill()
-        {
-            _skillData.skillLevel++;
-        }
-
-        public virtual void UnlockSkill()
-        {
-            _skillData.isUnlock = true;
-        }
-
         public virtual BigInteger DamageCalculation()
         {
             double playerAttackDamage = (double)_player.GetAttackDamage();
@@ -111,7 +99,7 @@ namespace DKProject.SkillSystem
             {
                 playerAttackDamage *= (SkillSO.skillDotAttackMinus / 100);
             }
-            _currentDamage = (BigInteger)(((SkillSO.baseSkillPercent + (_skillData.skillLevel * SkillSO.upgradeSkillPercent))/100) * playerAttackDamage);
+            _currentDamage = (BigInteger)(((SkillSO.baseSkillPercent + (SkillManager.Instance.GetSkillLevel(SkillSO) * SkillSO.upgradeSkillPercent))/100) * playerAttackDamage);
             Debug.Log(playerAttackDamage);
             float random = Random.Range(0f, 100f);
 

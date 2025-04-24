@@ -33,12 +33,11 @@ namespace DKProject.Core.Pool
             if(_pool.Count <= 0)
             {
                 obj = GameObject.Instantiate(_prefab.GameObject, _parent).transform.GetComponent<T>(); ;
-                //obj.PoolKey = _type; //TODO
                 obj.GameObject.name = _type.ToString();
             }
             else
             {
-                obj = _pool.Pop(); //스택에서 꺼내온다.
+                obj = _pool.Pop(); 
                 obj.GameObject.SetActive(true);
             }
             return obj;

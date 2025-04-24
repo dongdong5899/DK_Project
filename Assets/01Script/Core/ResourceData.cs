@@ -4,17 +4,14 @@ using System.Numerics;
 
 namespace DKProject.Core
 {
-    public static class ResourceManager
+    public static class ResourceData
     {
         public static ResourceSave save;
         public static event Action OnChangeValue;
 
         private static string fileName = "Resource";
 
-        // 다음 경험치 계산을 그냥 프로퍼티에 박아버려도 될 듯
-        public static BigInteger _nextRequireExp => save.level * 10;
-
-        static ResourceManager()
+        static ResourceData()
         {
             Load();
         }
@@ -31,11 +28,11 @@ namespace DKProject.Core
         {
             switch (resourceType)
             {
-                case ResourceType.EXP:
+                case ResourceType.SkillPoint:
                     {
-                        if (save.exp < value) return false;
+                        if (save.skillPoint < (uint)value) return false;
 
-                        save.exp -= value;
+                        save.skillPoint -= (uint)value;
                         break;
                     }
                 case ResourceType.Gold:
@@ -75,8 +72,8 @@ namespace DKProject.Core
         {
             switch (resource)
             {
-                case ResourceType.EXP:
-                    AddExp(value);
+                case ResourceType.SkillPoint:
+                    save.skillPoint += (uint)value;
                     break;
                 case ResourceType.Gold:
                     save.gold += value;
@@ -90,22 +87,6 @@ namespace DKProject.Core
             Save();
         }
 
-        public static void AddExp(BigInteger value)
-        {
-            save.exp += value;
-
-            if (save.exp >= _nextRequireExp)
-            {
-                save.level++;
-            }
-        }
-
-        public static void AddSkillPoint(uint value)
-        {
-            save.skillPoint -= value;
-            Save();
-        }
-
         #endregion
 
         #region ResourceGetter
@@ -114,8 +95,8 @@ namespace DKProject.Core
         {
             switch (resourceType)
             {
-                case ResourceType.EXP:
-                    return save.exp;
+                case ResourceType.SkillPoint:
+                    return save.skillPoint;
                 case ResourceType.Gold:
                     return save.gold;
                 case ResourceType.Diamond:
@@ -127,9 +108,6 @@ namespace DKProject.Core
 
         public static uint GetSkillPoint()
             => save.skillPoint;
-
-        public static uint GetLevel()
-            => save.level;
 
         #endregion
 
@@ -153,7 +131,7 @@ namespace DKProject.Core
 
     public enum ResourceType
     {
-        EXP,
+        SkillPoint,
         Gold,
         Diamond,
     }

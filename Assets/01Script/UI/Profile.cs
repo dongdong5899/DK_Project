@@ -1,9 +1,6 @@
 using DKProject.Core;
-using System.Collections;
 using TMPro;
-using Unity.Properties;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace DKProject.UI
 {
@@ -15,20 +12,21 @@ namespace DKProject.UI
         [SerializeField] private Slider _expSlider;
         [SerializeField] private Slider _hpSlider;
 
-        private void OnEnable()
+        private void Awake()
         {
-            ResourceManager.OnChangeValue += UpdateValue;
+            ResourceData.OnChangeValue += UpdateValue;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
-            ResourceManager.OnChangeValue -= UpdateValue;
+            ResourceData.OnChangeValue -= UpdateValue;
         }
 
         public void UpdateValue()
         {
-            _nameText.SetText($"{ResourceManager.GetLevel()}. 饭坷快具");
-            ResourceManager.GetResource(ResourceType.EXP);
+            _nameText.SetText($"{PlayerManager.Instance.GetLevel()}. 饭坷快具");
+            _expSlider.SetAmount((float)PlayerManager.Instance.GetExp() / PlayerManager.Instance.NextRequireExp);
         }
     }
 }
+ 

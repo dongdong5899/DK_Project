@@ -12,7 +12,7 @@ namespace DKProject.Core
         public Dictionary<SkillSO, SkillData> skillDictionary;
         public event Action OnChangeValue;
         [SerializeField] private SkillListSO _skillList;
-        private string fileName = "Skill";
+        private string _fileName = "Skill";
 
         protected override void CreateInstance()
         {
@@ -36,13 +36,13 @@ namespace DKProject.Core
 
         public void Save()
         {
-            save.SaveJson<SkillSave>(fileName);
+            save.SaveJson<SkillSave>(_fileName);
         }
 
         private void Load()
         {
             save = new SkillSave();
-            if (save.LoadJson<SkillSave>(fileName) == false)
+            if (save.LoadJson<SkillSave>(_fileName) == false)
             {
                 save.ResetData();
                 Init(_skillList);

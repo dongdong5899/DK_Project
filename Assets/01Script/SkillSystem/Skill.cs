@@ -8,16 +8,19 @@ using DKProject.Entities.Players;
 using DKProject.StatSystem;
 using DG.Tweening;
 using DKProject.Core;
+using System;
+using System.Collections.Generic;
 
 namespace DKProject.SkillSystem
 {
+    [Serializable]
     public abstract class Skill
     {
         public SkillSO SkillSO { get; private set; }
         protected Entity _owner;
         protected float _prevSkillTime;
         protected float _skillCoolTime;
-        protected bool _isPassiveSkill,_isDOTSkill;
+        protected bool _isPassiveSkill,_isDotSkill;
         protected float _currentCoolTime;
         protected bool _isUseSkill = true;
         protected BigInteger _currentDamage;
@@ -32,7 +35,7 @@ namespace DKProject.SkillSystem
             _whatIsTarget = LayerMask.GetMask("Enemy");
             _skillCoolTime = SkillSO.coolDown;
             _isPassiveSkill = SkillSO.skillType == SkillType.Passive;
-            _isDOTSkill = SkillSO.damageType == DamageType.Dot;
+            _isDotSkill = SkillSO.damageType == DamageType.Dot;
             _statCompo = owner.GetCompo<EntityStat>();
             _player = owner as Player;
         }
@@ -84,29 +87,26 @@ namespace DKProject.SkillSystem
         public virtual void OnEquipSkill()
         {
             _prevSkillTime = Time.time;
-            AddEffect(_owner);
+            AddEffect(_owner,SkillSO.equipEffects);
         }
 
         public virtual void OnUnEquipSkill()
         {
-            RemoveEffect(_owner);
+            RemoveEffect(_owner, SkillSO.equipEffects);
         }
 
         public virtual void UnlockSkill()
         {
-            AddEffect(_owner);
+            AddEffect(_owner, SkillSO.unlockEffects);
         }
 
         public abstract Skill Clone();
 
-        public virtual BigInteger DamageCalculation()
+        List<Action<double>> sdasd;
+
+        public virtual BigInteger DamageCalculation(double playerAttackDamage)
         {
-            double playerAttackDamage = (double)_player.GetAttackDamage();
-            if (_isDOTSkill)
-            {
-                playerAttackDamage *= (SkillSO.skillDotAttackMinus / 100);
-            }
-            _currentDamage = (BigInteger)(((SkillSO.baseSkillPercent + (SkillManager.Instance.GetSkillLevel(SkillSO) * SkillSO.upgradeSkillPercent))/100) * playerAttackDamage);
+            _currentDamage = (BigInteger)((SkillSO.baseSkillPercent + (SkillManager.Instance.GetSkillLevel(SkillSO) * SkillSO.upgradeSkillPercent))/100 * playerAttackDamage);
             Debug.Log(playerAttackDamage);
             float random = Random.Range(0f, 100f);
 
@@ -117,12 +117,12 @@ namespace DKProject.SkillSystem
             return _currentDamage;
         }
 
-        public void AddEffect(Entity target)
+        public void AddEffect(Entity target, List<EffectSO> effectList)
         {
             var statComponent = target.GetCompo<EntityStat>();
 
 
-            foreach (var effectSO in SkillSO.buffEffects)
+            foreach (var effectSO in effectList)
             {
                 string effectTypeKey = effectSO.effectType.ToString();
                 foreach (var effect in effectSO.effects)
@@ -145,16 +145,16 @@ namespace DKProject.SkillSystem
                 }
                 if (effectSO.isEffectTime)
                 {
-                    DOVirtual.DelayedCall(effectSO.effectTime, ()=> RemoveEffect(target));
+                    DOVirtual.DelayedCall(effectSO.effectTime, ()=> RemoveEffect(target, effectList));
                 }
             }
         }
 
-        public void RemoveEffect(Entity target)
+        public void RemoveEffect(Entity target, List<EffectSO> effectList)
         {
             var statComponent = target.GetCompo<EntityStat>();
 
-            foreach (var effectSO in SkillSO.buffEffects)
+            foreach (var effectSO in effectList)
             {
                 string effectTypeKey = effectSO.effectType.ToString();
 

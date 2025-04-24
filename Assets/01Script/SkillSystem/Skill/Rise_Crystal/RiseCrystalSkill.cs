@@ -5,7 +5,7 @@ namespace DKProject.SkillSystem.Skills
 {
     public class RiseCrystalSkill : Skill
     {
-        
+        [SerializeField] private float _lifeTime;
 
         public override void UseSkill()
         {
@@ -15,7 +15,7 @@ namespace DKProject.SkillSystem.Skills
 
             riseCrystal.transform.position = targets[0].transform.position;
 
-            riseCrystal.Setting(_whatIsTarget, DamageCalculation(), SkillSO.lifeTime);
+            riseCrystal.Setting(_whatIsTarget, DamageCalculation((double)_player.GetAttackDamage()), _lifeTime);
         }
 
 

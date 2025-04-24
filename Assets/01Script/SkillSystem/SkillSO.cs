@@ -23,22 +23,19 @@ namespace DKProject.SkillSystem
         public DamageType damageType;
 
         [Header("SkillStat")]
-        public float lifeTime;
         public float coolDown;
-        public byte skillCount;
         public float skillRange;
         public float skillAreaRadius;
         public float baseSkillPercent;
         public float upgradeSkillPercent;
-        public float skillprojectileSpeed;
-        public float skillDotAttackMinus;
+        public float skillDotAttackReduction;
 
         [Header("Effect")]
         public List<EffectSO> unlockEffects;
         public List<EffectSO> equipEffects;
-        public List<EffectSO> buffEffects;
+        
 
-        public Skill skill;
+        [SerializeReference] public Skill skill;
 
         private void OnEnable()
         {

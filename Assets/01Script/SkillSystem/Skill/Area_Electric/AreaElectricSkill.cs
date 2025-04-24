@@ -25,7 +25,11 @@ namespace DKProject.SkillSystem.Skills
                 }
 
                 if(closeTarget.transform.TryGetComponent(out Entity entity))
-                    entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation());
+                {
+                    double damage = (double)_player.GetAttackDamage();
+                    damage *= SkillSO.skillDotAttackReduction / 100;
+                    entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation(damage));
+                }
             }
 
         }

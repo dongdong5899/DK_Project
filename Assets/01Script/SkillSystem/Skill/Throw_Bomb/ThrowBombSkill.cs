@@ -6,12 +6,14 @@ namespace DKProject.SkillSystem.Skills
 {
     public class ThrowBombSkill : Skill
     {
-
+        [SerializeField] private float _lifeTime;
+        [SerializeField] private float _skillProjectileSpeed;
+        [SerializeField] private byte _skillCount;
         public override void UseSkill()
         {
             Sequence sequence = DOTween.Sequence();
 
-            for (byte i = 0; i < SkillSO.skillCount; i++)
+            for (byte i = 0; i < _skillCount; i++)
             {
                 sequence.AppendCallback(() =>
                 {
@@ -26,9 +28,9 @@ namespace DKProject.SkillSystem.Skills
                     throwBomb.Setting(
                         targets[0].transform.position,
                         _whatIsTarget,
-                        DamageCalculation(),
-                        SkillSO.lifeTime,
-                        SkillSO.skillprojectileSpeed
+                        DamageCalculation((double)_player.GetAttackDamage()),
+                        _lifeTime,
+                        _skillProjectileSpeed
                     );
                 });
 

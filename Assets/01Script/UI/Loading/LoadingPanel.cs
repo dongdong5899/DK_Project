@@ -4,7 +4,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace DKProject.UI
 {
-    public class LoadingPanel : TogglePanel
+    public class LoadingPanel : ToggleUI
     {
         public override string Key => "LoadingPanel";
 

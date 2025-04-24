@@ -6,7 +6,7 @@ using UnityEngine;
 namespace DKProject.UI
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public abstract class TogglePanel : ManagedUI, IToggleUI
+    public abstract class ToggleUI : ManagedUI, IToggleUI
     {
         public Action onCompleteOpen;
         public Action onCompleteClose;

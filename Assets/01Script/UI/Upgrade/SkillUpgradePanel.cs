@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace DKProject
 {
-    public class SkillUpgradePanel : TogglePanel
+    public class SkillUpgradePanel : ToggleUI
     {
         public override string Key => nameof(SkillUpgradePanel);
 

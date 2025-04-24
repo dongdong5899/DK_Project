@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace DKProject.UI
 {
-    public abstract class OutAreaToggleUI : TogglePanel
+    public abstract class OutAreaToggleUI : ToggleUI
     {
         [SerializeField] protected Button _outButton;
 

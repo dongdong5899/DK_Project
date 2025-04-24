@@ -10,7 +10,7 @@ namespace DKProject
         [SerializeField] private TogglePanelInfo[] _togglePanelInfo;
         [SerializeField] private Color _enableBtnColor, _disableBtnColor;
 
-        private TogglePanel _selectedPanel;
+        private ToggleUI _selectedPanel;
         private Image _image;
 
         private void Start()
@@ -28,7 +28,7 @@ namespace DKProject
             }
         }
 
-        public void ClickButton(TogglePanel togglePanel, Image image)
+        public void ClickButton(ToggleUI togglePanel, Image image)
         {
             if (_selectedPanel == togglePanel) return;
 

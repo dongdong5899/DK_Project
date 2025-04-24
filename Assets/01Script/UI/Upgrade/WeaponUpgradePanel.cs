@@ -1,6 +1,6 @@
 namespace DKProject.UI
 {
-    public class WeaponUpgradePanel : TogglePanel
+    public class WeaponUpgradePanel : ToggleUI
     {
         public override string Key => nameof(WeaponUpgradePanel);
 

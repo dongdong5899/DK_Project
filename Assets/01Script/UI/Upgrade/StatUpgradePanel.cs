@@ -1,6 +1,6 @@
 namespace DKProject.UI
 {
-    public class StatUpgradePanel : TogglePanel
+    public class StatUpgradePanel : ToggleUI
     {
         public override string Key => nameof(StatUpgradePanel);
 

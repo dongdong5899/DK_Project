@@ -10,7 +10,7 @@ namespace DKProject.UI
         public override string Key => nameof(ButtonGroupPanel);
 
         [SerializeField] private List<TogglePanelInfo> _buttons;
-        private TogglePanel _selectedPanel = null;
+        private ToggleUI _selectedPanel = null;
 
 
         private void Awake()
@@ -21,7 +21,7 @@ namespace DKProject.UI
             }
         }
 
-        public void SelectButton(TogglePanel panel = null)
+        public void SelectButton(ToggleUI panel = null)
         {
             if (_selectedPanel == panel || panel == null)
             {
@@ -48,6 +48,6 @@ namespace DKProject.UI
     public struct TogglePanelInfo
     {
         public Button button;
-        public TogglePanel panel;
+        public ToggleUI panel;
     }
 }

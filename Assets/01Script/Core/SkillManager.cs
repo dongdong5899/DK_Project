@@ -20,6 +20,11 @@ namespace DKProject.Core
             SkillDictionarySet();
         }
 
+        private void Awake()
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+
         public void Init(SkillListSO list)
         {
             foreach(SkillSO skillSO in list.GetList())

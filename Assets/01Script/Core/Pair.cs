@@ -14,15 +14,24 @@ public class Pair<T, U>
 
     public U FindPair(T key)
     {
-        if (key.Equals(first))
+        if (key != null && key.Equals(first))
             return second;
         else
             return default;
     }
     public T FindPair(U key)
     {
-        if (key.Equals(second))
+        if (key != null && key.Equals(second))
             return first;
+        else
+            return default;
+    }
+    public V FindSameTypePair<V>(V key)
+    {
+        if (key != null && key.Equals(second) && first is V firstResult)
+            return firstResult;
+        if (key != null && key.Equals(first) && second is V secondResult)
+            return secondResult;
         else
             return default;
     }

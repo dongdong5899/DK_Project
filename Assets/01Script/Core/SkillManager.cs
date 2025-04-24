@@ -13,15 +13,13 @@ namespace DKProject.Core
         public event Action OnChangeValue;
         [SerializeField] private SkillListSO _skillList;
         private string fileName = "Skill";
-        public SkillManager()
+
+        protected override void CreateInstance()
         {
+            base.CreateInstance();
             Load();
             skillDictionary = new Dictionary<SkillSO, SkillData>();
             SkillDictionarySet();
-        }
-
-        private void Awake()
-        {
             DontDestroyOnLoad(this.gameObject);
         }
 

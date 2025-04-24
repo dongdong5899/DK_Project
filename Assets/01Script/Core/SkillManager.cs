@@ -1,4 +1,5 @@
 using DKProject.SkillSystem;
+using DKProject.UI;
 using Doryu.JBSave;
 using System;
 using System.Collections.Generic;
@@ -30,19 +31,21 @@ namespace DKProject.Core
                 SkillData skilldata = new SkillData();
                 skilldata.isUnlock = false;
                 skilldata.skillLevel = 1;
+                skilldata.skillCount = 0;
+                skilldata.skillRevolutionLevel = 1;
                 save.skillDataBase.Add(new Pair<SkillSO, SkillData>(skillSO, skilldata));
             }
         }
 
         public void Save()
         {
-            save.SaveJson<SkillSave>(fileName);
+            save.SaveJson(fileName);
         }
 
         private void Load()
         {
             save = new SkillSave();
-            if (save.LoadJson<SkillSave>(fileName) == false)
+            if (save.LoadJson(fileName) == false)
             {
                 save.ResetData();
                 Init(_skillList);
@@ -122,6 +125,16 @@ namespace DKProject.Core
             return 0;
         }
 
+        public int GetSkillRevolutionLevel(SkillSO skillSO)
+        {
+            if (skillDictionary.TryGetValue(skillSO, out var data))
+            {
+                return data.skillRevolutionLevel;
+            }
+            return 0;
+        }
+
+
         private void UpdateSkillData(SkillSO skillName, SkillData data)
         {
             for (int i = 0; i < save.skillDataBase.Count; i++)
@@ -134,6 +147,32 @@ namespace DKProject.Core
             }
         }
 
+        public bool TrySkiilLevelUp(SkillSO skillSO)
+        {
+            uint skillPointRequired = 1; // 1 부분 수식으로 바꿀예정
+            if (skillDictionary.TryGetValue(skillSO, out var data))
+            {
+                data.skillLevel++;
+            }
+            return ResourceManager.TryRemoveSkillPoint(skillPointRequired);
+        }
+
+        public bool TrySkillRevolution(SkillSO skillSO)
+        {
+            if (skillDictionary.TryGetValue(skillSO, out var data))
+            {
+                int skillCountRequired = data.skillRevolutionLevel*5; //수식으로 대체예정
+                if (data.skillCount >= skillCountRequired)
+                {
+                    data.skillCount -= skillCountRequired;
+                    data.skillRevolutionLevel++;
+                    return true;
+                }
+                else
+                    return false;
+            }
+            return false;
+        }
 
     }
 }

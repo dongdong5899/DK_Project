@@ -102,7 +102,6 @@ namespace DKProject.SkillSystem
 
         public abstract Skill Clone();
 
-        List<Action<double>> sdasd;
 
         public virtual BigInteger DamageCalculation(double playerAttackDamage)
         {

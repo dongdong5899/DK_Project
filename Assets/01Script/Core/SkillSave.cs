@@ -37,5 +37,7 @@ namespace DKProject.Core
     {
         public bool isUnlock;
         public int skillLevel;
+        public int skillCount;
+        public int skillRevolutionLevel;
     }
 }

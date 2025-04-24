@@ -6,6 +6,16 @@ namespace DKProject.SkillSystem.Skills
 {
     public class AreaElectricSkill : Skill
     {
+
+        private double _damage;
+
+
+        public override void Init(Entity owner, SkillSO SO)
+        {
+            base.Init(owner, SO);
+            _damage = (double)_player.GetAttackDamage() * SkillSO.skillDotAttackReduction / 100;
+        }
+
         public override void UseSkill()
         {
             RaycastHit2D[] targets = Physics2D.CircleCastAll(_owner.transform.position, SkillSO.skillRange,Vector2.zero,0,_whatIsTarget);
@@ -26,9 +36,7 @@ namespace DKProject.SkillSystem.Skills
 
                 if(closeTarget.transform.TryGetComponent(out Entity entity))
                 {
-                    double damage = (double)_player.GetAttackDamage();
-                    damage *= SkillSO.skillDotAttackReduction / 100;
-                    entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation(damage));
+                    entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation(_damage));
                 }
             }
 

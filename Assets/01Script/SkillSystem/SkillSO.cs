@@ -34,7 +34,9 @@ namespace DKProject.SkillSystem
         public float skillDotAttackMinus;
 
         [Header("Effect")]
-        public List<EffectSO> effects;
+        public List<EffectSO> unlockEffects;
+        public List<EffectSO> equipEffects;
+        public List<EffectSO> buffEffects;
 
         public Skill skill;
 

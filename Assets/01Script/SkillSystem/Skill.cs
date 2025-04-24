@@ -84,12 +84,19 @@ namespace DKProject.SkillSystem
         public virtual void OnEquipSkill()
         {
             _prevSkillTime = Time.time;
+            AddEffect(_owner);
         }
 
         public virtual void OnUnEquipSkill()
         {
-
+            RemoveEffect(_owner);
         }
+
+        public virtual void UnlockSkill()
+        {
+            AddEffect(_owner);
+        }
+
         public abstract Skill Clone();
 
         public virtual BigInteger DamageCalculation()
@@ -115,7 +122,7 @@ namespace DKProject.SkillSystem
             var statComponent = target.GetCompo<EntityStat>();
 
 
-            foreach (var effectSO in SkillSO.effects)
+            foreach (var effectSO in SkillSO.buffEffects)
             {
                 string effectTypeKey = effectSO.effectType.ToString();
                 foreach (var effect in effectSO.effects)
@@ -147,7 +154,7 @@ namespace DKProject.SkillSystem
         {
             var statComponent = target.GetCompo<EntityStat>();
 
-            foreach (var effectSO in SkillSO.effects)
+            foreach (var effectSO in SkillSO.buffEffects)
             {
                 string effectTypeKey = effectSO.effectType.ToString();
 

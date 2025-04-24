@@ -7,24 +7,20 @@ namespace DKProject
 {
     public class InvenSkill : InvenSlot
     {
-        private SkillSO _skillSO;
-
         protected override void Awake()
         {
             base.Awake();
         }
 
-        public void SetSkillSO(SkillSO skillSO)
-        {
-            _skillSO = skillSO;
-            _icon.sprite = _skillSO.icon;
-        }
-
         protected override void HandleClickEvent()
         {
-            Debug.Log("Skill");
             DataPopUpUI dataPopUpUI = UIManager.Instance.OpenUI(nameof(DataPopUpUI)) as DataPopUpUI;
-            dataPopUpUI.SetItem(_skillSO);
+            dataPopUpUI.SetItem(this);
+        }
+
+        public override void UpdateLevel()
+        {
+            _level.text = $"{SkillManager.Instance.GetSkillLevel(SkillSO)}";
         }
     }
 }

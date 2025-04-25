@@ -19,14 +19,15 @@ namespace DKProject.Entities.Enemies
         private StatElement _attackSpeedStat;
         private float _lastAttackTime;
 
+        [SerializeField] private List<Pair<ResourceType, Pair<int, string>>> _dropResourcesData;
+        [SerializeField] private ulong _dropExp;
+
+        public Action<Enemy> OnDieEvent;
+
         #region Pooling
         public GameObject GameObject => gameObject;
         public Enum PoolEnum => _poolingType;
         [SerializeField] private EnemyPoolingType _poolingType;
-
-        [SerializeField] private List<Pair<ResourceType, Pair<int, string>>> _dropResourcesData;
-
-        public Action<Enemy> OnDieEvent;
 
         public void OnPop()
         {
@@ -81,6 +82,7 @@ namespace DKProject.Entities.Enemies
                     droppedResource.Init(dropResourcePair.first, BigInteger.Parse(dropResourcePair.second.second), Random.insideUnitCircle * Random.Range(0f, itemDropPower));
                 }
             }
+            PlayerManager.Instance.AddExp(_dropExp);
         }
 
         protected override void AfterInitComponents()

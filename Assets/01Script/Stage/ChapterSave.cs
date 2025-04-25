@@ -12,10 +12,11 @@ namespace DKProject.Chapter
         public int chapterProgress;
         public int currentStage;
 
-        public void OnLoadData(ChapterSave classData)
+        public bool OnLoadData(ChapterSave classData)
         {
-            if (classData == null) return;
+            if (classData == null) return false;
             chapterProgress = classData.chapterProgress;
+            return true;
         }
 
         public void OnSaveData(string savedFileName)

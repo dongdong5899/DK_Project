@@ -12,13 +12,15 @@ namespace DKProject.Core
         public BigInteger gold;
         public BigInteger diamond;
 
-        public void OnLoadData(ResourceSave classData)
+        public bool OnLoadData(ResourceSave classData)
         {
-            if (classData == null) return;
+            if (classData == null) return false;
 
             skillPoint = classData.skillPoint;
             gold = BigInteger.Parse(classData.goldStr);
             diamond = BigInteger.Parse(classData.diamondStr);
+
+            return true;
         }
 
         public void OnSaveData(string savedFileName)

@@ -7,10 +7,12 @@ namespace DKProject
         public uint level;
         public ulong exp;
 
-        public void OnLoadData(PlayerSave classData)
+        public bool OnLoadData(PlayerSave classData)
         {
             level = classData.level;
             exp = classData.exp;
+
+            return true;
         }
 
         public void OnSaveData(string savedFileName)

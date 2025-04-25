@@ -40,8 +40,7 @@ namespace Doryu.JBSave
                 //Json to class
                 T res = JsonUtility.FromJson<T>(json);
                 //loadClass = res;
-                loadClass.OnLoadData(res);
-                return true;
+                return loadClass.OnLoadData(res);
             }
             else
             {

@@ -14,13 +14,28 @@ namespace DKProject.Core
         [SerializeField] private SkillListSO _skillList;
         private string _fileName = "Skill";
 
-        protected override void CreateInstance()
+        private bool _isInitialized;
+
+        private void Awake()
         {
-            base.CreateInstance();
+            Initialized();
+        }
+
+        private void Initialized()
+        {
+            if (_isInitialized) return;
+
+            _isInitialized = true;
             Load();
             skillDictionary = new Dictionary<SkillSO, SkillData>();
             SkillDictionarySet();
             DontDestroyOnLoad(this.gameObject);
+        }
+
+        protected override void CreateInstance()
+        {
+            base.CreateInstance();
+            Initialized();
         }
 
         public void Init(SkillListSO list)
@@ -36,18 +51,17 @@ namespace DKProject.Core
 
         public void Save()
         {
-            save.SaveJson<SkillSave>(_fileName);
+            save.SaveJson(_fileName);
         }
 
         private void Load()
         {
             save = new SkillSave();
-            if (save.LoadJson<SkillSave>(_fileName) == false)
+            if (save.LoadJson(_fileName) == false)
             {
                 save.ResetData();
                 Init(_skillList);
             }
-            
 
             OnChangeValue?.Invoke();
         }
@@ -59,6 +73,7 @@ namespace DKProject.Core
 
             foreach (var pair in save.skillDataBase)
             {
+                Debug.Log(pair.first);
                 if (!skillDictionary.ContainsKey(pair.first))
                 {
                     skillDictionary.Add(pair.first, pair.second);

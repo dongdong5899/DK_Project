@@ -743,8 +743,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1497647123
+  m_SortingLayer: 2
   m_SortingOrder: 12
   m_Sprite: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1889,6 +1889,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: cfa0b653e93ba8248a7ea6aee1bcde21, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3858319895464789770}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: cfa0b653e93ba8248a7ea6aee1bcde21, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2555213275954000429}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: cfa0b653e93ba8248a7ea6aee1bcde21, type: 3}
 --- !u!4 &1138746035421383430 stripped
 Transform:
@@ -2037,6 +2040,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 83f9007f51fe60f43a8d89c3994596df, type: 2}
   - {fileID: 11400000, guid: 996cc86b848a0c740b60be39f6369149, type: 2}
   - {fileID: 11400000, guid: 76b1889519f1f84439bee3fc81f47238, type: 2}
+--- !u!210 &2555213275954000429
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677908045355188830}
+  m_Enabled: 1
+  m_SortingLayerID: 1497647123
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!4 &8057676852969588477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 195969289763677470, guid: cfa0b653e93ba8248a7ea6aee1bcde21, type: 3}

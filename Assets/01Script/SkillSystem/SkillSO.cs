@@ -13,7 +13,7 @@ namespace DKProject.SkillSystem
         public string skillID;
         public string skillName;
         public Sprite icon;
-        public SkillRank skillRank;
+        public Rank skillRank;
         [TextArea]
         public string skillDescription;
 

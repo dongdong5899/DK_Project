@@ -1,15 +1,14 @@
-using UnityEngine;
-using DKProject.Entities;
-using System.Numerics;
-using DKProject.Entities.Components;
-using Vector2 = UnityEngine.Vector2;
-using Random = UnityEngine.Random;
-using DKProject.Entities.Players;
-using DKProject.StatSystem;
 using DG.Tweening;
 using DKProject.Core;
+using DKProject.Entities;
+using DKProject.Entities.Components;
+using DKProject.Entities.Players;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
+using UnityEngine;
+using Random = UnityEngine.Random;
+using Vector2 = UnityEngine.Vector2;
 
 namespace DKProject.SkillSystem
 {
@@ -20,7 +19,7 @@ namespace DKProject.SkillSystem
         protected Entity _owner;
         protected float _prevSkillTime;
         protected float _skillCoolTime;
-        protected bool _isPassiveSkill,_isDotSkill;
+        protected bool _isPassiveSkill, _isDotSkill;
         protected float _currentCoolTime;
         protected bool _isUseSkill = true;
         protected BigInteger _currentDamage;
@@ -28,7 +27,7 @@ namespace DKProject.SkillSystem
         protected LayerMask _whatIsTarget;
         protected Player _player;
 
-        public virtual void Init(Entity owner,SkillSO SO)
+        public virtual void Init(Entity owner, SkillSO SO)
         {
             _owner = owner;
             SkillSO = SO;
@@ -48,7 +47,7 @@ namespace DKProject.SkillSystem
                 UseSkill();
             }
 
-            if(_isPassiveSkill == false && _isUseSkill == true && RangeCheck())
+            if (_isPassiveSkill == false && _isUseSkill == true && RangeCheck())
             {
                 UseSkill();
                 _isUseSkill = false;
@@ -57,7 +56,7 @@ namespace DKProject.SkillSystem
 
         public virtual bool CoolTimeCheck()
         {
-            if(_prevSkillTime + _skillCoolTime < Time.time)
+            if (_prevSkillTime + _skillCoolTime < Time.time)
             {
                 _prevSkillTime = Time.time;
                 return true;
@@ -74,7 +73,7 @@ namespace DKProject.SkillSystem
         public float GetCurrentCoolTime()
         {
             //return (_prevSkillTime + _skillCoolTime / _attackSpeed.Value) - Time.time; 
-            return (_prevSkillTime + _skillCoolTime) - Time.time; 
+            return (_prevSkillTime + _skillCoolTime) - Time.time;
         }
 
         public void SetUseSkill(bool useSkill)
@@ -87,7 +86,7 @@ namespace DKProject.SkillSystem
         public virtual void OnEquipSkill()
         {
             _prevSkillTime = Time.time;
-            AddEffect(_owner,SkillSO.equipEffects);
+            AddEffect(_owner, SkillSO.equipEffects);
         }
 
         public virtual void OnUnEquipSkill()
@@ -106,7 +105,7 @@ namespace DKProject.SkillSystem
 
         public virtual BigInteger DamageCalculation(double playerAttackDamage)
         {
-            _currentDamage = (BigInteger)((SkillSO.baseSkillPercent + (SkillManager.Instance.GetSkillLevel(SkillSO) * SkillSO.upgradeSkillPercent))/100 * playerAttackDamage);
+            _currentDamage = (BigInteger)((SkillSO.baseSkillPercent + (SkillManager.Instance.GetSkillLevel(SkillSO) * SkillSO.upgradeSkillPercent)) / 100 * playerAttackDamage);
             Debug.Log(playerAttackDamage);
             float random = Random.Range(0f, 100f);
 
@@ -132,7 +131,7 @@ namespace DKProject.SkillSystem
                         effectTypeKey,
                         (BigInteger)effect.value,
                         effect.modifyMode,
-                        effect.modifyLayer );
+                        effect.modifyLayer);
                     else
                         statComponent.StatDictionary[effect.stat].AddModify(
                         effectTypeKey,
@@ -140,12 +139,12 @@ namespace DKProject.SkillSystem
                         effect.modifyMode,
                         effect.modifyLayer
                         );
-                    
+
                     Debug.Log(statComponent.StatDictionary[effect.stat].BigIntValue);
                 }
                 if (effectSO.isEffectTime)
                 {
-                    DOVirtual.DelayedCall(effectSO.effectTime, ()=> RemoveEffect(target, effectList));
+                    DOVirtual.DelayedCall(effectSO.effectTime, () => RemoveEffect(target, effectList));
                 }
             }
         }

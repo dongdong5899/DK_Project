@@ -93,15 +93,15 @@ namespace DKProject.Core
         {
             switch (skillSO.skillRank)
             {
-                case SkillRank.Common:
+                case Rank.Common:
                     return 1;
-                case SkillRank.Rare:
+                case Rank.Rare:
                     return 1;
-                case SkillRank.Unique:
+                case Rank.Unique:
                     return 2;
-                case SkillRank.Epic:
+                case Rank.Epic:
                     return 3;
-                case SkillRank.Legendary:
+                case Rank.Legendary:
                     return 5;
                 default:
                     return -1;

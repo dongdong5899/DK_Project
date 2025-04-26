@@ -53,9 +53,8 @@ namespace DKProject.SkillSystem
 
         public Skill GetSkill(Entity owner)
         {
-            Skill curSkill = skill.Clone();
-            curSkill.Init(owner, this);
-            return curSkill;
+            skill.Init(owner, this);
+            return skill;
         }
     }
 }

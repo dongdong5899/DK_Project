@@ -1,6 +1,4 @@
 using DKProject.SkillSystem;
-using DKProject.UI;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +9,7 @@ namespace DKProject
     public abstract class InvenSlot : MonoBehaviour
     {
         [SerializeField] protected Image _icon;
-        [SerializeField] protected TextMeshProUGUI _level;
+        [SerializeField] protected TextMeshProUGUI _level, _price;
         protected Button _button;
 
         public InvenSlot PrevSlot { get; private set; }

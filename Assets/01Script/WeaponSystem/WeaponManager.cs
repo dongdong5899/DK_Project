@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace DKProject.Weapon
 {
@@ -24,7 +23,6 @@ namespace DKProject.Weapon
             weaponDictionary = new SortedDictionary<WeaponSO, WeaponData>();
             WeaponDictionarySet();
             DontDestroyOnLoad(this.gameObject);
-            Debug.Log("create");
         }
 
         public void Init(WeaponListSO list)
@@ -80,7 +78,6 @@ namespace DKProject.Weapon
             if (!weaponDictionary[weaponSO].isUnlock)
                 data.isUnlock = true;
             weaponDictionary[weaponSO] = data;
-            Debug.Log($"add: {weaponSO.weaponName}, cnt:{data.weaponCount}, unlock: {data.isUnlock}");
 
             UpdateWeaponData(weaponSO, data);
             Save();
@@ -124,11 +121,8 @@ namespace DKProject.Weapon
         {
             if (!weaponDictionary.ContainsKey(weaponSO))
                 return;
-            if(mergingCount < 1)
-            {
-                Debug.Log("merge fail");
+            if (int.Parse(weaponSO.weaponID.Substring(1)) == weaponDictionary.Count)
                 return;
-            }
 
             int count = weaponDictionary[weaponSO].weaponCount;
 
@@ -137,7 +131,6 @@ namespace DKProject.Weapon
 
             weaponDictionary[weaponSO] = curWeapondata;
             UpdateWeaponData(weaponSO, curWeapondata);
-            Debug.Log($"curMerge: {weaponSO.weaponName}, curCnt: {curWeapondata.weaponCount}");
 
             WeaponSO nextWeaponSO = FindNextWeapon(weaponSO);
             if (nextWeaponSO != null)
@@ -149,7 +142,6 @@ namespace DKProject.Weapon
 
                 weaponDictionary[nextWeaponSO] = nextWeaponData;
                 UpdateWeaponData(nextWeaponSO, nextWeaponData);
-                Debug.Log($"nextMerge: {nextWeaponSO.weaponName}, curCnt: {nextWeaponData.weaponCount}");
             }
 
             if (!isAllMerge)

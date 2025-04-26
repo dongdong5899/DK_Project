@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
+  m_Name: BuffBanana
+  m_EditorClassIdentifier: 
+  skillID: ThrowBomb
+  skillName: "\uB358\uC9C0\uACE0 \uBCF4\uB2C8 \uD3ED\uD0C4"
+  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
+  skillRank: 1
+  skillDescription: "\uB545\uBC14\uB2E5\uC5D0 \uC788\uB294 \uBB34\uC5B8\uAC08 \uB358\uC84C\uB354\uB2C8
+    \uD391 \uD558\uACE0 \uD130\uC84C\uB2E4. \uC2E0\uAE30\uD558\uAC8C\uB3C4 \uD56D\uC0C1
+    \uB358\uC9C0\uBA74 \uC801\uC774 \uB9CE\uC740 \uACF3\uC73C\uB85C \uAC04\uB2E4."
+  skillType: 0
+  targetType: 1
+  damageType: 0
+  lifeTime: 0
+  coolDown: 0
+  skillCount: 0
+  skillRange: 0
+  skillAreaRadius: 0
+  baseSkillPercent: 0
+  upgradeSkillPercent: 0
+  skillprojectileSpeed: 0
+  skillDotAttackMinus: 0
+  effects: []

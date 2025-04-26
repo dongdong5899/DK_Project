@@ -5,7 +5,7 @@ namespace Doryu.JBSave
         /// <summary>
         /// Called when classdata is loaded
         /// </summary>
-        public void OnLoadData(T classData);
+        public bool OnLoadData(T classData);
         /// <summary>
         /// Called when classdata is saved
         /// </summary>

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: ShootBumerang
   m_EditorClassIdentifier: 
-  skillID: ShootBumerang
-  skillName: "\uB72C\uAE08\uC5C6\uC774 \uB358\uC838\uC9C4 \uBD80\uBA54\uB791"
+  itemID: 
+  itemName: 
   icon: {fileID: 0}
-  skillRank: 3
-  skillDescription: 
+  itemRank: 0
+  itemType: 0
+  itemDescription: 
   skillType: 0
   targetType: 0
   damageType: 0

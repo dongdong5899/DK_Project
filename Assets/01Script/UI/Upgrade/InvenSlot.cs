@@ -1,3 +1,4 @@
+using DKProject.Combat;
 using DKProject.SkillSystem;
 using TMPro;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace DKProject
 
         public InvenSlot PrevSlot { get; private set; }
         public InvenSlot NextSlot { get; private set; }
-        public SkillSO SkillSO { get; private set; }
+        public ItemSO ItemSO { get; private set; }
 
         protected virtual void Awake()
         {
@@ -22,12 +23,12 @@ namespace DKProject
             _button.OnClickEvent += HandleClickEvent;
         }
 
-        public void Init(InvenSlot prev, InvenSlot next, SkillSO skillSO)
+        public void Init(InvenSlot prev, InvenSlot next, ItemSO itemSO)
         {
             PrevSlot = prev;
             NextSlot = next;
-            SkillSO = skillSO;
-            _icon.sprite = skillSO.icon;
+            ItemSO = itemSO;
+            _icon.sprite = itemSO.icon;
             UpdateLevel();
         }
 

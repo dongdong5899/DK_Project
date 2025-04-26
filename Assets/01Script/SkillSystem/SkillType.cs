@@ -43,5 +43,10 @@ namespace DKProject.SkillSystem
     {
         Common, Rare, Epic, Unique, Legendary
     }
+
+    public enum ItemType
+    {
+        Skill,Weapon
+    }
 }
 

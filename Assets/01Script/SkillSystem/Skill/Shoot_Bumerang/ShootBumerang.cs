@@ -24,7 +24,7 @@ namespace DKProject.SkillSystem.Skills
         private Transform _owner,_target;
         private LayerMask _whatIsTarget;
         private BigInteger _damage;
-        [SerializeField] private List<Entity> _hitEntities = new();
+        private List<Entity> _hitEntities = new();
 
         private void Awake()
         {
@@ -69,11 +69,6 @@ namespace DKProject.SkillSystem.Skills
             Init(lifeTime, this);
             MoveTarget();
         }
-        public override void Init(float lifeTime, IPoolable poolItem)
-        {
-            base.Init(lifeTime, poolItem);
-            _hitEntities.Clear();
-        }
 
         public void MoveTarget()
         {
@@ -81,8 +76,9 @@ namespace DKProject.SkillSystem.Skills
             transform.DOMove(_target.position, moveTime).SetEase(Ease.OutCubic).OnComplete(() =>
             {
                 _hitEntities.Clear();
-                transform.DOMove(_owner.position, moveTime);
+                transform.DOMove(_owner.position, moveTime).OnComplete(()=> _hitEntities.Clear());
             });
+            
         }
 
     }

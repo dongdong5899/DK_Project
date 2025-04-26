@@ -1,4 +1,4 @@
-using Doryu.CustomAttributes;
+using DKProject.Combat;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,12 +6,8 @@ using UnityEngine;
 namespace DKProject.SkillSystem
 {
     [CreateAssetMenu(fileName = "SkillList", menuName = "SO/Skill/SkillList")]
-    public class SkillListSO : ScriptableObject
+    public class SkillListSO : ItemListSO
     {
-        [VisibleInspectorSO]
-        [SerializeField] private List<SkillSO> _skillList;
-
-        public List<SkillSO> GetList() => _skillList;
     }
 }
 

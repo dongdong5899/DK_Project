@@ -3,20 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using DKProject.Entities;
+using DKProject.Combat;
 
 namespace DKProject.SkillSystem
 {
     [CreateAssetMenu(fileName = "SkillSO", menuName = "SO/Skill/SkillSO")]
-    public class SkillSO : ScriptableObject
+    public class SkillSO : ItemSO
     {
-        [Header("Skiil")]
-        public string skillID;
-        public string skillName;
-        public Sprite icon;
-        public Rank skillRank;
-        [TextArea]
-        public string skillDescription;
-
         [Header("SkillType")]
         public SkillType skillType;
         public TargetType targetType;
@@ -41,12 +34,12 @@ namespace DKProject.SkillSystem
             if (skill != null) return;
             try
             {
-                Type t = Type.GetType($"DKProject.SkillSystem.Skills.{skillID}Skill");
+                Type t = Type.GetType($"DKProject.SkillSystem.Skills.{itemID}Skill");
                 skill = Activator.CreateInstance(t) as Skill;
             }
             catch (Exception e)
             { 
-                Debug.LogError($"Skill name of {skillID} is not exsist");
+                Debug.LogError($"Skill name of {itemID} is not exsist");
                 Debug.LogException(e);
             }
         }

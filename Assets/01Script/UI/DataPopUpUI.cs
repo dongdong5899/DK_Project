@@ -1,6 +1,8 @@
 using DG.Tweening;
+using DKProject.Combat;
 using DKProject.Core;
 using DKProject.SkillSystem;
+using DKProject.Weapon;
 using System;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
@@ -54,21 +56,31 @@ namespace DKProject.UI
         public void SetItem(InvenSlot invenSlot)
         {
             _currentSlot = invenSlot;
-            SkillSO skillSO = invenSlot.SkillSO;
+            ItemSO itemSO = invenSlot.ItemSO;
             Action upgrade = () =>
             {
-                SkillSaveManager.Instance.LevelUpSkill(skillSO);
-                UpdateLevel(skillSO);
+                
+                if(itemSO.itemType == ItemType.Skill)
+                {
+                    SkillSaveManager.Instance.LevelUpSkill(itemSO as SkillSO);
+                }
+                
+                if(itemSO.itemType == ItemType.Weapon)
+                {
+                    WeaponManager.Instance.LevelUpWeapon(itemSO as WeaponSO);
+                }
+
+                UpdateLevel(itemSO);
                 invenSlot.UpdateLevel();
             };
 
-            _currentPopUpPanel.SetData(skillSO.icon, skillSO.skillName, skillSO.skillDescription, upgrade, null);
-            UpdateLevel(skillSO);
+            _currentPopUpPanel.SetData(itemSO.icon, itemSO.itemName, itemSO.itemDescription, upgrade, null);
+            UpdateLevel(itemSO);
         }
 
-        private void UpdateLevel(SkillSO skillSO)
+        private void UpdateLevel(ItemSO itemSO)
         {
-            _currentPopUpPanel.SetLevel(SkillSaveManager.Instance.GetSkillLevel(skillSO), "");
+            _currentPopUpPanel.SetLevel(SkillSaveManager.Instance.GetSkillLevel(itemSO as SkillSO), "");
         }
 
         public override void Open()

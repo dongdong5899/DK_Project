@@ -1,15 +1,11 @@
-using Doryu.CustomAttributes;
-using System.Collections.Generic;
+using DKProject.Combat;
 using UnityEngine;
 
 namespace DKProject.Weapon
 {
     [CreateAssetMenu(fileName = "WeaponList", menuName = "SO/Weapon/WeaponList")]
-    public class WeaponListSO : ScriptableObject
+    public class WeaponListSO : ItemListSO
     {
-        [VisibleInspectorSO]
-        [SerializeField] private List<WeaponSO> _weaponList;
-
-        public List<WeaponSO> GetList() => _weaponList;
+        
     }
 }

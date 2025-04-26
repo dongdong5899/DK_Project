@@ -91,7 +91,7 @@ namespace DKProject.Core
 
         public int GetSkillUpgradePrice(SkillSO skillSO)
         {
-            switch (skillSO.skillRank)
+            switch (skillSO.itemRank)
             {
                 case Rank.Common:
                     return 1;

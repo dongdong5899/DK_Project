@@ -5,7 +5,6 @@ using DKProject.Entities.Components;
 using Vector2 = UnityEngine.Vector2;
 using Random = UnityEngine.Random;
 using DKProject.Entities.Players;
-using DKProject.StatSystem;
 using DG.Tweening;
 using DKProject.Core;
 using System;
@@ -43,12 +42,12 @@ namespace DKProject.SkillSystem
 
         public virtual void Update()
         {
-            if (_isPassiveSkill == true && CoolTimeCheck())
+            if (_isPassiveSkill == true && CoolTimeCheck() && RangeCheck())
             {
                 UseSkill();
             }
 
-            if(_isPassiveSkill == false && _isUseSkill == true && RangeCheck())
+            if(_isPassiveSkill == false && _isUseSkill == true)
             {
                 UseSkill();
                 _isUseSkill = false;
@@ -105,7 +104,7 @@ namespace DKProject.SkillSystem
 
         public virtual BigInteger DamageCalculation(double playerAttackDamage)
         {
-            _currentDamage = (BigInteger)((SkillSO.baseSkillPercent + (SkillManager.Instance.GetSkillLevel(SkillSO) * SkillSO.upgradeSkillPercent))/100 * playerAttackDamage);
+            _currentDamage = (BigInteger)((SkillSO.baseSkillPercent + (SkillSaveManager.Instance.GetSkillLevel(SkillSO) * SkillSO.upgradeSkillPercent))/100 * playerAttackDamage);
             Debug.Log(playerAttackDamage);
             float random = Random.Range(0f, 100f);
 

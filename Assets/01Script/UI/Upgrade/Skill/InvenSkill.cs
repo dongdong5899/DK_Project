@@ -20,7 +20,7 @@ namespace DKProject
 
         public override void UpdateLevel()
         {
-            _level.text = $"{SkillManager.Instance.GetSkillLevel(SkillSO)}";
+            _level.text = $"{SkillSaveManager.Instance.GetSkillLevel(SkillSO)}";
         }
     }
 }

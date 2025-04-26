@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace DKProject.Core
 {
-    public class SkillManager: MonoSingleton<SkillManager>
+    public class SkillSaveManager: MonoSingleton<SkillSaveManager>
     {
         public SkillSave save;
         public Dictionary<SkillSO, SkillData> skillDictionary;

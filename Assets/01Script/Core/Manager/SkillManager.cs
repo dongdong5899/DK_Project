@@ -1,30 +1,21 @@
-using DKProject.Entities;
-using DKProject.Entities.Players;
+using DKProject.SkillSystem;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace DKProject.SkillSystem
+namespace DKProject.Core
 {
-    public class PlayerSkillSystem : MonoBehaviour, IEntityComponent, IAfterInitable
+    public class SkillManager : MonoSingleton<SkillManager>
     {
-        private Player _player;
 
-        [SerializeField] private List<Skill> _enabledSkillList = new List<Skill>(6);
+        private List<Skill> _enabledSkillList = new List<Skill>(6);
         [SerializeField] private bool _autoMode;
-        public void Initialize(Entity entity)
-        {
-            _player = entity as Player;
-        }
 
-        public void AfterInit()
-        {
-            _enabledSkillList = new List<Skill> { null, null, null };
-        }
 
-        public void Dispose()
-        {
 
+        private void Awake()
+        {
+            _enabledSkillList = new List<Skill> { null, null, null, null, null, null };
         }
 
         private void Update()
@@ -37,7 +28,7 @@ namespace DKProject.SkillSystem
                 {
                     if (skill == null)
                         return;
-                    if (skill.CoolTimeCheck())
+                    if (skill.CoolTimeCheck()&&skill.RangeCheck())
                     {
                         skill?.SetUseSkill(true);
                     }
@@ -102,7 +93,23 @@ namespace DKProject.SkillSystem
             _enabledSkillList[idx].SetUseSkill(true);
         }
 
-       
+        public List<Skill> GetSkillList()
+        {
+            return _enabledSkillList;
+        }
+
+        public bool CheckSkillEquip(SkillSO skillSO)
+        {
+            foreach (var skill in _enabledSkillList)
+            {
+                if (skill.SkillSO == skillSO)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
     }
 }
 

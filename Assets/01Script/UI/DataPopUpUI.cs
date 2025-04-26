@@ -57,7 +57,7 @@ namespace DKProject.UI
             SkillSO skillSO = invenSlot.SkillSO;
             Action upgrade = () =>
             {
-                SkillManager.Instance.LevelUpSkill(skillSO);
+                SkillSaveManager.Instance.LevelUpSkill(skillSO);
                 UpdateLevel(skillSO);
                 invenSlot.UpdateLevel();
             };
@@ -68,7 +68,7 @@ namespace DKProject.UI
 
         private void UpdateLevel(SkillSO skillSO)
         {
-            _currentPopUpPanel.SetLevel(SkillManager.Instance.GetSkillLevel(skillSO), "");
+            _currentPopUpPanel.SetLevel(SkillSaveManager.Instance.GetSkillLevel(skillSO), "");
         }
 
         public override void Open()

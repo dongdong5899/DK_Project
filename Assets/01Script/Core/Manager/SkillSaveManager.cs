@@ -13,15 +13,27 @@ namespace DKProject.Core
         public Dictionary<SkillSO, SkillData> skillDictionary;
         public event Action OnChangeValue;
         [SerializeField] private SkillListSO _skillList;
-        private string fileName = "Skill";
+        private string _fileName = "Skill";
+        private bool _isInitialized;
 
-        protected override void CreateInstance()
+        private void Awake()
         {
-            base.CreateInstance();
+            Initialized();
+        }
+        private void Initialized()
+        {
+            if (_isInitialized) return;
+
+            _isInitialized = true;
             Load();
             skillDictionary = new Dictionary<SkillSO, SkillData>();
             SkillDictionarySet();
             DontDestroyOnLoad(this.gameObject);
+        }
+        protected override void CreateInstance()
+        {
+            base.CreateInstance();
+            Initialized();
         }
 
         public void Init(SkillListSO list)
@@ -39,13 +51,13 @@ namespace DKProject.Core
 
         public void Save()
         {
-            save.SaveJson(fileName);
+            save.SaveJson(_fileName);
         }
 
         private void Load()
         {
             save = new SkillSave();
-            if (save.LoadJson(fileName) == false)
+            if (save.LoadJson(_fileName) == false)
             {
                 save.ResetData();
                 Init(_skillList);

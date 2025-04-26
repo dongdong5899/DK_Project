@@ -3,6 +3,7 @@ using DKProject.UI;
 using Doryu.JBSave;
 using System;
 using System.Collections.Generic;
+using System.Resources;
 using UnityEngine;
 
 namespace DKProject.Core

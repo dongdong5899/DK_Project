@@ -7,7 +7,7 @@ namespace DKProject.Weapon
     [CreateAssetMenu(fileName = "WeaponSO", menuName = "SO/WeaponSO")]
     public class WeaponSO : ScriptableObject
     {
-        public SkillRank weaponRank;
+        public Rank weaponRank;
         public Sprite weaponIcon;
         public string weaponName;
         public string waeponEngName;

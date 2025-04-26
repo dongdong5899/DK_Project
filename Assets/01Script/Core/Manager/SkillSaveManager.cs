@@ -166,7 +166,7 @@ namespace DKProject.Core
             {
                 data.skillLevel++;
             }
-            return ResourceManager.TryRemoveSkillPoint(skillPointRequired);
+            return ResourceData.TryRemoveSkillPoint(skillPointRequired);
         }
 
         public bool TrySkillRevolution(SkillSO skillSO)

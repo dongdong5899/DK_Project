@@ -8,7 +8,6 @@ namespace DKProject.SkillSystem.Skills
     public class ShootBumerangSkill : Skill
     {
         [SerializeField] private float _lifeTime;
-
         public override Skill Clone()
         {
             return new ShootBumerangSkill();
@@ -33,7 +32,8 @@ namespace DKProject.SkillSystem.Skills
                 }
 
                 ShootBumerang bumerang = PoolManager.Instance.Pop(ProjectilePoolingType.ShootBumerang) as ShootBumerang;
-                bumerang.Setting(farTarget.transform,_whatIsTarget,DamageCalculation((double)_player.GetAttackDamage()), _lifeTime);
+                bumerang.transform.position = _owner.transform.position;
+                bumerang.Setting(_owner.transform,farTarget.transform,_whatIsTarget,DamageCalculation((double)_player.GetAttackDamage()), _lifeTime);
             }
         }
     }

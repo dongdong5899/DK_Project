@@ -21,7 +21,7 @@ namespace DKProject.SkillSystem.Skills
 
         public Enum PoolEnum => _poolingType;
         [SerializeField] private ProjectilePoolingType _poolingType;
-        private Transform _target;
+        private Transform _owner,_target;
         private LayerMask _whatIsTarget;
         private BigInteger _damage;
         private List<Entity> _hitEntities = new();
@@ -58,21 +58,24 @@ namespace DKProject.SkillSystem.Skills
         {
         }
 
-        public void Setting(Transform target, LayerMask whatIsTarget, BigInteger damage, float lifeTime)
+        public void Setting(Transform owner, Transform target, LayerMask whatIsTarget, BigInteger damage, float lifeTime)
         {
             _target = target;
             _whatIsTarget = whatIsTarget;
             _damage = damage;
+            _lifeTime = lifeTime;
 
             Init(lifeTime, this);
-
             MoveTarget();
         }
 
         public void MoveTarget()
         {
-            transform.DOMove(_target.position, 2f).SetEase(Ease.OutCubic)
-                .SetLoops(2,LoopType.Yoyo).OnStepComplete(()=> _hitEntities.Clear());
+            float moveTime = _lifeTime * 0.5f;
+            transform.DOMove(_target.position, moveTime).SetEase(Ease.OutCubic).OnComplete(() =>
+            {
+                transform.DOMove(_owner.position, moveTime);
+            });
         }
 
     }

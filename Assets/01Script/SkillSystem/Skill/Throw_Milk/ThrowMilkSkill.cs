@@ -11,10 +11,13 @@ namespace DKProject.SkillSystem.Skills
         [SerializeField] private byte _skillCount;
 
 
-
         public override Skill Clone()
         {
-            return new ThrowMilkSkill();
+            if (SkillSO.skill == null || SkillSO.skill.GetType() != typeof(ThrowMilkSkill))
+            {
+                SkillSO.skill = new ThrowMilkSkill();
+            }
+            return SkillSO.skill;
         }
 
         public override void UseSkill()

@@ -1,4 +1,5 @@
-using DKProject.Weapon;
+using DKProject.Core;
+using DKProject.SkillSystem;
 using Doryu.JBSave;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,21 @@ namespace DKProject.Weapon
             weaponDataBase = new List<Pair<WeaponSO, WeaponData>>();
         }
 
-        public void OnLoadData(WeaponSave classData)
+        public bool OnLoadData(WeaponSave classData)
         {
-            if (classData == null) return;
+            if (classData == null) return false;
 
+            foreach (var pair in classData.weaponDataBase)
+            {
+                if (pair.first == null)
+                {
+                    weaponDataBase = new List<Pair<WeaponSO, WeaponData>>();
+                    return false;
+                }
+            }
             weaponDataBase = classData.weaponDataBase;
+
+            return true;
         }
 
         public void OnSaveData(string savedFileName)

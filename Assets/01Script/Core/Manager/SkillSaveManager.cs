@@ -3,6 +3,7 @@ using DKProject.UI;
 using Doryu.JBSave;
 using System;
 using System.Collections.Generic;
+using System.Resources;
 using UnityEngine;
 
 namespace DKProject.Core
@@ -166,7 +167,7 @@ namespace DKProject.Core
             {
                 data.skillLevel++;
             }
-            return ResourceManager.TryRemoveSkillPoint(skillPointRequired);
+            return ResourceData.TryRemoveSkillPoint(skillPointRequired);
         }
 
         public bool TrySkillRevolution(SkillSO skillSO)

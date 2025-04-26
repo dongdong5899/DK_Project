@@ -9,9 +9,11 @@ namespace DKProject.Weapon
 {
     public class WeaponManager : MonoSingleton<WeaponManager>
     {
-        public WeaponSave save;
-        public SortedDictionary<WeaponSO, WeaponData> weaponDictionary;
         public event Action OnChangeValue;
+
+        public SortedDictionary<WeaponSO, WeaponData> weaponDictionary;
+
+        public WeaponSave save;
         [SerializeField] private WeaponListSO _weaponList;
         private string fileName = "Weapon";
         private int _needMergeCount = 5;
@@ -84,22 +86,27 @@ namespace DKProject.Weapon
             OnChangeValue?.Invoke();
         }
 
-        public void LevelUpWeapon(WeaponSO weaponSO)
+        public bool LevelUpWeapon(WeaponSO weaponSO)
         {
-            WeaponData data = weaponDictionary[weaponSO];
-            if (weaponDictionary.ContainsKey(weaponSO))
+            if (!weaponDictionary.ContainsKey(weaponSO))
+                return false;
+
+            if(ResourceData.TryRemoveResource(ResourceType.Gold, 1)) // 1ю╨ юс╫ц
             {
+                WeaponData data = weaponDictionary[weaponSO];
                 data.weaponLevel++;
                 weaponDictionary[weaponSO] = data;
+
+                UpdateWeaponData(weaponSO, data);
+                Save();
+                OnChangeValue?.Invoke();
+
+                return true;
             }
             else
             {
-                return;
+                return false;
             }
-
-            UpdateWeaponData(weaponSO, data);
-            Save();
-            OnChangeValue?.Invoke();
         }
 
         public void MergeAllWeapon()

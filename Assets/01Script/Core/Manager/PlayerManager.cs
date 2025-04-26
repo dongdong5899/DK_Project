@@ -1,4 +1,5 @@
 using DKProject.Entities.Players;
+using DKProject.Weapon;
 using Doryu.JBSave;
 using System.Numerics;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace DKProject.Core
         public Player Player { get; private set; }
         private PlayerSave _playerSave;
         private string _fileName = "PlayerData";
+        private WeaponSO _equippedWeapon;
 
         public Vector2 PlayerMoveInput { get; private set; }
 
@@ -23,6 +25,11 @@ namespace DKProject.Core
         public void SetAutoMode(bool autoMode)
         {
             IsAutoMode = autoMode;
+        }
+
+        public void EquipWeapon(WeaponSO weapon)
+        {
+            _equippedWeapon = weapon;
         }
 
         public void OnPlayerInput(Vector2 dir)
@@ -53,6 +60,8 @@ namespace DKProject.Core
             => _playerSave.level;
         public ulong GetExp()
             => _playerSave.exp;
+        public WeaponSO GetEquippedWeapon()
+            => _equippedWeapon;
 
         public void Save()
         {

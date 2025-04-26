@@ -9,11 +9,12 @@ namespace DKProject.SkillSystem.Skills
     {
         private double _damage;
         [SerializeField] private List<EffectSO> _effectList;
+        [SerializeField] private float _skillDotAttackReduction;
 
         public override void Init(Entity owner, SkillSO SO)
         {
             base.Init(owner, SO);
-            _damage = (double)_player.GetAttackDamage() * SkillSO.skillDotAttackReduction / 100;
+            _damage = (double)_player.GetAttackDamage() * _skillDotAttackReduction / 100;
         }
 
         public override Skill Clone()

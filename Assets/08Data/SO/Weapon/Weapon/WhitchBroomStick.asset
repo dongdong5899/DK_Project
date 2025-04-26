@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
+  m_Name: WhitchBroomStick
+  m_EditorClassIdentifier: 
+  weaponID: W0013
+  weaponName: "\uB9C8\uB140 \uBE57\uC790\uB8E8"
+  weaponIcon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
+  weaponRank: 2
+  weaponDescription: "\uC798\uD558\uBA74 \uD0C0\uACE0 \uB0A0 \uC218 \uC788\uB294
+    \uB9C8\uB140\uAC00 \uC4F0\uB358 \uBE57\uC790\uB8E8\uC774\uB2E4.\n\uD558\uC9C0\uB9CC
+    \uC5ED\uC2DC\uB098 \uB85C\uD1A0\uB294 \uD718\uB450\uB974\uB294 \uAC83 \uC678\uC5D0\uB294
+    \uC4F0\uC9C0 \uC54A\uB294\uB2E4. \uBE57\uC790\uB8E8\uC5D0\uC11C \uB098\uB294
+    \uC758\uBB38\uC758 \uC57D\uBB3C \uB0C4\uC0C8 \uB54C\uBB38\uC5D0 \uD638\uD761\uAE30\uAC00
+    \uC544\uD504\uB2E4."
+  increaseStats:
+  - first: {fileID: 11400000, guid: 1d4871ee7bf4d7047a270671fb66f9c3, type: 2}
+    second: 7
+  - first: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    second: 5
+  - first: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
+    second: 3

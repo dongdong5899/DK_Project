@@ -13,7 +13,7 @@ namespace DKProject.SkillSystem
         public string skillID;
         public string skillName;
         public Sprite icon;
-        public SkillRank skillRank;
+        public Rank skillRank;
         [TextArea]
         public string skillDescription;
 
@@ -28,7 +28,6 @@ namespace DKProject.SkillSystem
         public float skillAreaRadius;
         public float baseSkillPercent;
         public float upgradeSkillPercent;
-        public float skillDotAttackReduction;
 
         [Header("Effect")]
         public List<EffectSO> unlockEffects;
@@ -39,6 +38,7 @@ namespace DKProject.SkillSystem
 
         private void OnEnable()
         {
+            if (skill != null) return;
             try
             {
                 Type t = Type.GetType($"DKProject.SkillSystem.Skills.{skillID}Skill");

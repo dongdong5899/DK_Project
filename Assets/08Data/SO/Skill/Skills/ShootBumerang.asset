@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
+  m_Name: ShootBumerang
+  m_EditorClassIdentifier: 
+  skillID: ShootBumerang
+  skillName: "\uB72C\uAE08\uC5C6\uC774 \uB358\uC838\uC9C4 \uBD80\uBA54\uB791"
+  icon: {fileID: 0}
+  skillRank: 3
+  skillDescription: 
+  skillType: 0
+  targetType: 0
+  damageType: 0
+  coolDown: 5
+  skillRange: 8
+  skillAreaRadius: 2
+  baseSkillPercent: 50
+  upgradeSkillPercent: 0
+  unlockEffects: []
+  equipEffects: []
+  skill:
+    rid: 1513572911148958165
+  references:
+    version: 2
+    RefIds:
+    - rid: 1513572911148958165
+      type: {class: ShootBumerangSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
+      data:
+        _lifeTime: 4

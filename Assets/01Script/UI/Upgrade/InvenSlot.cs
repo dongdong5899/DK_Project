@@ -9,7 +9,7 @@ namespace DKProject
     public abstract class InvenSlot : MonoBehaviour
     {
         [SerializeField] protected Image _icon;
-        [SerializeField] protected TextMeshProUGUI _level, _price;
+        [SerializeField] protected TextMeshProUGUI _level;
         protected Button _button;
 
         public InvenSlot PrevSlot { get; private set; }

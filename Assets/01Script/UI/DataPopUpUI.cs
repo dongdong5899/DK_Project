@@ -53,22 +53,41 @@ namespace DKProject.UI
 
         public void SetItem(InvenSlot invenSlot)
         {
+            Debug.Log("Asdasd");
             _currentSlot = invenSlot;
             SkillSO skillSO = invenSlot.SkillSO;
+            _currentPopUpPanel.SetEquipData(SkillManager.Instance.CheckSkillEquip(skillSO, out int index));
             Action upgrade = () =>
             {
                 SkillSaveManager.Instance.LevelUpSkill(skillSO);
                 UpdateLevel(skillSO);
                 invenSlot.UpdateLevel();
             };
+            Action equip = () =>
+            {
+                if (SkillManager.Instance.CheckSkillEquip(skillSO, out int index))
+                {
+                    SkillManager.Instance.UnEquipSkill(index);
+                    _currentPopUpPanel.SetEquipData(false);
+                }
+                else
+                {
+                    SkillSlotSettingController slotSettingController
+                        = UIManager.Instance.OpenUI(nameof(SkillSlotSettingController)) as SkillSlotSettingController;
+                    slotSettingController.SetSkill(SkillManager.Instance.GetSkillClass(skillSO));
+                    _currentPopUpPanel.SetEquipData(true);
+                }
+            };
 
-            _currentPopUpPanel.SetData(skillSO.icon, skillSO.skillName, skillSO.skillDescription, upgrade, null);
+            _currentPopUpPanel.SetData(skillSO.icon, skillSO.skillName, skillSO.skillDescription, upgrade, null, equip);
             UpdateLevel(skillSO);
         }
 
         private void UpdateLevel(SkillSO skillSO)
         {
-            _currentPopUpPanel.SetLevel(SkillSaveManager.Instance.GetSkillLevel(skillSO), "");
+            int level = SkillSaveManager.Instance.GetSkillLevel(skillSO);
+            int price = SkillManager.Instance.GetSkillUpgradePrice(skillSO);
+            _currentPopUpPanel.SetLevel(level, price.ToString(), "");
         }
 
         public override void Open()

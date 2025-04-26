@@ -10,7 +10,7 @@ namespace DKProject.Weapon
         public Rank weaponRank;
         public Sprite weaponIcon;
         public string weaponName;
-        public string waeponEngName;
+        public string weaponID;
         public string weaponDescription;
         public List<Pair<StatElementSO, float>> increaseStats;
     }

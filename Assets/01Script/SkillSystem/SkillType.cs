@@ -41,7 +41,7 @@ namespace DKProject.SkillSystem
 
     public enum Rank
     {
-        Common,Rare,Unique,Epic,Legendary
+        Common,Rare,Epic,Unique,Legendary
     }
 }
 

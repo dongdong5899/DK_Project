@@ -56,7 +56,7 @@ namespace DKProject.Entities.Players
         {
             if (Keyboard.current.tKey.wasPressedThisFrame)
             {
-                SkillManager.Instance.EquipSkill(_testSkillSO.GetSkill(this), 0);
+                SkillManager.Instance.EquipSkill(SkillManager.Instance.GetSkillClass(_testSkillSO), 0);
             }
 
             if (Keyboard.current.qKey.wasPressedThisFrame)

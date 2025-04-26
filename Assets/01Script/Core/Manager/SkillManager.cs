@@ -1,3 +1,4 @@
+using DKProject.Entities.Players;
 using DKProject.SkillSystem;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,109 +8,119 @@ namespace DKProject.Core
 {
     public class SkillManager : MonoSingleton<SkillManager>
     {
-
-        private List<Skill> _enabledSkillList = new List<Skill>(6);
+        private Dictionary<SkillSO, Skill> _skillClassDictionary = new();
+        private Skill[] _equipedSkills = new Skill[6];
         [SerializeField] private bool _autoMode;
+        [SerializeField] private SkillListSO _skillSOList;
 
-
-
-        private void Awake()
+        private void Start()
         {
-            _enabledSkillList = new List<Skill> { null, null, null, null, null, null };
+            Player player = PlayerManager.Instance.Player;
+            foreach (SkillSO skillSO in _skillSOList.GetList())
+            {
+                _skillClassDictionary.Add(skillSO, skillSO.GetSkill(player));
+            }
         }
 
         private void Update()
         {
-            _enabledSkillList.ForEach(skill => skill?.Update());
-
-            if (_autoMode == true)
+            for (int i = 0; i < _equipedSkills.Length; i++)
             {
-                foreach(var skill in _enabledSkillList)
+                Skill skill = _equipedSkills[i];
+                skill?.Update();
+                if (skill != null && _autoMode)
                 {
-                    if (skill == null)
-                        return;
-                    if (skill.CoolTimeCheck()&&skill.RangeCheck())
+                    if (skill.CoolTimeCheck() && skill.RangeCheck())
                     {
-                        skill?.SetUseSkill(true);
+                        skill.SetUseSkill(true);
                     }
                 }
             }
         }
 
-        public void SetSlot(List<Skill> skills)
+        public void SetSlot(Skill[] skills)
         {
-            List<Skill> prevSkill = _enabledSkillList.ToList();
-            _enabledSkillList.Clear();
-
-            for (int i = 0; i < skills.Count; i++)
+            for (int i = 0; i < skills.Length; i++)
             {
-                Skill skill = skills[i];
-
-                if (skill == null)
+                if (_equipedSkills[i] != skills[i])
                 {
-                    _enabledSkillList.Add(null);
-                }
-                else
-                {
-                    if (prevSkill.Count > i && prevSkill[i] != null
-                        && prevSkill[i] == skill)
-                    {
-                        _enabledSkillList.Add(skill);
-                    }
-                    else
-                    {
-                        skill.OnEquipSkill();
-                        _enabledSkillList.Add(skill);
-                    }
+                    _equipedSkills[i]?.OnUnEquipSkill(); // 이전꺼 빼고
+                    skills[i]?.OnEquipSkill(); //새로운거 넣고
                 }
             }
+            _equipedSkills = skills;
         }
 
-        public void EquipSkill(Skill skill, int idx)
+        public Skill EquipSkill(Skill skill, int idx)
         {
+            Skill prevSkill = _equipedSkills[idx];
 
-            if (_enabledSkillList[idx] == null)
-            {
-                _enabledSkillList[idx] = skill;
-                _enabledSkillList[idx].OnEquipSkill();
-            }
+            _equipedSkills[idx]?.OnUnEquipSkill();
+            _equipedSkills[idx] = skill;
+            _equipedSkills[idx]?.OnEquipSkill();
+
+            return prevSkill;
         }
 
-        
-
-        public void UnEquipSkill(int idx)
+        public Skill UnEquipSkill(int idx)
         {
-            if (_enabledSkillList[idx] != null)
-            {
-                _enabledSkillList[idx].OnUnEquipSkill();
-                _enabledSkillList[idx] = null;
-            }
+            Skill prevSkill = _equipedSkills[idx];
+
+            _equipedSkills[idx]?.OnUnEquipSkill();
+            _equipedSkills[idx] = null;
+
+            return prevSkill;
         }
 
         public void UseSkill(int idx)
         {
-            if (_enabledSkillList[idx].SkillSO.skillType == SkillType.Passive) 
+            if (_equipedSkills[idx].SkillSO.skillType == SkillType.Passive)
                 return;
-            _enabledSkillList[idx].SetUseSkill(true);
+            _equipedSkills[idx].SetUseSkill(true);
         }
 
-        public List<Skill> GetSkillList()
+        public Skill[] GetSkillArr()
         {
-            return _enabledSkillList;
+            return _equipedSkills;
         }
 
-        public bool CheckSkillEquip(SkillSO skillSO)
+        public Skill GetSkillClass(SkillSO skillSO)
         {
-            foreach (var skill in _enabledSkillList)
+            return _skillClassDictionary[skillSO];
+        }
+
+        public int GetSkillUpgradePrice(SkillSO skillSO)
+        {
+            switch (skillSO.skillRank)
             {
-                if (skill.SkillSO == skillSO)
+                case Rank.Common:
+                    return 1;
+                case Rank.Rare:
+                    return 1;
+                case Rank.Unique:
+                    return 2;
+                case Rank.Epic:
+                    return 3;
+                case Rank.Legendary:
+                    return 5;
+                default:
+                    return -1;
+            }
+        }
+
+        public bool CheckSkillEquip(SkillSO skillSO, out int index)
+        {
+            for (int i = 0; i < _equipedSkills.Length; i++)
+            {
+                if (_equipedSkills[i] != null &&  _equipedSkills[i].SkillSO == skillSO)
                 {
+                    index = i;
                     return true;
                 }
             }
+            index = -1;
             return false;
         }
-
     }
 }
 

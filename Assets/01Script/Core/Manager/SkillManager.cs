@@ -89,25 +89,6 @@ namespace DKProject.Core
             return _skillClassDictionary[skillSO];
         }
 
-        public int GetSkillUpgradePrice(SkillSO skillSO)
-        {
-            switch (skillSO.itemRank)
-            {
-                case Rank.Common:
-                    return 1;
-                case Rank.Rare:
-                    return 1;
-                case Rank.Unique:
-                    return 2;
-                case Rank.Epic:
-                    return 3;
-                case Rank.Legendary:
-                    return 5;
-                default:
-                    return -1;
-            }
-        }
-
         public bool CheckSkillEquip(SkillSO skillSO, out int index)
         {
             for (int i = 0; i < _equipedSkills.Length; i++)

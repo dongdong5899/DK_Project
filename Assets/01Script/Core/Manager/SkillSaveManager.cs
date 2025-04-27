@@ -1,9 +1,7 @@
 using DKProject.SkillSystem;
-using DKProject.UI;
 using Doryu.JBSave;
 using System;
 using System.Collections.Generic;
-using System.Resources;
 using UnityEngine;
 
 namespace DKProject.Core
@@ -185,6 +183,25 @@ namespace DKProject.Core
                     return false;
             }
             return false;
+        }
+
+        public int GetSkillUpgradePrice(SkillSO skillSO)
+        {
+            switch (skillSO.itemRank)
+            {
+                case Rank.Common:
+                    return 1;
+                case Rank.Rare:
+                    return 1;
+                case Rank.Unique:
+                    return 2;
+                case Rank.Epic:
+                    return 3;
+                case Rank.Legendary:
+                    return 5;
+                default:
+                    return -1;
+            }
         }
 
     }

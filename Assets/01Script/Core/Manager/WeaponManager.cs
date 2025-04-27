@@ -128,7 +128,7 @@ namespace DKProject.Weapon
         {
             if (!weaponDictionary.ContainsKey(weaponSO))
                 return;
-            if (int.Parse(weaponSO.itemID.Substring(1)) == weaponDictionary.Count)
+            if (int.Parse(weaponSO.itemClassName.Substring(1)) == weaponDictionary.Count)
                 return;
 
             int count = weaponDictionary[weaponSO].weaponCount;

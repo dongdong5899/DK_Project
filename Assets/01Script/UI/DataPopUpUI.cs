@@ -101,7 +101,7 @@ namespace DKProject.UI
             if (itemSO.itemType == ItemType.Skill)
             {
                 level = SkillSaveManager.Instance.GetSkillLevel(itemSO as SkillSO);
-                price = SkillManager.Instance.GetSkillUpgradePrice(itemSO as SkillSO);
+                price = SkillSaveManager.Instance.GetSkillUpgradePrice(itemSO as SkillSO);
             }
             if (itemSO.itemType == ItemType.Weapon)
             {

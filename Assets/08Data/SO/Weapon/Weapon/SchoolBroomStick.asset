@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: SchoolBroomStick
   m_EditorClassIdentifier: 
-  weaponID: W0008
-  weaponName: "\uD559\uAD50 \uBE57\uC790\uB8E8"
-  weaponIcon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
-  weaponRank: 1
-  weaponDescription: "\uCD08\uB4F1\uD559\uAD50 \uB2F4\uBCBC\uB77D\uC5D0 \uB5A8\uC5B4\uC838\uC788\uB358
+  itemID: W0008
+  itemName: "\uD559\uAD50 \uBE57\uC790\uB8E8"
+  icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
+  itemRank: 1
+  itemType: 1
+  itemDescription: "\uCD08\uB4F1\uD559\uAD50 \uB2F4\uBCBC\uB77D\uC5D0 \uB5A8\uC5B4\uC838\uC788\uB358
     \uD559\uAD50 \uBE57\uC790\uB8E8\uB2E4. \uCE7C\uC2F8\uC6C0 \uB2E8\uACE8\uC18C\uC7AC\uB85C,
     \uC740\uADFC \uC4F8\uB9CC\uD558\uB2E4."
   increaseStats:

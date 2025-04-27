@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: YoungBamboo
   m_EditorClassIdentifier: 
-  weaponID: W0005
-  weaponName: "\uC5B4\uB9B0 \uB300\uB098\uBB34"
-  weaponIcon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
-  weaponRank: 0
-  weaponDescription: "\uB85C\uD1A0\uB124 \uD654\uB2E8\uC5D0\uC11C \uBC1C\uACAC\uD55C
+  itemID: W0005
+  itemName: "\uC5B4\uB9B0 \uB300\uB098\uBB34"
+  icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
+  itemRank: 0
+  itemType: 1
+  itemDescription: "\uB85C\uD1A0\uB124 \uD654\uB2E8\uC5D0\uC11C \uBC1C\uACAC\uD55C
     \uC5B4\uB9B0 \uB300\uB098\uBB34\uB2E4. \uC740\uADFC\uD788 \uB0A0\uCE74\uB85C\uC6CC\uC11C
     \uBB34\uAE30\uB85C \uC4F8\uB9CC\uD558\uB2E4."
   increaseStats:

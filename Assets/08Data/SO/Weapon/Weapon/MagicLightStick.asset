@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: MagicLightStick
   m_EditorClassIdentifier: 
-  weaponID: W0015
-  weaponName: "\uB9C8\uBA49\uC758 \uC57C\uAD11\uBD09"
-  weaponIcon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
-  weaponRank: 3
-  weaponDescription: "\uC804\uC124\uC758 \uC544\uC774\uB3CC \uB355\uD6C4? \uAC00
+  itemID: W0015
+  itemName: "\uB9C8\uBA49\uC758 \uC57C\uAD11\uBD09"
+  icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
+  itemRank: 2
+  itemType: 1
+  itemDescription: "\"\uC804\uC124\uC758 \uC544\uC774\uB3CC \uB355\uD6C4? \uAC00
     \uC4F0\uB358 \uC57C\uAD11\uBD09\uC774\uB2E4.\n\uB85C\uD1A0\uB294 \uD718\uB450\uB974\uBA74
     \uB9C8\uBC95 \uC785\uC790\uAC00 \uD769\uB0A0\uB9AC\uB294\uAC8C \uC608\uC058\uB2E4\uBA70
     \uC88B\uC544\uD558\uB294 \uAC83 \uAC19\uB2E4. \uC0C1\uB2F9\uD788 \uACE0\uAC00\uC758
-    \uBB3C\uAC74\uC774\uB77C \uC870\uC2EC\uD788 \uB2E4\uB904\uC57C \uD55C\uB2E4."
+    \uBB3C\uAC74\uC774\uB77C \uC870\uC2EC\uD788 \uB2E4\uB904\uC57C \uD55C\uB2E4.\""
   increaseStats:
   - first: {fileID: 11400000, guid: 175f233e4bdf3e44cb5d9f9ce100e22e, type: 2}
     second: 7

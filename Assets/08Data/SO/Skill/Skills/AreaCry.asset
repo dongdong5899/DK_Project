@@ -12,22 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: AreaCry
   m_EditorClassIdentifier: 
-  skillID: AreaCry
-  skillName: "\uB358\uC9C0\uACE0 \uBCF4\uB2C8 \uD3ED\uD0C4"
+  itemID: S103
+  itemName: "\uC758\uB3C4\uCE58 \uC54A\uC740 \uB208\uBB3C"
   icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
-  skillRank: 1
-  skillDescription: "\uB545\uBC14\uB2E5\uC5D0 \uC788\uB294 \uBB34\uC5B8\uAC08 \uB358\uC84C\uB354\uB2C8
-    \uD391 \uD558\uACE0 \uD130\uC84C\uB2E4. \uC2E0\uAE30\uD558\uAC8C\uB3C4 \uD56D\uC0C1
-    \uB358\uC9C0\uBA74 \uC801\uC774 \uB9CE\uC740 \uACF3\uC73C\uB85C \uAC04\uB2E4."
-  skillType: 0
+  itemRank: 0
+  itemType: 0
+  itemDescription: "\uAF43\uAC00\uB8E8 \uC54C\uB808\uB974\uAE30\uAC00 \uC2EC\uD574\uC838\uC11C
+    \uBC16\uC5D0\uB9CC \uB098\uC624\uBA74 \uB208\uBB3C\uC774 \uB09C\uB2E4. \uB208\uBB3C
+    \uC6C5\uB369\uC774\uAC00 \uC801\uC5D0\uAC8C \uC2AC\uB85C\uC6B0\uC640 \uD53C\uD574\uB97C
+    \uC900\uB2E4."
+  skillType: 1
   targetType: 1
-  damageType: 0
+  damageType: 1
   coolDown: 0
-  skillRange: 0
-  skillAreaRadius: 0
+  skillRange: 6
+  skillAreaRadius: 4
   baseSkillPercent: 0
   upgradeSkillPercent: 0
-  skillDotAttackReduction: 0
   unlockEffects: []
   equipEffects: []
   skill:

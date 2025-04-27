@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: ShiningBroomStick
   m_EditorClassIdentifier: 
-  weaponID: W0018
-  weaponName: "\uBE5B\uB098\uB294 \uBE57\uC790\uB8E8"
-  weaponIcon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
-  weaponRank: 3
-  weaponDescription: "\uAD49\uC7A5\uD55C \uBE57\uC790\uB8E8 \uAC19\uC9C0\uB9CC, \uC0AC\uC2E4
+  itemID: W0019
+  itemName: "\uBE5B\uB098\uB294 \uBE57\uC790\uB8E8"
+  icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
+  itemRank: 3
+  itemType: 1
+  itemDescription: "\"\uAD49\uC7A5\uD55C \uBE57\uC790\uB8E8 \uAC19\uC9C0\uB9CC, \uC0AC\uC2E4
     \uBC18\uC9DD\uC774 \uAC00\uB8E8\uB97C \uC4F4 \uBE57\uC790\uB8E8\uC774\uB2E4.\n\uB180\uB78D\uAC8C\uB3C4
     \uC2DC\uAC01\uC801\uC73C\uB85C \uC2E0\uBE44\uD574\uBCF4\uC774\uB294 \uD6A8\uACFC\uAC00
-    \uC788\uC5B4 \uC720\uC6A9\uD55C \uBB34\uAE30\uC774\uB2E4."
+    \uC788\uC5B4 \uC720\uC6A9\uD55C \uBB34\uAE30\uC774\uB2E4.\""
   increaseStats:
   - first: {fileID: 11400000, guid: 1d4871ee7bf4d7047a270671fb66f9c3, type: 2}
     second: 10

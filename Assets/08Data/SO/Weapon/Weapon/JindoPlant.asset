@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: JindoPlant
   m_EditorClassIdentifier: 
-  weaponID: W0007
-  weaponName: "\uC9C4\uB3C5\uAC1C \uD480 "
-  weaponIcon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
-  weaponRank: 1
-  weaponDescription: "\uB77C\uD06C\uB9AC\uB9C8\uC5D0\uC11C\uB9CC \uC790\uB77C\uB294
+  itemID: W0007
+  itemName: "\uC9C4\uB3C5\uAC1C \uD480 "
+  icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
+  itemRank: 1
+  itemType: 1
+  itemDescription: "\uB77C\uD06C\uB9AC\uB9C8\uC5D0\uC11C\uB9CC \uC790\uB77C\uB294
     \uD2B9\uC0B0\uBB3C\uC774\uB2E4. \uAE30\uC874\uC758 \uAC15\uC544\uC9C0 \uD480\uBCF4\uB2E4
     3\uBC30\uB294 \uAC04\uC9C0\uB7FD\uB2E4."
   increaseStats:

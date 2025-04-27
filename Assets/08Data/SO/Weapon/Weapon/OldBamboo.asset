@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: OldBamboo
   m_EditorClassIdentifier: 
-  weaponID: W0010
-  weaponName: "\uC5B4\uB978 \uB300\uB098\uBB34"
-  weaponIcon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
-  weaponRank: 1
-  weaponDescription: "\uC5B4\uB9B0 \uB300\uB098\uBB34\uAC00 \uC5B4\uB978\uC2A4\uB7FD\uAC8C
+  itemID: W0010
+  itemName: "\uC5B4\uB978 \uB300\uB098\uBB34"
+  icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
+  itemRank: 1
+  itemType: 1
+  itemDescription: "\uC5B4\uB9B0 \uB300\uB098\uBB34\uAC00 \uC5B4\uB978\uC2A4\uB7FD\uAC8C
     \uC131\uC7A5\uD588\uB2E4. \uAE30\uC874\uC758 \uC5B4\uB9B0 \uB300\uB098\uBB34\uBCF4\uB2E4
     \uD6E8\uC52C \uB354 \uB0A0\uCE74\uB85C\uC6CC \uC84C\uB2E4."
   increaseStats:

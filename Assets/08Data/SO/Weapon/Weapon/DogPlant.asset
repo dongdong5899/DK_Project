@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: DogPlant
   m_EditorClassIdentifier: 
-  weaponID: W0002
-  weaponName: "\uAC15\uC544\uC9C0 \uD480"
-  weaponIcon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
-  weaponRank: 0
-  weaponDescription: "\uB4E4\uD310\uC5D0\uC11C \uAEBE\uC740 \uAC15\uC544\uC9C0 \uD480\uC774\uB2E4.
+  itemID: W0002
+  itemName: "\uAC15\uC544\uC9C0 \uD480"
+  icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
+  itemRank: 0
+  itemType: 1
+  itemDescription: "\uB4E4\uD310\uC5D0\uC11C \uAEBE\uC740 \uAC15\uC544\uC9C0 \uD480\uC774\uB2E4.
     \uAC04\uC9C0\uB7EC\uC6B4\uAC83\uB9CC\uD07C \uACE0\uD1B5\uC2A4\uB7EC\uC6B4\uAC74
     \uC5C6\uB2E4."
   increaseStats:

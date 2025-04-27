@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: LottoMomMongdong
   m_EditorClassIdentifier: 
-  weaponID: W0021
-  weaponName: "\uB85C\uD1A0 \uC5C4\uB9C8\uD45C \uBABD\uB465\uC774"
-  weaponIcon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
-  weaponRank: 4
-  weaponDescription: "\uB85C\uD1A0\uC640 \uBCF4\uCE74\uAC00 \uD070 \uC798\uBABB\uC744
+  itemID: W0021
+  itemName: "\uB85C\uD1A0 \uC5C4\uB9C8\uD45C \uBABD\uB465\uC774"
+  icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
+  itemRank: 4
+  itemType: 1
+  itemDescription: "\uB85C\uD1A0\uC640 \uBCF4\uCE74\uAC00 \uD070 \uC798\uBABB\uC744
     \uC800\uC9C8\uB800\uC744\uB54C\uB9CC \uB098\uD0C0\uB098\uB294 \uC804\uC124\uC758
     \uBB34\uAE30\uC774\uB2E4.\n\uBCF4\uB294 \uC21C\uAC04 \uC5C4\uCCAD\uB09C \uACF5\uD3EC\uAC10\uC5D0
     \uC758\uD574 \uC8FC\uC800 \uC549\uAC8C \uB41C\uB2E4. "

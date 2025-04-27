@@ -12,23 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: RiseCrystal
   m_EditorClassIdentifier: 
-  skillID: RiseCrystal
-  skillName: "\uAC11\uC790\uAE30 \uC19F\uC544\uB09C \uD06C\uB9AC\uC2A4\uD0C8"
+  itemID: S108
+  itemName: "\uAC11\uC790\uAE30 \uC19F\uC544\uB09C \uD06C\uB9AC\uC2A4\uD0C8"
   icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
-  skillRank: 1
-  skillDescription: "\uC801\uC774 \uAC00\uC7A5 \uB9CE\uC740 \uACF3\uC5D0\uC11C \uAC11\uC790\uAE30
-    \uD06C\uB9AC\uC2A4\uD0C8\uC774 \uC19F\uC544\uB0AC\uB2E4. \uD06C\uB9AC\uC2A4\uD0C8
+  itemRank: 1
+  itemType: 0
+  itemDescription: "10m \uB0B4 \uC801\uC774 \uAC00\uC7A5 \uB9CE\uC740 \uACF3\uC5D0\uC11C
+    \uAC11\uC790\uAE30 \uD06C\uB9AC\uC2A4\uD0C8\uC774 \uC19F\uC544\uB0AC\uB2E4. \uD06C\uB9AC\uC2A4\uD0C8
     \uBC94\uC704\uC5D0 \uC788\uB294 \uC801\uB4E4\uC5D0\uAC8C \uD53C\uD574\uB97C \uC785\uD78C\uB2E4."
   skillType: 0
   targetType: 1
   damageType: 0
-  lifeTime: 0
-  coolDown: 0
-  skillCount: 0
-  skillRange: 0
-  skillAreaRadius: 0
+  coolDown: 5
+  skillRange: 8
+  skillAreaRadius: 3
   baseSkillPercent: 0
   upgradeSkillPercent: 0
-  skillprojectileSpeed: 0
-  skillDotAttackMinus: 0
-  effects: []
+  unlockEffects: []
+  equipEffects: []
+  skill:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

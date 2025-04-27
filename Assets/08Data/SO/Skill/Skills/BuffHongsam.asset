@@ -12,25 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: BuffHongsam
   m_EditorClassIdentifier: 
-  skillID: BuffHongsam
-  skillName: "\uC5B4\uCA54 \uC218 \uC5C6\uC774 \uBA39\uC740 \uD64D\uC0BC"
+  itemID: S112
+  itemName: "\uC5B4\uCA54 \uC218 \uC5C6\uC774 \uBA39\uC740 \uD64D\uC0BC"
   icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
-  skillRank: 2
-  skillDescription: "\uB108\uBB34 \uBC30\uACE0\uD30C\uC11C \uADF8\uD1A0\uB85D \uC2EB\uC5B4\uD558\uB358
+  itemRank: 2
+  itemType: 0
+  itemDescription: "\uB108\uBB34 \uBC30\uACE0\uD30C\uC11C \uADF8\uD1A0\uB85D \uC2EB\uC5B4\uD558\uB358
     \uD64D\uC0BC\uD329\uC744 \uBA39\uC744 \uC218 \uBC16\uC5D0 \uC5C6\uC5C8\uB2E4.
     \uC77C\uBC18 \uACF5\uACA9 \uB370\uBBF8\uC9C0\uAC00 20% \uC99D\uAC00\uD558\uACE0,
     \uACF5\uACA9\uC18D\uB3C4\uAC00 10% \uC99D\uAC00\uD55C\uB2E4."
   skillType: 1
   targetType: 0
   damageType: 0
-  lifeTime: 0
   coolDown: 0
-  skillCount: 0
   skillRange: 0
   skillAreaRadius: 0
   baseSkillPercent: 0
   upgradeSkillPercent: 0
-  skillprojectileSpeed: 0
-  skillDotAttackMinus: 0
-  effects:
-  - {fileID: 11400000, guid: f1d503cdcfb992f46a4bf73d9c098a89, type: 2}
+  unlockEffects: []
+  equipEffects: []
+  skill:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

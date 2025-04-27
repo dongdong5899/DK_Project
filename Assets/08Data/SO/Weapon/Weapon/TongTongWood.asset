@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: TongTongWood
   m_EditorClassIdentifier: 
-  weaponID: W0009
-  weaponName: "\uD1B5\uD1B5\uB098\uBB34"
-  weaponIcon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
-  weaponRank: 1
-  weaponDescription: "\uD1B5\uD1B5\uB098\uBB34\uB2E4. \uC5B5\uC9C0 \uC544\uB2C8\uB0D0\uACE0
+  itemID: W0009
+  itemName: "\uD1B5\uD1B5\uB098\uBB34"
+  icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
+  itemRank: 1
+  itemType: 1
+  itemDescription: "\uD1B5\uD1B5\uB098\uBB34\uB2E4. \uC5B5\uC9C0 \uC544\uB2C8\uB0D0\uACE0
     \uD560 \uC218 \uC788\uC9C0\uB9CC \uADF8\uB7EC\uB824\uB2C8 \uD558\uACE0 \uB118\uC5B4\uAC00\uC790."
   increaseStats:
   - first: {fileID: 11400000, guid: 43d3db4db7c04854d9add36077dffc20, type: 2}

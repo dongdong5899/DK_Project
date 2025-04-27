@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: VeryOldBamboo
   m_EditorClassIdentifier: 
-  weaponID: W0020
-  weaponName: "\uC5B4\uB974\uC2E0 \uB300\uB098\uBB34"
-  weaponIcon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
-  weaponRank: 3
-  weaponDescription: "\uC5B4\uB978 \uB300\uB098\uBB34\uAC00 \uC601\uAC81\uC758 \uC138\uC6D4\uC744
+  itemID: W0020
+  itemName: "\uC5B4\uB974\uC2E0 \uB300\uB098\uBB34"
+  icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
+  itemRank: 3
+  itemType: 1
+  itemDescription: "\uC5B4\uB978 \uB300\uB098\uBB34\uAC00 \uC601\uAC81\uC758 \uC138\uC6D4\uC744
     \uBCF4\uB0B8 \uACB0\uACFC\uBB3C\uC774\uB2E4.\n\uAC15\uD55C \uBE44\uBC14\uB78C\uACFC
     \uAC15\uB82C\uD55C \uD0DC\uC591\uC5D0\uB3C4 \uBC84\uD2F4 \uB300\uB098\uBB34\uB77C
     \uADF8\uB7F0\uC9C0 \uB300\uB098\uBB34\uB77C\uACE0\uB294 \uBBFF\uAE30\uC9C0 \uC54A\uC744

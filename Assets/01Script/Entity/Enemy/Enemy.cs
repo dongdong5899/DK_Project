@@ -9,7 +9,6 @@ using System.Numerics;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
-using Vector3 = UnityEngine.Vector3;
 
 namespace DKProject.Entities.Enemies
 {
@@ -20,10 +19,11 @@ namespace DKProject.Entities.Enemies
         private float _lastAttackTime;
 
         #region Pooling
-        public GameObject GameObject => gameObject;
-        public Enum PoolEnum => _poolingType;
-        [SerializeField] private EnemyPoolingType _poolingType;
 
+        public GameObject GameObject => gameObject;
+        public Enum PoolEnum => enemySO.enemyType;
+
+        [SerializeField] private EnemySO enemySO;
         [SerializeField] private List<Pair<ResourceType, Pair<int, string>>> _dropResourcesData;
 
         public Action<Enemy> OnDieEvent;
@@ -37,6 +37,7 @@ namespace DKProject.Entities.Enemies
         {
             DisposeComponents();
         }
+
         #endregion
 
         protected override void Awake()
@@ -45,15 +46,11 @@ namespace DKProject.Entities.Enemies
             InitComponents();
         }
 
-        protected override void OnDestroy()
-        {
-            
-        }
-
         public bool IsCanAttack()
             => _lastAttackTime + 1f / _attackSpeedStat.Value < Time.time;
         public void CheckAttackTime()
             => _lastAttackTime = Time.time;
+
         public void Attack()
         {
 
@@ -65,7 +62,6 @@ namespace DKProject.Entities.Enemies
             OnDieEvent?.Invoke(this);
 
             ItemDrop();
-
             this.Push();
         }
 
@@ -76,7 +72,7 @@ namespace DKProject.Entities.Enemies
             {
                 for (int i = 0; i < dropResourcePair.second.first; i++)
                 {
-                    DroppedResource droppedResource 
+                    DroppedResource droppedResource
                         = gameObject.Pop(ObjectPoolingType.Resource, transform.position, Quaternion.identity) as DroppedResource;
                     droppedResource.Init(dropResourcePair.first, BigInteger.Parse(dropResourcePair.second.second), Random.insideUnitCircle * Random.Range(0f, itemDropPower));
                 }

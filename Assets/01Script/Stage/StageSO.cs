@@ -13,6 +13,7 @@ namespace DKProject.Chapter
         public Sprite stageBGSprite;
         public ulong recommendCombat;
         public AssetReference stageRef;
-        public List<EnemyPoolingType> appearingEnemy;      //TODO: Change to spawn enemy with ratio
+        [Space]
+        public List<EnemySO> appearingEnemy;      //TODO: Change to spawn enemy with ratio
     }
 }

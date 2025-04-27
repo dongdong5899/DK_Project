@@ -21,14 +21,7 @@ namespace DKProject
 
         public override void UpdateLevel()
         {
-            if(ItemSO.itemType == ItemType.Skill)
-            {
-                _level.text = $"{SkillSaveManager.Instance.GetSkillLevel(ItemSO as SkillSO)}";
-            }
-            if (ItemSO.itemType == ItemType.Weapon)
-            {
-                _level.text = $"{WeaponManager.Instance.GetWeaponLevel(ItemSO as WeaponSO)}";
-            }
+            _level.text = $"{SkillSaveManager.Instance.GetItemLevel(ItemSO as SkillSO)}";
         }
     }
 }

@@ -22,17 +22,17 @@ namespace DKProject.UI
         private void OnEnable()
         {
             UpdateValue();
-            ResourceManager.OnChangeValue += UpdateValue;
+            ResourceData.OnChangeValue += UpdateValue;
         }
 
         private void OnDisable()
         {
-            ResourceManager.OnChangeValue -= UpdateValue;
+            ResourceData.OnChangeValue -= UpdateValue;
         }
 
         public void UpdateValue()
         {
-            _value = ResourceManager.GetResource(_resourceType);
+            _value = ResourceData.GetResource(_resourceType);
             _text.SetText(_value.ParseNumber());
         }
     }

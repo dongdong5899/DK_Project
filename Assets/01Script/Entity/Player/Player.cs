@@ -1,8 +1,8 @@
+using DKProject.Core;
 using DKProject.Entities.Components;
 using DKProject.Entities.Enemies;
 using DKProject.SkillSystem;
 using DKProject.StatSystem;
-using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,7 +15,6 @@ namespace DKProject.Entities.Players
         private EntityMover _entityMover;
         private PlayerRenderer _entityRenderer;
         private EntityStat _entityStat;
-        private PlayerSkillSystem _playerSkillSystem;
         private StatElement _attackSpeedStat;
         private StatElement _attackDamageStat;
         private float _lastAttackTime;
@@ -43,7 +42,6 @@ namespace DKProject.Entities.Players
             _entityMover = GetCompo<EntityMover>();
             _entityRenderer = GetCompo<PlayerRenderer>();
             _entityStat = GetCompo<EntityStat>();
-            _playerSkillSystem = GetCompo<PlayerSkillSystem>();
             _attackSpeedStat = _entityStat.StatDictionary[StatName.AttackSpeed];
             _attackDamageStat = _entityStat.StatDictionary[StatName.AttackDamage];
         }
@@ -53,21 +51,22 @@ namespace DKProject.Entities.Players
             base.DisposeComponents();
         }
 
+
         private void Update()
         {
             if (Keyboard.current.tKey.wasPressedThisFrame)
             {
-                _playerSkillSystem.EquipSkill(_testSkillSO.GetSkill(this), 0);
+                SkillManager.Instance.EquipSkill(SkillManager.Instance.GetSkillClass(_testSkillSO), 0);
             }
 
-            if(Keyboard.current.qKey.wasPressedThisFrame)
+            if (Keyboard.current.qKey.wasPressedThisFrame)
             {
-                _playerSkillSystem.UseSkill(0);
+                SkillManager.Instance.UseSkill(0);
             }
 
             if (Keyboard.current.rKey.wasPressedThisFrame)
             {
-                _playerSkillSystem.UnEquipSkill(0);
+                SkillManager.Instance.UnEquipSkill(0);
             }
         }
     }

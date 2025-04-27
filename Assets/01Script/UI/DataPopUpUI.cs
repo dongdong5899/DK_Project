@@ -1,6 +1,8 @@
 using DG.Tweening;
+using DKProject.Combat;
 using DKProject.Core;
 using DKProject.SkillSystem;
+using DKProject.Weapon;
 using System;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
@@ -53,22 +55,60 @@ namespace DKProject.UI
 
         public void SetItem(InvenSlot invenSlot)
         {
+            Debug.Log("Asdasd");
             _currentSlot = invenSlot;
-            SkillSO skillSO = invenSlot.SkillSO;
+            ItemSO itemSO = invenSlot.ItemSO;
+            _currentPopUpPanel.SetEquipData(SkillManager.Instance.CheckSkillEquip(itemSO as SkillSO, out int index));
             Action upgrade = () =>
             {
-                SkillManager.Instance.LevelUpSkill(skillSO);
-                UpdateLevel(skillSO);
+
+                if (itemSO.itemType == ItemType.Skill)
+                {
+                    SkillSaveManager.Instance.LevelUpSkill(itemSO as SkillSO);
+                }
+
+                if (itemSO.itemType == ItemType.Weapon)
+                {
+                    WeaponManager.Instance.LevelUpWeapon(itemSO as WeaponSO);
+                }
+
+                UpdateLevel(itemSO);
                 invenSlot.UpdateLevel();
             };
+            Action equip = () =>
+            {
+                if (SkillManager.Instance.CheckSkillEquip(itemSO as SkillSO, out int index))
+                {
+                    SkillManager.Instance.UnEquipSkill(index);
+                    _currentPopUpPanel.SetEquipData(false);
+                }
+                else
+                {
+                    SkillSlotSettingController slotSettingController
+                        = UIManager.Instance.OpenUI(nameof(SkillSlotSettingController)) as SkillSlotSettingController;
+                    slotSettingController.SetSkill(SkillManager.Instance.GetSkillClass(itemSO as SkillSO));
+                    _currentPopUpPanel.SetEquipData(true);
+                }
+            };
 
-            _currentPopUpPanel.SetData(skillSO.icon, skillSO.skillName, skillSO.skillDescription, upgrade, null);
-            UpdateLevel(skillSO);
+            _currentPopUpPanel.SetData(itemSO.icon, itemSO.itemName, itemSO.itemDescription, upgrade, null, equip);
+            UpdateLevel(itemSO);
         }
 
-        private void UpdateLevel(SkillSO skillSO)
+        private void UpdateLevel(ItemSO itemSO)
         {
-            _currentPopUpPanel.SetLevel(SkillManager.Instance.GetSkillLevel(skillSO), "");
+            int level = 0,price = 0;
+            if (itemSO.itemType == ItemType.Skill)
+            {
+                level = SkillSaveManager.Instance.GetSkillLevel(itemSO as SkillSO);
+                price = SkillSaveManager.Instance.GetSkillUpgradePrice(itemSO as SkillSO);
+            }
+            if (itemSO.itemType == ItemType.Weapon)
+            {
+                level = WeaponManager.Instance.GetWeaponLevel(itemSO as WeaponSO);
+                //price = WeaponManager.Instance.GetWeaponUpgradePrice(itemSO as SkillSO);
+            }
+            _currentPopUpPanel.SetLevel(level, price.ToString(), "");
         }
 
         public override void Open()

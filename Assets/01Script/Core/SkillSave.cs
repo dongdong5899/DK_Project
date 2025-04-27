@@ -14,11 +14,21 @@ namespace DKProject.Core
             skillDataBase = new List<Pair<SkillSO, SkillData>> ();
         }
 
-        public void OnLoadData(SkillSave classData)
+        public bool OnLoadData(SkillSave classData)
         {
-            if (classData == null) return;
+            if (classData == null) return false;
 
+            foreach (var pair in classData.skillDataBase)
+            {
+                if (pair.first == null)
+                {
+                    skillDataBase = new List<Pair<SkillSO, SkillData>>();
+                    return false;
+                }
+            }
             skillDataBase = classData.skillDataBase;
+
+            return true;
         }
 
         public void OnSaveData(string savedFileName)
@@ -37,5 +47,7 @@ namespace DKProject.Core
     {
         public bool isUnlock;
         public int skillLevel;
+        public int skillCount;
+        public int skillRevolutionLevel;
     }
 }

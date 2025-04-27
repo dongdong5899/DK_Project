@@ -2,6 +2,7 @@ using DKProject.SkillSystem;
 using DKProject.SkillSystem.Skills;
 using DKProject.UI;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace DKProject
@@ -19,7 +20,7 @@ namespace DKProject
             Close();
 
             _invenSkills = GetComponentsInChildren<InvenSkill>();
-            List<SkillSO> skillList = _skillList.GetList();
+            List<SkillSO> skillList = _skillList.GetList().OfType<SkillSO>().ToList();
             int skillCount = skillList.Count;
             for (int i = 0; i < skillCount; i++)
             {

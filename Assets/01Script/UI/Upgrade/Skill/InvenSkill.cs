@@ -1,6 +1,7 @@
 using DKProject.Core;
 using DKProject.SkillSystem;
 using DKProject.UI;
+using DKProject.Weapon;
 using UnityEngine;
 
 namespace DKProject
@@ -20,7 +21,14 @@ namespace DKProject
 
         public override void UpdateLevel()
         {
-            _level.text = $"{SkillManager.Instance.GetSkillLevel(SkillSO)}";
+            if(ItemSO.itemType == ItemType.Skill)
+            {
+                _level.text = $"{SkillSaveManager.Instance.GetSkillLevel(ItemSO as SkillSO)}";
+            }
+            if (ItemSO.itemType == ItemType.Weapon)
+            {
+                _level.text = $"{WeaponManager.Instance.GetWeaponLevel(ItemSO as WeaponSO)}";
+            }
         }
     }
 }

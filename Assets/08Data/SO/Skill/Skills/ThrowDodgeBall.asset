@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
+  m_Name: ThrowDodgeBall
+  m_EditorClassIdentifier: 
+  itemID: S105
+  itemName: "\uC5B4\uB514\uC120\uAC00 \uB0A0\uC544\uC628 \uD53C\uAD6C\uACF5"
+  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
+  itemRank: 0
+  itemType: 0
+  itemDescription: "\uC5B4\uB518\uC9C0\uB3C4 \uBAA8\uB97C \uACF3\uC5D0\uC11C \uD53C\uAD6C\uACF5\uC774
+    \uB0A0\uC544\uC640 \uC801 \uD55C\uBA85\uC5D0\uAC8C \uC801\uC911\uD55C\uB2E4.
+    \uB204\uAD70\uC9C4 \uBAB0\uB77C\uB3C4 \uAD49\uC7A5\uD78C \uC2E4\uB825\uC790\uAC00
+    \uBD84\uBA85\uD558\uB2E4."
+  skillType: 0
+  targetType: 0
+  damageType: 0
+  coolDown: 5.5
+  skillRange: 5
+  skillAreaRadius: 2
+  baseSkillPercent: 0
+  upgradeSkillPercent: 0
+  unlockEffects: []
+  equipEffects: []
+  skill:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

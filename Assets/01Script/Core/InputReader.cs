@@ -6,9 +6,6 @@ namespace DKProject.Core
 {
     public class InputReader : Controls.IPlayerActions
     {
-        public static event Action JumpEvent;
-        public static event Action DashEvent;
-        public static event Action AttackEvent;
 
         public static Vector2 InputDirection { get; private set; }
 
@@ -26,8 +23,6 @@ namespace DKProject.Core
 
         public void OnJump(InputAction.CallbackContext context)
         {
-            if (context.performed)
-                JumpEvent?.Invoke();
         }
     }
 }

@@ -61,7 +61,7 @@ namespace DKProject
         {
             if (_mexLevelValue != -1 && _levelValue >= _mexLevelValue) return;
 
-            if (ResourceManager.TryRemoveResource(ResourceType.Gold, GetPrice()))
+            if (ResourceData.TryRemoveResource(ResourceType.Gold, GetPrice()))
             {
                 _levelValue++;
                 if (_statSO.isBigInteger)

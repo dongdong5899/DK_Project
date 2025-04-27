@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
+  m_Name: ShootBumerang
+  m_EditorClassIdentifier: 
+  itemID: S111
+  itemName: "\uB72C\uAE08\uC5C6\uC774 \uB358\uC838\uC9C4 \uBD80\uBA54\uB791"
+  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
+  itemRank: 2
+  itemType: 0
+  itemDescription: "\uC8FC\uBA38\uB2C8\uC5D0\uC11C \uBE60\uC9C4 \uBD80\uBA54\uB791\uC774
+    \uB0A0\uB6F4\uB2E4. \uBD80\uBA54\uB791\uC740 15m\uB0B4 \uAC00\uC7A5 \uBA3C \uC801\uC744
+    \uD0C0\uAC9F\uD305 \uD558\uC5EC \uC801\uC911\uC2DC\uD0A8 \uB4A4, \uB2E4\uC2DC
+    \uB3CC\uC544\uC628\uB2E4."
+  skillType: 0
+  targetType: 1
+  damageType: 0
+  coolDown: 0
+  skillRange: 8
+  skillAreaRadius: 2
+  baseSkillPercent: 50
+  upgradeSkillPercent: 0
+  unlockEffects: []
+  equipEffects: []
+  skill:
+    rid: 1513572911148958165
+  references:
+    version: 2
+    RefIds:
+    - rid: 1513572911148958165
+      type: {class: ShootBumerangSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
+      data:
+        _lifeTime: 4

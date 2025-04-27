@@ -39,9 +39,14 @@ namespace DKProject.SkillSystem
         BuffHongsam
     }
 
-    public enum SkillRank
+    public enum Rank
     {
-        Common,Rare,Unique,Epic,Legendary
+        Common, Rare, Epic, Unique, Legendary
+    }
+
+    public enum ItemType
+    {
+        Skill,Weapon
     }
 }
 

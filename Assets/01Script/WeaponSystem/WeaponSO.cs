@@ -1,17 +1,26 @@
+using DKProject.Combat;
 using DKProject.SkillSystem;
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace DKProject.Weapon
 {
-    [CreateAssetMenu(fileName = "WeaponSO", menuName = "SO/WeaponSO")]
-    public class WeaponSO : ScriptableObject
+    [Serializable]
+    public struct ApplyStatData
     {
-        public SkillRank weaponRank;
-        public Sprite weaponIcon;
-        public string weaponName;
-        public string waeponEngName;
-        public string weaponDescription;
-        public List<Pair<StatElementSO, float>> increaseStats;
+        public StatElementSO statSo;
+        public float applyValue;
+        public float IncreaseValue;
+    }
+
+    [CreateAssetMenu(fileName = "WeaponSO", menuName = "SO/WeaponSO")]
+    public class WeaponSO : ItemSO
+    {
+        public int weaponIndex;
+        public int maxLevel;
+
+        public List<ApplyStatData> increaseStats;
     }
 }

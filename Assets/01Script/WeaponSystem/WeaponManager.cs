@@ -11,7 +11,7 @@ namespace DKProject.Weapon
     {
         public event Action OnChangeValue;
 
-        public SortedDictionary<WeaponSO, WeaponData> weaponDictionary;
+        public Dictionary<WeaponSO, WeaponData> weaponDictionary;
 
         public WeaponSave save;
         [SerializeField] private WeaponListSO _weaponList;
@@ -22,7 +22,7 @@ namespace DKProject.Weapon
         {
             base.CreateInstance();
             Load();
-            weaponDictionary = new SortedDictionary<WeaponSO, WeaponData>();
+            weaponDictionary = new Dictionary<WeaponSO, WeaponData>();
             WeaponDictionarySet();
             DontDestroyOnLoad(this.gameObject);
         }
@@ -160,16 +160,16 @@ namespace DKProject.Weapon
 
         private WeaponSO FindNextWeapon(WeaponSO currentWeapon)
         {
-            bool isFind = false;
-            foreach (WeaponSO key in weaponDictionary.Keys)
+            int id = currentWeapon.weaponIndex;
+            id++;
+
+            foreach(var weapon in weaponDictionary.Keys)
             {
-                if (isFind)
-                    return key;
-
-                if (key == currentWeapon)
-                    isFind = true;
+                if(weapon.weaponIndex == id)
+                {
+                    return weapon;
+                }
             }
-
             return null;
         }
 

@@ -12,20 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: Sickle
   m_EditorClassIdentifier: 
-  itemID: W0014
+  itemID: 14
   itemName: "\uACE0\uC131\uB2A5 \uB0AB"
   icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
   itemRank: 2
   itemType: 1
-  itemDescription: "\"\uC804\uC124\uC758 \uB18D\uBD80? \uAC00 \uC4F0\uB358 \uB0AB\uC774\uB2E4.
+  itemDescription: "\uC804\uC124\uC758 \uB18D\uBD80? \uAC00 \uC4F0\uB358 \uB0AB\uC774\uB2E4.
     \uBB34\uC5C7\uC774\uB4E0\uC9C0 \uBC38 \uC218 \uC788\uB2E4\uACE0 \uC804\uD574\uC838\uC624\uC9C0\uB9CC,
     \n\uB85C\uD1A0\uB294 \uC548\uC804 \uCF00\uC774\uC2A4\uB97C \uBC97\uAE30\uC9C0\uB3C4
     \uC54A\uACE0 \uC2AC\uB77C\uC784 \uD558\uB098 \uBABB \uBC34\uB2E4\uBA70 \uBD88\uD3C9\uD558\uACE0
-    \uC788\uB2E4.\""
+    \uC788\uB2E4."
+  weaponIndex: 14
+  maxLevel: 150
   increaseStats:
-  - first: {fileID: 11400000, guid: 43d3db4db7c04854d9add36077dffc20, type: 2}
-    second: 5
-  - first: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    second: 5
-  - first: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
-    second: 3
+  - statSo: {fileID: 11400000, guid: 43d3db4db7c04854d9add36077dffc20, type: 2}
+    applyValue: 5
+    IncreaseValue: 0.03
+  - statSo: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    applyValue: 5
+    IncreaseValue: 0.25
+  - statSo: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
+    applyValue: 3
+    IncreaseValue: 0.15

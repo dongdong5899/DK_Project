@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: MostOldBamboo
   m_EditorClassIdentifier: 
-  itemID: W0023
+  itemID: 25
   itemName: "\uC870\uC0C1 \uB300\uB098\uBB34"
   icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
   itemRank: 4
@@ -21,12 +21,18 @@ MonoBehaviour:
     \uC720\uC131\uC6B0\uC640 \uD639\uD55C\uC758 \uBE59\uD558\uAE30\uC5D0\uB3C4 \uBC84\uD2F4
     \uB300\uB098\uBB34\uB77C \uADF8\uB7F0\uC9C0 \uB354 \uC774\uC0C1 \uB300\uB098\uBB34\uB77C\uACE0\uB294
     \uBD80\uB97C \uC218 \uC5C6\uB294 \uD30C\uAD34\uB825\uC744 \uC790\uB791\uD55C\uB2E4."
+  weaponIndex: 25
+  maxLevel: 200
   increaseStats:
-  - first: {fileID: 11400000, guid: 175f233e4bdf3e44cb5d9f9ce100e22e, type: 2}
-    second: 15
-  - first: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    second: 10
-  - first: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
-    second: 10
-  - first: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
-    second: 5
+  - statSo: {fileID: 11400000, guid: 175f233e4bdf3e44cb5d9f9ce100e22e, type: 2}
+    applyValue: 15
+    IncreaseValue: 1
+  - statSo: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    applyValue: 10
+    IncreaseValue: 1
+  - statSo: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
+    applyValue: 10
+    IncreaseValue: 0.75
+  - statSo: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
+    applyValue: 5
+    IncreaseValue: 0.5

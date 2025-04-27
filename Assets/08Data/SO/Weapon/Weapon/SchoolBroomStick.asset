@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: SchoolBroomStick
   m_EditorClassIdentifier: 
-  itemID: W0008
+  itemID: 8
   itemName: "\uD559\uAD50 \uBE57\uC790\uB8E8"
   icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
   itemRank: 1
@@ -20,8 +20,12 @@ MonoBehaviour:
   itemDescription: "\uCD08\uB4F1\uD559\uAD50 \uB2F4\uBCBC\uB77D\uC5D0 \uB5A8\uC5B4\uC838\uC788\uB358
     \uD559\uAD50 \uBE57\uC790\uB8E8\uB2E4. \uCE7C\uC2F8\uC6C0 \uB2E8\uACE8\uC18C\uC7AC\uB85C,
     \uC740\uADFC \uC4F8\uB9CC\uD558\uB2E4."
+  weaponIndex: 8
+  maxLevel: 120
   increaseStats:
-  - first: {fileID: 11400000, guid: 1d4871ee7bf4d7047a270671fb66f9c3, type: 2}
-    second: 5
-  - first: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    second: 3
+  - statSo: {fileID: 11400000, guid: 1d4871ee7bf4d7047a270671fb66f9c3, type: 2}
+    applyValue: 5
+    IncreaseValue: 0.35
+  - statSo: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    applyValue: 3
+    IncreaseValue: 0.15

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: JindoPlant
   m_EditorClassIdentifier: 
-  itemID: W0007
+  itemID: 7
   itemName: "\uC9C4\uB3C5\uAC1C \uD480 "
   icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
   itemRank: 1
@@ -20,8 +20,12 @@ MonoBehaviour:
   itemDescription: "\uB77C\uD06C\uB9AC\uB9C8\uC5D0\uC11C\uB9CC \uC790\uB77C\uB294
     \uD2B9\uC0B0\uBB3C\uC774\uB2E4. \uAE30\uC874\uC758 \uAC15\uC544\uC9C0 \uD480\uBCF4\uB2E4
     3\uBC30\uB294 \uAC04\uC9C0\uB7FD\uB2E4."
+  weaponIndex: 7
+  maxLevel: 120
   increaseStats:
-  - first: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
-    second: 5
-  - first: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    second: 3
+  - statSo: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
+    applyValue: 5
+    IncreaseValue: 0.1
+  - statSo: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    applyValue: 3
+    IncreaseValue: 0.15

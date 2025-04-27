@@ -12,15 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: BokaMongdong
   m_EditorClassIdentifier: 
-  itemID: W0011
+  itemID: 11
   itemName: "\uBCF4\uCE74\uD45C \uBABD\uB465\uC774"
   icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
   itemRank: 2
   itemType: 1
-  itemDescription: "\"\uC5B4\uB9B4 \uC801, \uBCF4\uCE74\uAC00 \uB85C\uD1A0\uB97C
-    \uD6C8\uC721\uD560 \uBAA9\uC801\uC73C\uB85C \uC4F0\uB358 \uBABD\uB465\uC774\uB2E4.\n\uC0AC\uC2E4
+  itemDescription: "\uC5B4\uB9B4 \uC801, \uBCF4\uCE74\uAC00 \uB85C\uD1A0\uB97C \uD6C8\uC721\uD560
+    \uBAA9\uC801\uC73C\uB85C \uC4F0\uB358 \uBABD\uB465\uC774\uB2E4.\n\uC0AC\uC2E4
     \uADF8\uB0E5 \uBCC4\uBC18 \uB2E4\uB97C \uC810 \uC5C6\uB294 \uBABD\uB465\uC774\uC9C0\uB9CC,
-    \uCD94\uC5B5 \uBCF4\uC815\uC5D0 \uC758\uD574 \uAC15\uD574\uC9C4 \uAC83 \uAC19\uB2E4.\""
+    \uCD94\uC5B5 \uBCF4\uC815\uC5D0 \uC758\uD574 \uAC15\uD574\uC9C4 \uAC83 \uAC19\uB2E4."
+  weaponIndex: 11
+  maxLevel: 150
   increaseStats:
-  - first: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    second: 10
+  - statSo: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    applyValue: 10
+    IncreaseValue: 0.5

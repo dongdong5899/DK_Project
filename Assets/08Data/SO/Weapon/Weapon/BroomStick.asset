@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: BroomStick
   m_EditorClassIdentifier: 
-  itemID: W0003
+  itemID: 3
   itemName: "\uB098\uBB34 \uBE57\uC790\uB8E8"
   icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
   itemRank: 0
@@ -20,6 +20,9 @@ MonoBehaviour:
   itemDescription: "\uCC3D\uACE0\uC5D0 \uBC15\uD600\uC788\uB358 \uB098\uBB34 \uBE57\uC790\uB8E8\uB2E4.
     \uC0AC\uC2E4 \uB9DE\uC544\uC11C \uC544\uD504\uAE30\uBCF4\uB2E4\uB294 \uD53C\uC5B4\uC624\uB974\uB294
     \uBA3C\uC9C0 \uB54C\uBB38\uC5D0 \uD638\uD761\uAE30\uAC00 \uC544\uD504\uB2E4."
+  weaponIndex: 3
+  maxLevel: 100
   increaseStats:
-  - first: {fileID: 11400000, guid: 1d4871ee7bf4d7047a270671fb66f9c3, type: 2}
-    second: 3
+  - statSo: {fileID: 11400000, guid: 1d4871ee7bf4d7047a270671fb66f9c3, type: 2}
+    applyValue: 3
+    IncreaseValue: 0.1

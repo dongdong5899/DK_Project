@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DKProject.SkillSystem.Skills
 {
-    public class BuffBanana : Skill
+    public class BuffBananaSkill : Skill
     {
         [SerializeField] private List<EffectSO> buffEffects;
         public override void OnEquipSkill()

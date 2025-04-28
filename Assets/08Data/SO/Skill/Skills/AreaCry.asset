@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: AreaCry
   m_EditorClassIdentifier: 
-  itemID: S103
+  itemClassName: AreaCry
   itemName: "\uC758\uB3C4\uCE58 \uC54A\uC740 \uB208\uBB3C"
   icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
   itemRank: 0

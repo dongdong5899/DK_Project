@@ -7,25 +7,25 @@ using UnityEngine;
 
 namespace DKProject
 {
-    public class SkillUpgradePanel : ToggleUI
+    public class ItemUpgradePanel : ToggleUI
     {
-        public override string Key => nameof(SkillUpgradePanel);
+        public override string Key => nameof(ItemUpgradePanel);
 
         [SerializeField] private SkillListSO _skillList;
-        private InvenSkill[] _invenSkills;
+        private InvenSlot[] _invenSkills;
 
         protected override void Awake()
         {
             base.Awake();
             Close();
 
-            _invenSkills = GetComponentsInChildren<InvenSkill>();
+            _invenSkills = GetComponentsInChildren<InvenSlot>();
             List<SkillSO> skillList = _skillList.GetList().OfType<SkillSO>().ToList();
             int skillCount = skillList.Count;
             for (int i = 0; i < skillCount; i++)
             {
-                InvenSkill prev = i - 1 < 0 ? null : _invenSkills[i - 1];
-                InvenSkill next = i + 1 >= skillCount ? null : _invenSkills[i + 1];
+                InvenSlot prev = i - 1 < 0 ? null : _invenSkills[i - 1];
+                InvenSlot next = i + 1 >= skillCount ? null : _invenSkills[i + 1];
                 _invenSkills[i].Init(prev, next, skillList[i]);
             }
         }

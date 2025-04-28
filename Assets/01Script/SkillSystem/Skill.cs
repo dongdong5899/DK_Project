@@ -119,7 +119,6 @@ namespace DKProject.SkillSystem
         {
             var statComponent = target.GetCompo<EntityStat>();
 
-
             foreach (var effectSO in effectList)
             {
                 string effectTypeKey = effectSO.effectType.ToString();

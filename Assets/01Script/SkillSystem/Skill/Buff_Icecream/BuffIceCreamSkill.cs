@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DKProject.SkillSystem.Skills
 {
-    public class BuffSpicyPizzaBread : Skill
+    public class BuffIceCreamSkill : Skill
     {
         private double _damage;
         [SerializeField] private List<EffectSO> _effectList;
@@ -17,10 +17,9 @@ namespace DKProject.SkillSystem.Skills
             _damage = (double)_player.GetAttackDamage() * _skillDotAttackReduction / 100;
         }
 
-
         public override Skill Clone()
         {
-            return new BuffSpicyPizzaBread();
+            return new BuffIceCreamSkill();
         }
 
         public override void UseSkill()

@@ -1,7 +1,8 @@
+using DKProject.Chapter;
 using DKProject.Core.Pool;
 using DKProject.Entities.Enemies;
-using NUnit.Framework.Constraints;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour
@@ -9,13 +10,13 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField] private float _spawnLoopDelay;
     [SerializeField] private int _loopCount;
     [SerializeField] private float _spawnDelay;
-    [SerializeField] private EnemyPoolingType _spawnEnemyType;
     [SerializeField] private Vector2 _spawnArea;
     [SerializeField] private float randomSize;
-    [SerializeField] private int _spawnCount;
     [SerializeField] private int _maxEnemyCount;
     private int _currentEnemyCount;
+    private bool _startSpawning = false;
     private float _lastSpawnLoopTime;
+    private StageSO _stageInfo;
 
     private void Awake()
     {
@@ -24,11 +25,19 @@ public class EnemyGenerator : MonoBehaviour
 
     private void Update()
     {
+        if (_startSpawning == false) return;
+
         if (_lastSpawnLoopTime + _spawnLoopDelay < Time.time)
         {
             _lastSpawnLoopTime = Time.time;
             StartCoroutine(SpawnCoroutine());
         }
+    }
+
+    public void Init(StageSO stageSO)
+    {
+        _startSpawning = true;
+         _stageInfo = stageSO;
     }
 
     private IEnumerator SpawnCoroutine()
@@ -37,19 +46,24 @@ public class EnemyGenerator : MonoBehaviour
         {
             if (_currentEnemyCount >= _maxEnemyCount)
                 yield break;
+
             Vector2 halfSpawnArea = _spawnArea / 2;
+
             float xOffset = Random.Range(-halfSpawnArea.x, halfSpawnArea.x);
             float yOffset = Random.Range(-halfSpawnArea.y, halfSpawnArea.y);
             Vector3 pos = transform.position + new Vector3(xOffset, yOffset);
-            for (int j = 0; j < _spawnCount; j++)
+
+            foreach (var enemyInfo in _stageInfo.appearingEnemy)
             {
                 Vector3 randomPos = Random.insideUnitCircle * randomSize;
-                Enemy enemy = gameObject.Pop(_spawnEnemyType, pos + randomPos, Quaternion.identity) as Enemy;
+                Enemy enemy = gameObject.Pop(enemyInfo.enemyType, pos + randomPos, Quaternion.identity) as Enemy;
                 enemy.OnDieEvent += HandleEnemyDieEvent;
                 _currentEnemyCount++;
+
                 if (_currentEnemyCount >= _maxEnemyCount)
                     yield break;
             }
+
             yield return new WaitForSeconds(_spawnDelay);
         }
     }

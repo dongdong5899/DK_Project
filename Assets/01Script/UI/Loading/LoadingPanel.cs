@@ -1,6 +1,8 @@
 using DG.Tweening;
+using DKProject.Core;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace DKProject.UI
 {
@@ -10,11 +12,16 @@ namespace DKProject.UI
 
         [SerializeField] private float _duration = 0.2f;
         [SerializeField] private AnimationCurve _easing;
+        [SerializeField] private TextMeshProUGUI _loadingText;
+        [SerializeField] private List<string> _loadingTextList;
+
         private Tween _toggleTween;
 
         public override void Open()
         {
-            if (_toggleTween != null && _toggleTween.active) 
+            _loadingText.SetText(RandomUtility.GetRandomElement<string>(_loadingTextList)); 
+
+            if (_toggleTween != null && _toggleTween.active)
                 _toggleTween.Kill();
 
             _toggleTween = RectTransform.DOAnchorPosY(0, _duration).SetEase(_easing)

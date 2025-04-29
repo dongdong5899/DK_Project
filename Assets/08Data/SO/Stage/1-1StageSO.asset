@@ -21,4 +21,5 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
-  appearingEnemy: 
+  appearingEnemy:
+  - {fileID: 11400000, guid: 7bb62ed319c38f44393903368d47f4e8, type: 2}

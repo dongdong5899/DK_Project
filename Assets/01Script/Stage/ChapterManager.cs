@@ -30,13 +30,17 @@ namespace DKProject.Chapter
             if (Instance != this) Destroy(gameObject);
             else
             {
+                Load();
                 DontDestroyOnLoad(gameObject);
-                loadingPanel = UIManager.Instance.GetUI<LoadingPanel>("LoadingPanel");
             }
         }
 
         public void LoadStage(int chapter, int stage)
         {
+            if(loadingPanel == null)
+                loadingPanel = UIManager.Instance.GetUI<LoadingPanel>("LoadingPanel");
+
+
             if (chapter != _currentChapterIndex && _loadHandle.IsValid())
                 _loadHandle.Release();
 
@@ -56,6 +60,7 @@ namespace DKProject.Chapter
 
                 _loadHandle = _currentStage.stageRef.InstantiateAsync();
                 _loadHandle.Completed += handle => loadingPanel.Close();
+                _loadHandle.Result.GetComponent<Stage>().Init(_currentStage);
             };
         }
 
@@ -76,6 +81,9 @@ namespace DKProject.Chapter
 
             _chapterSave.OnLoadData(_chapterSave);
             _progressChapter = _chapterSave.chapterProgress;
+            _stageProcess = _chapterSave.currentStage;
+
+            LoadStage(_progressChapter, _stageProcess);
         }
     }
 }

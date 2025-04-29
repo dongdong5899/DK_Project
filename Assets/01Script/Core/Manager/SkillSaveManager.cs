@@ -1,182 +1,63 @@
+using DKProject.Combat;
 using DKProject.SkillSystem;
+using DKProject.Weapon;
 using Doryu.JBSave;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 namespace DKProject.Core
 {
-    public class SkillSaveManager: MonoSingleton<SkillSaveManager>
+    public class SkillSaveManager: ItemManager
     {
-        public SkillSave save;
-        public Dictionary<SkillSO, SkillData> skillDictionary;
-        public event Action OnChangeValue;
-        [SerializeField] private SkillListSO _skillList;
         private string _fileName = "Skill";
-        private bool _isInitialized;
 
-        private void Awake()
+        public override bool LevelUpItem(ItemSO itemSO)
         {
-            Initialized();
-        }
-        private void Initialized()
-        {
-            if (_isInitialized) return;
+            if (!itemDictionary.ContainsKey(itemSO))
+                return false;
 
-            _isInitialized = true;
-            Load();
-            skillDictionary = new Dictionary<SkillSO, SkillData>();
-            SkillDictionarySet();
-            DontDestroyOnLoad(this.gameObject);
-        }
-        protected override void CreateInstance()
-        {
-            base.CreateInstance();
-            Initialized();
-        }
-
-        public void Init(SkillListSO list)
-        {
-            foreach(SkillSO skillSO in list.GetList())
+            if (ResourceData.TryRemoveSkillPoint((uint)GetItemUpgradePrice(itemSO))) // 1은 임시
             {
-                SkillData skilldata = new SkillData();
-                skilldata.isUnlock = false;
-                skilldata.skillLevel = 1;
-                skilldata.skillCount = 0;
-                skilldata.skillRevolutionLevel = 1;
-                save.skillDataBase.Add(new Pair<SkillSO, SkillData>(skillSO, skilldata));
-            }
-        }
+                ItemData data = itemDictionary[itemSO];
+                data.level++;
+                itemDictionary[itemSO] = data;
 
-        public void Save()
-        {
-            save.SaveJson(_fileName);
-        }
+                UpdateItemData(itemSO, data);
+                Save();
+                OnChangeValue?.Invoke();
 
-        private void Load()
-        {
-            save = new SkillSave();
-            if (save.LoadJson(_fileName) == false)
-            {
-                save.ResetData();
-                Init(_skillList);
-            }
-            
-
-            OnChangeValue?.Invoke();
-        }
-
-        private void SkillDictionarySet()
-        {
-            skillDictionary.Clear();
-            if (save.skillDataBase == null) return;
-
-            foreach (var pair in save.skillDataBase)
-            {
-                if (!skillDictionary.ContainsKey(pair.first))
-                {
-                    skillDictionary.Add(pair.first, pair.second);
-                }
-            }
-        }
-
-        public void UnlockSkill(SkillSO skillName)
-        {
-            SkillData data = new SkillData();
-            if (skillDictionary.ContainsKey(skillName))
-            {
-                data = skillDictionary[skillName];
-                data.isUnlock = true;
-                skillDictionary[skillName] = data;
+                return true;
             }
             else
             {
-                return;
+                return false;
             }
-
-            UpdateSkillData(skillName,data);
-            Save();
-            OnChangeValue?.Invoke();
-        }
-
-        public void LevelUpSkill(SkillSO skillName)
-        {
-            SkillData data = new SkillData();
-            if (skillDictionary.ContainsKey(skillName))
-            {
-                data = skillDictionary[skillName];
-                data.skillLevel++;
-                skillDictionary[skillName] = data;
-            }
-            else
-            {
-                return;
-            }
-
-            UpdateSkillData(skillName, data);
-            Save();
-            OnChangeValue?.Invoke();
-        }
-
-        public bool GetIsUnlocked(SkillSO skillName)
-        {
-            if (skillDictionary.TryGetValue(skillName, out var data))
-            {
-                return data.isUnlock;
-            }
-            return false;
-        }
-
-        public int GetSkillLevel(SkillSO skillSO)
-        {
-            if (skillDictionary.TryGetValue(skillSO, out var data))
-            {
-                return data.skillLevel;
-            }
-            return 0;
         }
 
         public int GetSkillRevolutionLevel(SkillSO skillSO)
         {
-            if (skillDictionary.TryGetValue(skillSO, out var data))
+            if (itemDictionary.TryGetValue(skillSO, out var data))
             {
-                return data.skillRevolutionLevel;
+                return data.revolutionLevel;
             }
             return 0;
         }
 
 
-        private void UpdateSkillData(SkillSO skillName, SkillData data)
-        {
-            for (int i = 0; i < save.skillDataBase.Count; i++)
-            {
-                if (save.skillDataBase[i].first == skillName)
-                {
-                    save.skillDataBase[i] = new Pair<SkillSO, SkillData>(skillName, data);
-                    return;
-                }
-            }
-        }
-
-        public bool TrySkiilLevelUp(SkillSO skillSO)
-        {
-            uint skillPointRequired = 1; // 1 부분 수식으로 바꿀예정
-            if (skillDictionary.TryGetValue(skillSO, out var data))
-            {
-                data.skillLevel++;
-            }
-            return ResourceData.TryRemoveSkillPoint(skillPointRequired);
-        }
-
         public bool TrySkillRevolution(SkillSO skillSO)
         {
-            if (skillDictionary.TryGetValue(skillSO, out var data))
+            if (itemDictionary.TryGetValue(skillSO, out var data))
             {
-                int skillCountRequired = data.skillRevolutionLevel*5; //수식으로 대체예정
-                if (data.skillCount >= skillCountRequired)
+                int skillCountRequired = data.revolutionLevel*5; //수식으로 대체예정
+                if (data.count >= skillCountRequired)
                 {
-                    data.skillCount -= skillCountRequired;
-                    data.skillRevolutionLevel++;
+                    data.count -= skillCountRequired;
+                    data.revolutionLevel++;
+                    UpdateItemData(skillSO, data);
+                    Save();
+                    OnChangeValue?.Invoke();
                     return true;
                 }
                 else
@@ -185,9 +66,9 @@ namespace DKProject.Core
             return false;
         }
 
-        public int GetSkillUpgradePrice(SkillSO skillSO)
+        public override BigInteger GetItemUpgradePrice(ItemSO itemSO)
         {
-            switch (skillSO.itemRank)
+            switch (itemSO.itemRank)
             {
                 case Rank.Common:
                     return 1;
@@ -200,7 +81,7 @@ namespace DKProject.Core
                 case Rank.Legendary:
                     return 5;
                 default:
-                    return -1;
+                    return 0;
             }
         }
 

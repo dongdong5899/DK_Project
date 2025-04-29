@@ -2,10 +2,11 @@ using DKProject.Entities.Components;
 using DKProject.Entities;
 using UnityEngine;
 using System.Collections.Generic;
+using DKProject.EffectSystem;
 
 namespace DKProject.SkillSystem.Skills
 {
-    public class BuffIceCream : Skill
+    public class BuffIceCreamSkill : Skill
     {
         private double _damage;
         [SerializeField] private List<EffectSO> _effectList;
@@ -19,7 +20,7 @@ namespace DKProject.SkillSystem.Skills
 
         public override Skill Clone()
         {
-            return new BuffIceCream();
+            return new BuffIceCreamSkill();
         }
 
         public override void UseSkill()
@@ -33,7 +34,7 @@ namespace DKProject.SkillSystem.Skills
                     if (target.transform.TryGetComponent(out Entity entity))
                     {
                         entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation(_damage));
-                        AddEffect(entity, _effectList);
+                        //AddEffect(entity, _effectList);
                     }
                 }
             }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: ThrowBomb
   m_EditorClassIdentifier: 
-  itemID: S106
+  itemClassName: ThrowBomb
   itemName: "\uB358\uC9C0\uACE0 \uBCF4\uB2C8 \uD3ED\uD0C4"
   icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
   itemRank: 1
@@ -32,9 +32,13 @@ MonoBehaviour:
   unlockEffects: []
   equipEffects: []
   skill:
-    rid: -2
+    rid: 3004152287382995031
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 3004152287382995031
+      type: {class: ThrowBombSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
+      data:
+        _lifeTime: 0
+        _skillProjectileSpeed: 0
+        _skillCount: 0

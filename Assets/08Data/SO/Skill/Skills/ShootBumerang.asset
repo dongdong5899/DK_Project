@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: ShootBumerang
   m_EditorClassIdentifier: 
-  itemID: S111
+  itemClassName: ShootBumerang
   itemName: "\uB72C\uAE08\uC5C6\uC774 \uB358\uC838\uC9C4 \uBD80\uBA54\uB791"
   icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
   itemRank: 2

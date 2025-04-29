@@ -1,10 +1,9 @@
-using DKProject.StatSystem;
-using System;
+using DKProject.SkillSystem;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace DKProject.SkillSystem
+namespace DKProject.EffectSystem
 {
     [CreateAssetMenu(fileName = "EffectSO", menuName = "SO/EffectSO")]
     public class EffectSO : ScriptableObject
@@ -17,17 +16,11 @@ namespace DKProject.SkillSystem
         public EffectType effectType;
         public bool isEffectTime;
         public float effectTime;
+        public bool isDotDamage;
 
         public List<Effects> effects;
     }
 
-    [Serializable]
-    public struct Effects
-    {
-        public StatElementSO stat;
-        public EModifyMode modifyMode;
-        public EModifyLayer modifyLayer;
-        public float value;
-    }
+    
 }
 

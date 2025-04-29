@@ -2,6 +2,7 @@ using DKProject.Entities.Components;
 using DKProject.Entities;
 using UnityEngine;
 using System.Collections.Generic;
+using DKProject.EffectSystem;
 
 namespace DKProject.SkillSystem.Skills
 {
@@ -33,7 +34,7 @@ namespace DKProject.SkillSystem.Skills
                     if (target.transform.TryGetComponent(out Entity entity))
                     {
                         entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation(_damage));
-                        AddEffect(entity, _effectList);
+                        //AddEffect(entity, _effectList);
                     }
                 }
             }

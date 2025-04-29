@@ -9,6 +9,7 @@ using DG.Tweening;
 using DKProject.Core;
 using System;
 using System.Collections.Generic;
+using DKProject.EffectSystem;
 
 namespace DKProject.SkillSystem
 {
@@ -86,17 +87,17 @@ namespace DKProject.SkillSystem
         public virtual void OnEquipSkill()
         {
             _prevSkillTime = Time.time;
-            AddEffect(_owner,SkillSO.equipEffects);
+            //AddEffect(_owner,SkillSO.equipEffects);
         }
 
         public virtual void OnUnEquipSkill()
         {
-            RemoveEffect(_owner, SkillSO.equipEffects);
+            //RemoveEffect(_owner, SkillSO.equipEffects);
         }
 
         public virtual void UnlockSkill()
         {
-            AddEffect(_owner, SkillSO.unlockEffects);
+            //AddEffect(_owner, SkillSO.unlockEffects);
         }
 
         public abstract Skill Clone();
@@ -115,36 +116,10 @@ namespace DKProject.SkillSystem
             return _currentDamage;
         }
 
+
         public void AddEffect(Entity target, List<EffectSO> effectList)
         {
-            var statComponent = target.GetCompo<EntityStat>();
-
-            foreach (var effectSO in effectList)
-            {
-                string effectTypeKey = effectSO.effectType.ToString();
-                foreach (var effect in effectSO.effects)
-                {
-                    if (effect.stat.isBigInteger)
-                        statComponent.StatDictionary[effect.stat].AddModify(
-                        effectTypeKey,
-                        (BigInteger)effect.value,
-                        effect.modifyMode,
-                        effect.modifyLayer );
-                    else
-                        statComponent.StatDictionary[effect.stat].AddModify(
-                        effectTypeKey,
-                        effect.value,
-                        effect.modifyMode,
-                        effect.modifyLayer
-                        );
-                    
-                    Debug.Log(statComponent.StatDictionary[effect.stat].BigIntValue);
-                }
-                if (effectSO.isEffectTime)
-                {
-                    DOVirtual.DelayedCall(effectSO.effectTime, ()=> RemoveEffect(target, effectList));
-                }
-            }
+            
         }
 
         public void RemoveEffect(Entity target, List<EffectSO> effectList)

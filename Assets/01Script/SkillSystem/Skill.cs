@@ -25,14 +25,13 @@ namespace DKProject.SkillSystem
         protected bool _isUseSkill = true;
         protected BigInteger _currentDamage;
         protected EntityStat _statCompo;
-        protected LayerMask _whatIsTarget;
+        [SerializeField] protected LayerMask _whatIsTarget;
         protected Player _player;
 
         public virtual void Init(Entity owner,SkillSO SO)
         {
             _owner = owner;
             SkillSO = SO;
-            _whatIsTarget = LayerMask.GetMask("Enemy");
             _skillCoolTime = SkillSO.coolDown;
             _isPassiveSkill = SkillSO.skillType == SkillType.Passive;
             _isDotSkill = SkillSO.damageType == DamageType.Dot;
@@ -43,19 +42,13 @@ namespace DKProject.SkillSystem
 
         public virtual void Update()
         {
-            if (_isPassiveSkill == true && CoolTimeCheck() && RangeCheck())
+            if (_isPassiveSkill == true && IsUsable())
             {
                 UseSkill();
-            }
-
-            if(_isPassiveSkill == false && _isUseSkill == true)
-            {
-                UseSkill();
-                _isUseSkill = false;
             }
         }
 
-        public virtual bool CoolTimeCheck()
+        private bool CoolTimeCheck()
         {
             if(_prevSkillTime + _skillCoolTime < Time.time)
             {
@@ -66,9 +59,9 @@ namespace DKProject.SkillSystem
                 return false;
         }
 
-        public virtual bool RangeCheck()
+        public virtual bool IsUsable()
         {
-            return Physics2D.CircleCast(_owner.transform.position, SkillSO.skillRange, Vector2.zero, 0, _whatIsTarget);
+            return CoolTimeCheck();
         }
 
         public float GetCurrentCoolTime()
@@ -79,7 +72,8 @@ namespace DKProject.SkillSystem
 
         public void SetUseSkill(bool useSkill)
         {
-            _isUseSkill = useSkill;
+            if (_isPassiveSkill) return;
+            UseSkill();
         }
 
         public abstract void UseSkill();
@@ -99,9 +93,6 @@ namespace DKProject.SkillSystem
         {
             //AddEffect(_owner, SkillSO.unlockEffects);
         }
-
-        public abstract Skill Clone();
-
 
         public virtual BigInteger DamageCalculation(double playerAttackDamage)
         {

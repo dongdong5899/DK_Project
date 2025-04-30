@@ -30,7 +30,7 @@ namespace DKProject.Core
                 skill?.Update();
                 if (skill != null && _autoMode)
                 {
-                    if (skill.CoolTimeCheck() && skill.RangeCheck())
+                    if (skill.IsUsable())
                     {
                         skill.SetUseSkill(true);
                     }

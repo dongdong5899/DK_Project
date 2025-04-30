@@ -26,10 +26,15 @@ MonoBehaviour:
   coolDown: 7
   skillRange: 5
   skillAreaRadius: 2
-  baseSkillPercent: 0
-  upgradeSkillPercent: 0
-  unlockEffects: []
-  equipEffects: []
+  baseSkillPercent: 10
+  upgradeSkillPercent: 0.25
+  unlockStats: []
+  equipStats:
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 3
+    upgradeValue: 0.1
+    modifyMode: 1
+    modifyLayer: 1
   skill:
     rid: 3004152287382995027
   references:

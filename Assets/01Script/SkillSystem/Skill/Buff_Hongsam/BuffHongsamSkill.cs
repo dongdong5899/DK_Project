@@ -10,13 +10,13 @@ namespace DKProject.SkillSystem.Skills
         public override void OnEquipSkill()
         {
             base.OnEquipSkill();
-            AddEffect(_owner, buffEffects);
+            AddEffect(buffEffects);
         }
 
         public override void OnUnEquipSkill()
         {
             base.OnUnEquipSkill();
-            RemoveEffect(_owner, buffEffects);
+            RemoveEffect(buffEffects);
         }
 
         public override Skill Clone()

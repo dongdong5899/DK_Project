@@ -29,8 +29,8 @@ MonoBehaviour:
   skillAreaRadius: 4
   baseSkillPercent: 0
   upgradeSkillPercent: 0
-  unlockEffects: []
-  equipEffects: []
+  unlockStats: []
+  equipStats: []
   skill:
     rid: 3004152206055440391
   references:

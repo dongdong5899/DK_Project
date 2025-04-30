@@ -111,7 +111,7 @@ namespace DKProject.Weapon
 
         public override BigInteger GetItemUpgradePrice(ItemSO itemSO)
         {
-            return 10;
+            return 10; //식으로 대체
         }
 
     }

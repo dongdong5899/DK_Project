@@ -35,37 +35,12 @@ namespace DKProject.Core
         {
             _equippedWeapon = weapon;
 
-            foreach (var increaseStat in _equippedWeapon.increaseStats)
-            {
-                string effectTypeKey = weapon.weaponIndex.ToString();
-                if (increaseStat.stat.isBigInteger)
-                    _playerStat.StatDictionary[increaseStat.stat].AddModify(
-                    effectTypeKey,
-                    (BigInteger)increaseStat.value,
-                    increaseStat.modifyMode,
-                    increaseStat.modifyLayer);
-                else
-                    _playerStat.StatDictionary[increaseStat.stat].AddModify(
-                    effectTypeKey,
-                    increaseStat.value,
-                    increaseStat.modifyMode,
-                    increaseStat.modifyLayer
-                    );
-
-                Debug.Log(_playerStat.StatDictionary[increaseStat.stat].BigIntValue);
-            }
+            WeaponSaveManager.Instance.AddStat(weapon,weapon.increaseStats, _playerStat);
         }
 
         public void UnEquipWeapon()
         {
-            foreach (var increaseStat in _equippedWeapon.increaseStats)
-            {
-                string effectTypeKey = _equippedWeapon.weaponIndex.ToString();
-                _playerStat.StatDictionary[increaseStat.stat].RemoveModify(
-                    effectTypeKey,
-                    increaseStat.modifyLayer
-                );
-            }
+            WeaponSaveManager.Instance.RemoveStat(_equippedWeapon, _equippedWeapon.increaseStats, _playerStat);
             _equippedWeapon = null;
 
         }

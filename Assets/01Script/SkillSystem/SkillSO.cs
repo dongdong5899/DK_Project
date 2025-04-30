@@ -5,6 +5,7 @@ using UnityEngine;
 using DKProject.Entities;
 using DKProject.Combat;
 using DKProject.EffectSystem;
+using DKProject.Weapon;
 
 namespace DKProject.SkillSystem
 {
@@ -24,26 +25,26 @@ namespace DKProject.SkillSystem
         public float upgradeSkillPercent;
 
         [Header("Effect")]
-        public List<EffectSO> unlockEffects;
-        public List<EffectSO> equipEffects;
+        public List<ApplyStatData> unlockStats;
+        public List<ApplyStatData> equipStats;
         
 
         [SerializeReference] public Skill skill;
 
-        //private void OnEnable()
-        //{
-        //    if (skill != null) return;
-        //    try
-        //    {
-        //        Type t = Type.GetType($"DKProject.SkillSystem.Skills.{itemClassName}Skill");
-        //        skill = Activator.CreateInstance(t) as Skill;
-        //    }
-        //    catch (Exception e)
-        //    { 
-        //        Debug.LogError($"Skill name of {itemClassName} is not exsist");
-        //        Debug.LogException(e);
-        //    }
-        //}
+        private void OnEnable()
+        {
+            if (skill != null) return;
+            try
+            {
+                Type t = Type.GetType($"DKProject.SkillSystem.Skills.{itemClassName}Skill");
+                skill = Activator.CreateInstance(t) as Skill;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Skill name of {itemClassName} is not exsist");
+                Debug.LogException(e);
+            }
+        }
 
         public Skill GetSkill(Entity owner)
         {

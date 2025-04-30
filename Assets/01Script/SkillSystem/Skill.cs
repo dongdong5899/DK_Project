@@ -24,7 +24,8 @@ namespace DKProject.SkillSystem
         protected float _currentCoolTime;
         protected bool _isUseSkill = true;
         protected BigInteger _currentDamage;
-        protected EntityStat _statCompo;
+        protected EntityStat _entityStat;
+        protected EntityEffect _entityEffect;
         protected LayerMask _whatIsTarget;
         protected Player _player;
 
@@ -36,7 +37,8 @@ namespace DKProject.SkillSystem
             _skillCoolTime = SkillSO.coolDown;
             _isPassiveSkill = SkillSO.skillType == SkillType.Passive;
             _isDotSkill = SkillSO.damageType == DamageType.Dot;
-            _statCompo = owner.GetCompo<EntityStat>();
+            _entityStat = owner.GetCompo<EntityStat>();
+            _entityEffect = owner.GetCompo<EntityEffect>();
             _player = owner as Player;
         }
 
@@ -87,17 +89,17 @@ namespace DKProject.SkillSystem
         public virtual void OnEquipSkill()
         {
             _prevSkillTime = Time.time;
-            //AddEffect(_owner,SkillSO.equipEffects);
+            ItemManager.Instance.AddStat(SkillSO,SkillSO.equipStats,_entityStat);
         }
 
         public virtual void OnUnEquipSkill()
         {
-            //RemoveEffect(_owner, SkillSO.equipEffects);
+            ItemManager.Instance.RemoveStat(SkillSO,SkillSO.equipStats,_entityStat);
         }
 
         public virtual void UnlockSkill()
         {
-            //AddEffect(_owner, SkillSO.unlockEffects);
+            ItemManager.Instance.AddStat(SkillSO, SkillSO.unlockStats, _entityStat);
         }
 
         public abstract Skill Clone();
@@ -109,34 +111,34 @@ namespace DKProject.SkillSystem
             Debug.Log(playerAttackDamage);
             float random = Random.Range(0f, 100f);
 
-            if (random < _statCompo.StatDictionary["CriticalChance"].Value)
+            if (random < _entityStat.StatDictionary["CriticalChance"].Value)
             {
-                return _currentDamage * (BigInteger)(_statCompo.StatDictionary["CriticalDamage"].Value / 100);
+                return _currentDamage * (BigInteger)(_entityStat.StatDictionary["CriticalDamage"].Value / 100);
             }
             return _currentDamage;
         }
 
-
-        public void AddEffect(Entity target, List<EffectSO> effectList)
+        public void AddStat(List<ApplyStatData> statData)
         {
-            
+            foreach(var stat in statData)
+            {
+
+            }
         }
 
-        public void RemoveEffect(Entity target, List<EffectSO> effectList)
+        public void AddEffect(List<EffectSO> effectList)
         {
-            var statComponent = target.GetCompo<EntityStat>();
-
-            foreach (var effectSO in effectList)
+            foreach (EffectSO effect in effectList)
             {
-                string effectTypeKey = effectSO.effectType.ToString();
+                _entityEffect.ApplyEffect(effect.effectType);
+            }
+        }
 
-                foreach (var effect in effectSO.effects)
-                {
-                    statComponent.StatDictionary[effect.stat].RemoveModify(
-                        effectTypeKey,
-                        effect.modifyLayer
-                    );
-                }
+        public void RemoveEffect(List<EffectSO> effectList)
+        {
+            foreach (EffectSO effect in effectList)
+            {
+                _entityEffect.RemoveEffect(effect.effectType);
             }
         }
     }

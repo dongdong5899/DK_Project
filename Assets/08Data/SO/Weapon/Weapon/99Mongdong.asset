@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: 99Mongdong
   m_EditorClassIdentifier: 
-  itemID: 16
+  itemClassName: 
   itemName: "99\uAC15 \uBABD\uB465\uC774"
   icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
   itemRank: 3
@@ -25,6 +25,8 @@ MonoBehaviour:
   weaponIndex: 16
   maxLevel: 180
   increaseStats:
-  - statSo: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    applyValue: 20
-    IncreaseValue: 1
+  - stat: {fileID: 0}
+    baseValue: 0
+    upgradeValue: 0
+    modifyMode: 1
+    modifyLayer: 2

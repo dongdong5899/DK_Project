@@ -1,5 +1,6 @@
 using DKProject.Combat;
 using DKProject.SkillSystem;
+using DKProject.StatSystem;
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,9 +11,10 @@ namespace DKProject.Weapon
     [Serializable]
     public struct ApplyStatData
     {
-        public StatElementSO statSo;
-        public float applyValue;
-        public float IncreaseValue;
+        public StatElementSO stat;
+        public float value;
+        public EModifyMode modifyMode;
+        public EModifyLayer modifyLayer;
     }
 
     [CreateAssetMenu(fileName = "WeaponSO", menuName = "SO/WeaponSO")]

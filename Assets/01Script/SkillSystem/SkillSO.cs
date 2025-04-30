@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using DKProject.Entities;
 using DKProject.Combat;
+using DKProject.EffectSystem;
 
 namespace DKProject.SkillSystem
 {
@@ -29,20 +30,20 @@ namespace DKProject.SkillSystem
 
         [SerializeReference] public Skill skill;
 
-        private void OnEnable()
-        {
-            if (skill != null) return;
-            try
-            {
-                Type t = Type.GetType($"DKProject.SkillSystem.Skills.{itemClassName}Skill");
-                skill = Activator.CreateInstance(t) as Skill;
-            }
-            catch (Exception e)
-            { 
-                Debug.LogError($"Skill name of {itemClassName} is not exsist");
-                Debug.LogException(e);
-            }
-        }
+        //private void OnEnable()
+        //{
+        //    if (skill != null) return;
+        //    try
+        //    {
+        //        Type t = Type.GetType($"DKProject.SkillSystem.Skills.{itemClassName}Skill");
+        //        skill = Activator.CreateInstance(t) as Skill;
+        //    }
+        //    catch (Exception e)
+        //    { 
+        //        Debug.LogError($"Skill name of {itemClassName} is not exsist");
+        //        Debug.LogException(e);
+        //    }
+        //}
 
         public Skill GetSkill(Entity owner)
         {

@@ -14,6 +14,7 @@ namespace DKProject.Entities.Components
         [SerializeField] private DamageText _damageText;
         public BigInteger MaxHealthBigInteger => _maxHealthStat.BigIntValue;
         public BigInteger CurrentHealthBigInteger { get; private set; }
+        public event Action OnDeadEvent;
         public bool IsDead { get; private set; }
         private StatElement _maxHealthStat;
 

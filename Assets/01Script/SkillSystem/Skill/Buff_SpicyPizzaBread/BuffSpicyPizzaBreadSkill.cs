@@ -2,10 +2,11 @@ using DKProject.Entities.Components;
 using DKProject.Entities;
 using UnityEngine;
 using System.Collections.Generic;
+using DKProject.EffectSystem;
 
 namespace DKProject.SkillSystem.Skills
 {
-    public class BuffSpicyPizzaBread : Skill
+    public class BuffSpicyPizzaBreadSkill : Skill
     {
         private double _damage;
         [SerializeField] private List<EffectSO> _effectList;
@@ -20,7 +21,7 @@ namespace DKProject.SkillSystem.Skills
 
         public override Skill Clone()
         {
-            return new BuffSpicyPizzaBread();
+            return new BuffSpicyPizzaBreadSkill();
         }
 
         public override void UseSkill()
@@ -34,7 +35,7 @@ namespace DKProject.SkillSystem.Skills
                     if (target.transform.TryGetComponent(out Entity entity))
                     {
                         entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation(_damage));
-                        AddEffect(entity, _effectList);
+                        //AddEffect(entity, _effectList);
                     }
                 }
             }

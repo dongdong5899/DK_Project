@@ -18,16 +18,15 @@ namespace DKProject.SkillSystem
 
         [Header("SkillStat")]
         public float coolDown;
-        public float skillRange;
-        public float skillAreaRadius;
         public float baseSkillPercent;
         public float upgradeSkillPercent;
 
         [Header("Effect")]
         public List<EffectSO> unlockEffects;
         public List<EffectSO> equipEffects;
-        
 
+
+        [Header("Skill")]
         [SerializeReference] public Skill skill;
 
         //private void OnEnable()

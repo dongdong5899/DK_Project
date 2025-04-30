@@ -28,6 +28,7 @@ namespace DKProject
 
         public void Init(InvenSlot prev, InvenSlot next, ItemSO itemSO)
         {
+            Debug.Log("Init");
             PrevSlot = prev;
             NextSlot = next;
             ItemSO = itemSO;

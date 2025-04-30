@@ -25,8 +25,6 @@ MonoBehaviour:
   targetType: 1
   damageType: 1
   coolDown: 0
-  skillRange: 6
-  skillAreaRadius: 4
   baseSkillPercent: 0
   upgradeSkillPercent: 0
   unlockEffects: []
@@ -39,6 +37,10 @@ MonoBehaviour:
     - rid: 3004152206055440391
       type: {class: ThrowBombSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
       data:
+        _whatIsTarget:
+          serializedVersion: 2
+          m_Bits: 0
+        _radius: 0
         _lifeTime: 0
         _skillProjectileSpeed: 0
         _skillCount: 0

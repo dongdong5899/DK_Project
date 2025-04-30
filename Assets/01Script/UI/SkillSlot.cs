@@ -12,7 +12,7 @@ namespace DKProject.UI
 
         public void RemoveSkill()
         {
-            RemoveIcon();
+            SetIcon(null);
         }
     }
 }

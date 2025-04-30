@@ -1,52 +1,39 @@
 using DG.Tweening;
+using DKProject.Core;
 using DKProject.Core.Pool;
-using DKProject.Entities;
 using UnityEngine;
 
 namespace DKProject.SkillSystem.Skills
 {
-    public class ThrowBombSkill : Skill
+    public class ThrowBombSkill : RangeSkill
     {
-
-        public override void Init(Entity owner, SkillSO SO)
-        {
-            base.Init(owner, SO);
-        }
-
-
+        [SerializeField] private float _lifeTime;
+        [SerializeField] private float _skillProjectileSpeed;
+        [SerializeField] private byte _skillCount;
         public override void UseSkill()
         {
             Sequence sequence = DOTween.Sequence();
 
-            for (byte i = 0; i < SkillSO.currentskillCount; i++)
+            for (byte i = 0; i < _skillCount; i++)
             {
                 sequence.AppendCallback(() =>
                 {
-                    Collider2D[] targets = Physics2D.OverlapCircleAll(_owner.transform.position, SkillSO.currentRange, _whatIsTarget);
-
-                    if (targets.Length == 0) return;
-
                     ThrowBomb throwBomb = PoolManager.Instance.Pop(ProjectilePoolingType.Throw_Bomb) as ThrowBomb;
 
                     throwBomb.transform.position = _owner.transform.position;
 
                     throwBomb.Setting(
-                        targets[0].transform.position,
+                        _colliders.GetRandomElement().transform.position,
                         _whatIsTarget,
-                        DamageCalculation(),
-                        SkillSO.currentLifeTime,
-                        SkillSO.currentProjectileSpeed
+                        DamageCalculation((double)_player.GetAttackDamage()),
+                        _lifeTime,
+                        _skillProjectileSpeed
                     );
                 });
 
                 // ∞¢ ∆¯≈∫ ªÁ¿Ãø° 0.2√  µÙ∑π¿Ã
                 sequence.AppendInterval(0.2f);
             }
-        }
-
-        public override Skill Clone()
-        {
-            return new ThrowBombSkill();
         }
     }
 }

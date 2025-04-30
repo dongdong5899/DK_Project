@@ -14,14 +14,14 @@ namespace DKProject.SkillSystem
 
     public enum CastType
     {
-        InstantCast,
+        NonCasting,
         Casting
     }
 
     public enum DamageType
     {
-        DD,
-        DOT
+        Defult,
+        Dot
     }
 
     public enum BuffType
@@ -39,9 +39,14 @@ namespace DKProject.SkillSystem
         BuffHongsam
     }
 
-    public enum SkillRank
+    public enum Rank
     {
-        Common,Rare,Unique,Epic,Legendary
+        Common, Rare, Epic, Unique, Legendary
+    }
+
+    public enum ItemType
+    {
+        Skill,Weapon
     }
 }
 

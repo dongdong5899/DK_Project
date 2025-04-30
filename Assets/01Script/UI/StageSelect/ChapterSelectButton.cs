@@ -1,4 +1,4 @@
-using DKProject.Stage;
+using DKProject.Chapter;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

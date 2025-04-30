@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0f37d07e665954185fb6e850d2d617, type: 3}
   m_Name: SkillList
   m_EditorClassIdentifier: 
-  _skillList:
+  _itemList:
   - {fileID: 11400000, guid: de095220a059ebd4788f979b01fdf17c, type: 2}
-  - {fileID: 11400000, guid: 567ab005209d24844a58457b339ef778, type: 2}
+  - {fileID: 11400000, guid: 494f2ea033f4b85488aa082f58437702, type: 2}
+  - {fileID: 11400000, guid: ca0dcaba26732ed46a7babc1a17df347, type: 2}
+  - {fileID: 11400000, guid: 01f6ffeeb1266cc49bd2490a45a7dcf5, type: 2}
+  - {fileID: 11400000, guid: 225f1ca587395c4408c9cd56b9e2d531, type: 2}
   - {fileID: 11400000, guid: 11993ff9a863eb745a029a5eecdff71f, type: 2}
+  - {fileID: 11400000, guid: 567ab005209d24844a58457b339ef778, type: 2}
+  - {fileID: 11400000, guid: c61c618f799a1db4d8256bc0d09ae14c, type: 2}
+  - {fileID: 11400000, guid: 96333b61ddd76794bbca1608b1064e81, type: 2}
+  - {fileID: 11400000, guid: 0321db5bfff5b7b429a2de06122f5c34, type: 2}
+  - {fileID: 11400000, guid: ca2c96f519bda6e48bd3681865b326ae, type: 2}

@@ -1,7 +1,10 @@
-using System.Numerics;
+using DKProject.Core.Pool;
+using DKProject.Entities.Enemies;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
-namespace DKProject.Stage
+namespace DKProject.Chapter
 {
     [CreateAssetMenu(menuName = "SO/Stage/StageSO")]
     public class StageSO : ScriptableObject
@@ -9,6 +12,7 @@ namespace DKProject.Stage
         public string stageName;
         public Sprite stageBGSprite;
         public ulong recommendCombat;
-        public GameObject stagePrefab;
+        public AssetReference stageRef;
+        public List<EnemyPoolingType> appearingEnemy;      //TODO: Change to spawn enemy with ratio
     }
 }

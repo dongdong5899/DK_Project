@@ -14,6 +14,7 @@ namespace DKProject.StatSystem
 
     public enum EModifyLayer
     {
+        StatUp,
         Default,
         Last,
     }
@@ -126,6 +127,7 @@ namespace DKProject.StatSystem
         {
             _modifiers ??= new Dictionary<EModifyLayer, Dictionary<string, StatModifier>>()
             {
+                { EModifyLayer.StatUp, new Dictionary<string, StatModifier>() },
                 { EModifyLayer.Default, new Dictionary<string, StatModifier>() },
                 { EModifyLayer.Last, new Dictionary<string, StatModifier>() },
             };
@@ -204,13 +206,16 @@ namespace DKProject.StatSystem
 
         public void AddModify(string key, float value, EModifyMode eModifyMode, EModifyLayer eModifyLayer, bool canValueOverlap = true)
         {
+            StatModifier modifier = new StatModifier(value, eModifyMode, canValueOverlap);
             if (_modifiers[eModifyLayer].ContainsKey(key))
             {
-                _modifiers[eModifyLayer][key]++;
+                if (canValueOverlap)
+                    _modifiers[eModifyLayer][key]++;
+                else
+                    _modifiers[eModifyLayer][key] = modifier;
             }
             else
             {
-                StatModifier modifier = new StatModifier(value, eModifyMode, canValueOverlap);
                 _modifiers[eModifyLayer][key] = modifier;
             }
 
@@ -218,27 +223,17 @@ namespace DKProject.StatSystem
         }
         public void AddModify(string key, BigInteger value, EModifyMode eModifyMode, EModifyLayer eModifyLayer, bool canValueOverlap = true)
         {
+            StatModifier modifier = new StatModifier(value, eModifyMode, canValueOverlap);
             if (_modifiers[eModifyLayer].ContainsKey(key))
             {
-                _modifiers[eModifyLayer][key]++;
+                if (canValueOverlap)
+                    _modifiers[eModifyLayer][key]++;
+                else
+                    _modifiers[eModifyLayer][key] = modifier;
             }
             else
             {
-                StatModifier modifier = new StatModifier(value, eModifyMode, canValueOverlap);
                 _modifiers[eModifyLayer][key] = modifier;
-            }
-
-            SetValue();
-        }
-        public void AddModify(string key, StatModifier statModifier, EModifyLayer eModifyLayer)
-        {
-            if (_modifiers[eModifyLayer].ContainsKey(key))
-            {
-                _modifiers[eModifyLayer][key]++;
-            }
-            else
-            {
-                _modifiers[eModifyLayer][key] = statModifier;
             }
 
             SetValue();

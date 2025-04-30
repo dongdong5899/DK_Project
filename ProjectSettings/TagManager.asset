@@ -53,5 +53,8 @@ TagManager:
   - name: UI
     uniqueID: 446677323
     locked: 0
+  - name: Skill
+    uniqueID: 4130726105
+    locked: 0
   m_RenderingLayers:
   - Default

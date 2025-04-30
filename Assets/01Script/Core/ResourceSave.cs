@@ -1,46 +1,39 @@
 using Doryu.JBSave;
 using System.Numerics;
-using UnityEngine;
 
 namespace DKProject.Core
 {
     public class ResourceSave : ISavable<ResourceSave>
     {
-        public uint level;
-        public string expStr;
         public string goldStr;
         public string diamondStr;
-        public uint skillPoint;
 
-        public BigInteger exp;
+        public uint skillPoint;
         public BigInteger gold;
         public BigInteger diamond;
 
-        public void OnLoadData(ResourceSave classData)
+        public bool OnLoadData(ResourceSave classData)
         {
-            if (classData == null) return;
+            if (classData == null) return false;
 
-            level = classData.level;
-            exp = BigInteger.Parse(classData.expStr);
+            skillPoint = classData.skillPoint;
             gold = BigInteger.Parse(classData.goldStr);
             diamond = BigInteger.Parse(classData.diamondStr);
-            skillPoint = classData.skillPoint;
+
+            return true;
         }
 
         public void OnSaveData(string savedFileName)
         {
-            expStr = exp.ToString();
             goldStr = gold.ToString();
             diamondStr = diamond.ToString();
         }
 
         public void ResetData()
         {
-            level = 1;
-            exp = 0;
+            skillPoint = 0;
             gold = 0;
             diamond = 0;
-            skillPoint = 0;
             this.SaveJson("Resource");
         }
     }

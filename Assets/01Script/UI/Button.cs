@@ -8,13 +8,13 @@ namespace DKProject.UI
 {
     public class Button : MonoUI, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
-        [SerializeField] private List<UIEventData> _downEventList;
-        [SerializeField] private List<UIEventData> _upEventList;
+        [SerializeField] protected List<UIEventData> _downEventList;
+        [SerializeField] protected List<UIEventData> _upEventList;
 
         public Action OnClickEvent;
         public Action<bool> OnPressEvent;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             foreach (var eventData in _downEventList)
                 eventData.Init(this);
@@ -22,25 +22,25 @@ namespace DKProject.UI
                 eventData.Init(this);
         }
 
-        public void OnPointerDown(PointerEventData eventData)
+        public virtual void OnPointerDown(PointerEventData eventData)
         {
             foreach (UIEventData uiEventData in _downEventList)
             {
-                uiEventData.uiEvent.EventPlay();
+                uiEventData.UIEvent.EventPlay();
             }
             OnPressEvent?.Invoke(true);
         }
 
-        public void OnPointerUp(PointerEventData eventData)
+        public virtual void OnPointerUp(PointerEventData eventData)
         {
             foreach (UIEventData uiEventData in _upEventList)
             {
-                uiEventData.uiEvent.EventPlay();
+                uiEventData.UIEvent.EventPlay();
             }
             OnPressEvent?.Invoke(false);
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        public virtual void OnPointerClick(PointerEventData eventData)
         {
             OnClickEvent?.Invoke();
         }

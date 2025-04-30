@@ -1,37 +1,24 @@
-using DKProject.Entities.Components;
-using DKProject.Entities.Players;
-using DKProject.Entities;
 using UnityEngine;
 using DKProject.Core.Pool;
+using DKProject.Core;
 
 namespace DKProject.SkillSystem.Skills
 {
-    public class FallStoneSkill : Skill
+    public class FallStoneSkill : RangeSkill
     {
-        
-
-        public override void Init(Entity owner, SkillSO skillSO)
-        {
-            base.Init(owner, skillSO);
-        }
+        [SerializeField] private float _lifeTime;
+        [SerializeField] private float _skillProjectileSpeed;
 
         public override void UseSkill()
         {
-            Collider2D[] targets = Physics2D.OverlapCircleAll(_owner.transform.position, SkillSO.currentRange, _whatIsTarget);
-
             FallStone fallStone = PoolManager.Instance.Pop(ProjectilePoolingType.Fall_Stone) as FallStone;
 
-            float randX = Random.Range(_owner.transform.position.x - 5, _owner.transform.position.x + 5);
+            int ranIdx = Random.Range(0, 100);
+            float randX = ranIdx > 50 ? 5 : -5;
 
-            fallStone.transform.position = new Vector2(randX, _owner.transform.position.y+10);
+            fallStone.transform.position = new Vector2(randX, _owner.transform.position.y + 10);
 
-            fallStone.Setting(targets[0].transform.position,SkillSO.currentProjectileSpeed, _whatIsTarget, DamageCalculation(),SkillSO.currentLifeTime);
-        }
-
-
-        public override Skill Clone()
-        {
-            return new FallStoneSkill();
+            fallStone.Setting(_colliders.GetRandomElement().transform.position, _skillProjectileSpeed, _whatIsTarget, DamageCalculation((double)_player.GetAttackDamage()), _lifeTime);
         }
     }
 

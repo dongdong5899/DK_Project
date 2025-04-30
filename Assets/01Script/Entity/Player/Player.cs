@@ -1,8 +1,8 @@
+using DKProject.Core;
 using DKProject.Entities.Components;
 using DKProject.Entities.Enemies;
 using DKProject.SkillSystem;
 using DKProject.StatSystem;
-using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,8 +18,7 @@ namespace DKProject.Entities.Players
         private StatElement _attackSpeedStat;
         private StatElement _attackDamageStat;
         private float _lastAttackTime;
-        [SerializeField] private SkillSO _testSkill;
-
+        [SerializeField] private SkillSO _testSkillSO;
         public bool IsCanAttack()
             => _lastAttackTime + 1f / _attackSpeedStat.Value < Time.time;
         public void CheckAttackTime()
@@ -52,20 +51,22 @@ namespace DKProject.Entities.Players
             base.DisposeComponents();
         }
 
+
         private void Update()
         {
-            if (Keyboard.current.tKey.isPressed)
+            if (Keyboard.current.tKey.wasPressedThisFrame)
             {
-                GetCompo<PlayerSkillSystem>().EquipSkill(_testSkill.GetSkill(this), 0);
-                List<Skill> skillList = new List<Skill>();
-                _testSkill.GetSkill(this).Init(this,_testSkill);
-                skillList.Add(_testSkill.GetSkill(this));
-                GetCompo<PlayerSkillSystem>().SetSlot(skillList);
+                SkillManager.Instance.EquipSkill(SkillManager.Instance.GetSkillClass(_testSkillSO), 0);
             }
 
-            if(Keyboard.current.qKey.isPressed)
+            if (Keyboard.current.qKey.wasPressedThisFrame)
             {
-                GetCompo<PlayerSkillSystem>().UseSkill(0);
+                SkillManager.Instance.UseSkill(0);
+            }
+
+            if (Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                SkillManager.Instance.UnEquipSkill(0);
             }
         }
     }

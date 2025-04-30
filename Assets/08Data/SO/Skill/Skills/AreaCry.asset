@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
+  m_Name: AreaCry
+  m_EditorClassIdentifier: 
+  itemClassName: AreaCry
+  itemName: "\uC758\uB3C4\uCE58 \uC54A\uC740 \uB208\uBB3C"
+  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
+  itemRank: 0
+  itemType: 0
+  itemDescription: "\uAF43\uAC00\uB8E8 \uC54C\uB808\uB974\uAE30\uAC00 \uC2EC\uD574\uC838\uC11C
+    \uBC16\uC5D0\uB9CC \uB098\uC624\uBA74 \uB208\uBB3C\uC774 \uB09C\uB2E4. \uB208\uBB3C
+    \uC6C5\uB369\uC774\uAC00 \uC801\uC5D0\uAC8C \uC2AC\uB85C\uC6B0\uC640 \uD53C\uD574\uB97C
+    \uC900\uB2E4."
+  skillType: 1
+  targetType: 1
+  damageType: 1
+  coolDown: 0
+  baseSkillPercent: 0
+  upgradeSkillPercent: 0
+  unlockStats: []
+  equipStats: []
+  skill:
+    rid: 3004152206055440391
+  references:
+    version: 2
+    RefIds:
+    - rid: 3004152206055440391
+      type: {class: ThrowBombSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
+      data:
+        _whatIsTarget:
+          serializedVersion: 2
+          m_Bits: 0
+        _radius: 0
+        _lifeTime: 0
+        _skillProjectileSpeed: 0
+        _skillCount: 0

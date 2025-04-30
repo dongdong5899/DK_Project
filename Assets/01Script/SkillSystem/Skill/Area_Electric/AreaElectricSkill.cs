@@ -4,42 +4,37 @@ using UnityEngine;
 
 namespace DKProject.SkillSystem.Skills
 {
-    public class AreaElectricSkill : Skill
+    public class AreaElectricSkill : RangeSkill
     {
+
+        private double _damage;
+        [SerializeField] private float _skillDotAttackReduction;
+
         public override void Init(Entity owner, SkillSO SO)
         {
             base.Init(owner, SO);
-
+            _damage = (double)_player.GetAttackDamage() * _skillDotAttackReduction / 100;
         }
 
         public override void UseSkill()
         {
-            RaycastHit2D[] targets = Physics2D.CircleCastAll(_owner.transform.position, SkillSO.currentAreaRadius,Vector2.zero,0,_whatIsTarget);
+            Collider2D closeTarget = _colliders[0];
+            float minDist = Vector2.Distance(closeTarget.transform.position, _player.transform.position);
 
-            RaycastHit2D closeTarget = targets[0];
-            float minDist = closeTarget.distance;
-
-            if (targets.Length>0)
+            foreach (Collider2D target in _colliders)
             {
-                foreach (RaycastHit2D target in targets)
+                float distance = Vector2.Distance(target.transform.position, _player.transform.position);
+                if (distance < minDist)
                 {
-                    if (target.distance < minDist)
-                    {
-                        closeTarget = target;
-                        minDist = target.distance;
-                    }
+                    closeTarget = target;
+                    minDist = distance;
                 }
-
-                Entity entity = closeTarget.transform.GetComponent<Entity>();
-
-                entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation());
             }
 
-        }
-
-        public override Skill Clone()
-        {
-            return new FallStoneSkill();
+            if (closeTarget.transform.TryGetComponent(out Entity entity))
+            {
+                entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation(_damage));
+            }
         }
     }
 

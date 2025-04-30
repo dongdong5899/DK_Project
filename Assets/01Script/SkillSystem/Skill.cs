@@ -5,34 +5,36 @@ using DKProject.Entities.Components;
 using Vector2 = UnityEngine.Vector2;
 using Random = UnityEngine.Random;
 using DKProject.Entities.Players;
+using DG.Tweening;
+using DKProject.Core;
+using System;
+using System.Collections.Generic;
+using DKProject.EffectSystem;
 
 namespace DKProject.SkillSystem
 {
+    [Serializable]
     public abstract class Skill
     {
         public SkillSO SkillSO { get; private set; }
         protected Entity _owner;
         protected float _prevSkillTime;
         protected float _skillCoolTime;
-        protected bool _isPassiveSkill,_isDOTSkill;
+        protected bool _isPassiveSkill,_isDotSkill;
         protected float _currentCoolTime;
         protected bool _isUseSkill = true;
-        protected int _skillLevel = 1;
-        protected bool _unlockSkill = false;
         protected BigInteger _currentDamage;
         protected EntityStat _statCompo;
-        protected LayerMask _whatIsTarget;
+        [SerializeField] protected LayerMask _whatIsTarget;
         protected Player _player;
 
         public virtual void Init(Entity owner,SkillSO SO)
         {
             _owner = owner;
-            Debug.Log(_owner);
             SkillSO = SO;
-            _whatIsTarget = LayerMask.GetMask("Enemy");
-            _skillCoolTime = SkillSO.currentCoolDown;
+            _skillCoolTime = SkillSO.coolDown;
             _isPassiveSkill = SkillSO.skillType == SkillType.Passive;
-            _isDOTSkill = SkillSO.damageType == DamageType.DOT;
+            _isDotSkill = SkillSO.damageType == DamageType.Dot;
             _statCompo = owner.GetCompo<EntityStat>();
             _player = owner as Player;
         }
@@ -40,19 +42,13 @@ namespace DKProject.SkillSystem
 
         public virtual void Update()
         {
-            if (_isPassiveSkill == true && CoolTimeCheck())
+            if (_isPassiveSkill == true && IsUsable())
             {
                 UseSkill();
-            }
-
-            if(_isPassiveSkill == false && _isUseSkill == true && RangeCheck())
-            {
-                UseSkill();
-                _isUseSkill = false;
             }
         }
 
-        public virtual bool CoolTimeCheck()
+        private bool CoolTimeCheck()
         {
             if(_prevSkillTime + _skillCoolTime < Time.time)
             {
@@ -63,9 +59,9 @@ namespace DKProject.SkillSystem
                 return false;
         }
 
-        public virtual bool RangeCheck()
+        public virtual bool IsUsable()
         {
-            return Physics2D.CircleCast(_owner.transform.position, SkillSO.currentRange, Vector2.zero, 0, _whatIsTarget);
+            return CoolTimeCheck();
         }
 
         public float GetCurrentCoolTime()
@@ -76,7 +72,8 @@ namespace DKProject.SkillSystem
 
         public void SetUseSkill(bool useSkill)
         {
-            _isUseSkill = useSkill;
+            if (_isPassiveSkill) return;
+            UseSkill();
         }
 
         public abstract void UseSkill();
@@ -84,56 +81,53 @@ namespace DKProject.SkillSystem
         public virtual void OnEquipSkill()
         {
             _prevSkillTime = Time.time;
+            //AddEffect(_owner,SkillSO.equipEffects);
         }
 
         public virtual void OnUnEquipSkill()
         {
-
-        }
-        public abstract Skill Clone();
-
-        public virtual void LevelUpSkill()
-        {
-            _skillLevel++;
+            //RemoveEffect(_owner, SkillSO.equipEffects);
         }
 
         public virtual void UnlockSkill()
         {
-            _unlockSkill = true;
+            //AddEffect(_owner, SkillSO.unlockEffects);
         }
 
-        public virtual BigInteger DamageCalculation()
+        public virtual BigInteger DamageCalculation(double playerAttackDamage)
         {
-            double playerAttackDamage = (double)_player.GetAttackDamage();
-            if (_isDOTSkill)
-            {
-                playerAttackDamage *= (SkillSO.dotAttackMinus / 100);
-            }
-            _currentDamage = new BigInteger((SkillSO.playerBaseSkillPercent + (_skillLevel * SkillSO.playerUpgradeSkillPercent))/100 + playerAttackDamage);
-            Debug.Log((SkillSO.playerBaseSkillPercent + (_skillLevel * SkillSO.playerUpgradeSkillPercent)) / 100);
+            _currentDamage = (BigInteger)((SkillSO.baseSkillPercent + (SkillSaveManager.Instance.GetItemLevel(SkillSO) * SkillSO.upgradeSkillPercent))/100 * playerAttackDamage);
+            Debug.Log(playerAttackDamage);
             float random = Random.Range(0f, 100f);
 
             if (random < _statCompo.StatDictionary["CriticalChance"].Value)
             {
-                return _currentDamage * new BigInteger(_statCompo.StatDictionary["CriticalDamage"].Value / 100);
+                return _currentDamage * (BigInteger)(_statCompo.StatDictionary["CriticalDamage"].Value / 100);
             }
             return _currentDamage;
         }
 
-        public virtual void ApplyEffect()
+
+        public void AddEffect(Entity target, List<EffectSO> effectList)
         {
-            foreach(EffectSO effect in SkillSO.effects)
+            
+        }
+
+        public void RemoveEffect(Entity target, List<EffectSO> effectList)
+        {
+            var statComponent = target.GetCompo<EntityStat>();
+
+            foreach (var effectSO in effectList)
             {
-                bool isOwner = effect.targetType == BuffTargetType.Owner;
-                if(isOwner)
+                string effectTypeKey = effectSO.effectType.ToString();
+
+                foreach (var effect in effectSO.effects)
                 {
-
+                    statComponent.StatDictionary[effect.stat].RemoveModify(
+                        effectTypeKey,
+                        effect.modifyLayer
+                    );
                 }
-                else
-                {
-
-                }
-
             }
         }
     }

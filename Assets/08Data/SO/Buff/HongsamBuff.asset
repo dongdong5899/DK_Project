@@ -13,9 +13,19 @@ MonoBehaviour:
   m_Name: HongsamBuff
   m_EditorClassIdentifier: 
   effectImage: {fileID: 0}
-  effectName: 
-  effectDescription: 
+  effectName: "\uD64D\uC0BC\uBC84\uD504"
+  effectDescription: "\uD64D\uC0BC\uC774\uB2E4"
   buffType: 0
   targetType: 0
   effectType: 0
+  isEffectTime: 0
   effectTime: 0
+  effects:
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    modifyMode: 1
+    modifyLayer: 0
+    value: 10
+  - stat: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
+    modifyMode: 1
+    modifyLayer: 0
+    value: 10

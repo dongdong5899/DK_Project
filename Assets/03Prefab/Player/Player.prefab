@@ -50,7 +50,7 @@ MonoBehaviour:
     _valueString: 1000
   - Name: 
     elementSO: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
-    _valueString: 5
+    _valueString: 1
   - Name: 
     elementSO: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
     _valueString: 10000
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4841951519155070083}
   - component: {fileID: 4361750419048231566}
-  - component: {fileID: 3915810306015782724}
+  - component: {fileID: 7498843794242194657}
   - component: {fileID: 2519464375058475730}
   - component: {fileID: 3233494672528762244}
   m_Layer: 6
@@ -224,8 +224,8 @@ MonoBehaviour:
   <TargetDetectRange>k__BackingField: 50
   <AttackRange>k__BackingField: 1.5
   _showRange: 1
-  _testSkill: {fileID: 0}
---- !u!114 &3915810306015782724
+  _testSkillSO: {fileID: 0}
+--- !u!114 &7498843794242194657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

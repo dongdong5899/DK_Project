@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
+  m_Name: ThrowMilk
+  m_EditorClassIdentifier: 
+  itemClassName: ThrowMilk
+  itemName: "\uB204\uAD70\uAC00 \uB358\uC9C4 \uC6B0\uC720 "
+  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
+  itemRank: 0
+  itemType: 0
+  itemDescription: "\uB204\uAD70\uAC00 \uB358\uC9C4 \uC6B0\uC720\uAC00 \uB0A0\uC544\uC640
+    \uC801 \uD55C\uBA85\uC744 \uC801\uC911\uC2DC\uD0A8\uB2E4. \uC0DD\uAC01\uB098\uB294
+    \uB300\uC0AC\uAC00 \uC788\uC9C0\uB9CC \uCC38\uACA0\uB2E4."
+  skillType: 0
+  targetType: 0
+  damageType: 0
+  coolDown: 4
+  skillRange: 6
+  skillAreaRadius: 3
+  baseSkillPercent: 0
+  upgradeSkillPercent: 0
+  unlockEffects: []
+  equipEffects: []
+  skill:
+    rid: 3004152287382995034
+  references:
+    version: 2
+    RefIds:
+    - rid: 3004152287382995034
+      type: {class: ThrowMilkSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
+      data:
+        _lifeTime: 0
+        _skillProjectileSpeed: 0
+        _skillCount: 0

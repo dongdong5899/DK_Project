@@ -3,59 +3,50 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using DKProject.Entities;
+using DKProject.Combat;
+using DKProject.EffectSystem;
 
 namespace DKProject.SkillSystem
 {
     [CreateAssetMenu(fileName = "SkillSO", menuName = "SO/Skill/SkillSO")]
-    public class SkillSO : ScriptableObject
+    public class SkillSO : ItemSO
     {
-        [Header("Skiil")]
-        public string skillID;
-        public string skillName;
-        public Sprite icon;
-        public SkillRank skillRank;
-        [TextArea]
-        public string skillDescription;
-
         [Header("SkillType")]
         public SkillType skillType;
         public TargetType targetType;
         public DamageType damageType;
 
         [Header("SkillStat")]
-        public float currentLifeTime;
-        public float currentCoolDown;
-        public byte currentskillCount;
-        public float currentRange;
-        public float currentAreaRadius;
-        public float playerBaseSkillPercent;
-        public float playerUpgradeSkillPercent;
-        public float currentProjectileSpeed;
-        public float dotAttackMinus;
+        public float coolDown;
+        public float baseSkillPercent;
+        public float upgradeSkillPercent;
 
         [Header("Effect")]
-        public List<EffectSO> effects;
+        public List<EffectSO> unlockEffects;
+        public List<EffectSO> equipEffects;
 
-        public Skill skill;
 
-        private void OnEnable()
-        {
-            try
-            {
-                Type t = Type.GetType($"DKProject.SkillSystem.Skills.{skillID}Skill");
-                skill = Activator.CreateInstance(t) as Skill;
-            }
-            catch (Exception e)
-            { 
-                Debug.LogError($"Skill name of {skillID} is not exsist");
-                Debug.LogException(e);
-            }
-        }
+        [Header("Skill")]
+        [SerializeReference] public Skill skill;
+
+        //private void OnEnable()
+        //{
+        //    if (skill != null) return;
+        //    try
+        //    {
+        //        Type t = Type.GetType($"DKProject.SkillSystem.Skills.{itemClassName}Skill");
+        //        skill = Activator.CreateInstance(t) as Skill;
+        //    }
+        //    catch (Exception e)
+        //    { 
+        //        Debug.LogError($"Skill name of {itemClassName} is not exsist");
+        //        Debug.LogException(e);
+        //    }
+        //}
 
         public Skill GetSkill(Entity owner)
         {
-            Skill curSkill = skill.Clone();
-            curSkill.Init(owner, this);
+            skill.Init(owner, this);
             return skill;
         }
     }

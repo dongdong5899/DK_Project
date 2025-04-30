@@ -1,12 +1,9 @@
-using DKProject.Core;
-using DKProject.Stage;
+using DKProject.Chapter;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 namespace DKProject.UI
 {
-    public class StageSelectPanel : TogglePanel
+    public class StageSelectPanel : OutAreaToggleUI
     {
         [SerializeField] private ChapterListSO _chapterList;
         private ChapterIndicator _chapterIndicator;
@@ -26,18 +23,14 @@ namespace DKProject.UI
             Close();
         }
 
-        public override void Close()
-        {
-            base.Close();
-            //gameObject.SetActive(false);
-            //_outButton.gameObject.SetActive(false);
-        }
-
         public override void Open()
         {
-            base.Open();
-            ///gameObject.SetActive(true);
-            //_outButton.gameObject.SetActive(true);
+            ActiveElement(true);
+        }
+
+        public override void Close()
+        {
+            ActiveElement(false);
         }
     }
 }

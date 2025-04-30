@@ -98,7 +98,7 @@ namespace DKProject.SkillSystem
 
         public virtual BigInteger DamageCalculation(double playerAttackDamage)
         {
-            _currentDamage = (BigInteger)((SkillSO.baseSkillPercent + (SkillSaveManager.Instance.GetItemLevel(SkillSO) * SkillSO.upgradeSkillPercent))/100 * playerAttackDamage);
+            _currentDamage = (BigInteger)((SkillSO.baseSkillCoefficient + (SkillSaveManager.Instance.GetItemLevel(SkillSO) * SkillSO.upgradeSkillCoefficient))/100 * playerAttackDamage);
             Debug.Log(playerAttackDamage);
             float random = Random.Range(0f, 100f);
 

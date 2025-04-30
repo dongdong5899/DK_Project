@@ -18,8 +18,8 @@ namespace DKProject.SkillSystem
 
         [Header("SkillStat")]
         public float coolDown;
-        public float baseSkillPercent;
-        public float upgradeSkillPercent;
+        public float baseSkillCoefficient;
+        public float upgradeSkillCoefficient;
 
         [Header("Effect")]
         public List<ApplyStatData> unlockStats;

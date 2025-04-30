@@ -22,8 +22,8 @@ namespace DKProject.SkillSystem
         public float upgradeSkillPercent;
 
         [Header("Effect")]
-        public List<EffectSO> unlockEffects;
-        public List<EffectSO> equipEffects;
+        public List<ApplyStatData> unlockStats;
+        public List<ApplyStatData> equipStats;
 
 
         [Header("Skill")]

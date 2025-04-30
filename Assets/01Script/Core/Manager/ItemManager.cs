@@ -1,4 +1,7 @@
 using DKProject.Combat;
+using DKProject.EffectSystem;
+using DKProject.Entities.Components;
+using DKProject.SkillSystem;
 using Doryu.JBSave;
 using System;
 using System.Collections.Generic;
@@ -110,7 +113,13 @@ namespace DKProject.Core
             ItemData data = _itemDictionary[itemSO];
             data.count++;
             if (!_itemDictionary[itemSO].isUnlock)
+            {
                 data.isUnlock = true;
+                if (TryGetComponent(out SkillSO skillSO))
+                {
+                    skillSO.skill.UnlockSkill();
+                }
+            }
             _itemDictionary[itemSO] = data;
 
             UpdateItemData(itemSO, data);
@@ -145,6 +154,41 @@ namespace DKProject.Core
         public virtual BigInteger GetItemUpgradePrice(ItemSO itemSO)
         {
             return 0;
+        }
+
+        public void AddStat(ItemSO item, List<ApplyStatData> statList, EntityStat stat)
+        {
+            foreach (var increaseStat in statList)
+            {
+                string effectTypeKey = item.itemClassName.ToString();
+                if (increaseStat.stat.isBigInteger)
+                    stat.StatDictionary[increaseStat.stat].AddModify(
+                    effectTypeKey,
+                    (BigInteger)increaseStat.baseValue + (BigInteger)increaseStat.upgradeValue * GetItemLevel(item),
+                    increaseStat.modifyMode,
+                    increaseStat.modifyLayer);
+                else
+                    stat.StatDictionary[increaseStat.stat].AddModify(
+                    effectTypeKey,
+                    increaseStat.baseValue + increaseStat.upgradeValue * GetItemLevel(item),
+                    increaseStat.modifyMode,
+                    increaseStat.modifyLayer
+                    );
+
+                Debug.Log(stat.StatDictionary[increaseStat.stat].BigIntValue);
+            }
+        }
+
+        public void RemoveStat(ItemSO item, List<ApplyStatData> statList, EntityStat stat)
+        {
+            foreach (var increaseStat in statList)
+            {
+                string effectTypeKey = item.itemClassName.ToString();
+                stat.StatDictionary[increaseStat.stat].RemoveModify(
+                    effectTypeKey,
+                    increaseStat.modifyLayer
+                );
+            }
         }
 
     }

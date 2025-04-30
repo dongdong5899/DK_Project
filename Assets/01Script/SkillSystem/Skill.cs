@@ -24,40 +24,31 @@ namespace DKProject.SkillSystem
         protected float _currentCoolTime;
         protected bool _isUseSkill = true;
         protected BigInteger _currentDamage;
-        protected EntityStat _entityStat;
-        protected EntityEffect _entityEffect;
-        protected LayerMask _whatIsTarget;
+        protected EntityStat _statCompo;
+        [SerializeField] protected LayerMask _whatIsTarget;
         protected Player _player;
 
         public virtual void Init(Entity owner,SkillSO SO)
         {
             _owner = owner;
             SkillSO = SO;
-            _whatIsTarget = LayerMask.GetMask("Enemy");
             _skillCoolTime = SkillSO.coolDown;
             _isPassiveSkill = SkillSO.skillType == SkillType.Passive;
             _isDotSkill = SkillSO.damageType == DamageType.Dot;
-            _entityStat = owner.GetCompo<EntityStat>();
-            _entityEffect = owner.GetCompo<EntityEffect>();
+            _statCompo = owner.GetCompo<EntityStat>();
             _player = owner as Player;
         }
 
 
         public virtual void Update()
         {
-            if (_isPassiveSkill == true && CoolTimeCheck() && RangeCheck())
+            if (_isPassiveSkill == true && IsUsable())
             {
                 UseSkill();
-            }
-
-            if(_isPassiveSkill == false && _isUseSkill == true)
-            {
-                UseSkill();
-                _isUseSkill = false;
             }
         }
 
-        public virtual bool CoolTimeCheck()
+        private bool CoolTimeCheck()
         {
             if(_prevSkillTime + _skillCoolTime < Time.time)
             {
@@ -68,9 +59,9 @@ namespace DKProject.SkillSystem
                 return false;
         }
 
-        public virtual bool RangeCheck()
+        public virtual bool IsUsable()
         {
-            return Physics2D.CircleCast(_owner.transform.position, SkillSO.skillRange, Vector2.zero, 0, _whatIsTarget);
+            return CoolTimeCheck();
         }
 
         public float GetCurrentCoolTime()
@@ -81,7 +72,8 @@ namespace DKProject.SkillSystem
 
         public void SetUseSkill(bool useSkill)
         {
-            _isUseSkill = useSkill;
+            if (_isPassiveSkill) return;
+            UseSkill();
         }
 
         public abstract void UseSkill();
@@ -89,21 +81,18 @@ namespace DKProject.SkillSystem
         public virtual void OnEquipSkill()
         {
             _prevSkillTime = Time.time;
-            ItemManager.Instance.AddStat(SkillSO,SkillSO.equipStats,_entityStat);
+            //AddEffect(_owner,SkillSO.equipEffects);
         }
 
         public virtual void OnUnEquipSkill()
         {
-            ItemManager.Instance.RemoveStat(SkillSO,SkillSO.equipStats,_entityStat);
+            //RemoveEffect(_owner, SkillSO.equipEffects);
         }
 
         public virtual void UnlockSkill()
         {
-            ItemManager.Instance.AddStat(SkillSO, SkillSO.unlockStats, _entityStat);
+            //AddEffect(_owner, SkillSO.unlockEffects);
         }
-
-        public abstract Skill Clone();
-
 
         public virtual BigInteger DamageCalculation(double playerAttackDamage)
         {
@@ -111,34 +100,34 @@ namespace DKProject.SkillSystem
             Debug.Log(playerAttackDamage);
             float random = Random.Range(0f, 100f);
 
-            if (random < _entityStat.StatDictionary["CriticalChance"].Value)
+            if (random < _statCompo.StatDictionary["CriticalChance"].Value)
             {
-                return _currentDamage * (BigInteger)(_entityStat.StatDictionary["CriticalDamage"].Value / 100);
+                return _currentDamage * (BigInteger)(_statCompo.StatDictionary["CriticalDamage"].Value / 100);
             }
             return _currentDamage;
         }
 
-        public void AddStat(List<ApplyStatData> statData)
-        {
-            foreach(var stat in statData)
-            {
 
-            }
+        public void AddEffect(Entity target, List<EffectSO> effectList)
+        {
+            
         }
 
-        public void AddEffect(List<EffectSO> effectList)
+        public void RemoveEffect(Entity target, List<EffectSO> effectList)
         {
-            foreach (EffectSO effect in effectList)
-            {
-                _entityEffect.ApplyEffect(effect.effectType);
-            }
-        }
+            var statComponent = target.GetCompo<EntityStat>();
 
-        public void RemoveEffect(List<EffectSO> effectList)
-        {
-            foreach (EffectSO effect in effectList)
+            foreach (var effectSO in effectList)
             {
-                _entityEffect.RemoveEffect(effect.effectType);
+                string effectTypeKey = effectSO.effectType.ToString();
+
+                foreach (var effect in effectSO.effects)
+                {
+                    statComponent.StatDictionary[effect.stat].RemoveModify(
+                        effectTypeKey,
+                        effect.modifyLayer
+                    );
+                }
             }
         }
     }

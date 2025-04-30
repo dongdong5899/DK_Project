@@ -6,7 +6,7 @@ using DKProject.EffectSystem;
 
 namespace DKProject.SkillSystem.Skills
 {
-    public class BuffSpicyPizzaBreadSkill : Skill
+    public class BuffSpicyPizzaBreadSkill : RangeSkill
     {
         private double _damage;
         [SerializeField] private List<EffectSO> _effectList;
@@ -18,25 +18,14 @@ namespace DKProject.SkillSystem.Skills
             _damage = (double)_player.GetAttackDamage() * _skillDotAttackReduction / 100;
         }
 
-
-        public override Skill Clone()
-        {
-            return new BuffSpicyPizzaBreadSkill();
-        }
-
         public override void UseSkill()
         {
-            RaycastHit2D[] targets = Physics2D.CircleCastAll(_owner.transform.position, SkillSO.skillRange, Vector2.zero, 0, _whatIsTarget);
-
-            if (targets.Length > 0)
+            foreach (Collider2D target in _colliders)
             {
-                foreach (RaycastHit2D target in targets)
+                if (target.transform.TryGetComponent(out Entity entity))
                 {
-                    if (target.transform.TryGetComponent(out Entity entity))
-                    {
-                        entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation(_damage));
-                        //AddEffect(entity, _effectList);
-                    }
+                    entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation(_damage));
+                    //AddEffect(entity, _effectList);
                 }
             }
         }

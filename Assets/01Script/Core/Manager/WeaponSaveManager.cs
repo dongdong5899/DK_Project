@@ -1,33 +1,28 @@
 using DKProject.Combat;
 using DKProject.Core;
-using Doryu.JBSave;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using UnityEngine;
 
 namespace DKProject.Weapon
 {
     public class WeaponSaveManager : ItemManager
     {
-        private string fileName = "Weapon";
         private int _needMergeCount = 5;
 
         public override bool LevelUpItem(ItemSO itemSO)
         {
-            if (!itemDictionary.ContainsKey(itemSO))
+            if (!_itemDictionary.ContainsKey(itemSO))
                 return false;
 
-            if(ResourceData.TryRemoveResource(ResourceType.Gold, GetItemUpgradePrice(itemSO))) // 1은 임시
+            if (ResourceData.TryRemoveResource(ResourceType.Gold, GetItemUpgradePrice(itemSO))) // 1은 임시
             {
-                ItemData data = itemDictionary[itemSO];
+                ItemData data = _itemDictionary[itemSO];
                 data.level++;
-                itemDictionary[itemSO] = data;
+                _itemDictionary[itemSO] = data;
 
                 UpdateItemData(itemSO, data);
                 Save();
-                OnChangeValue?.Invoke();
+                OnValueChanged?.Invoke();
 
                 return true;
             }
@@ -39,7 +34,7 @@ namespace DKProject.Weapon
 
         public void MergeAllWeapon()
         {
-            foreach (var weapon in itemDictionary.Keys.ToList())
+            foreach (var weapon in _itemDictionary.Keys.ToList())
             {
                 int canMergeCount = GetCanMergeCount(weapon as WeaponSO);
                 if (canMergeCount > 0)
@@ -49,40 +44,40 @@ namespace DKProject.Weapon
             }
 
             Save();
-            OnChangeValue?.Invoke();
+            OnValueChanged?.Invoke();
         }
 
         public void MergeWeapon(ItemSO weaponSO, int mergingCount, bool isAllMerge = false)
         {
-            if (!itemDictionary.ContainsKey(weaponSO))
+            if (!_itemDictionary.ContainsKey(weaponSO))
                 return;
-            if (int.Parse(weaponSO.itemClassName.Substring(1)) == itemDictionary.Count)
+            if (int.Parse(weaponSO.itemClassName.Substring(1)) == _itemDictionary.Count)
                 return;
 
-            int count = itemDictionary[weaponSO].count;
+            int count = _itemDictionary[weaponSO].count;
 
-            ItemData curWeapondata = itemDictionary[weaponSO];
+            ItemData curWeapondata = _itemDictionary[weaponSO];
             curWeapondata.count -= mergingCount * _needMergeCount;
 
-            itemDictionary[weaponSO] = curWeapondata;
+            _itemDictionary[weaponSO] = curWeapondata;
             UpdateItemData(weaponSO, curWeapondata);
 
             WeaponSO nextWeaponSO = FindNextWeapon(weaponSO);
             if (nextWeaponSO != null)
             {
-                ItemData nextWeaponData = itemDictionary[nextWeaponSO];
+                ItemData nextWeaponData = _itemDictionary[nextWeaponSO];
                 nextWeaponData.count += mergingCount;
                 if (!nextWeaponData.isUnlock)
                     nextWeaponData.isUnlock = true;
 
-                itemDictionary[nextWeaponSO] = nextWeaponData;
+                _itemDictionary[nextWeaponSO] = nextWeaponData;
                 UpdateItemData(nextWeaponSO, nextWeaponData);
             }
 
             if (!isAllMerge)
             {
                 Save();
-                OnChangeValue?.Invoke();
+                OnValueChanged?.Invoke();
             }
         }
 
@@ -92,10 +87,10 @@ namespace DKProject.Weapon
             int id = weaponSO.weaponIndex;
             id++;
 
-            foreach(WeaponSO weapon in itemDictionary.Keys)
+            foreach (WeaponSO weapon in _itemDictionary.Keys)
             {
-                
-                if(weapon.weaponIndex == id)
+
+                if (weapon.weaponIndex == id)
                 {
                     return weapon;
                 }
@@ -105,7 +100,7 @@ namespace DKProject.Weapon
 
         public int GetCanMergeCount(WeaponSO weaponSO)
         {
-            return itemDictionary[weaponSO].count / _needMergeCount;
+            return _itemDictionary[weaponSO].count / _needMergeCount;
         }
 
 
@@ -113,6 +108,5 @@ namespace DKProject.Weapon
         {
             return 10; //식으로 대체
         }
-
     }
 }

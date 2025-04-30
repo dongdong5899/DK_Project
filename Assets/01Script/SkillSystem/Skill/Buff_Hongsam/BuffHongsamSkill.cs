@@ -19,11 +19,6 @@ namespace DKProject.SkillSystem.Skills
             RemoveEffect(buffEffects);
         }
 
-        public override Skill Clone()
-        {
-            return new BuffHongsamSkill();
-        }
-
         public override void UseSkill()
         {
         }

@@ -9,22 +9,11 @@ namespace DKProject.UI
 
         public void SetIcon(Sprite sprite)
         {
-            if (sprite == null) 
-            {
-                RemoveIcon();
-                return;
-            }
-
-            if (_icon.gameObject.activeSelf == false)
-                _icon.gameObject.SetActive(true);
+            bool isNull = sprite == null;
+            if (_icon.gameObject.activeSelf == isNull)
+                _icon.gameObject.SetActive(!isNull);
 
             _icon.sprite = sprite;
-        }
-
-        public  void RemoveIcon()
-        {
-            _icon.gameObject.SetActive(false);
-            _icon.sprite = null;
         }
     }
 }

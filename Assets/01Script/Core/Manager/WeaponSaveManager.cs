@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace DKProject.Weapon
 {
-    public class WeaponSaveManager : ItemManager
+    public class WeaponSaveManager : ItemManager<WeaponSaveManager>
     {
         private int _needMergeCount = 5;
 

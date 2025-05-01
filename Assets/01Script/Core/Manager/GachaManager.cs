@@ -3,6 +3,7 @@ using DKProject.SkillSystem;
 using DKProject.Weapon;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -73,30 +74,27 @@ namespace DKProject.Core
             }
         }
 
-        public List<T> GachaItem<T>(int gachaCount)
+        public List<T> GachaItem<T>(int gachaCount) where T : ItemSO
         {
             List<T> gachaList = new List<T>();
 
-            ItemListSO itemListSO = typeof(T) == typeof(SkillSO) ? _skillListSO : _weaponListSO;
+            bool isSkillSO = typeof(T) == typeof(SkillSO);
+            ItemListSO itemListSO = isSkillSO ? _skillListSO : _weaponListSO;
 
             List<ItemSO> itemList = itemListSO.GetList();
             for (int i = 0; i < gachaCount; i++)
             {
                 Rank gachaRank = RollRank();
 
-                List<T> rankList = new List<T>();
-                for (int j = 0; j < rankList.Count; j++)
-                {
-                    if (itemList[j].itemRank == gachaRank && itemList[j] is T item)
-                    {
-                        ItemManager.Instance.AddItem(itemList[j]);
+                List<ItemSO> rankList = itemList.Where(item => item.itemRank == gachaRank).ToList();
 
-                        rankList.Add(item);
-                    }
-                }
+                ItemSO itemSO = rankList.GetRandomElement();
+                if (isSkillSO)
+                    SkillSaveManager.Instance.AddItem(itemSO);
+                else
+                    WeaponSaveManager.Instance.AddItem(itemSO);
 
-                int random = Random.Range(0, rankList.Count);
-                gachaList.Add(rankList[random]);
+                gachaList.Add(itemSO as T);
             }
 
             _gachaCount += gachaCount;

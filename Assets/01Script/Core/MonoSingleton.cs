@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DKProject.Core
 {
-    public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>, new()
+    public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     {
         private static T _Instance;
         public static T Instance

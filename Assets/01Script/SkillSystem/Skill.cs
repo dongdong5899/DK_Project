@@ -22,7 +22,7 @@ namespace DKProject.SkillSystem
         protected float _skillCoolTime;
         protected bool _isPassiveSkill,_isDotSkill;
         protected float _currentCoolTime;
-        protected bool _isUseSkill = true,_isEquiped;
+        protected bool _isUseSkill = true;
         protected BigInteger _currentDamage;
         protected EntityStat _entityStat;
         protected EntityEffect _entityEffect;
@@ -82,25 +82,18 @@ namespace DKProject.SkillSystem
 
         public virtual void OnEquipSkill()
         {
-            if (!_isEquiped)
-            {
-                _prevSkillTime = Time.time;
-                _isEquiped = true;
-            }
-
-            ItemManager.Instance.AddStat(SkillSO,SkillSO.equipStats,_entityStat);
-            
+            _prevSkillTime = Time.time;
+            SkillSaveManager.Instance.AddStat(SkillSO,SkillSO.equipStats,_entityStat);
         }
 
         public virtual void OnUnEquipSkill()
         {
-            _isEquiped = false;
-            ItemManager.Instance.RemoveStat(SkillSO, SkillSO.equipStats, _entityStat);
+            SkillSaveManager.Instance.RemoveStat(SkillSO, SkillSO.equipStats, _entityStat);
         }
 
         public virtual void UnlockSkill()
         {
-            ItemManager.Instance.AddStat(SkillSO, SkillSO.unlockStats, _entityStat);
+            SkillSaveManager.Instance.AddStat(SkillSO, SkillSO.unlockStats, _entityStat);
         }
 
         public virtual BigInteger DamageCalculation(double playerAttackDamage)

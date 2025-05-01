@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace DKProject.Core
 {
-    public class ItemManager : MonoSingleton<ItemManager>
+    public abstract class ItemManager<T> : MonoSingleton<T> where T : MonoSingleton<T>
     {
         protected Dictionary<ItemSO, ItemData> _itemDictionary;
         protected ItemSave _saveData;

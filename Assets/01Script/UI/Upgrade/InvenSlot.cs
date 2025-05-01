@@ -44,7 +44,7 @@ namespace DKProject
 
         public void UpdateLevel()
         {
-            _level.text = $"{ItemManager.Instance.GetItemLevel(ItemSO)}";
+            //_level.text = $"{ItemManager.Instance.GetItemLevel(ItemSO)}";
         }
 
         protected virtual void OnDestroy()

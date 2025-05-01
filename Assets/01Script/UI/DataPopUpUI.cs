@@ -61,12 +61,11 @@ namespace DKProject.UI
             _currentSlot = invenSlot;
             ItemSO itemSO = invenSlot.ItemSO;
 
-            //TODO : 여기해야함
+            //TODO : 여기해야함 ㅇㅈ 해야함
             _currentPopUpPanel.SetEquipData(SkillManager.Instance.CheckSkillEquip(itemSO as SkillSO, out int index));
             Action upgrade = () =>
             {
-
-                ItemManager.Instance.LevelUpItem(itemSO as SkillSO);
+                SkillSaveManager.Instance.LevelUpItem(itemSO as SkillSO);
                 
                 UpdateLevel(itemSO);
                 invenSlot.UpdateLevel();
@@ -108,15 +107,15 @@ namespace DKProject.UI
         {
             int level = 0;
             BigInteger price = 0;
-            if (itemSO.itemType == ItemType.Skill)
+            if (itemSO is SkillSO skillSO)
             {
-                level = SkillSaveManager.Instance.GetItemLevel(itemSO as SkillSO);
-                price = SkillSaveManager.Instance.GetItemUpgradePrice(itemSO as SkillSO);
+                level = SkillSaveManager.Instance.GetItemLevel(skillSO);
+                price = SkillSaveManager.Instance.GetItemUpgradePrice(skillSO);
             }
-            if (itemSO.itemType == ItemType.Weapon)
+            else if (itemSO is WeaponSO weaponSO)
             {
-                level = WeaponSaveManager.Instance.GetItemLevel(itemSO as WeaponSO);
-                price = WeaponSaveManager.Instance.GetItemUpgradePrice(itemSO as SkillSO);
+                level = WeaponSaveManager.Instance.GetItemLevel(weaponSO);
+                price = WeaponSaveManager.Instance.GetItemUpgradePrice(weaponSO);
             }
             _currentPopUpPanel.SetLevel(level, price.ToString(), "");
         }

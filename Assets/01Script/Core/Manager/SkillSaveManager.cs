@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace DKProject.Core
 {
-    public class SkillSaveManager: ItemManager
+    public class SkillSaveManager: ItemManager<SkillSaveManager>
     {
         public override bool LevelUpItem(ItemSO itemSO)
         {

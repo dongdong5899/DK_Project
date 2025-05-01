@@ -118,6 +118,7 @@ namespace DKProject.Core
                 if (TryGetComponent(out SkillSO skillSO))
                 {
                     skillSO.skill.UnlockSkill();
+                    skillSO.skill.OnEquipSkill();
                 }
             }
             _itemDictionary[itemSO] = data;
@@ -164,16 +165,15 @@ namespace DKProject.Core
                 if (increaseStat.stat.isBigInteger)
                     stat.StatDictionary[increaseStat.stat].AddModify(
                     effectTypeKey,
-                    (BigInteger)increaseStat.baseValue + (BigInteger)increaseStat.upgradeValue * GetItemLevel(item),
+                    (BigInteger)(increaseStat.baseValue + increaseStat.upgradeValue * (GetItemLevel(item) - 1)),
                     increaseStat.modifyMode,
-                    increaseStat.modifyLayer);
+                    increaseStat.modifyLayer,false);
                 else
                     stat.StatDictionary[increaseStat.stat].AddModify(
                     effectTypeKey,
-                    increaseStat.baseValue + increaseStat.upgradeValue * GetItemLevel(item),
+                    increaseStat.baseValue + increaseStat.upgradeValue * (GetItemLevel(item) - 1),
                     increaseStat.modifyMode,
-                    increaseStat.modifyLayer
-                    );
+                    increaseStat.modifyLayer,false);
 
                 Debug.Log(stat.StatDictionary[increaseStat.stat].BigIntValue);
             }

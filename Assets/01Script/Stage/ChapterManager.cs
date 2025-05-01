@@ -37,7 +37,7 @@ namespace DKProject.Chapter
 
         public void LoadStage(int chapter, int stage)
         {
-            if(loadingPanel == null)
+            if (loadingPanel == null)
                 loadingPanel = UIManager.Instance.GetUI<LoadingPanel>("LoadingPanel");
 
 
@@ -59,8 +59,11 @@ namespace DKProject.Chapter
                 _currentStage = _chapterInfo.chapterList[_currentChapterIndex].stageList[_currentStageIndex];
 
                 _loadHandle = _currentStage.stageRef.InstantiateAsync();
-                _loadHandle.Completed += handle => loadingPanel.Close();
-                _loadHandle.Result.GetComponent<Stage>().Init(_currentStage);
+                _loadHandle.Completed += handle =>
+                {
+                    loadingPanel.Close();
+                    _loadHandle.Result.GetComponent<Stage>().Init(_currentStage);
+                };
             };
         }
 

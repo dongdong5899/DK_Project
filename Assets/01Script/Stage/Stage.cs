@@ -9,7 +9,7 @@ namespace DKProject.Chapter
 
         public void Init(StageSO stage)
         {
-            _enemyGenerator = GetComponent<EnemyGenerator>();
+            _enemyGenerator = GetComponentInChildren<EnemyGenerator>();
             _enemyGenerator.Init(stage);
         }
     }

@@ -224,8 +224,8 @@ GameObject:
   - component: {fileID: 6613774010634151222}
   - component: {fileID: 2319732284599683742}
   - component: {fileID: 8108551665645810036}
-  - component: {fileID: 3048337352514549138}
   - component: {fileID: 4855466313998721835}
+  - component: {fileID: 3149395675400195893}
   m_Layer: 5
   m_Name: InvenSkill
   m_TagString: Untagged
@@ -291,20 +291,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3048337352514549138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6053576224808317899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6909e098cc141154d978d3c8fbf496e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 7217139029795407957}
-  _level: {fileID: 6354816986586094810}
 --- !u!114 &4855466313998721835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +308,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &3149395675400195893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6053576224808317899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a936bf8dd52c848829814123ce4af3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 7217139029795407957}
+  _level: {fileID: 6354816986586094810}
 --- !u!1 &7669597799628283256
 GameObject:
   m_ObjectHideFlags: 0

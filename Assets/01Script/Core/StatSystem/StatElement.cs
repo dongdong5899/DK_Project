@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 namespace DKProject.StatSystem
 {
@@ -144,20 +145,26 @@ namespace DKProject.StatSystem
                     foreach (var modifier in _modifiers.Values)
                     {
                         BigInteger bigIntTotalAddModifier = 0;
-                        BigInteger bigIntTotalPercentModifier = 0;
+                        float bigIntTotalPercentModifier = 0;
                         foreach (var statModifier in modifier.Values)
                         {
                             switch (statModifier.Mode)
                             {
                                 case EModifyMode.Add:
-                                    bigIntTotalAddModifier += statModifier.BigIntValue;
+                                    {
+                                        bigIntTotalAddModifier += statModifier.BigIntValue;
+                                        bigIntTotalAddModifier += (BigInteger)statModifier.Value;
+                                    }
                                     break;
                                 case EModifyMode.Percent:
-                                    bigIntTotalPercentModifier += statModifier.BigIntValue;
+                                    {
+                                        bigIntTotalPercentModifier += (float)statModifier.BigIntValue;
+                                        bigIntTotalPercentModifier += statModifier.Value;
+                                    }
                                     break;
                             }
                         }
-                        value = (value + bigIntTotalAddModifier) * (100 + bigIntTotalPercentModifier) / 100;
+                        value = (value + bigIntTotalAddModifier) * (BigInteger)((100 + bigIntTotalPercentModifier)* 100) / 10000;
                     }
                 }
 

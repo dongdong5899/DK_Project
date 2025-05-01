@@ -9,24 +9,22 @@ using UnityEngine;
 
 namespace DKProject.Core
 {
-    public class SkillSaveManager: ItemManager
+    public class SkillSaveManager: ItemManager<SkillSaveManager>
     {
-        private string _fileName = "Skill";
-
         public override bool LevelUpItem(ItemSO itemSO)
         {
-            if (!itemDictionary.ContainsKey(itemSO))
+            if (!_itemDictionary.ContainsKey(itemSO))
                 return false;
 
             if (ResourceData.TryRemoveSkillPoint((uint)GetItemUpgradePrice(itemSO))) // 1은 임시
             {
-                ItemData data = itemDictionary[itemSO];
+                ItemData data = _itemDictionary[itemSO];
                 data.level++;
-                itemDictionary[itemSO] = data;
+                _itemDictionary[itemSO] = data;
 
                 UpdateItemData(itemSO, data);
                 Save();
-                OnChangeValue?.Invoke();
+                OnValueChanged?.Invoke();
 
                 return true;
             }
@@ -38,7 +36,7 @@ namespace DKProject.Core
 
         public int GetSkillRevolutionLevel(SkillSO skillSO)
         {
-            if (itemDictionary.TryGetValue(skillSO, out var data))
+            if (_itemDictionary.TryGetValue(skillSO, out var data))
             {
                 return data.revolutionLevel;
             }
@@ -48,7 +46,7 @@ namespace DKProject.Core
 
         public bool TrySkillRevolution(SkillSO skillSO)
         {
-            if (itemDictionary.TryGetValue(skillSO, out var data))
+            if (_itemDictionary.TryGetValue(skillSO, out var data))
             {
                 int skillCountRequired = data.revolutionLevel*5; //수식으로 대체예정
                 if (data.count >= skillCountRequired)
@@ -57,7 +55,7 @@ namespace DKProject.Core
                     data.revolutionLevel++;
                     UpdateItemData(skillSO, data);
                     Save();
-                    OnChangeValue?.Invoke();
+                    OnValueChanged?.Invoke();
                     return true;
                 }
                 else

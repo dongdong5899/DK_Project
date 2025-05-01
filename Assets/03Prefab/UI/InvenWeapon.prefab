@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8923471098521828127}
   - component: {fileID: 5242106909648558207}
   - component: {fileID: 3417508804094143383}
-  - component: {fileID: 3442077460078697551}
   - component: {fileID: 4135494572186150868}
+  - component: {fileID: 4803644346671334769}
   m_Layer: 5
   m_Name: InvenWeapon
   m_TagString: Untagged
@@ -78,20 +78,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3442077460078697551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019102347735743382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 541d86ab8b4c6ca459c065c23eaf4100, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 2724841146764011742}
-  _level: {fileID: 5188064559039791415}
 --- !u!114 &4135494572186150868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +95,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &4803644346671334769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019102347735743382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c6c5d843a5c024a8748a8e10210bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 2724841146764011742}
+  _level: {fileID: 5188064559039791415}
 --- !u!1 &3685394208782612022
 GameObject:
   m_ObjectHideFlags: 0

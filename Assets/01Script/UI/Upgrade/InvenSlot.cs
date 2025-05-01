@@ -28,6 +28,7 @@ namespace DKProject
 
         public void Init(InvenSlot prev, InvenSlot next, ItemSO itemSO)
         {
+            Debug.Log("Init");
             PrevSlot = prev;
             NextSlot = next;
             ItemSO = itemSO;
@@ -43,7 +44,7 @@ namespace DKProject
 
         public void UpdateLevel()
         {
-            _level.text = $"{ItemManager.Instance.GetItemLevel(ItemSO)}";
+            //_level.text = $"{ItemManager.Instance.GetItemLevel(ItemSO)}";
         }
 
         protected virtual void OnDestroy()

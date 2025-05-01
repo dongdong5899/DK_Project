@@ -1,6 +1,7 @@
 using DKProject.Combat;
+using DKProject.EffectSystem;
+using DKProject.Entities.Components;
 using DKProject.SkillSystem;
-using DKProject.Weapon;
 using Doryu.JBSave;
 using System;
 using System.Collections.Generic;
@@ -9,29 +10,20 @@ using UnityEngine;
 
 namespace DKProject.Core
 {
-    public class ItemManager : MonoSingleton<ItemManager>
+    public abstract class ItemManager<T> : MonoSingleton<T> where T : MonoSingleton<T>
     {
-        public Dictionary<ItemSO, ItemData> itemDictionary;
-        public ItemSave save;
-        public Action OnChangeValue;
-        [SerializeField] private ItemListSO _itemList;
+        protected Dictionary<ItemSO, ItemData> _itemDictionary;
+        protected ItemSave _saveData;
+        public Action OnValueChanged;
+        [SerializeField] protected ItemListSO _itemList;
+
         private string _fileName;
         private bool _isInitialized;
 
         private void Awake()
         {
             Initialized();
-        }
-
-        private void Initialized()
-        {
-            if (_isInitialized) return;
-
-            _isInitialized = true;
-            Load();
-            itemDictionary = new Dictionary<ItemSO, ItemData>();
-            ItemDictionarySet();
-            DontDestroyOnLoad(this.gameObject);
+            _fileName = GetType().Name;
         }
 
         protected override void CreateInstance()
@@ -40,36 +32,48 @@ namespace DKProject.Core
             Initialized();
         }
 
+        protected void Initialized()
+        {
+            if (_isInitialized) return;
+
+            _isInitialized = true;
+            Load();
+            _itemDictionary = new Dictionary<ItemSO, ItemData>();
+            ItemDictionarySet();
+            if (Instance == this)
+                DontDestroyOnLoad(gameObject);
+        }
+
         private void ItemDictionarySet()
         {
-            itemDictionary.Clear();
-            if (save.itemDataBase == null) return;
+            _itemDictionary.Clear();
+            if (_saveData.itemDataBase == null) return;
 
-            foreach (var pair in save.itemDataBase)
+            foreach (var pair in _saveData.itemDataBase)
             {
-                if (!itemDictionary.ContainsKey(pair.first))
+                if (!_itemDictionary.ContainsKey(pair.first))
                 {
-                    itemDictionary.Add(pair.first, pair.second);
+                    _itemDictionary.Add(pair.first, pair.second);
                 }
             }
         }
 
         private void Load()
         {
-            save = new ItemSave();
-            if (save.LoadJson(_fileName) == false)
+            _saveData = new ItemSave();
+            if (_saveData.LoadJson(_fileName) == false)
             {
-                save.ResetData();
+                _saveData.ResetData();
                 Init(_itemList);
             }
 
 
-            OnChangeValue?.Invoke();
+            OnValueChanged?.Invoke();
         }
 
         public void Save()
         {
-            save.SaveJson(_fileName);
+            _saveData.SaveJson(_fileName);
         }
 
 
@@ -82,7 +86,7 @@ namespace DKProject.Core
                 itemdata.level = 1;
                 itemdata.count = 0;
                 itemdata.revolutionLevel = 1;
-                save.itemDataBase.Add(new Pair<ItemSO, ItemData>(itemSO, itemdata));
+                _saveData.itemDataBase.Add(new Pair<ItemSO, ItemData>(itemSO, itemdata));
             }
         }
 
@@ -91,11 +95,11 @@ namespace DKProject.Core
 
         protected void UpdateItemData(ItemSO itemSO, ItemData data)
         {
-            for (int i = 0; i < save.itemDataBase.Count; i++)
+            for (int i = 0; i < _saveData.itemDataBase.Count; i++)
             {
-                if (save.itemDataBase[i].first == itemSO)
+                if (_saveData.itemDataBase[i].first == itemSO)
                 {
-                    save.itemDataBase[i] = new Pair<ItemSO, ItemData>(itemSO, data);
+                    _saveData.itemDataBase[i] = new Pair<ItemSO, ItemData>(itemSO, data);
                     return;
                 }
             }
@@ -103,24 +107,30 @@ namespace DKProject.Core
 
         public void AddItem(ItemSO itemSO)
         {
-            if (!itemDictionary.ContainsKey(itemSO))
+            if (!_itemDictionary.ContainsKey(itemSO))
                 return;
 
-            ItemData data = itemDictionary[itemSO];
+            ItemData data = _itemDictionary[itemSO];
             data.count++;
-            if (!itemDictionary[itemSO].isUnlock)
+            if (!_itemDictionary[itemSO].isUnlock)
+            {
                 data.isUnlock = true;
-            itemDictionary[itemSO] = data;
+                if (TryGetComponent(out SkillSO skillSO))
+                {
+                    skillSO.skill.UnlockSkill();
+                }
+            }
+            _itemDictionary[itemSO] = data;
 
             UpdateItemData(itemSO, data);
             Save();
-            OnChangeValue?.Invoke();
+            OnValueChanged?.Invoke();
         }
 
 
         public bool GetIsUnlocked(ItemSO itemSO)
         {
-            if (itemDictionary.TryGetValue(itemSO, out var data))
+            if (_itemDictionary.TryGetValue(itemSO, out var data))
             {
                 return data.isUnlock;
             }
@@ -129,7 +139,7 @@ namespace DKProject.Core
 
         public int GetItemLevel(ItemSO itemSO)
         {
-            if (itemDictionary.TryGetValue(itemSO, out var data))
+            if (_itemDictionary.TryGetValue(itemSO, out var data))
             {
                 return data.level;
             }
@@ -144,6 +154,41 @@ namespace DKProject.Core
         public virtual BigInteger GetItemUpgradePrice(ItemSO itemSO)
         {
             return 0;
+        }
+
+        public void AddStat(ItemSO item, List<ApplyStatData> statList, EntityStat stat)
+        {
+            foreach (var increaseStat in statList)
+            {
+                string effectTypeKey = item.itemClassName.ToString();
+                if (increaseStat.stat.isBigInteger)
+                    stat.StatDictionary[increaseStat.stat].AddModify(
+                    effectTypeKey,
+                    (BigInteger)increaseStat.baseValue + (BigInteger)increaseStat.upgradeValue * GetItemLevel(item),
+                    increaseStat.modifyMode,
+                    increaseStat.modifyLayer);
+                else
+                    stat.StatDictionary[increaseStat.stat].AddModify(
+                    effectTypeKey,
+                    increaseStat.baseValue + increaseStat.upgradeValue * GetItemLevel(item),
+                    increaseStat.modifyMode,
+                    increaseStat.modifyLayer
+                    );
+
+                Debug.Log(stat.StatDictionary[increaseStat.stat].BigIntValue);
+            }
+        }
+
+        public void RemoveStat(ItemSO item, List<ApplyStatData> statList, EntityStat stat)
+        {
+            foreach (var increaseStat in statList)
+            {
+                string effectTypeKey = item.itemClassName.ToString();
+                stat.StatDictionary[increaseStat.stat].RemoveModify(
+                    effectTypeKey,
+                    increaseStat.modifyLayer
+                );
+            }
         }
 
     }

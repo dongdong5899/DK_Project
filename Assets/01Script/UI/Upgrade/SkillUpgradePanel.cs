@@ -1,5 +1,4 @@
 using DKProject.SkillSystem;
-using DKProject.SkillSystem.Skills;
 using DKProject.UI;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +6,9 @@ using UnityEngine;
 
 namespace DKProject
 {
-    public class ItemUpgradePanel : ToggleUI
+    public class SkillUpgradePanel : ToggleUI
     {
-        public override string Key => nameof(ItemUpgradePanel);
+        public override string Key => nameof(SkillUpgradePanel);
 
         [SerializeField] private SkillListSO _skillList;
         private InvenSlot[] _invenSkills;

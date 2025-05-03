@@ -1,6 +1,8 @@
 using DKProject.Entities.Components;
 using DKProject.Entities;
 using UnityEngine;
+using DKProject.EffectSystem;
+using System.Collections.Generic;
 
 namespace DKProject.SkillSystem.Skills
 {
@@ -8,6 +10,8 @@ namespace DKProject.SkillSystem.Skills
     {
         private double _damage;
         [SerializeField] private float _skillDotAttackReduction;
+
+        private List<EffectSO> _effectList;
 
         public override void Init(Entity owner, SkillSO SO)
         {
@@ -23,7 +27,11 @@ namespace DKProject.SkillSystem.Skills
                 {
                     if (target.transform.TryGetComponent(out Entity entity))
                     {
-                        entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation(_damage));
+                        entity.GetCompo<EntityHealth>().ApplyDamage(DamageCalculation(_damage));
+                        foreach(EffectSO effect in _effectList)
+                        {
+                            entity.GetCompo<EntityEffect>().ApplyEffect(effect.effectType);
+                        }
                     }
                 }
             }

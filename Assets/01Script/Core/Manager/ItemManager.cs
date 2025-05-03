@@ -165,7 +165,7 @@ namespace DKProject.Core
                 if (increaseStat.stat.isBigInteger)
                     stat.StatDictionary[increaseStat.stat].AddModify(
                     effectTypeKey,
-                    (BigInteger)(increaseStat.baseValue + increaseStat.upgradeValue * (GetItemLevel(item) - 1)),
+                    increaseStat.baseValue + increaseStat.upgradeValue * (GetItemLevel(item) - 1),
                     increaseStat.modifyMode,
                     increaseStat.modifyLayer,false);
                 else

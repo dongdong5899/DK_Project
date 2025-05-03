@@ -24,13 +24,11 @@ MonoBehaviour:
   skillType: 0
   targetType: 1
   damageType: 0
-  coolDown: 0
-  skillRange: 8
-  skillAreaRadius: 2
-  baseSkillPercent: 50
-  upgradeSkillPercent: 0
-  unlockEffects: []
-  equipEffects: []
+  coolDown: 6
+  baseSkillCoefficient: 300
+  upgradeSkillCoefficient: 0.3
+  unlockStats: []
+  equipStats: []
   skill:
     rid: 1513572911148958165
   references:
@@ -39,4 +37,8 @@ MonoBehaviour:
     - rid: 1513572911148958165
       type: {class: ShootBumerangSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
       data:
+        _whatIsTarget:
+          serializedVersion: 2
+          m_Bits: 128
+        _radius: 8
         _lifeTime: 4

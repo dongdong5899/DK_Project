@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: BokaMongdong
   m_EditorClassIdentifier: 
-  itemID: 11
+  itemClassName: BokaMongdong
   itemName: "\uBCF4\uCE74\uD45C \uBABD\uB465\uC774"
   icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
   itemRank: 2
@@ -24,6 +24,8 @@ MonoBehaviour:
   weaponIndex: 11
   maxLevel: 150
   increaseStats:
-  - statSo: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    applyValue: 10
-    IncreaseValue: 0.5
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 10
+    upgradeValue: 0.5
+    modifyMode: 1
+    modifyLayer: 0

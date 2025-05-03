@@ -82,18 +82,18 @@ namespace DKProject.SkillSystem
         {
            Debug.Log("Equip");
            _prevSkillTime = Time.time;
-            
 
+            AddStat(SkillSO.equipStats);
         }
 
         public virtual void OnUnEquipSkill()
         {
-            _isEquiped = false;
+            RemoveStat(SkillSO.equipStats);
         }
 
         public virtual void UnlockSkill()
         {
-            SkillSaveManager.Instance.AddStat(SkillSO, SkillSO.unlockStats, _entityStat);
+            AddStat(SkillSO.equipStats);
         }
 
         public virtual BigInteger DamageCalculation(double playerAttackDamage)

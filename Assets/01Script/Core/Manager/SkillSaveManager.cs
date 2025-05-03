@@ -24,8 +24,8 @@ namespace DKProject.Core
                 SkillSO skillSO = itemSO as SkillSO;
                 if (skillSO)
                 {
-                    skillSO.skill.UnlockSkill();
-                    skillSO.skill.OnEquipSkill();
+                    skillSO.skill.AddStat(skillSO.equipStats);
+                    skillSO.skill.AddStat(skillSO.unlockStats);
                 }
                 UpdateItemData(itemSO, data);
                 Save();

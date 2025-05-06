@@ -57,6 +57,7 @@ namespace DKProject.Core
 
             _equipedSkills[idx]?.OnUnEquipSkill();
             _equipedSkills[idx] = skill;
+
             _equipedSkills[idx]?.OnEquipSkill();
 
             return prevSkill;

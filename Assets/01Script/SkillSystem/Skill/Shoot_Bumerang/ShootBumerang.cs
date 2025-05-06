@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
-using UnityEngine.InputSystem.Controls;
 using Vector2 = UnityEngine.Vector2;
 
 namespace DKProject.SkillSystem.Skills
@@ -22,28 +21,56 @@ namespace DKProject.SkillSystem.Skills
         public Enum PoolEnum => _poolingType;
         [SerializeField] private ProjectilePoolingType _poolingType;
         private Transform _owner,_target;
+        private Rigidbody2D _rigidBody;
         private LayerMask _whatIsTarget;
         private BigInteger _damage;
-        private List<Entity> _hitEntities = new();
+        private List<Entity> _hitEnemy = new();
+        private float _speed;
+        private bool _isReturning = false;
 
         private void Awake()
         {
             _caster = GetComponent<Caster2D>();
+            _rigidBody = GetComponent<Rigidbody2D>();
         }
 
 
         private void Update()
         {
+            Vector2 dir = Vector2.zero;
+            if (_isReturning)
+            {
+                dir = (_owner.position - transform.position).normalized;
+                if (Vector2.Distance(_owner.position, (Vector2)transform.position) <= 0.1f)
+                {
+                    _hitEnemy.Clear();
+                    this.Push();
+                }
+            }
+            else
+            {
+                dir = (_target.position - transform.position).normalized;
+                if (Vector2.Distance(_target.position, (Vector2)transform.position) <= 0.1f)
+                {
+                    _isReturning = true;
+                    _hitEnemy.Clear();
+                }
+            }
+
+            _rigidBody.linearVelocity = dir * _speed;
+
+
+
             if (_caster.CheckCollision(out _hits, _whatIsTarget))
             {
                 foreach (var hit in _hits)
                 {
                     if (hit.transform.TryGetComponent(out Entity entity))
                     {
-                        if (!_hitEntities.Contains(entity))
+                        if (!_hitEnemy.Contains(entity))
                         {
                             entity.GetCompo<EntityHealth>().ApplyDamage(_damage);
-                            _hitEntities.Add(entity);
+                            _hitEnemy.Add(entity);
                         }
                     }
                 }
@@ -67,19 +94,8 @@ namespace DKProject.SkillSystem.Skills
             _lifeTime = lifeTime;
 
             Init(lifeTime, this);
-            MoveTarget();
-        }
 
-        public void MoveTarget()
-        {
-            float moveTime = _lifeTime * 0.5f;
-            transform.DOMove(_target.position, moveTime).SetEase(Ease.OutCubic).OnComplete(() =>
-            {
-                _hitEntities.Clear();
-                transform.DOMove(_owner.position, moveTime).OnComplete(()=> _hitEntities.Clear());
-            });
-            
-        }
 
+        }
     }
 }

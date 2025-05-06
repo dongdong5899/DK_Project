@@ -2,10 +2,8 @@ using UnityEngine;
 using DKProject.Entities;
 using System.Numerics;
 using DKProject.Entities.Components;
-using Vector2 = UnityEngine.Vector2;
 using Random = UnityEngine.Random;
 using DKProject.Entities.Players;
-using DG.Tweening;
 using DKProject.Core;
 using System;
 using System.Collections.Generic;
@@ -22,12 +20,12 @@ namespace DKProject.SkillSystem
         protected float _skillCoolTime;
         protected bool _isPassiveSkill,_isDotSkill;
         protected float _currentCoolTime;
-        protected bool _isUseSkill = true;
         protected BigInteger _currentDamage;
         protected EntityStat _entityStat;
         protected EntityEffect _entityEffect;
         [SerializeField] protected LayerMask _whatIsTarget;
         protected Player _player;
+        private bool _isEquiped = false;
 
         public virtual void Init(Entity owner,SkillSO SO)
         {
@@ -82,18 +80,20 @@ namespace DKProject.SkillSystem
 
         public virtual void OnEquipSkill()
         {
-            _prevSkillTime = Time.time;
-            SkillSaveManager.Instance.AddStat(SkillSO,SkillSO.equipStats,_entityStat);
+           Debug.Log("Equip");
+           _prevSkillTime = Time.time;
+
+            AddStat(SkillSO.equipStats);
         }
 
         public virtual void OnUnEquipSkill()
         {
-            SkillSaveManager.Instance.RemoveStat(SkillSO, SkillSO.equipStats, _entityStat);
+            RemoveStat(SkillSO.equipStats);
         }
 
         public virtual void UnlockSkill()
         {
-            SkillSaveManager.Instance.AddStat(SkillSO, SkillSO.unlockStats, _entityStat);
+            AddStat(SkillSO.equipStats);
         }
 
         public virtual BigInteger DamageCalculation(double playerAttackDamage)
@@ -124,6 +124,16 @@ namespace DKProject.SkillSystem
             {
                 _entityEffect.RemoveEffect(effect.effectType);
             }
+        }
+
+        public void AddStat(List<ApplyStatData> statData)
+        {
+            SkillSaveManager.Instance.AddStat(SkillSO, statData, _entityStat);
+        }
+
+        public void RemoveStat(List<ApplyStatData> statData)
+        {
+            SkillSaveManager.Instance.RemoveStat(SkillSO, statData, _entityStat);
         }
     }
 }

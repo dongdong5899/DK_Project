@@ -21,7 +21,12 @@ namespace DKProject.Core
                 ItemData data = _itemDictionary[itemSO];
                 data.level++;
                 _itemDictionary[itemSO] = data;
-
+                SkillSO skillSO = itemSO as SkillSO;
+                if (skillSO)
+                {
+                    skillSO.skill.AddStat(skillSO.equipStats);
+                    skillSO.skill.AddStat(skillSO.unlockStats);
+                }
                 UpdateItemData(itemSO, data);
                 Save();
                 OnValueChanged?.Invoke();

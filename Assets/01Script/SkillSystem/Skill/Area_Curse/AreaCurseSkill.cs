@@ -1,12 +1,12 @@
+using DKProject.EffectSystem;
 using DKProject.Entities.Components;
 using DKProject.Entities;
-using UnityEngine;
-using DKProject.EffectSystem;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace DKProject.SkillSystem.Skills
 {
-    public class AreaCrySkill : RangeSkill
+    public class AreaCurseSkill : RangeSkill
     {
         private double _damage;
         [SerializeField] private float _skillDotAttackReduction;
@@ -28,7 +28,7 @@ namespace DKProject.SkillSystem.Skills
                     if (target.transform.TryGetComponent(out Entity entity))
                     {
                         entity.GetCompo<EntityHealth>().ApplyDamage(DamageCalculation(_damage));
-                        foreach(EffectSO effect in _effectList)
+                        foreach (EffectSO effect in _effectList)
                         {
                             entity.GetCompo<EntityEffect>().ApplyEffect(effect.effectType);
                         }

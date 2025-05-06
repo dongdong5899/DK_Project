@@ -11,7 +11,7 @@ namespace DKProject.SkillSystem.Skills
 
         public override void UseSkill()
         {
-            Collider2D farTarget = GetTargetForDistance(true);
+            Collider2D farTarget = GetTargetForDistance(false);
 
             ShootBumerang bumerang = PoolManager.Instance.Pop(ProjectilePoolingType.ShootBumerang) as ShootBumerang;
             bumerang.transform.position = _owner.transform.position;

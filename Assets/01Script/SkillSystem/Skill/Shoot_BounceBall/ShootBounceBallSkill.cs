@@ -1,11 +1,10 @@
-using DG.Tweening;
-using DKProject.Core;
 using DKProject.Core.Pool;
+using DKProject.Core;
 using UnityEngine;
 
 namespace DKProject.SkillSystem.Skills
 {
-    public class ShootGomuLineSkill : RangeSkill
+    public class ShootBounceBallSkill : RangeSkill
     {
         [SerializeField] private float _lifeTime;
         [SerializeField] private float _skillProjectileSpeed;

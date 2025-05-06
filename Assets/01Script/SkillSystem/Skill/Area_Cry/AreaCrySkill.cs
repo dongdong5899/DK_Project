@@ -11,7 +11,7 @@ namespace DKProject.SkillSystem.Skills
         private double _damage;
         [SerializeField] private float _skillDotAttackReduction;
 
-        private List<EffectSO> _effectList;
+        [SerializeField] private List<EffectSO> _effectList;
 
         public override void Init(Entity owner, SkillSO SO)
         {

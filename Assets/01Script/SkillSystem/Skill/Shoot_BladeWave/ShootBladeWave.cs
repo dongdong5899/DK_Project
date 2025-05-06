@@ -1,17 +1,17 @@
 using DKProject.Combat;
 using DKProject.Core.Pool;
+using DKProject.EffectSystem;
 using DKProject.Entities.Components;
 using DKProject.Entities;
-using System;
+using System.Collections.Generic;
 using System.Numerics;
+using System;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
-using DKProject.EffectSystem;
-using System.Collections.Generic;
 
-namespace DKProject
+namespace DKProject.SkillSystem.Skills
 {
-    public class ShootPineTree : LifeTime, IPoolable
+    public class ShootBladeWave : LifeTime,IPoolable
     {
         private Caster2D _caster;
         private RaycastHit2D[] _hits;
@@ -66,7 +66,7 @@ namespace DKProject
         {
         }
 
-        public void Setting(Vector2 targetPos, LayerMask whatIsTarget, BigInteger damage, float lifeTime, float projectileSpeed,List<EffectSO> effects)
+        public void Setting(Vector2 targetPos, LayerMask whatIsTarget, BigInteger damage, float lifeTime, float projectileSpeed, List<EffectSO> effects)
         {
             _targetPosition = targetPos;
             _whatIsTarget = whatIsTarget;

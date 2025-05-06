@@ -6,17 +6,11 @@ using UnityEngine;
 
 namespace DKProject.SkillSystem.Skills
 {
-    public class AreaCurseSkill : RangeSkill
+    public class AreaFiledMagicSkill : RangeSkill
     {
-        private double _damage;
-        [SerializeField] private float _skillDotAttackReduction;
-
-        [SerializeField] private List<EffectSO> _effectList;
-
         public override void Init(Entity owner, SkillSO SO)
         {
             base.Init(owner, SO);
-            _damage = (double)_player.GetAttackDamage() * _skillDotAttackReduction / 100;
         }
 
         public override void UseSkill()
@@ -27,11 +21,7 @@ namespace DKProject.SkillSystem.Skills
                 {
                     if (target.transform.TryGetComponent(out Entity entity))
                     {
-                        entity.GetCompo<EntityHealth>().ApplyDamage(DamageCalculation(_damage));
-                        foreach (EffectSO effect in _effectList)
-                        {
-                            entity.GetCompo<EntityEffect>().ApplyEffect(effect.effectType);
-                        }
+                        entity.GetCompo<EntityHealth>().ApplyDamage(DamageCalculation((double)_player.GetAttackDamage()));
                     }
                 }
             }

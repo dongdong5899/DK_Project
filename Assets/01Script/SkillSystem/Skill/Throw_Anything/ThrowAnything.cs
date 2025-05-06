@@ -1,17 +1,18 @@
 using DKProject.Combat;
 using DKProject.Core.Pool;
+using DKProject.EffectSystem;
 using DKProject.Entities.Components;
 using DKProject.Entities;
-using System;
+using System.Collections.Generic;
 using System.Numerics;
+using System;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
-using DKProject.EffectSystem;
-using System.Collections.Generic;
+using DKProject.Core;
 
-namespace DKProject
+namespace DKProject.SkillSystem.Skills
 {
-    public class ShootPineTree : LifeTime, IPoolable
+    public class ThrowAnything : LifeTime,IPoolable
     {
         private Caster2D _caster;
         private RaycastHit2D[] _hits;
@@ -25,13 +26,14 @@ namespace DKProject
         private float _speed;
         private BigInteger _damage;
         private Rigidbody2D _rb;
-        private List<EffectSO> _effects;
-
+        private SpriteRenderer _renderer;
+        private List<Sprite> _spriteList;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _caster = GetComponent<Caster2D>();
+            _renderer = GetComponent<SpriteRenderer>();
         }
 
 
@@ -47,10 +49,6 @@ namespace DKProject
                     if (_hits[0].transform.TryGetComponent(out Entity entity))
                     {
                         entity.GetCompo<EntityHealth>().ApplyDamage(_damage);
-                        foreach (EffectSO effect in _effects)
-                        {
-                            entity.GetCompo<EntityEffect>().ApplyEffect(effect.effectType);
-                        }
                     }
                 }
                 PoolManager.Instance.Push(this);
@@ -60,19 +58,19 @@ namespace DKProject
 
         public void OnPop()
         {
+            _renderer.sprite = _spriteList.GetRandomElement(); 
         }
 
         public void OnPush()
         {
         }
 
-        public void Setting(Vector2 targetPos, LayerMask whatIsTarget, BigInteger damage, float lifeTime, float projectileSpeed,List<EffectSO> effects)
+        public void Setting(Vector2 targetPos, LayerMask whatIsTarget, BigInteger damage, float lifeTime, float projectileSpeed)
         {
             _targetPosition = targetPos;
             _whatIsTarget = whatIsTarget;
             _damage = damage;
             _speed = projectileSpeed;
-            _effects = effects;
 
             Init(lifeTime, this);
         }

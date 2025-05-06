@@ -6,7 +6,7 @@ namespace DKProject.Core.Pool
     }
     public enum ProjectilePoolingType 
     {
-        Fall_Stone,Throw_Bomb,Rise_Crystal,Throw_Milk,Shooting_GomuLine,FollowTrashCan, ShootBumerang,Fall_Rock
+        Fall_Stone,Throw_Bomb,Rise_Crystal,Throw_Milk,Shooting_GomuLine,FollowTrashCan, Shoot_Bumerang,Fall_Rock,Shoot_PineTree,
     }
     public enum EnemyPoolingType 
     {

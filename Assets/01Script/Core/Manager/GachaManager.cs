@@ -44,7 +44,7 @@ namespace DKProject.Core
         [SerializeField] private WeaponListSO _weaponListSO;
 
         [SerializeField] private List<LevelRankPercent> _levelRankPercentList = new();
-        private Dictionary<int, List<RankPercent>> _rankPercent;
+        private Dictionary<int, List<RankPercent>> _rankPercent = new Dictionary<int, List<RankPercent>>();
 
         private float _totalPercent = 100;
         private int _gachaLevel = 1;

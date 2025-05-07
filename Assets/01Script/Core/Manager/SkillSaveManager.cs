@@ -1,15 +1,10 @@
 using DKProject.Combat;
 using DKProject.SkillSystem;
-using DKProject.Weapon;
-using Doryu.JBSave;
-using System;
-using System.Collections.Generic;
 using System.Numerics;
-using UnityEngine;
 
 namespace DKProject.Core
 {
-    public class SkillSaveManager: ItemManager<SkillSaveManager>
+    public class SkillSaveManager : ItemManager<SkillSaveManager>
     {
         public override bool LevelUpItem(ItemSO itemSO)
         {
@@ -48,7 +43,7 @@ namespace DKProject.Core
         {
             if (_itemDictionary.TryGetValue(skillSO, out var data))
             {
-                int skillCountRequired = data.revolutionLevel*5; //수식으로 대체예정
+                int skillCountRequired = data.revolutionLevel * 5; //수식으로 대체예정
                 if (data.count >= skillCountRequired)
                 {
                     data.count -= skillCountRequired;

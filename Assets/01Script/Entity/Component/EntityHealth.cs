@@ -50,7 +50,7 @@ namespace DKProject.Entities.Components
             CurrentHealthBigInteger -= bigInteger;
 
             DamageText damageText = Instantiate(_damageText, transform.position, UnityEngine.Quaternion.identity);
-            // 위치잡기
+            // 글자 위치잡기
             Vector3 spawnPos = transform.position;
             bool isFull = true;
             for (int i = 0; i < _damageTextList.Count; i++)

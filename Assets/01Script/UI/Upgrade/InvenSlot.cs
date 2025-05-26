@@ -1,8 +1,6 @@
 using DKProject.Combat;
 using DKProject.Core;
-using DKProject.SkillSystem;
 using DKProject.UI;
-using DKProject.Weapon;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,10 +40,7 @@ namespace DKProject
             dataPopUpUI.SetItem(this);
         }
 
-        public void UpdateLevel()
-        {
-            //_level.text = $"{ItemManager.Instance.GetItemLevel(ItemSO)}";
-        }
+        public abstract void UpdateLevel();
 
         protected virtual void OnDestroy()
         {

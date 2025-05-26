@@ -1,5 +1,6 @@
 using DKProject.Core;
 using DKProject.SkillSystem;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace DKProject.UI
         private List<SkillSlotSettingUI> _skillSlotSettingUIList;
         private Skill[] _skills;
         private Skill _skill;
+        public event Action<int> OnSkillEquipEvent;
 
         protected override void Awake()
         {
@@ -40,6 +42,7 @@ namespace DKProject.UI
         {
             SkillManager.Instance.EquipSkill(_skill, index);
             _skillSlotSettingUIList[index].SetSkill(_skill);
+            OnSkillEquipEvent?.Invoke(index);
             Close();
         }
 

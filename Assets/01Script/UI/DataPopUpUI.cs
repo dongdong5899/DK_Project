@@ -57,11 +57,9 @@ namespace DKProject.UI
 
         public void SetItem(InvenSlot invenSlot)
         {
-            Debug.Log("Asdasd");
             _currentSlot = invenSlot;
             ItemSO itemSO = invenSlot.ItemSO;
 
-            //TODO : 여기해야함 ㅇㅈ 해야함
             _currentPopUpPanel.SetEquipData(SkillManager.Instance.CheckSkillEquip(itemSO as SkillSO, out int index));
             Action upgrade = () =>
             {
@@ -84,7 +82,7 @@ namespace DKProject.UI
                         SkillSlotSettingController slotSettingController
                             = UIManager.Instance.OpenUI(nameof(SkillSlotSettingController)) as SkillSlotSettingController;
                         slotSettingController.SetSkill(SkillManager.Instance.GetSkillClass(itemSO as SkillSO));
-                        _currentPopUpPanel.SetEquipData(true);
+                        //slotSettingController.OnSkillEquipEvent += slotIndex => _currentPopUpPanel.SetEquipData(true);
                     }
                 }
 

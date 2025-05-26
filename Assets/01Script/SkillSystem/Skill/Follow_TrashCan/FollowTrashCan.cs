@@ -44,9 +44,12 @@ namespace DKProject.SkillSystem.Skills
                 {
                     if (_caster.CheckCollision(out _hits, _whatIsTarget))
                     {
-                        if (_hits[0].transform.TryGetComponent(out Entity entity))
+                        foreach(RaycastHit2D hit in _hits)
                         {
-                            entity.GetCompo<EntityHealth>().ApplyDamage(_damage);
+                            if (hit == _target &&_target.TryGetComponent(out Entity entity))
+                            {
+                                entity.GetCompo<EntityHealth>().ApplyDamage(_damage);
+                            }
                         }
                     }
                     PoolManager.Instance.Push(this);

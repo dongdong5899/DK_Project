@@ -15,7 +15,7 @@ namespace DKProject.SkillSystem.Skills
         [SerializeField] private List<EffectSO> _effects;
         public override void UseSkill()
         {
-            ShootBladeWave bladeWave = PoolManager.Instance.Pop(ProjectilePoolingType.Shoot_PineTree) as ShootBladeWave;
+            ShootBladeWave bladeWave = PoolManager.Instance.Pop(ProjectilePoolingType.Shoot_BladeWave) as ShootBladeWave;
 
             bladeWave.transform.position = _owner.transform.position;
 

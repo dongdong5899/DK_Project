@@ -8,7 +8,7 @@ using Vector2 = UnityEngine.Vector2;
 using DKProject.Entities.Components;
 using DKProject.Entities;
 
-namespace DKProject
+namespace DKProject.SkillSystem.Skills
 {
     public class FollowBearDoll : LifeTime, IPoolable
     {

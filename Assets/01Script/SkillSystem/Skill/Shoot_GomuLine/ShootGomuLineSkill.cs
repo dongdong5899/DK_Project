@@ -13,7 +13,7 @@ namespace DKProject.SkillSystem.Skills
 
         public override void UseSkill()
         {
-            ShootGomuLine shootGomuLine = PoolManager.Instance.Pop(ProjectilePoolingType.Shooting_GomuLine) as ShootGomuLine;
+            ShootGomuLine shootGomuLine = PoolManager.Instance.Pop(ProjectilePoolingType.Shoot_GomuLine) as ShootGomuLine;
 
             shootGomuLine.transform.position = _owner.transform.position;
 

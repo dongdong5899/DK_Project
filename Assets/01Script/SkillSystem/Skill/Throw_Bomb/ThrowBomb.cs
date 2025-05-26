@@ -48,7 +48,6 @@ namespace DKProject.SkillSystem.Skills
                         if (hit.transform.TryGetComponent(out Entity entity))
                         {
                             entity.GetCompo<EntityHealth>().ApplyDamage(_damage);
-                            //PoolManager.Instance.Pop(EffectPoolingType.Throw_BombEffect);
                         }
                     }
                 }

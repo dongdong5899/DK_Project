@@ -25,7 +25,6 @@ namespace DKProject.SkillSystem
         protected EntityEffect _entityEffect;
         [SerializeField] protected LayerMask _whatIsTarget;
         protected Player _player;
-        private bool _isEquiped = false;
 
         public virtual void Init(Entity owner,SkillSO SO)
         {

@@ -65,12 +65,13 @@ namespace DKProject.SkillSystem.Skills
         {
         }
 
-        public void Setting(Vector2 targetPos, LayerMask whatIsTarget, BigInteger damage, float lifeTime, float projectileSpeed)
+        public void Setting(Vector2 targetPos, LayerMask whatIsTarget, BigInteger damage, float lifeTime, float projectileSpeed,List<Sprite> spriteList)
         {
             _targetPosition = targetPos;
             _whatIsTarget = whatIsTarget;
             _damage = damage;
             _speed = projectileSpeed;
+            _spriteList = spriteList;
 
             Init(lifeTime, this);
         }

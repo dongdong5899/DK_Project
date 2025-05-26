@@ -9,7 +9,7 @@ namespace DKProject.SkillSystem
 
         protected Collider2D[] _colliders;
 
-        private bool RangeCheck()
+        protected bool RangeCheck()
         {
             _colliders = Physics2D.OverlapCircleAll(_player.transform.position, _radius, _whatIsTarget);
             return _colliders.Length > 0;
@@ -40,5 +40,6 @@ namespace DKProject.SkillSystem
         {
             return base.IsUsable() && RangeCheck();
         }
+
     }
 }

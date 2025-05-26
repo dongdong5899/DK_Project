@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace DKProject.SkillSystem.Skills
 {
-    public class AreaFiledMagicSkill : RangeSkill
+    public class AreaFieldMagicSkill : RangeSkill
     {
         public override void Init(Entity owner, SkillSO SO)
         {

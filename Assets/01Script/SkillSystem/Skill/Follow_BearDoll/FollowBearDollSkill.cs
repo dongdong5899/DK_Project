@@ -11,11 +11,11 @@ namespace DKProject.SkillSystem.Skills
 
         public override void UseSkill()
         {
-            FollowTrashCan shootGomuLine = PoolManager.Instance.Pop(ProjectilePoolingType.FollowTrashCan) as FollowTrashCan;
+            FollowBearDoll followBearDoll = PoolManager.Instance.Pop(ProjectilePoolingType.Follow_BearDoll) as FollowBearDoll;
 
-            shootGomuLine.transform.position = _owner.transform.position;
+            followBearDoll.transform.position = _owner.transform.position;
 
-            shootGomuLine.Setting(
+            followBearDoll.Setting(
                 _colliders.GetRandomElement().transform,
                 _whatIsTarget,
                 DamageCalculation((double)_player.GetAttackDamage()),

@@ -72,7 +72,7 @@ namespace DKProject.Entities.Enemies
 
         private void ItemDrop()
         {
-            float itemDropPower = 5f;
+            float itemDropPower = 8f;
             foreach (var dropResourcePair in _dropResourcesData)
             {
                 for (int i = 0; i < dropResourcePair.second.first; i++)

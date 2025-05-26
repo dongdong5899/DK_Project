@@ -22,8 +22,8 @@ namespace DKProject.Core
 
         private void Awake()
         {
-            Initialized();
             _fileName = GetType().Name;
+            Initialized();
         }
 
         protected override void CreateInstance()
@@ -64,6 +64,7 @@ namespace DKProject.Core
             if (_saveData.LoadJson(_fileName) == false)
             {
                 _saveData.ResetData();
+                
                 Init(_itemList);
             }
 
@@ -74,6 +75,7 @@ namespace DKProject.Core
         public void Save()
         {
             _saveData.SaveJson(_fileName);
+            Debug.Log("Save");
         }
 
 

@@ -63,7 +63,10 @@ namespace DKProject.UI
             _currentPopUpPanel.SetEquipData(SkillManager.Instance.CheckSkillEquip(itemSO as SkillSO, out int index));
             Action upgrade = () =>
             {
-                SkillSaveManager.Instance.LevelUpItem(itemSO as SkillSO);
+                if(itemSO.itemType == ItemType.Skill)
+                    SkillSaveManager.Instance.LevelUpItem(itemSO as SkillSO);
+                else if (itemSO.itemType == ItemType.Weapon)
+                    WeaponSaveManager.Instance.LevelUpItem(itemSO as WeaponSO);
                 
                 UpdateLevel(itemSO);
                 invenSlot.UpdateLevel();

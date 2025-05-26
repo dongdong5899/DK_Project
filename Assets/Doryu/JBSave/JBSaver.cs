@@ -39,7 +39,7 @@ namespace Doryu.JBSave
                 string json = _ByteConverter.GetString(bytes);
                 //Json to class
                 T res = JsonUtility.FromJson<T>(json);
-                //loadClass = res;
+                loadClass = res;
                 return loadClass.OnLoadData(res);
             }
             else

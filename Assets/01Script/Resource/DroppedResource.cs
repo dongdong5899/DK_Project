@@ -20,6 +20,8 @@ namespace DKProject.Resources
         private System.Numerics.BigInteger _value;
         private Player _player;
 
+        private float _lifetime;
+
         private void Awake()
         {
             _player = PlayerManager.Instance.Player;
@@ -35,6 +37,9 @@ namespace DKProject.Resources
                 ResourceData.AddResource(_resourceType, _value);
                 this.Push();
             }
+
+            _lifetime += Time.deltaTime;
+            transform.position = Vector3.Lerp(transform.position, _player.transform.position, _lifetime * _lifetime);
         }
 
         public void Init(ResourceType resourceType, System.Numerics.BigInteger value, Vector2 force)
@@ -62,7 +67,7 @@ namespace DKProject.Resources
 
         public void OnPop()
         {
-
+            _lifetime = 0;
         }
 
         public void OnPush()

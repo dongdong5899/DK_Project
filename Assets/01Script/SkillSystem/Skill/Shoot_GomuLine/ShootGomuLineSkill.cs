@@ -13,27 +13,17 @@ namespace DKProject.SkillSystem.Skills
 
         public override void UseSkill()
         {
-            Sequence sequence = DOTween.Sequence();
+            ShootGomuLine shootGomuLine = PoolManager.Instance.Pop(ProjectilePoolingType.Shoot_GomuLine) as ShootGomuLine;
 
-            for (byte i = 0; i < _skillCount; i++)
-            {
-                sequence.AppendCallback(() =>
-                {
-                    ShootGomuLine shootGomuLine = PoolManager.Instance.Pop(ProjectilePoolingType.Shooting_GomuLine) as ShootGomuLine;
+            shootGomuLine.transform.position = _owner.transform.position;
 
-                    shootGomuLine.transform.position = _owner.transform.position;
-
-                    shootGomuLine.Setting(
-                        _colliders.GetRandomElement().transform.position,
-                        _whatIsTarget,
-                        DamageCalculation((double)_player.GetAttackDamage()),
-                        _lifeTime,
-                        _skillProjectileSpeed
-                    );
-                });
-
-                sequence.AppendInterval(0.2f);
-            }
+            shootGomuLine.Setting(
+                _colliders.GetRandomElement().transform.position,
+                _whatIsTarget,
+                DamageCalculation((double)_player.GetAttackDamage()),
+                _lifeTime,
+                _skillProjectileSpeed
+            );
         }
     }
 }

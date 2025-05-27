@@ -6,6 +6,8 @@ using System;
 using System.Numerics;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
+using DKProject.EffectSystem;
+using System.Collections.Generic;
 
 namespace DKProject
 {
@@ -23,13 +25,12 @@ namespace DKProject
         private float _speed;
         private BigInteger _damage;
         private Rigidbody2D _rb;
-        private float _gravity;
+        private List<EffectSO> _effects;
 
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _gravity = _rb.gravityScale;
             _caster = GetComponent<Caster2D>();
         }
 
@@ -46,6 +47,10 @@ namespace DKProject
                     if (_hits[0].transform.TryGetComponent(out Entity entity))
                     {
                         entity.GetCompo<EntityHealth>().ApplyDamage(_damage);
+                        foreach (EffectSO effect in _effects)
+                        {
+                            entity.GetCompo<EntityEffect>().ApplyEffect(effect.effectType);
+                        }
                     }
                 }
                 PoolManager.Instance.Push(this);
@@ -61,13 +66,13 @@ namespace DKProject
         {
         }
 
-        public void Setting(Vector2 targetPos, LayerMask whatIsTarget, BigInteger damage, float lifeTime, float projectileSpeed)
+        public void Setting(Vector2 targetPos, LayerMask whatIsTarget, BigInteger damage, float lifeTime, float projectileSpeed,List<EffectSO> effects)
         {
             _targetPosition = targetPos;
             _whatIsTarget = whatIsTarget;
             _damage = damage;
             _speed = projectileSpeed;
-
+            _effects = effects;
 
             Init(lifeTime, this);
         }

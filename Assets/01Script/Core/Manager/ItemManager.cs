@@ -18,25 +18,18 @@ namespace DKProject.Core
         [SerializeField] protected ItemListSO _itemList;
 
         private string _fileName;
-        private bool _isInitialized;
 
-        private void Awake()
+        protected override void Awake()
         {
-            Initialized();
+            base.Awake();
             _fileName = GetType().Name;
-        }
-
-        protected override void CreateInstance()
-        {
-            base.CreateInstance();
             Initialized();
         }
 
-        protected void Initialized()
+        protected override void FirstInitialize()
         {
-            if (_isInitialized) return;
+            base.FirstInitialize();
 
-            _isInitialized = true;
             Load();
             _itemDictionary = new Dictionary<ItemSO, ItemData>();
             ItemDictionarySet();
@@ -64,6 +57,7 @@ namespace DKProject.Core
             if (_saveData.LoadJson(_fileName) == false)
             {
                 _saveData.ResetData();
+                
                 Init(_itemList);
             }
 
@@ -74,6 +68,7 @@ namespace DKProject.Core
         public void Save()
         {
             _saveData.SaveJson(_fileName);
+            Debug.Log("Save");
         }
 
 

@@ -60,7 +60,7 @@ namespace DKProject.Core
             PlayerMoveInput = dir;
         }
 
-        protected override void CreateInstance()
+        protected override void FirstInitialize()
         {
             Player = FindFirstObjectByType<Player>();
             Load();

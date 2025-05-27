@@ -20,12 +20,24 @@ namespace DKProject.Core
                         GameObject singletonObj = new GameObject($"{singleton.ToString()}", singleton);
                         _Instance = singletonObj.GetComponent<T>();
                     }
-                    _Instance.CreateInstance();
+                    if (_Instance._isInitialized == false)
+                        _Instance.FirstInitialize();
                 }
                 return _Instance;
             }
         }
 
-        protected virtual void CreateInstance() { }
+        private bool _isInitialized;
+
+        protected virtual void Awake()
+        {
+            if (_isInitialized) return;
+            FirstInitialize();
+        }
+
+        protected virtual void FirstInitialize() 
+        {
+            _isInitialized = true;
+        }
     }
 }

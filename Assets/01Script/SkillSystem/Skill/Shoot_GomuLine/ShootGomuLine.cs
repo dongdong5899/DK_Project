@@ -6,6 +6,8 @@ using System.Numerics;
 using System;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
+using System.Collections.Generic;
+using DKProject.EffectSystem;
 
 namespace DKProject.SkillSystem.Skills
 {
@@ -23,13 +25,11 @@ namespace DKProject.SkillSystem.Skills
         private float _speed;
         private BigInteger _damage;
         private Rigidbody2D _rb;
-        private float _gravity;
 
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _gravity = _rb.gravityScale;
             _caster = GetComponent<Caster2D>();
         }
 
@@ -46,6 +46,7 @@ namespace DKProject.SkillSystem.Skills
                     if (_hits[0].transform.TryGetComponent(out Entity entity))
                     {
                         entity.GetCompo<EntityHealth>().ApplyDamage(_damage);
+                        
                     }
                 }
                 PoolManager.Instance.Push(this);

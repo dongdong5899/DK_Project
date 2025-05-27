@@ -1,5 +1,3 @@
-using DKProject.Entities.Components;
-using DKProject.Entities;
 using UnityEngine;
 using DKProject.Core.Pool;
 
@@ -13,7 +11,7 @@ namespace DKProject.SkillSystem.Skills
         {
             Collider2D farTarget = GetTargetForDistance(false);
 
-            ShootBumerang bumerang = PoolManager.Instance.Pop(ProjectilePoolingType.ShootBumerang) as ShootBumerang;
+            ShootBumerang bumerang = PoolManager.Instance.Pop(ProjectilePoolingType.Shoot_Bumerang) as ShootBumerang;
             bumerang.transform.position = _owner.transform.position;
             bumerang.Setting(_owner.transform, farTarget.transform, _whatIsTarget, DamageCalculation((double)_player.GetAttackDamage()), _lifeTime);
         }

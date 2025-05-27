@@ -1,6 +1,8 @@
 using DG.Tweening;
 using DKProject.Core;
 using DKProject.Core.Pool;
+using DKProject.EffectSystem;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DKProject.SkillSystem.Skills
@@ -11,29 +13,21 @@ namespace DKProject.SkillSystem.Skills
         [SerializeField] private float _skillProjectileSpeed;
         [SerializeField] private byte _skillCount;
 
+        [SerializeField] private List<EffectSO> _effects;
         public override void UseSkill()
         {
-            Sequence sequence = DOTween.Sequence();
+            ShootPineTree pineTree = PoolManager.Instance.Pop(ProjectilePoolingType.Shoot_PineTree) as ShootPineTree;
 
-            for (byte i = 0; i < _skillCount; i++)
-            {
-                sequence.AppendCallback(() =>
-                {
-                    ShootGomuLine shootGomuLine = PoolManager.Instance.Pop(ProjectilePoolingType.Shooting_GomuLine) as ShootGomuLine;
+            pineTree.transform.position = _owner.transform.position;
 
-                    shootGomuLine.transform.position = _owner.transform.position;
-
-                    shootGomuLine.Setting(
-                        _colliders.GetRandomElement().transform.position,
-                        _whatIsTarget,
-                        DamageCalculation((double)_player.GetAttackDamage()),
-                        _lifeTime,
-                        _skillProjectileSpeed
-                    );
-                });
-
-                sequence.AppendInterval(0.2f);
-            }
+            pineTree.Setting(
+                _colliders.GetRandomElement().transform.position,
+                _whatIsTarget,
+                DamageCalculation((double)_player.GetAttackDamage()),
+                _lifeTime,
+                _skillProjectileSpeed,
+                _effects
+            );
         }
     }
 }

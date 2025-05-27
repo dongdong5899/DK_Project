@@ -3,9 +3,11 @@ using DKProject.Entities.Components;
 using DKProject.Entities.Enemies;
 using DKProject.SkillSystem;
 using DKProject.StatSystem;
+using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Vector2 = UnityEngine.Vector2;
 
 namespace DKProject.Entities.Players
 {
@@ -27,6 +29,7 @@ namespace DKProject.Entities.Players
         public BigInteger GetAttackDamage() => _attackDamageStat.BigIntValue;
         public void Attack(Enemy enemy)
         {
+            CameraManager.Instance.ShakeCamera(4, 4, 0.2f);
             enemy.GetCompo<EntityHealth>().ApplyDamage(_attackDamageStat.BigIntValue);
         }
 

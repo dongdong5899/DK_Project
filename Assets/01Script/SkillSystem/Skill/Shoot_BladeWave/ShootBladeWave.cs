@@ -1,0 +1,80 @@
+using DKProject.Combat;
+using DKProject.Core.Pool;
+using DKProject.EffectSystem;
+using DKProject.Entities.Components;
+using DKProject.Entities;
+using System.Collections.Generic;
+using System.Numerics;
+using System;
+using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
+
+namespace DKProject.SkillSystem.Skills
+{
+    public class ShootBladeWave : LifeTime,IPoolable
+    {
+        private Caster2D _caster;
+        private RaycastHit2D[] _hits;
+
+        public GameObject GameObject => gameObject;
+
+        public Enum PoolEnum => _poolingType;
+        [SerializeField] private ProjectilePoolingType _poolingType;
+        private Vector2 _targetPosition;
+        private LayerMask _whatIsTarget;
+        private float _speed;
+        private BigInteger _damage;
+        private Rigidbody2D _rb;
+        private List<EffectSO> _effects;
+
+
+        private void Awake()
+        {
+            _rb = GetComponent<Rigidbody2D>();
+            _caster = GetComponent<Caster2D>();
+        }
+
+
+        private void Update()
+        {
+            Vector2 dir = (_targetPosition - (Vector2)transform.position).normalized;
+            _rb.linearVelocity = dir * _speed;
+
+            if (Vector2.Distance(_targetPosition, (Vector2)transform.position) <= 0.2f)
+            {
+                if (_caster.CheckCollision(out _hits, _whatIsTarget))
+                {
+                    if (_hits[0].transform.TryGetComponent(out Entity entity))
+                    {
+                        entity.GetCompo<EntityHealth>().ApplyDamage(_damage);
+                        foreach (EffectSO effect in _effects)
+                        {
+                            entity.GetCompo<EntityEffect>().ApplyEffect(effect.effectType);
+                        }
+                    }
+                }
+                PoolManager.Instance.Push(this);
+            }
+
+        }
+
+        public void OnPop()
+        {
+        }
+
+        public void OnPush()
+        {
+        }
+
+        public void Setting(Vector2 targetPos, LayerMask whatIsTarget, BigInteger damage, float lifeTime, float projectileSpeed, List<EffectSO> effects)
+        {
+            _targetPosition = targetPos;
+            _whatIsTarget = whatIsTarget;
+            _damage = damage;
+            _speed = projectileSpeed;
+            _effects = effects;
+
+            Init(lifeTime, this);
+        }
+    }
+}

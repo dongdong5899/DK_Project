@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
+  m_Name: ShootBounceBall
+  m_EditorClassIdentifier: 
+  itemClassName: ShootBounceBall
+  itemName: 
+  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
+  itemRank: 0
+  itemType: 0
+  itemDescription: 
+  skillType: 1
+  targetType: 1
+  damageType: 0
+  coolDown: 0
+  baseSkillCoefficient: 1820
+  upgradeSkillCoefficient: 1
+  unlockStats: []
+  equipStats: []
+  skill:
+    rid: 5886047653141413970
+  references:
+    version: 2
+    RefIds:
+    - rid: 5886047653141413970
+      type: {class: ShootBounceBallSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
+      data:
+        _whatIsTarget:
+          serializedVersion: 2
+          m_Bits: 128
+        _radius: 50
+        _skillProjectileSpeed: 10

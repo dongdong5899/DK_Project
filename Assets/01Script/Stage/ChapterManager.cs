@@ -25,8 +25,9 @@ namespace DKProject.Chapter
 
         private const string fileName = "Chapter";
 
-        protected void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             if (Instance != this) Destroy(gameObject);
             else
             {

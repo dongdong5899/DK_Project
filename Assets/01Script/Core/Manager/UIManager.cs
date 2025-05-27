@@ -11,8 +11,9 @@ namespace DKProject.Core
         private Dictionary<string, IToggleUI> _togglePanelDictionary = new Dictionary<string, IToggleUI>();
         private List<ManagedUI> _windowPanelList = new List<ManagedUI>();
 
-        private void Awake()
+        protected override void FirstInitialize()
         {
+            base.FirstInitialize();
             _windowPanelList = FindObjectsByType<ManagedUI>(FindObjectsSortMode.None).ToList();
             foreach (ManagedUI uiBase in _windowPanelList)
             {

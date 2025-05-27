@@ -1,8 +1,7 @@
 using DKProject.Combat;
-using DKProject.Weapon;
 using Doryu.JBSave;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace DKProject.Core
 {
@@ -44,6 +43,7 @@ namespace DKProject.Core
         }
     }
 
+    [Serializable]
     public struct ItemData
     {
         public bool isUnlock;

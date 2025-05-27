@@ -19,16 +19,11 @@ namespace DKProject.Core
 
         private string _fileName;
 
-        protected override void Awake()
-        {
-            base.Awake();
-            _fileName = GetType().Name;
-            Initialized();
-        }
-
         protected override void FirstInitialize()
         {
             base.FirstInitialize();
+
+            _fileName = GetType().Name;
 
             Load();
             _itemDictionary = new Dictionary<ItemSO, ItemData>();
@@ -54,10 +49,10 @@ namespace DKProject.Core
         private void Load()
         {
             _saveData = new ItemSave();
+
             if (_saveData.LoadJson(_fileName) == false)
             {
                 _saveData.ResetData();
-                
                 Init(_itemList);
             }
 
@@ -83,6 +78,7 @@ namespace DKProject.Core
                 itemdata.revolutionLevel = 1;
                 _saveData.itemDataBase.Add(new Pair<ItemSO, ItemData>(itemSO, itemdata));
             }
+            Save();
         }
 
 

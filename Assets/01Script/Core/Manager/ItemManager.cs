@@ -23,7 +23,7 @@ namespace DKProject.Core
         {
             base.Awake();
             _fileName = GetType().Name;
-            Initialized();
+            FirstInitialize();
         }
 
         protected override void FirstInitialize()

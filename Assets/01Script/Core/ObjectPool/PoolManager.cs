@@ -14,8 +14,9 @@ namespace DKProject.Core.Pool
         [VisibleInspectorSO]
         public PoolListSO poolListSO;
 
-        private void Awake()
+        protected override void FirstInitialize()
         {
+            base.FirstInitialize();
             foreach (PoolingItemSO item in poolListSO.GetList())
             {
                 CreatePool(item);

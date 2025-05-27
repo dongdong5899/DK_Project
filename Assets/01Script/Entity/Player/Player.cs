@@ -29,6 +29,7 @@ namespace DKProject.Entities.Players
         public BigInteger GetAttackDamage() => _attackDamageStat.BigIntValue;
         public void Attack(Enemy enemy)
         {
+            CameraManager.Instance.ShakeCamera(4, 4, 0.2f);
             enemy.GetCompo<EntityHealth>().ApplyDamage(_attackDamageStat.BigIntValue);
         }
 

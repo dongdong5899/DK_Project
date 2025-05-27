@@ -18,25 +18,18 @@ namespace DKProject.Core
         [SerializeField] protected ItemListSO _itemList;
 
         private string _fileName;
-        private bool _isInitialized;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _fileName = GetType().Name;
             Initialized();
         }
 
-        protected override void CreateInstance()
+        protected override void FirstInitialize()
         {
-            base.CreateInstance();
-            Initialized();
-        }
+            base.FirstInitialize();
 
-        protected void Initialized()
-        {
-            if (_isInitialized) return;
-
-            _isInitialized = true;
             Load();
             _itemDictionary = new Dictionary<ItemSO, ItemData>();
             ItemDictionarySet();

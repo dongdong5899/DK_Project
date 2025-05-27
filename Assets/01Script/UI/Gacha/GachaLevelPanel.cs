@@ -12,15 +12,19 @@ namespace DKProject
         private TextMeshProUGUI _levelText;
         private Slider _expBar;
 
-        private void Start()
+        private void Awake()
         {
+            _levelText = GetComponentInChildren<TextMeshProUGUI>();
+            _expBar = GetComponentInChildren<Slider>();
+
             GachaManager.Instance.OnChangeGachaLevel += UpdateLevelPanel;
         }
 
         private void UpdateLevelPanel(LevelData levelData)
         {
-            _levelText.text = $"레벨 {_levelText}  ({levelData.count}/{levelData.needCount})";
-            _expBar.value = levelData.needCount / levelData.count;
+            _levelText.text = $"레벨 {levelData.level}  ({levelData.count}/{levelData.needCount})";
+            //_expBar.value = levelData.count == 0 ? 0 : levelData.count / levelData.needCount;
+            _expBar.value = levelData.count / levelData.needCount;
         }
     }
 }

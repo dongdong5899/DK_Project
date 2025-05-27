@@ -25,7 +25,7 @@ namespace DKProject
             }
             else
             {
-                Debug.Log("none dia");
+                Debug.Log("none diamond");
             }
         }
     }

@@ -25,12 +25,10 @@ MonoBehaviour:
   targetType: 0
   damageType: 1
   coolDown: 0.2
-  skillRange: 0
-  skillAreaRadius: 5
-  baseSkillPercent: 0
-  upgradeSkillPercent: 0
-  unlockEffects: []
-  equipEffects: []
+  baseSkillCoefficient: 0
+  upgradeSkillCoefficient: 0
+  unlockStats: []
+  equipStats: []
   skill:
     rid: 3004152287382995032
   references:
@@ -39,4 +37,8 @@ MonoBehaviour:
     - rid: 3004152287382995032
       type: {class: AreaElectricSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
       data:
+        _whatIsTarget:
+          serializedVersion: 2
+          m_Bits: 64
+        _radius: 0
         _skillDotAttackReduction: 0

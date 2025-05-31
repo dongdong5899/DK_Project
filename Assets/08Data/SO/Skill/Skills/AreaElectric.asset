@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemClassName: AreaElectric
   itemName: "\uC720\uB09C\uD788 \uC2EC\uD55C \uC815\uC804\uAE30"
-  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
+  icon: {fileID: 21300000, guid: 2456dd2824f5ec540830760922f5bac6, type: 3}
   itemRank: 1
   itemType: 0
   itemDescription: "\uCF54\uD2B8\uB97C \uC785\uACE0 \uB098\uC654\uB354\uB2C8 \uC815\uC804\uAE30\uAC00
@@ -25,12 +25,20 @@ MonoBehaviour:
   targetType: 0
   damageType: 1
   coolDown: 0.2
-  skillRange: 0
-  skillAreaRadius: 5
-  baseSkillPercent: 0
-  upgradeSkillPercent: 0
-  unlockEffects: []
-  equipEffects: []
+  baseSkillCoefficient: 150
+  upgradeSkillCoefficient: 3
+  unlockStats: []
+  equipStats:
+  - stat: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
+    baseValue: 5
+    upgradeValue: 0.1
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 3
+    upgradeValue: 0.15
+    modifyMode: 1
+    modifyLayer: 0
   skill:
     rid: 3004152287382995032
   references:
@@ -39,4 +47,8 @@ MonoBehaviour:
     - rid: 3004152287382995032
       type: {class: AreaElectricSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
       data:
-        _skillDotAttackReduction: 0
+        _whatIsTarget:
+          serializedVersion: 2
+          m_Bits: 128
+        _radius: 5
+        _skillDotAttackReduction: 30

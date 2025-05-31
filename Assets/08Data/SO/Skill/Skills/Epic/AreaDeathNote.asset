@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: AreaDeathNote
   m_EditorClassIdentifier: 
-  itemClassName: AreaDeathNote
   itemName: "\uBB54\uC9C0 \uC2F6\uC740 \uB178\uD2B8"
   icon: {fileID: 21300000, guid: 0f182fb2863faa7449e020de33b77e68, type: 3}
   itemRank: 2
@@ -45,15 +44,15 @@ MonoBehaviour:
     modifyMode: 1
     modifyLayer: 0
   skill:
-    rid: 3004152287382995032
+    rid: 8679852261868044433
   references:
     version: 2
     RefIds:
-    - rid: 3004152287382995032
-      type: {class: AreaElectricSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
+    - rid: 8679852261868044433
+      type: {class: AreaDeathNoteSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
       data:
         _whatIsTarget:
           serializedVersion: 2
           m_Bits: 128
-        _radius: 10
+        _radius: 0
         _skillDotAttackReduction: 35

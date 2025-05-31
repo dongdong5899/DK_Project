@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: BuffBanana
   m_EditorClassIdentifier: 
-  itemClassName: BuffBanana
   itemName: "\uC788\uAE38\uB798 \uBA39\uC740 \uBC14\uB098\uB098"
-  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
+  icon: {fileID: 21300000, guid: 313eb4d0157f6ec418d857892d7b44ad, type: 3}
   itemRank: 1
   itemType: 0
   itemDescription: "\uC8FC\uBA38\uB2C8\uC5D0 \uBC14\uB098\uB098\uAC00 \uC788\uAE38\uB798
@@ -24,18 +23,29 @@ MonoBehaviour:
   targetType: 0
   damageType: 0
   coolDown: 0
-  skillRange: 0
-  skillAreaRadius: 0
-  baseSkillPercent: 0
-  upgradeSkillPercent: 0
-  unlockEffects: []
-  equipEffects: []
+  baseSkillCoefficient: 0
+  upgradeSkillCoefficient: 0
+  unlockStats: []
+  equipStats:
+  - stat: {fileID: 11400000, guid: 43d3db4db7c04854d9add36077dffc20, type: 2}
+    baseValue: 4
+    upgradeValue: 0.02
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 3
+    upgradeValue: 0.15
+    modifyMode: 1
+    modifyLayer: 0
   skill:
-    rid: 3004152287382995035
+    rid: 8679852261868044439
   references:
     version: 2
     RefIds:
-    - rid: 3004152287382995035
+    - rid: 8679852261868044439
       type: {class: BuffBananaSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
       data:
+        _whatIsTarget:
+          serializedVersion: 2
+          m_Bits: 128
         buffEffects: []

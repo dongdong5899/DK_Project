@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: AreaCurse
   m_EditorClassIdentifier: 
-  itemClassName: AreaCurse
   itemName: "\uBB54\uAC00 \uC704\uD5D8\uD55C \uC8FC\uC220"
   icon: {fileID: 21300000, guid: feb8709f10385a94095b55fe8d0f625c, type: 3}
   itemRank: 3
@@ -51,17 +50,16 @@ MonoBehaviour:
     modifyMode: 1
     modifyLayer: 0
   skill:
-    rid: 3004152206055440391
+    rid: 8679852261868044420
   references:
     version: 2
     RefIds:
-    - rid: 3004152206055440391
-      type: {class: ThrowBombSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
+    - rid: 8679852261868044420
+      type: {class: AreaCurseSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
       data:
         _whatIsTarget:
           serializedVersion: 2
           m_Bits: 128
         _radius: 13
-        _lifeTime: 20
-        _skillProjectileSpeed: 0
-        _skillCount: 1
+        _skillDotAttackReduction: 40
+        _effectList: []

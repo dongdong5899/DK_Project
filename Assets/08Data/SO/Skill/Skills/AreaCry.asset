@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemClassName: AreaCry
   itemName: "\uC758\uB3C4\uCE58 \uC54A\uC740 \uB208\uBB3C"
-  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
+  icon: {fileID: 21300000, guid: 0ad2337320c1b5841ba3ceb24de6e91a, type: 3}
   itemRank: 0
   itemType: 0
   itemDescription: "\uAF43\uAC00\uB8E8 \uC54C\uB808\uB974\uAE30\uAC00 \uC2EC\uD574\uC838\uC11C
@@ -25,10 +25,15 @@ MonoBehaviour:
   targetType: 1
   damageType: 1
   coolDown: 0
-  baseSkillPercent: 0
-  upgradeSkillPercent: 0
+  baseSkillCoefficient: 100
+  upgradeSkillCoefficient: 2.5
   unlockStats: []
-  equipStats: []
+  equipStats:
+  - stat: {fileID: 11400000, guid: 1d4871ee7bf4d7047a270671fb66f9c3, type: 2}
+    baseValue: 3
+    upgradeValue: 0.1
+    modifyMode: 1
+    modifyLayer: 0
   skill:
     rid: 3004152206055440391
   references:
@@ -39,8 +44,8 @@ MonoBehaviour:
       data:
         _whatIsTarget:
           serializedVersion: 2
-          m_Bits: 0
-        _radius: 0
-        _lifeTime: 0
+          m_Bits: 128
+        _radius: 4
+        _lifeTime: 20
         _skillProjectileSpeed: 0
-        _skillCount: 0
+        _skillCount: 1

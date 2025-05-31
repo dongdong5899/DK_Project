@@ -13,22 +13,43 @@ MonoBehaviour:
   m_Name: AreaCurse
   m_EditorClassIdentifier: 
   itemClassName: AreaCurse
-  itemName: "\uC758\uB3C4\uCE58 \uC54A\uC740 \uB208\uBB3C"
-  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
-  itemRank: 0
+  itemName: "\uBB54\uAC00 \uC704\uD5D8\uD55C \uC8FC\uC220"
+  icon: {fileID: 21300000, guid: feb8709f10385a94095b55fe8d0f625c, type: 3}
+  itemRank: 3
   itemType: 0
-  itemDescription: "\uAF43\uAC00\uB8E8 \uC54C\uB808\uB974\uAE30\uAC00 \uC2EC\uD574\uC838\uC11C
-    \uBC16\uC5D0\uB9CC \uB098\uC624\uBA74 \uB208\uBB3C\uC774 \uB09C\uB2E4. \uB208\uBB3C
-    \uC6C5\uB369\uC774\uAC00 \uC801\uC5D0\uAC8C \uC2AC\uB85C\uC6B0\uC640 \uD53C\uD574\uB97C
-    \uC900\uB2E4."
+  itemDescription: "\uB85C\uD1A0\uAC00 \uC790\uC2E0\uC758 \uC2DC\uADF8\uB2C8\uCC98
+    \uBE75 \uB808\uC2DC\uD53C\uB97C \uC77D\uAE30 \uC2DC\uC791\uD558\uC790, \uBB34\uC5B8\uAC00
+    \uC704\uD5D8\uD55C \uC8FC\uC220\uC774 \uBC1C\uB3D9\uD558\uC5EC \uBC94\uC704 \uB0B4
+    \uC801\uB4E4\uC5D0\uAC8C \uB098\uC57D\uD568 \uD6A8\uACFC\uB97C \uBD80\uC5EC\uD558\uACE0
+    \uB370\uBBF8\uC9C0\uB97C \uC785\uD78C\uB2E4."
   skillType: 1
   targetType: 1
   damageType: 1
   coolDown: 0
-  baseSkillCoefficient: 0
-  upgradeSkillCoefficient: 0
+  baseSkillCoefficient: 675
+  upgradeSkillCoefficient: 7
   unlockStats: []
-  equipStats: []
+  equipStats:
+  - stat: {fileID: 11400000, guid: 175f233e4bdf3e44cb5d9f9ce100e22e, type: 2}
+    baseValue: 10
+    upgradeValue: 0.75
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 7
+    upgradeValue: 0.5
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
+    baseValue: 5
+    upgradeValue: 0.3
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
+    baseValue: 3
+    upgradeValue: 0.15
+    modifyMode: 1
+    modifyLayer: 0
   skill:
     rid: 3004152206055440391
   references:
@@ -39,8 +60,8 @@ MonoBehaviour:
       data:
         _whatIsTarget:
           serializedVersion: 2
-          m_Bits: 0
-        _radius: 0
-        _lifeTime: 0
+          m_Bits: 128
+        _radius: 13
+        _lifeTime: 20
         _skillProjectileSpeed: 0
-        _skillCount: 0
+        _skillCount: 1

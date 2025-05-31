@@ -2,7 +2,7 @@ using DKProject.Entities.Components;
 using DKProject.Entities;
 using UnityEngine;
 
-namespace DKProject.SkillSystem
+namespace DKProject.SkillSystem.Skills
 {
     public class AreaSingSkill : RangeSkill
     {

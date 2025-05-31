@@ -152,7 +152,7 @@ namespace DKProject.Core
         {
             foreach (var increaseStat in statList)
             {
-                string effectTypeKey = item.itemClassName.ToString();
+                string effectTypeKey = item.name;
                 if (increaseStat.stat.isBigInteger)
                     stat.StatDictionary[increaseStat.stat].AddModify(
                     effectTypeKey,
@@ -174,7 +174,7 @@ namespace DKProject.Core
         {
             foreach (var increaseStat in statList)
             {
-                string effectTypeKey = item.itemClassName.ToString();
+                string effectTypeKey = item.name;
                 stat.StatDictionary[increaseStat.stat].RemoveModify(
                     effectTypeKey,
                     increaseStat.modifyLayer

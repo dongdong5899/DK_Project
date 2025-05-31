@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
+  m_Name: FallRock
+  m_EditorClassIdentifier: 
+  itemName: "\uC5B4\uB514\uC120\uAC00 \uB0A0\uC544\uC628 \uBC14\uC704"
+  icon: {fileID: 21300000, guid: 2bb02b871b3de264084da35529482ade, type: 3}
+  itemRank: 2
+  itemType: 0
+  itemDescription: "\uC5B4\uB518\uC9C0\uB3C4 \uBAA8\uB97C \uACF3\uC5D0\uC11C \uBC14\uC704\uAC00
+    \uB0A0\uC544\uC640 \uC801 \uD55C\uBA85\uC5D0\uAC8C \uC801\uC911\uD55C\uB2E4.
+    \uC808\uB300 \uB530\uB77C\uD558\uC9C0 \uB9D0\uC790."
+  skillType: 0
+  targetType: 0
+  damageType: 1
+  coolDown: 0
+  baseSkillCoefficient: 0
+  upgradeSkillCoefficient: 0
+  unlockStats: []
+  equipStats: []
+  skill:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

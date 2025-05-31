@@ -31,15 +31,14 @@ namespace DKProject.SkillSystem
 
         private void OnEnable()
         {
-            if (skill != null) return;
             try
             {
-                Type t = Type.GetType($"DKProject.SkillSystem.Skills.{itemClassName}Skill, Assembly-CSharp");
+                Type t = Type.GetType($"DKProject.SkillSystem.Skills.{name}Skill, Assembly-CSharp");
                 skill = Activator.CreateInstance(t) as Skill;
             }
             catch (Exception e)
-            {
-                Debug.LogError($"Skill name of {itemClassName} is not exsist");
+            { 
+                Debug.LogError($"Skill name of {name} is not exsist");
                 Debug.LogException(e);
             }
         }

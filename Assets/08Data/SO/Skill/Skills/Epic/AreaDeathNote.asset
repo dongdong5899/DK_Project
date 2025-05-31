@@ -55,5 +55,5 @@ MonoBehaviour:
         _whatIsTarget:
           serializedVersion: 2
           m_Bits: 128
-        _radius: 0
+        _radius: 10
         _skillDotAttackReduction: 35

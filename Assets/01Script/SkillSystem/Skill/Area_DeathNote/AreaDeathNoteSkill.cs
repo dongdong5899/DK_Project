@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DKProject.SkillSystem.Skills
 {
-    public class Area_DeathNote : RangeSkill
+    public class AreaDeathNoteSkill : RangeSkill
     {
         private double _damage;
         [SerializeField] private float _skillDotAttackReduction;

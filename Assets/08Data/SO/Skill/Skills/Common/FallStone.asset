@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: FallStone
   m_EditorClassIdentifier: 
-  itemClassName: FallStone
   itemName: "\uC6B0\uC5F0\uD788 \uB5A8\uC5B4\uC9C4 \uB3CC\uB369\uC5B4\uB9AC"
-  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
+  icon: {fileID: 21300000, guid: 406984ac0d0fc2c4bbaf906048f7c43e, type: 3}
   itemRank: 0
   itemType: 0
   itemDescription: "\uC815\uB9D0 \"\uC6B0\uC5F0\uD788\" \uC801\uC774 \uB9CE\uC740

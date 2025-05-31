@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
-  m_Name: AreaFieledMagic
+  m_Name: AreaFieldMagic
   m_EditorClassIdentifier: 
   itemClassName: AreaElectric
   itemName: "\uC720\uB09C\uD788 \uC2EC\uD55C \uC815\uC804\uAE30"

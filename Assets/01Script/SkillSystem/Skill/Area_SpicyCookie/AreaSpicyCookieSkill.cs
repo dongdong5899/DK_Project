@@ -6,7 +6,7 @@ using DKProject.EffectSystem;
 
 namespace DKProject.SkillSystem.Skills
 {
-    public class BuffIceCreamSkill : RangeSkill
+    public class AreaSpicyCookieSkill : RangeSkill
     {
         private double _damage;
         [SerializeField] private List<EffectSO> _effectList;
@@ -24,7 +24,8 @@ namespace DKProject.SkillSystem.Skills
             {
                 if (target.transform.TryGetComponent(out Entity entity))
                 {
-                    entity.GetCompo<EntityHealth>().ApplyDamage(DamageCalculation(_damage));
+                    entity.GetCompo<EntityHealth>().ApplyDamage(this.DamageCalculation(_damage));
+                    //AddEffect(entity, _effectList);
                 }
             }
         }

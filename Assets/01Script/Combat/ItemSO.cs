@@ -6,7 +6,6 @@ namespace DKProject.Combat
     public class ItemSO : ScriptableObject
     {
         [Header("Description")]
-        public string itemClassName;
         public string itemName;
         public Sprite icon;
         public Rank itemRank;

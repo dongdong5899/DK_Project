@@ -14,9 +14,9 @@ namespace DKProject.SkillSystem
             base.Init(owner, SO);
             _damage = (double)_player.GetAttackDamage() * _skillDotAttackReduction / 100;
         }
-
+                                                                       
         public override void UseSkill()
-        {
+        { 
             if (_colliders.Length > 0)
             {
                 foreach (Collider2D target in _colliders)

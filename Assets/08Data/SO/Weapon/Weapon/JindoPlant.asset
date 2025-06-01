@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: JindoPlant
   m_EditorClassIdentifier: 
-  itemID: 7
   itemName: "\uC9C4\uB3C5\uAC1C \uD480 "
   icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
   itemRank: 1
@@ -23,9 +22,13 @@ MonoBehaviour:
   weaponIndex: 7
   maxLevel: 120
   increaseStats:
-  - statSo: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
-    applyValue: 5
-    IncreaseValue: 0.1
-  - statSo: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    applyValue: 3
-    IncreaseValue: 0.15
+  - stat: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
+    baseValue: 5
+    upgradeValue: 1
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 30
+    upgradeValue: 0.5
+    modifyMode: 1
+    modifyLayer: 0

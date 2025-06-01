@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: LottoMomMongdong
   m_EditorClassIdentifier: 
-  itemID: 21
   itemName: "\uB85C\uD1A0 \uC5C4\uB9C8\uD45C \uBABD\uB465\uC774"
   icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
   itemRank: 4
@@ -24,6 +23,8 @@ MonoBehaviour:
   weaponIndex: 21
   maxLevel: 200
   increaseStats:
-  - statSo: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    applyValue: 40
-    IncreaseValue: 1.5
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 200
+    upgradeValue: 25
+    modifyMode: 1
+    modifyLayer: 0

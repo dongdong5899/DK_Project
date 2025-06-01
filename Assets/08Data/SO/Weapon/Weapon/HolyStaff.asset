@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: HolyStaff
   m_EditorClassIdentifier: 
-  itemID: 22
   itemName: "\uC2E0\uC131\uD55C \uC2A4\uD0DC\uD504"
   icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
   itemRank: 4
@@ -27,12 +26,18 @@ MonoBehaviour:
   weaponIndex: 22
   maxLevel: 200
   increaseStats:
-  - statSo: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
-    applyValue: 20
-    IncreaseValue: 0.15
-  - statSo: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    applyValue: 10
-    IncreaseValue: 1
-  - statSo: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
-    applyValue: 10
-    IncreaseValue: 0.75
+  - stat: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
+    baseValue: 70
+    upgradeValue: 10
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 100
+    upgradeValue: 10
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
+    baseValue: 70
+    upgradeValue: 10
+    modifyMode: 1
+    modifyLayer: 0

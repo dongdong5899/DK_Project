@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: Sickle
   m_EditorClassIdentifier: 
-  itemID: 14
   itemName: "\uACE0\uC131\uB2A5 \uB0AB"
   icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
   itemRank: 2
@@ -25,12 +24,18 @@ MonoBehaviour:
   weaponIndex: 14
   maxLevel: 150
   increaseStats:
-  - statSo: {fileID: 11400000, guid: 43d3db4db7c04854d9add36077dffc20, type: 2}
-    applyValue: 5
-    IncreaseValue: 0.03
-  - statSo: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    applyValue: 5
-    IncreaseValue: 0.25
-  - statSo: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
-    applyValue: 3
-    IncreaseValue: 0.15
+  - stat: {fileID: 11400000, guid: 43d3db4db7c04854d9add36077dffc20, type: 2}
+    baseValue: 5
+    upgradeValue: 0.3
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 50
+    upgradeValue: 3
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
+    baseValue: 20
+    upgradeValue: 1
+    modifyMode: 1
+    modifyLayer: 0

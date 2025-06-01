@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba3190dc353e8c40961583c1c65dc51, type: 3}
   m_Name: WoodMongdong
   m_EditorClassIdentifier: 
-  itemID: 6
   itemName: "\uB098\uBB34 \uBABD\uB465\uC774"
   icon: {fileID: -5645352715879203755, guid: a516db44dcebd6b44bec9a758fe2cb05, type: 3}
   itemRank: 1
@@ -23,6 +22,8 @@ MonoBehaviour:
   weaponIndex: 6
   maxLevel: 120
   increaseStats:
-  - statSo: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
-    applyValue: 7
-    IncreaseValue: 0.3
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 40
+    upgradeValue: 1
+    modifyMode: 1
+    modifyLayer: 0

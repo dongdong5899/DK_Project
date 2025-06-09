@@ -12,24 +12,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: AreaSpicyCookie
   m_EditorClassIdentifier: 
-  itemClassName: 
-  itemName: 
-  icon: {fileID: 0}
-  itemRank: 0
+  itemName: "\uB108\uBB34\uB098\uB3C4 \uB9E4\uC6E0\uB358 \uCFE0\uD0A4"
+  icon: {fileID: 21300000, guid: dd3885098198d104888439be4c590aba, type: 3}
+  itemRank: 3
   itemType: 0
-  itemDescription: 
-  skillType: 0
-  targetType: 0
-  damageType: 0
+  itemDescription: "\uC5B4\uB290 \uC2DD\uB2F9\uC5D0\uC11C \uBA39\uC740 \uBBF8\uD2B8\uD30C\uC774\uAC00
+    \uB108\uBB34\uB098\uB3C4 \uB9E4\uC6E0\uB2E4. \uBC94\uC704 \uB0B4 \uC801\uB4E4\uC5D0\uAC8C
+    \uD654\uC0C1\uD6A8\uACFC\uB97C \uBD80\uC5EC\uD558\uACE0 \uB370\uBBF8\uC9C0\uB97C
+    \uC785\uD78C\uB2E4."
+  skillType: 1
+  targetType: 1
+  damageType: 1
   coolDown: 0
-  baseSkillCoefficient: 0
-  upgradeSkillCoefficient: 0
+  baseSkillCoefficient: 720
+  upgradeSkillCoefficient: 7
   unlockStats: []
-  equipStats: []
+  equipStats:
+  - stat: {fileID: 11400000, guid: 43d3db4db7c04854d9add36077dffc20, type: 2}
+    baseValue: 7
+    upgradeValue: 0.05
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 7
+    upgradeValue: 0.5
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
+    baseValue: 5
+    upgradeValue: 0.3
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
+    baseValue: 3
+    upgradeValue: 0.15
+    modifyMode: 1
+    modifyLayer: 0
   skill:
-    rid: -2
+    rid: 8679852261868044419
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 8679852261868044419
+      type: {class: AreaSpicyCookieSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
+      data:
+        _whatIsTarget:
+          serializedVersion: 2
+          m_Bits: 128
+        _radius: 10
+        _effectList: []
+        _skillDotAttackReduction: 40

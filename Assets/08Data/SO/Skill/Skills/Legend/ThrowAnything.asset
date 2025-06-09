@@ -12,24 +12,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: ThrowAnything
   m_EditorClassIdentifier: 
-  itemClassName: 
-  itemName: 
-  icon: {fileID: 0}
-  itemRank: 0
+  itemName: "\uBC88\uCA4D \uB5A0\uC624\uB978 \uC9C4\uB9AC"
+  icon: {fileID: 21300000, guid: 824a48daf7b55394e80e1df5048db839, type: 3}
+  itemRank: 4
   itemType: 0
-  itemDescription: 
+  itemDescription: "\uB85C\uD1A0\uAC00 \uAFC8\uC744 \uAFB8\uB354\uB2C8 \uB4DC\uB514\uC5B4
+    \uC790\uAE30\uAC00 \uC6B4\uC774 \uC88B\uC740 \uAC83\uC744 \uC54C\uC544\uBC84\uB838\uB2E4.
+    \uB85C\uD1A0\uAC00 \uC8FC\uBCC0\uC5D0 \uC788\uB294 \uBAA8\uB4E0 \uBB3C\uAC74\uB4E4\uC744
+    \uB9C8\uAD6C \uC9D1\uC5B4\uB358\uC9C0\uAE30 \uC2DC\uC791\uD588\uB2E4. \uB180\uB78D\uAC8C\uB3C4
+    \uC801\uC911\uB960 100%\uB2E4."
   skillType: 0
-  targetType: 0
+  targetType: 1
   damageType: 0
-  coolDown: 0
-  baseSkillCoefficient: 0
-  upgradeSkillCoefficient: 0
+  coolDown: 0.2
+  baseSkillCoefficient: 1750
+  upgradeSkillCoefficient: 10
   unlockStats: []
-  equipStats: []
+  equipStats:
+  - stat: {fileID: 11400000, guid: 1d4871ee7bf4d7047a270671fb66f9c3, type: 2}
+    baseValue: 15
+    upgradeValue: 1
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 10
+    upgradeValue: 1
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
+    baseValue: 10
+    upgradeValue: 0.75
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
+    baseValue: 5
+    upgradeValue: 0.5
+    modifyMode: 1
+    modifyLayer: 0
   skill:
-    rid: -2
+    rid: 8679852261868044425
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 8679852261868044425
+      type: {class: ThrowAnythingSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
+      data:
+        _whatIsTarget:
+          serializedVersion: 2
+          m_Bits: 128
+        _radius: 0.5
+        _lifeTime: 1
+        _skillProjectileSpeed: 0
+        _spriteList: []

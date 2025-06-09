@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: RiseCrystal
   m_EditorClassIdentifier: 
-  itemClassName: RiseCrystal
   itemName: "\uAC11\uC790\uAE30 \uC19F\uC544\uB09C \uD06C\uB9AC\uC2A4\uD0C8"
-  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
+  icon: {fileID: 21300000, guid: 2bccd332882fcd14b9e4c377e432c587, type: 3}
   itemRank: 1
   itemType: 0
   itemDescription: "10m \uB0B4 \uC801\uC774 \uAC00\uC7A5 \uB9CE\uC740 \uACF3\uC5D0\uC11C
@@ -24,18 +23,30 @@ MonoBehaviour:
   targetType: 1
   damageType: 0
   coolDown: 5
-  skillRange: 8
-  skillAreaRadius: 3
-  baseSkillPercent: 0
-  upgradeSkillPercent: 0
-  unlockEffects: []
-  equipEffects: []
+  baseSkillCoefficient: 165
+  upgradeSkillCoefficient: 4
+  unlockStats: []
+  equipStats:
+  - stat: {fileID: 11400000, guid: 1d4871ee7bf4d7047a270671fb66f9c3, type: 2}
+    baseValue: 5
+    upgradeValue: 0.35
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 3
+    upgradeValue: 0.15
+    modifyMode: 1
+    modifyLayer: 0
   skill:
-    rid: 3004152287382995030
+    rid: 8679852261868044441
   references:
     version: 2
     RefIds:
-    - rid: 3004152287382995030
+    - rid: 8679852261868044441
       type: {class: RiseCrystalSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
       data:
-        _lifeTime: 0
+        _whatIsTarget:
+          serializedVersion: 2
+          m_Bits: 128
+        _radius: 3
+        _lifeTime: 2

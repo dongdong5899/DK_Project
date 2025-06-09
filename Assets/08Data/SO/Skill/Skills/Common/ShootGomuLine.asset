@@ -23,22 +23,27 @@ MonoBehaviour:
   targetType: 0
   damageType: 0
   coolDown: 6
-  baseSkillCoefficient: 100
-  upgradeSkillCoefficient: 2.5
+  baseSkillCoefficient: 85
+  upgradeSkillCoefficient: 2
   unlockStats: []
-  equipStats: []
+  equipStats:
+  - stat: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
+    baseValue: 3
+    upgradeValue: 0.05
+    modifyMode: 1
+    modifyLayer: 0
   skill:
-    rid: 3004152287382995028
+    rid: 8679852261868044430
   references:
     version: 2
     RefIds:
-    - rid: 3004152287382995028
+    - rid: 8679852261868044430
       type: {class: ShootGomuLineSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
       data:
         _whatIsTarget:
           serializedVersion: 2
           m_Bits: 128
-        _radius: 5
+        _radius: 0.5
         _lifeTime: 1
-        _skillProjectileSpeed: 10
+        _skillProjectileSpeed: 0
         _skillCount: 1

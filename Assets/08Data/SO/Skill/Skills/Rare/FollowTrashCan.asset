@@ -12,24 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: FollowTrashCan
   m_EditorClassIdentifier: 
-  itemClassName: 
-  itemName: 
-  icon: {fileID: 0}
-  itemRank: 0
+  itemName: "\uBB34\uC5B8\uAC00\uC758 \uC4F0\uB808\uAE30\uD1B5"
+  icon: {fileID: 21300000, guid: 63b30c77b2de31d4398b65d935f4713c, type: 3}
+  itemRank: 1
   itemType: 0
-  itemDescription: 
+  itemDescription: "\uC4F0\uB808\uAE30\uD1B5\uC5D0\uC11C \uAC11\uC790\uAE30 \uBB34\uC5B8\uAC00
+    \uD280\uC5B4\uB098\uC640 \uC801 \uD55C\uBA85\uC5D0\uAC8C \uB3CC\uC9C4\uD558\uC5EC
+    \uB370\uBBF8\uC9C0\uB97C \uC785\uD788\uACE0, \uB454\uD654\uB97C \uBD80\uC5EC\uD558\uBA70
+    \uC0AC\uB77C\uC9C4\uB2E4. \uC815\uCCB4\uB294 \uB05D\uAE4C\uC9C0 \uC54C\uC544\uB0B4\uC9C0
+    \uBABB\uD588\uB2E4."
   skillType: 0
   targetType: 0
   damageType: 0
-  coolDown: 0
-  baseSkillCoefficient: 0
-  upgradeSkillCoefficient: 0
+  coolDown: 5
+  baseSkillCoefficient: 260
+  upgradeSkillCoefficient: 3.5
   unlockStats: []
-  equipStats: []
+  equipStats:
+  - stat: {fileID: 11400000, guid: 175f233e4bdf3e44cb5d9f9ce100e22e, type: 2}
+    baseValue: 5
+    upgradeValue: 0.2
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 3
+    upgradeValue: 0.15
+    modifyMode: 1
+    modifyLayer: 0
   skill:
-    rid: -2
+    rid: 8679852261868044440
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 8679852261868044440
+      type: {class: FollowTrashCanSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
+      data:
+        _whatIsTarget:
+          serializedVersion: 2
+          m_Bits: 128
+        _radius: 2
+        _lifeTime: 5
+        _speed: 0

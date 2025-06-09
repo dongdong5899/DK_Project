@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AreaCry
   m_EditorClassIdentifier: 
   itemName: "\uC758\uB3C4\uCE58 \uC54A\uC740 \uB208\uBB3C"
-  icon: {fileID: 21300000, guid: 0ad2337320c1b5841ba3ceb24de6e91a, type: 3}
+  icon: {fileID: 21300000, guid: e691198d56e3a1848b5009e1ff94dbb5, type: 3}
   itemRank: 0
   itemType: 0
   itemDescription: "\uAF43\uAC00\uB8E8 \uC54C\uB808\uB974\uAE30\uAC00 \uC2EC\uD574\uC838\uC11C
@@ -34,11 +34,11 @@ MonoBehaviour:
     modifyMode: 1
     modifyLayer: 0
   skill:
-    rid: 5886048186997669972
+    rid: 8679852261868044428
   references:
     version: 2
     RefIds:
-    - rid: 5886048186997669972
+    - rid: 8679852261868044428
       type: {class: AreaCrySkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
       data:
         _whatIsTarget:
@@ -46,5 +46,4 @@ MonoBehaviour:
           m_Bits: 128
         _radius: 4
         _skillDotAttackReduction: 25
-        _effectList:
-        - {fileID: 0}
+        _effectList: []

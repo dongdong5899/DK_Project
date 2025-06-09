@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: AreaElectric
   m_EditorClassIdentifier: 
-  itemClassName: AreaElectric
   itemName: "\uC720\uB09C\uD788 \uC2EC\uD55C \uC815\uC804\uAE30"
   icon: {fileID: 21300000, guid: 2456dd2824f5ec540830760922f5bac6, type: 3}
   itemRank: 1
@@ -40,11 +39,11 @@ MonoBehaviour:
     modifyMode: 1
     modifyLayer: 0
   skill:
-    rid: 3004152287382995032
+    rid: 8679852261868044438
   references:
     version: 2
     RefIds:
-    - rid: 3004152287382995032
+    - rid: 8679852261868044438
       type: {class: AreaElectricSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
       data:
         _whatIsTarget:

@@ -12,30 +12,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: ShootBounceBall
   m_EditorClassIdentifier: 
-  itemClassName: ShootBounceBall
-  itemName: 
-  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
-  itemRank: 0
+  itemName: "\uC608\uC0C1\uD558\uC9C0 \uBABB\uD55C \uBB34\uD55C\uB3D9\uB825"
+  icon: {fileID: 21300000, guid: d8108e50be9cf7f49878337929803edd, type: 3}
+  itemRank: 4
   itemType: 0
-  itemDescription: 
-  skillType: 1
+  itemDescription: "\uB85C\uD1A0\uAC00 \uC5B4\uB9B4 \uB54C \uAC00\uC9C0\uACE0 \uB180\uB358
+    \uCCA0\uAD6C\uB97C \uB545\uC5D0 \uD295\uACBC\uB354\uB2C8 \uBA48\uCD94\uC9C0 \uC54A\uACE0
+    \uB9F5 \uC804\uC5ED\uC744 \uD1B5\uD1B5 \uD280\uBA70 \uC801\uC5D0\uAC8C \uB370\uBBF8\uC9C0\uB97C
+    \uC785\uD78C\uB2E4."
+  skillType: 0
   targetType: 1
   damageType: 0
   coolDown: 0
   baseSkillCoefficient: 1820
   upgradeSkillCoefficient: 1
   unlockStats: []
-  equipStats: []
+  equipStats:
+  - stat: {fileID: 11400000, guid: 175f233e4bdf3e44cb5d9f9ce100e22e, type: 2}
+    baseValue: 15
+    upgradeValue: 1
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 10
+    upgradeValue: 1
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: bdb90193d7d82924d9fe39e86c1e6687, type: 2}
+    baseValue: 10
+    upgradeValue: 0.75
+    modifyMode: 1
+    modifyLayer: 0
+  - stat: {fileID: 11400000, guid: cbd90a176a034364394b0272120a935b, type: 2}
+    baseValue: 5
+    upgradeValue: 0.5
+    modifyMode: 1
+    modifyLayer: 0
   skill:
-    rid: 5886047653141413970
+    rid: 8679852261868044426
   references:
     version: 2
     RefIds:
-    - rid: 5886047653141413970
+    - rid: 8679852261868044426
       type: {class: ShootBounceBallSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
       data:
         _whatIsTarget:
           serializedVersion: 2
           m_Bits: 128
-        _radius: 50
-        _skillProjectileSpeed: 10
+        _radius: 2
+        _skillProjectileSpeed: 0

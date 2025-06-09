@@ -12,31 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ff8d67d74b194b84f0a51859baaf9, type: 3}
   m_Name: SpinBlade
   m_EditorClassIdentifier: 
-  itemClassName: SpinBlade
-  itemName: 
-  icon: {fileID: -3740966037314207476, guid: f0a3289c30eea4f45b23f3f6e602de15, type: 3}
-  itemRank: 0
+  itemName: "\uC65C\uC778\uC9C0 \uBAA8\uB97C \uBCA0\uB9AC\uC5B4"
+  icon: {fileID: 21300000, guid: 03e6f50b7a998ed46a4c3f9f8cb0855e, type: 3}
+  itemRank: 3
   itemType: 0
-  itemDescription: 
+  itemDescription: "\uB85C\uD1A0 \uC8FC\uBCC0\uC5D0 \uC758\uBB38\uC758 \uCE7C\uB0A0
+    2 \uAC1C\uAC00 \uD68C\uC804\uD558\uAE30 \uC2DC\uC791\uD588\uB2E4.\uD22C\uC0AC\uCCB4\uB97C
+    \uB9C9\uACE0, \uC801\uC5D0\uAC8C \uC801\uC911 \uC2DC \uD53C\uD574\uB97C \uC785\uD78C\uB2E4."
   skillType: 1
-  targetType: 0
+  targetType: 1
   damageType: 0
   coolDown: 0
-  baseSkillCoefficient: 400
-  upgradeSkillCoefficient: 20
+  baseSkillCoefficient: 810
+  upgradeSkillCoefficient: 2
   unlockStats: []
-  equipStats: []
+  equipStats:
+  - stat: {fileID: 11400000, guid: 9230aa120be15504cbacb9fd1184c519, type: 2}
+    baseValue: 20
+    upgradeValue: 1
+    modifyMode: 1
+    modifyLayer: 0
   skill:
-    rid: 5886047676716023891
+    rid: 8679852261868044421
   references:
     version: 2
     RefIds:
-    - rid: 5886047676716023891
+    - rid: 8679852261868044421
       type: {class: SpinBladeSkill, ns: DKProject.SkillSystem.Skills, asm: Assembly-CSharp}
       data:
         _whatIsTarget:
           serializedVersion: 2
-          m_Bits: 640
+          m_Bits: 128
         _projectileCount: 2
-        _spinSpeed: 5
+        _spinSpeed: 0
         _radius: 5
